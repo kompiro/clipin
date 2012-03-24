@@ -22,6 +22,32 @@ end
 
 gem 'jquery-rails'
 
+
+group :development, :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'cucumber'
+  gem "cucumber-rails", require: false
+  gem 'webrat'
+  gem 'database_cleaner'
+
+  # sporkを使う場合（0.8.5ではエラーになる場合があるため、バージョンを指定）
+  gem 'spork', '~> 0.9.0.rc'
+
+  # guardを使う場合
+  gem 'rb-fsevent'
+  gem 'guard-spork'
+  gem 'guard-rspec'
+  gem 'guard-cucumber'
+
+  # notifyを使う場合(Ubuntu)
+  #gem 'libnotify'
+  #gem 'rb-inotify'
+
+  # Growlを使う場合(Mac)
+  gem 'growl'
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
