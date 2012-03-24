@@ -34,6 +34,8 @@ Spork.prefork do
     # examples within a transaction, remove the following line or assign false
     # instead of true.
     config.use_transactional_fixtures = true
+    ActiveSupport::Dependencies.clear
+  end
 
 end
 
@@ -106,5 +108,4 @@ RSpec.configure do |config|
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
 
-  ActiveSupport::Dependencies.clear
 end
