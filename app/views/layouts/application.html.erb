@@ -22,22 +22,29 @@
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
   <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-
-  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
-
-  <!-- All JavaScript at the bottom, except this Modernizr build incl. Respond.js
-       Respond is a polyfill for min/max-width media queries. Modernizr enables HTML5 elements & feature detects;
-       for optimal performance, create your own custom Modernizr build: www.modernizr.com/download/ -->
-  <%= javascript_include_tag "modernizr" %>
 </head>
 
 <body>
-  <%= yield %>
 
-  <!-- JavaScript at the bottom for fast page loading -->
-  <%= javascript_include_tag "application" %>
-  <!-- end scripts -->
+  <div data-role="page">
+
+    <div data-role="header">
+      <%= yield :header %>
+    </div><!-- /header -->
+
+    <div data-role="content">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div><!-- /content -->
+
+    <div data-role="footer">
+      <%= yield :footer %>
+    </div><!-- /footer -->
+
+  </div><!-- /page -->
 
 
   <% if Rails.env.production? %>

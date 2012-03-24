@@ -13,4 +13,5 @@
 //= require plugins
 //= require jquery
 //= require jquery_ujs
+//= require jquery.mobile-1.1.0-rc.1
 //= require_tree .
