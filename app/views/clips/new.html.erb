@@ -15,12 +15,14 @@
     </div>
   <% end %>
   <div data-role="fieldcontain">
-    <%= f.label :url %><br />
+    <%= f.label :url,'URL' %><br />
     <%= f.text_field :url %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <div data-role="ui-grid-a">
+      <div class="ui-block-a"><%= link_to 'Back', clips_path,'data-role' => 'button' %></div>
+      <div class="ui-block-b"><%= f.submit 'data-theme' => 'b'%></div>
+    </div>
   </div>
 <% end %>
 
-<%= link_to 'Back', clips_path %>

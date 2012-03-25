@@ -1,4 +1,7 @@
-<p id="notice"><%= notice %></p>
+<p>
+  <b>URL:</b>
+  <%= @clip.url %>
+</p>
 
 <p>
   <b>Title:</b>
@@ -7,7 +10,7 @@
 
 <p>
   <b>Type:</b>
-  <%= @clip.type %>
+  <%= @clip.og_type %>
 </p>
 
 <p>
@@ -15,26 +18,11 @@
   <%= @clip.image %>
 </p>
 
-<p>
-  <b>Url:</b>
-  <%= @clip.url %>
-</p>
 
 <p>
   <b>Description:</b>
   <%= @clip.description %>
 </p>
-
-<p>
-  <b>Audio:</b>
-  <%= @clip.audio %>
-</p>
-
-<p>
-  <b>Video:</b>
-  <%= @clip.video %>
-</p>
-
 
 <%= link_to 'Edit', edit_clip_path(@clip) %> |
 <%= link_to 'Back', clips_path %>
