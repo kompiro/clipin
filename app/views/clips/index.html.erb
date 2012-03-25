@@ -1,34 +1,20 @@
+<% content_for :header do %>
 <h1>Listing clips</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Type</th>
-    <th>Image</th>
-    <th>Url</th>
-    <th>Description</th>
-    <th>Audio</th>
-    <th>Video</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @clips.each do |clip| %>
-  <tr>
-    <td><%= clip.title %></td>
-    <td><%= clip.type %></td>
-    <td><%= clip.image %></td>
-    <td><%= clip.url %></td>
-    <td><%= clip.description %></td>
-    <td><%= clip.audio %></td>
-    <td><%= clip.video %></td>
-    <td><%= link_to 'Show', clip %></td>
-    <td><%= link_to 'Edit', edit_clip_path(clip) %></td>
-    <td><%= link_to 'Destroy', clip, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
 <% end %>
-</table>
+<ul data-role="list-view">
+<% @clips.each do |clip| %>
+  <li><%= link_to clip.url do %>
+    <% if clip.image.present? %>
+      <%= image_tag clip.url,:size=>'80x80' %>
+    <% end %>
+    <h3><%= clip.title %></h3>
+    <p>[<%= clip.type %>]<%= clip.description %></p>
+    <%# clip.audio %>
+    <%# clip.video %>
+  <% end %>
+  </li>
+<% end %>
+</ul>
 
 <br />
 
