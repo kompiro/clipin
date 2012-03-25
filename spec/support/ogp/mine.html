@@ -1,0 +1,881 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:og="http://ogp.me/ns#">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-jp">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<title>Fly me to the Juno!</title>
+<link rel="start" href="./" title="Fly me to the Juno!">
+<link rel="help" href="/help" title="ヘルプ">
+<link rel="prev" href="/kompiro/?of=5" title="前の5日分">
+
+<link rel="stylesheet" href="http://d.st-hatena.com/statics/css/base.css?eb17ec9b3d9c97f5e07a9b29244aed1500257a88" type="text/css" media="all">
+<link rel="stylesheet" href="http://d.st-hatena.com/statics/css/headerstyle_de.css?c6f6c88a8f6432ea99081068b1aa256d28257e9c" type="text/css" media="all">
+<link rel="stylesheet" href="http://d.st-hatena.com/statics/theme/pokke-blue/pokke-blue.css?ce325ac2661691df491af4bf345b96f01406af7f" type="text/css" media="all">
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://d.hatena.ne.jp/kompiro/rss">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://d.hatena.ne.jp/kompiro/rss2">
+
+<link rel="meta" type="application/rdf+xml" title="FOAF" href="http://d.hatena.ne.jp/kompiro/foaf" />
+<link rel="search" type="application/opensearchdescription+xml" href="http://d.hatena.ne.jp/kompiro/opensearch/diary.xml" title="Fly me to the Juno!内日記検索" />
+<link rel="search" type="application/opensearchdescription+xml" href="http://d.hatena.ne.jp/kompiro/opensearch/archive.xml" title="Fly me to the Juno!内一覧検索" />
+
+
+<link rel="shortcut icon" href="http://d.hatena.ne.jp/images/diary/kompiro/favicon.ico">
+
+
+
+<style type="text/css">
+<!-- 
+pre {
+ background: #f7f7f7;
+ border: 1px solid #d7d7d7;
+ margin: 1em 1.75em;
+ padding: .25em;
+ overflow: auto;
+ font-size:90%
+}
+.section table {
+ border: 1px solid #d7d7d7 /* 色コード */  ;
+ border-collapse: collapse;
+ font-size:90%
+}
+
+.section table td,.section table th {
+ border: 1px solid #d7d7d7 /* 色コード */  ;
+}
+
+-->
+</style>
+
+
+<script type="text/javascript">if(/[\x3c\x3e]/.test(location.hash))location.hash=location.hash.replace(/[\x3c\x3e]/g,'');if(/[\x3c\x3e]/.test(document.referrer))location.href=location.href;</script>
+
+
+
+
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Fly me to the Juno!">
+<meta property="og:image" content="http://www.st-hatena.com/users/ko/kompiro/user_p.gif?">
+<meta property="og:url" content="http://d.hatena.ne.jp/kompiro/">
+<meta property="og:description" content="Planet Eclipseにも参加しています。ソリューションログを軸に書いてます。">
+<meta property="og:site_name" content="はてなダイアリー">
+
+
+<!--
+<rdf:RDF
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:foaf="http://xmlns.com/foaf/0.1/">
+<rdf:Description rdf:about="http://d.hatena.ne.jp/kompiro/">
+   <foaf:maker rdf:parseType="Resource">
+     <foaf:holdsAccount>
+       <foaf:OnlineAccount foaf:accountName="kompiro">
+         <foaf:accountServiceHomepage rdf:resource="http://www.hatena.ne.jp/" />
+       </foaf:OnlineAccount>
+     </foaf:holdsAccount>
+   </foaf:maker>
+</rdf:Description>
+</rdf:RDF>
+-->
+
+<link rel="alternate" media="handheld" type="text/html" href="http://d.hatena.ne.jp/kompiro/mobile" />
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+  rdf:about="http://d.hatena.ne.jp/kompiro/20111211/1323624157"
+  trackback:ping="http://d.hatena.ne.jp/kompiro/20111211/1323624157"
+  dc:title="[DevLOVE]DevLOVE HangerFlight - Snow Barrage - でFearless Changeについて話してきました。"
+  dc:identifier="http://d.hatena.ne.jp/kompiro/20111211/1323624157" />
+</rdf:RDF>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+  rdf:about="http://d.hatena.ne.jp/kompiro/20111211/1323621493"
+  trackback:ping="http://d.hatena.ne.jp/kompiro/20111211/1323621493"
+  dc:title="[Shibuya.trac] Shibuya.trac #13に参加して感じた事。"
+  dc:identifier="http://d.hatena.ne.jp/kompiro/20111211/1323621493" />
+</rdf:RDF>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+  rdf:about="http://d.hatena.ne.jp/kompiro/20111211/1323616210"
+  trackback:ping="http://d.hatena.ne.jp/kompiro/20111211/1323616210"
+  dc:title="[Shibuya.trac] Shibuya.trac #13でKanbanについて話してきました。"
+  dc:identifier="http://d.hatena.ne.jp/kompiro/20111211/1323616210" />
+</rdf:RDF>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+  rdf:about="http://d.hatena.ne.jp/kompiro/20110626/1309093111"
+  trackback:ping="http://d.hatena.ne.jp/kompiro/20110626/1309093111"
+  dc:title="[Quick JUnit]Quick JUnit Notification Pluginその2"
+  dc:identifier="http://d.hatena.ne.jp/kompiro/20110626/1309093111" />
+</rdf:RDF>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+  rdf:about="http://d.hatena.ne.jp/kompiro/20110625/1309017786"
+  trackback:ping="http://d.hatena.ne.jp/kompiro/20110625/1309017786"
+  dc:title="[Quick JUnit]Quick JUnit Notification Plugin"
+  dc:identifier="http://d.hatena.ne.jp/kompiro/20110625/1309017786" />
+</rdf:RDF>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+  rdf:about="http://d.hatena.ne.jp/kompiro/20110624/1308922129"
+  trackback:ping="http://d.hatena.ne.jp/kompiro/20110624/1308922129"
+  dc:title="[Eclipse]Eclipse 3.7を使い始める前に知っておくといいこと"
+  dc:identifier="http://d.hatena.ne.jp/kompiro/20110624/1308922129" />
+</rdf:RDF>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+  rdf:about="http://d.hatena.ne.jp/kompiro/20110619/1308488478"
+  trackback:ping="http://d.hatena.ne.jp/kompiro/20110619/1308488478"
+  dc:title="[maven][jenkins]Jenkins Maven Repository Server Pluginが簡単すぎて鼻血でた。"
+  dc:identifier="http://d.hatena.ne.jp/kompiro/20110619/1308488478" />
+</rdf:RDF>
+-->
+
+
+<link rel="microsummary" href="/microsummary/entry_title.xml">
+
+
+
+
+
+
+
+<script type="text/javascript" src="http://s.hatena.ne.jp/js/HatenaStar.js"></script>
+<script type="text/javascript">
+Hatena.Star.SiteConfig = {
+  entryNodes: {
+    'div.section': {
+      uri: 'h3 a',
+      title: 'h3',
+      container: 'h3'
+    }
+  }
+};
+Hatena.Author  = new Hatena.User('kompiro');
+Hatena.DiaryName  = new Hatena.User('kompiro');
+
+</script>
+
+
+
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/twitter_entry_icon.js?624193d7525aa17863f03b145a0662aa8bfba0bb"></script>
+
+
+
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/adcolor.js?c593940089d144b1fc88d21046fb4bbf7699e057"></script>
+
+
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/quick_pager.js?73e8efd3adc8709460b4c8ff9af5a3d4c97eba4e"></script>
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/diary_utils.js?adec0f610f5ae48699282e70ca53eac3b657feda"></script>
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/max_width_fotolife.js?2d5c0a4915fdb8930122a506dbf154b9db674a3b"></script>
+
+
+
+
+
+<script type="text/javascript" charset="utf-8" src="http://b.hatena.ne.jp/js/bookmark_blogparts.js"></script>
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/jquery-1.4.2.min.js?1c983e39f64600478e5a829cf7a7a61f68527715"></script>
+<script type="text/javascript">
+  jQuery.noConflict()(function($){
+    var j$ = jQuery;
+  });
+</script>
+
+
+
+
+</head>
+<body>
+
+<div id="simple-header">
+
+  <a href="http://www.hatena.ne.jp/"><img src="/images/hatena-simple_de.gif" alt="Hatena::" title="Hatena::" id="logo-hatena" width="65" height="17"></a><a href="/"><img src="/images/diary-simple_de.gif" alt="ブログ(Diary)" title="Diary" id="logo-diary" width="43" height="17"></a>
+  <form method="get" action="/search" class="search-form">
+    <input type="text" class="search-word" name="word" value=""><input name="name" value="kompiro" type="hidden"><input type="submit" name="diary" value="日記" class="search-button"><input type="submit" name="submit" value="検索" class="search-button">
+  </form>
+  <ul class="menu">
+    <li><a href="/kompiro/">ブログトップ</a></li>
+    <li><a href="/kompiro/archive">記事一覧</a></li>
+
+
+
+    <li><a href="https://www.hatena.ne.jp/login?backurl=http%3A%2F%2Fd.hatena.ne.jp%2Fkompiro%2F&add_timestamp=1">ログイン</a></li>
+    <li><a href="https://www.hatena.ne.jp/register?location=http://d.hatena.ne.jp/">無料ブログ開設</a></li>
+
+  </ul>
+</div>
+
+
+
+<h1><a href="http://d.hatena.ne.jp/kompiro/">Fly me to the Juno!</a> <a href="http://a.hatena.ne.jp/append?http://d.hatena.ne.jp/kompiro/"><img src="http://d.hatena.ne.jp/images/a_append_de.gif" title="このページをアンテナに追加" alt="このページをアンテナに追加" border="0" width="16" height="12" class="icon"></a> <a href="http://d.hatena.ne.jp/kompiro/rss"><img src="http://d.hatena.ne.jp/images/rss_de.gif" alt="RSSフィード" title="RSSフィード" border="0" width="24" height="12" class="icon"></a> <a id="twitter-header-icon" href="http://twitter.com/kompiro"><img src="/images/icon-twitter.png" alt="Twitter" title="このページ作者のTwitterへ" border="0" width="16" height="16" class="icon"></a></h1>
+<div class="hatena-body">
+<div class="main">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="calendar" id="pager-top">
+  <a rel="prev" href="/kompiro/?of=5" class="prev">&lt;前の5日分</a>&nbsp;<span id="edit-in-place-add"></span>
+</div>
+<div id="days">
+
+<div class="day">
+<h2><a href="http://d.hatena.ne.jp/kompiro/20111211"><span class="date">2011-12-11</span></a></h2>
+
+<div class="body">
+
+<!-- google_ad_section_start -->
+
+		<div class="section">
+			<h3 class="title"><a href="/kompiro/20111211/1323624157" name="1323624157">DevLOVE HangerFlight - Snow Barrage - でFearless Changeについて話してきました。</a></h3>
+			<p class="sectionheader"><span class="sectioncategory"><a href="/kompiro/searchdiary?word=%2A%5BDevLOVE%5D" class="sectioncategory">DevLOVE</a></span></p>
+			<p>「<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%D6%A5%ED%A5%B0">ブログ</a>に書くまでがDevLOVEです。」大事な事なのでもう一回、「ブログに書くまでが D・e・v・L・O・V・E です。」。講演の中でも2回言ったので、書くよー。</p>
+			<p>いやー、月食きれいでしたね。<a class="keyword" href="http://d.hatena.ne.jp/keyword/%C5%EC%B5%FE">東京</a>にいられて良かったです。そのきっかけになってくれたのが、DevLOVE HangerFlightでした。先ほどのエントリの冒頭に、僕は福井に引っ越したと書きましたが、この度「何でもいいから東京に来て話してよ」といわれたので、それだったらFearless Changeの話がDevLOVEに必要だと思うのでさせてください、と提案してこの<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%BB%A5%C3%A5%B7%A5%E7%A5%F3">セッション</a>をやってきました。</p>
+			<p><a href="http://www.scribd.com/doc/75370071/DevLOVE%E3%81%A6%E3%82%99%E5%AD%A6%E3%82%93%E3%81%9F%E3%82%99%E4%BA%8B%E3%82%92%E7%8F%BE%E5%A0%B4-%E3%81%A6%E3%82%99%E5%BA%83%E3%82%81%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE48%E3%81%AE%E6%88%A6%E7%95%A5-%E3%82%92Fearless-Change%E3%81%8B%E3%82%89-%E5%AD%A6%E3%81%BB%E3%82%99%E3%81%86" style="margin: 12px auto 6px auto; font-family: Helvetica,Arial,Sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none; display: block; text-decoration: underline;" title="View DevLOVEて&#12441;学んた&#12441;事を現場 て&#12441;広めるための48の戦略 をFearless Changeから 学ほ&#12441;う on Scribd">DevLOVEて&#12441;学んた&#12441;事を現場 て&#12441;広めるための48の戦略 をFearless Changeから 学ほ&#12441;う</a> <object id="doc_9865" name="doc_9865" height="600" width="100%" type="application/x-shockwave-flash" data="http://d1.scribdassets.com/ScribdViewer.swf" style="outline:none;" ><param name="movie" value="http://d1.scribdassets.com/ScribdViewer.swf"><param name="wmode" value="opaque"><param name="bgcolor" value="#ffffff"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><param name="FlashVars" value="document_id=75370071&access_key=key-kfovy225dy8g36hu8fw&page=1&viewMode=slideshow"><embed id="doc_9865" name="doc_9865" src="http://d1.scribdassets.com/ScribdViewer.swf?document_id=75370071&access_key=key-kfovy225dy8g36hu8fw&page=1&viewMode=slideshow" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" height="600" width="100%" wmode="opaque" bgcolor="#ffffff"></embed></object></p>
+			<p>48の「戦略」としたのは「パタン」と呼んでもピンと来る人はそれほど多くはないだろう、と思ったからです。あと、当日紹介したのは8つだけです。だからタイトルは釣りですすみません。</p>
+			<p>今回紹介した選んだパタンは下記の8つです。これらは、組織に新しいアイディアを広めるために最初に必要になる考え方です。</p>
+
+			<ul>
+				<li> Evangelist - <a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%A8%A5%D0%A5%F3%A5%B8%A5%A7%A5%EA%A5%B9%A5%C8">エバンジェリスト</a></li>
+				<li>  Just DO IT - とにかくやってみる</li>
+				<li> Test the Water - 味見をする</li>
+				<li> Innovator - イノベーター</li>
+				<li> Ask for Help - 助けを借りる</li>
+				<li> Just say thanks - 感謝を忘れず</li>
+				<li> Time for Reflection - ふりかえる時間</li>
+				<li> Step by Step - 一歩ずつ</li>
+			</ul>
+			<p>ここに書いてある項目を眺めて、こう思いませんでしたか？「なんかエバンジェリスト以外当たり前の事しかかかれてないな？」って。そうです。当たり前のことなんです。でも組織に新しいアイディアを広められている、と言う声がそれほど多くないのはなぜなんでしょうか？僕が思うのは、当たり前の事でもやれないことってあるよねっ、っていう良く聞く話しか思い浮かばないです。(ただいま2:20。明日になってなんか気づいたら書こう。)</p>
+			<p>今回のDevLOVEのふりかえりセッションは、結構このセッションと同じ事を扱っていた気がしますし、@<a class="twitter-user-screen-name" href="http://twitter.com/sato_shi">sato_shi</a>さんが、その本、読みたい、とおっしゃってくれたのが印象的でした。社長さんなのにね。<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%C8%A5%C3%A5%D7%A5%C0%A5%A6%A5%F3">トップダウン</a>でやろうとしても上手くいかないと嘆かれていました。そう、社内に変化を起こすには、トップダウンも<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%DC%A5%C8%A5%E0%A5%A2%A5%C3%A5%D7">ボトムアップ</a>も関係ないんです。セッションでは言わなかったけど。</p>
+			<p>たぶん誰かを巻き込んで変化するためには、そこには「楽しさ」みたいな内燃しやすい燃料を注ぐ必要があるように思う。ゲーミフィケーションなんて分かりやすい例。</p>
+			<p>DevLOVEに来る人は、現場を変えるために参加する人が結構いるんじゃないかと思ってやってみました。今年、Fearless Changeの著者の一人のリンダさんにお会いできたのは、本当に自分の考え方を変える出会いでした。あの本を書けるような人は、やっぱりどこか違う。Energizeできうる人は、たぶん「自分」よりも「人のために」エネルギーをさける人なのだと思った。否定せず、うまく気持ちを盛り上げ、相手に内燃させられる燃料を注げる人。それがEnergizer。僕もそうなれましたかね。あの時リンダさんに自分が分けてもらったエナジーを、少しずつセッションに参加された方に渡したつもりです。みんなの現場が現場のみんなにとって少しでも良くなるように、頑張っていきましょう。</p>
+			<p>このセッションは自分一人では出来上がりませんでした。DevLOVE裏方兼本読部の@<a class="twitter-user-screen-name" href="http://twitter.com/_oppy">_oppy</a>さん、本読部で配布したペーパーの翻訳をされている@<a class="twitter-user-screen-name" href="http://twitter.com/kawaguti">kawaguti</a>さん、48のパターン名の概要翻訳をされている@<a class="twitter-user-screen-name" href="http://twitter.com/yattom">yattom</a>さん、DevLOVEの@<a class="twitter-user-screen-name" href="http://twitter.com/papanda">papanda</a>さん、そして参加してくださったみなさま、どうもありがとうございました。</p>
+			<p class="share-button sectionfooter"><a href="http://twitter.com/share" class="twitter-share-button" data-lang="ja" data-count="none" data-url="http://d.hatena.ne.jp/kompiro/20111211/1323624157" data-text="DevLOVE HangerFlight - Snow Barrage - でFearless Changeについて話してきました。 - Fly me to the Juno! (id:kompiro / @kompiro)">ツイートする</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js" charset="utf-8"></script><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fd.hatena.ne.jp%2Fkompiro%2F20111211%2F1323624157&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe></p>
+
+			<p class="sectionfooter"><a href="/kompiro/20111211/1323624157">Permalink</a> | <a href="/kompiro/20111211/1323624157#c">コメント(0)</a> | <a href="/kompiro/20111211/1323624157#tb">トラックバック(0)</a> | 02:22 <a href="http://b.hatena.ne.jp/entry/http://d.hatena.ne.jp/kompiro/20111211/1323624157" class="bookmark-icon"><img src="http://d.hatena.ne.jp/images/b_entry_de.gif" border="0" title="DevLOVE HangerFlight - Snow Barrage - でFearless Changeについて話してきました。を含むブックマーク" alt="DevLOVE HangerFlight - Snow Barrage - でFearless Changeについて話してきました。を含むブックマーク" width="16" height="12" class="icon"></a></p>
+
+		</div>
+<div id="google_afc_user" class="section">
+<div id="google_afc_user_container" class="google_afc_blocklink2_5 google_afc_boder"></div>
+
+</div>
+
+		<div class="section">
+			<h3 class="title"><a href="/kompiro/20111211/1323621493" name="1323621493"> Shibuya.trac #13に参加して感じた事。</a></h3>
+			<p class="sectionheader"><span class="sectioncategory"><a href="/kompiro/searchdiary?word=%2A%5BShibuya%2Etrac%5D" class="sectioncategory">Shibuya.trac</a></span></p>
+			<p>@<a class="twitter-user-screen-name" href="http://twitter.com/tyobichi">tyobichi</a>さんのがんばりによって、10日前に開催になりました。@<a class="twitter-user-screen-name" href="http://twitter.com/riskrisk">riskrisk</a>さんに前日に司会をお願いし、いつも<a class="keyword" href="http://d.hatena.ne.jp/keyword/ust">ust</a>をしてくださる@<a class="twitter-user-screen-name" href="http://twitter.com/nekotank">nekotank</a>さんが今回もustを引き受けてくださったり結構ドタバタしてましたが、@<a class="twitter-user-screen-name" href="http://twitter.com/kanu_">kanu_</a>さんの話も、@<a class="twitter-user-screen-name" href="http://twitter.com/ikikko">ikikko</a>さんの話もとてもよかったです。かぬさんの<a class="keyword" href="http://d.hatena.ne.jp/keyword/Trac">Trac</a>を「たくさんカスタマイズした結果、そのカスタマイズは開発メンバーにとって、と言うよりも、管理者が楽をするための機能だった。それでは結局<a class="keyword" href="http://d.hatena.ne.jp/keyword/Excel">Excel</a>と同じように苦痛にだんだんと思われてしまっていたようだ。<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%C7%A5%D5%A5%A9%A5%EB%A5%C8">デフォルト</a>のTracのシンプルさは開発者にとって必要なものだけだったんだ。」という話が心に響かないわけないよね。これ<a class="keyword" href="http://d.hatena.ne.jp/keyword/Redmine">Redmine</a>とかJIRAとか関係ないもの。</p>
+			<p>よかれと思って項目を増やしていっても結局必要なかった事が分かっても、放置されている項目があったりすると、新しく入って来たメンバーは困るんですよね。これなんであるの？って。極力増やさない方がいいと思っていたのが、腑に落ちました。</p>
+			<p><a class="keyword" href="http://d.hatena.ne.jp/keyword/Jenkins">Jenkins</a>は、<a class="keyword" href="http://d.hatena.ne.jp/keyword/Hudson">Hudson</a>のときからずーっとずーっと使い倒しているので、自分は特に初心者ではないです。だから話の内容は、僕にはあんまりピンとこなかったです。特にJenkinsの<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%D7%A5%E9%A5%B0%A5%A4%A5%F3">プラグイン</a>はカリカリでも入れてみて常用して、動かなくなったら元に戻すとか気にせずやるたちなので、この開発者のプラグインは安心できる話は、動かなかったら「コード書いてpull request」って言ってほしかったりしました。うん。全然初心者の方にとっての次の一歩ではないですね。</p>
+			<p>い<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A4%AD%A4%C3%A4%B3">きっこ</a>さんのトークがすごくうまくなっている事にびっくりした、って言ったら怒られそうです。でもすごいうまいなー、と思いました。</p>
+			<p>ぼくのトークはですね、前エントリを読んで頂くと分かると思うんですが、うまく写らなかったり動かなかったり大変でした＞＜精進しないと、ですね。</p>
+			<p>Shibutra忘年会では@<a class="twitter-user-screen-name" href="http://twitter.com/jun66j5">jun66j5</a>にプラグインのネームスペースの話が聞けてよかったです。一応<a class="keyword" href="http://d.hatena.ne.jp/keyword/%CC%BE%C1%B0%B6%F5%B4%D6">名前空間</a>はぶつからないようになってるみたいですね。それでも行儀の悪いプラグインがいると、衝突するようですが。</p>
+			<p class="share-button sectionfooter"><a href="http://twitter.com/share" class="twitter-share-button" data-lang="ja" data-count="none" data-url="http://d.hatena.ne.jp/kompiro/20111211/1323621493" data-text=" Shibuya.trac #13に参加して感じた事。 - Fly me to the Juno! (id:kompiro / @kompiro)">ツイートする</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js" charset="utf-8"></script><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fd.hatena.ne.jp%2Fkompiro%2F20111211%2F1323621493&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe></p>
+
+			<p class="sectionfooter"><a href="/kompiro/20111211/1323621493">Permalink</a> | <a href="/kompiro/20111211/1323621493#c">コメント(0)</a> | <a href="/kompiro/20111211/1323621493#tb">トラックバック(0)</a> | 01:38 <a href="http://b.hatena.ne.jp/entry/http://d.hatena.ne.jp/kompiro/20111211/1323621493" class="bookmark-icon"><img src="http://d.hatena.ne.jp/images/b_entry_de.gif" border="0" title=" Shibuya.trac #13に参加して感じた事。を含むブックマーク" alt=" Shibuya.trac #13に参加して感じた事。を含むブックマーク" width="16" height="12" class="icon"></a></p>
+
+		</div>
+
+		<div class="section">
+			<h3 class="title"><a href="/kompiro/20111211/1323616210" name="1323616210"> Shibuya.trac #13でKanbanについて話してきました。</a></h3>
+			<p class="sectionheader"><span class="sectioncategory"><a href="/kompiro/searchdiary?word=%2A%5BShibuya%2Etrac%5D" class="sectioncategory">Shibuya.trac</a></span></p>
+			<p>かれこれ半年前に福井に引っ越しました。はてダではご報告せずに申し訳ないです。2011/12/10に行われたHangerFlight - Snow Barrage -で話すことになり、ついでにShibuya.tracでも話して、ということで、Kanbanについて話してきました。@<a class="twitter-user-screen-name" href="http://twitter.com/kanu_">kanu_</a>さんが素振りで良かったんじゃ、とおっしゃってくださったんですが、お客さんの層が違うと思ったんですよ。だから、<a class="keyword" href="http://d.hatena.ne.jp/keyword/%BF%B7%B4%B4%C0%FE">新幹線</a>の中でシコシコ資料を作っていましたよ。</p>
+			<p>資料を作成し始めたら結構まとめないといけない事が多くてですね、半分もしゃべれなかった。Kanbanとは何か、ちゃんと説明されている資料は、自分も翻訳しているばかりなので、あんまりなかったのかもしれないですね。</p>
+			<p><a href="http://www.scribd.com/doc/75290585/Kanban-%E3%81%8A%E5%AE%A2%E3%81%95%E3%82%93%E3%81%AE%E8%A6%96%E7%82%B9%E3%81%AB%E7%AB%8B%E3%81%A3%E3%81%9F-%E3%82%A2%E3%82%B8%E3%83%A3%E3%82%A4%E3%83%AB%E3%81%AA%E3%82%84%E3%82%8A%E6%96%B9" style="margin: 12px auto 6px auto; font-family: Helvetica,Arial,Sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none; display: block; text-decoration: underline;" title="View Kanban! お客さんの視点に立った アジャイルなやり方 on Scribd">Kanban! お客さんの視点に立った アジャイルなやり方</a> <object id="doc_14768" name="doc_14768" height="600" width="100%" type="application/x-shockwave-flash" data="http://d1.scribdassets.com/ScribdViewer.swf" style="outline:none;" ><param name="movie" value="http://d1.scribdassets.com/ScribdViewer.swf"><param name="wmode" value="opaque"><param name="bgcolor" value="#ffffff"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><param name="FlashVars" value="document_id=75290585&access_key=key-1iujvm2cn3itc9j5io51&page=1&viewMode=slideshow"><embed id="doc_14768" name="doc_14768" src="http://d1.scribdassets.com/ScribdViewer.swf?document_id=75290585&access_key=key-1iujvm2cn3itc9j5io51&page=1&viewMode=slideshow" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" height="600" width="100%" wmode="opaque" bgcolor="#ffffff"></embed></object></p>
+			<p>Pasona Techさんで今回は開催させて頂いたのですが、会場はとても素晴らしく、おしゃれすぎて自分は場違いなんじゃないかと感じました(ぉ)。ただ、惜しいのは会場スペースではあの有名な水耕栽培スペースにもなっていて、常時点灯されているうえに、<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%D7%A5%ED%A5%B8%A5%A7%A5%AF%A5%BF%A1%BC">プロジェクター</a>のライトが弱かった成果、自分の作成した資料の字が大変見辛くなってしまいました。あれだけ素晴らしい会場なので、プロジェクターは新しいものにされた方が良いのではないかと、本気で思いました。</p>
+			<p>今、紆余曲折あって、頑張ってDavid AndersonさんのKanbanを翻訳してます。まだかかりそうですが、裾野を広げるために、今回本の中の話をかいつまんでこの資料にしました。もし、この内容にピンときた方がいらっしゃれば、訳書が出てから是非お買い上げいただけたらと思います。</p>
+			<p>Kanbanというのはどういうやり方なのかと言うと、<a class="keyword" href="http://d.hatena.ne.jp/keyword/WIP">WIP</a>を制限することで作業の流れを整理することで、<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%B9%A5%EB%A1%BC%A5%D7%A5%C3%A5%C8">スループット</a>とリードタイムを向上させるためのやり方です。WIPというのは、(Work In Progress)の略で、仕掛かり中の作業の事をいいます。同時に進められる作業の量を制限するわけです。スループットと言うのは、ある期間内にリリースできた要求の量、リードタイムと言うのは、欲しいと思った要求が実際にリリースされるまでの時間です。「納期」だとか、「<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B8%AB%C0%D1">見積</a>り」だとか、そういう話をわきにおいてみて、お客さんの立場になって考えてみると、これって結構当たり前のことだと思います。</p>
+			<p>例えば、みなさん<a class="keyword" href="http://d.hatena.ne.jp/keyword/Amazon">Amazon</a>でよく本をお買い上げになると思うんですが、Amazonのすごいところの一つは、「大抵の商品は翌日に自宅に届く」って言うところにあると思うんですよ。あれは、「「欲しい」とお客さんが思ってから手に届くリードタイムがほぼ1日」と言えます。スループットは、Amazonでどれだけの量の商品が出荷されているか、という量です。</p>
+			<p>で、例えばAmazonで在庫切れになっている商品があれば、入荷できそうかどうかで、「2-3日後配送」とか、「1週間後配送」とかなるじゃないですか。Kanbanだと、2週間以上かかりそうな要求であれば、要求元に知らせる。で、要求元は、必要なら開発キューに載せますが、必要なければと判断すれば、開発キューから取り除くとか、判断できるもの、というやり方をとったチームの事例がのってます。ただ、基本的にほとんどの機能は25日以内に納品する事が義務づけられていました。面白くないですか？こうなると、「納期」の概念がだいぶ弱くなるんです。</p>
+			<p>そのチームだと「見積り」自体がスループットを下げる要因になっていたので、「見積り」もなくしているんですが、その代わりに上記の「2週間かかるかどうかを判断する」というルールが追加されています。それで十分うまく行っているチームもあるんです。(<a class="keyword" href="http://d.hatena.ne.jp/keyword/CMMI">CMMI</a> Lv5だからできたのかもしれないですけど)</p>
+			<p>なんか<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%BD%A5%D5%A5%C8%A5%A6%A5%A7%A5%A2">ソフトウェア</a>開発には「納期」が無いといけない物だ、という常識に縛られてしまって、そういう質問が結構飛び交ったんですけど、<a class="keyword" href="http://d.hatena.ne.jp/keyword/Web%A5%B5%A1%BC%A5%D3%A5%B9">Webサービス</a>をやっている会社さんだったりすると「リリースしたい機能が溜まったらリリースする」という運用もできますよねー。だから、一回そういう常識から意識をずらすのはどうだろうか、という話で今回はタイムアップでした。</p>
+			<p>その後は、「なんで見積りがなくてもいいのか」とか、Kanban本の中で取り上げられている中で面白かったサービスクラスの話を資料に乗っけてます。</p>
+			<p>見積りをしても、実際に作業をしてみると、うまくいったり、うまくいかなかったりするもんだとKanban本に書かれてます。それは「ゆらぎ(variability)」と名付けられています。その辺りは確率的に存在するものなので、それ自体をコントロールするのではなく、そのゆらぎが産まれる事を前提にプロジェクトを回すようにしてみたらどうだろうとか書かれてます。</p>
+			<p>サービスクラスは、例えると飛行機の<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%D5%A5%A1%A1%BC%A5%B9%A5%C8%A5%AF%A5%E9%A5%B9">ファーストクラス</a>と<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%A8%A5%B3%A5%CE%A5%DF%A1%BC%A5%AF%A5%E9%A5%B9">エコノミークラス</a>の違いみたいな話です。出てくる料理も違えば、ファーストクラスには特別なラウンジがあるなど、お客さんが払っているシート料金ごとに違う扱いをしますよね。要求にもそういうクラス分けを導入してみるといいよ、という話です。要求には緊急度があるはずなので、それを主にお客さんがつけられるようにします。緊急で必要な要求は、割り込んでチームにお願いできるのですが、チームのWIPが決まっているので、今手がつけられている作業は強制的にPENDになります。そして、緊急な作業自体にも一度に同時に作業するのは唯一つだけ、という制限をかけておくと、お客さんにとっても本当に一番手をつけて欲しい作業をお願いする、となる訳です・・・みたいな話をまとめてみたのでちらっと読んでみてください。</p>
+			<p class="share-button sectionfooter"><a href="http://twitter.com/share" class="twitter-share-button" data-lang="ja" data-count="none" data-url="http://d.hatena.ne.jp/kompiro/20111211/1323616210" data-text=" Shibuya.trac #13でKanbanについて話してきました。 - Fly me to the Juno! (id:kompiro / @kompiro)">ツイートする</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js" charset="utf-8"></script><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fd.hatena.ne.jp%2Fkompiro%2F20111211%2F1323616210&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe></p>
+
+			<p class="sectionfooter"><a href="/kompiro/20111211/1323616210">Permalink</a> | <a href="/kompiro/20111211/1323616210#c">コメント(0)</a> | <a href="/kompiro/20111211/1323616210#tb">トラックバック(1)</a> | 00:10 <a href="http://b.hatena.ne.jp/entry/http://d.hatena.ne.jp/kompiro/20111211/1323616210" class="bookmark-icon"><img src="http://d.hatena.ne.jp/images/b_entry_de.gif" border="0" title=" Shibuya.trac #13でKanbanについて話してきました。を含むブックマーク" alt=" Shibuya.trac #13でKanbanについて話してきました。を含むブックマーク" width="16" height="12" class="icon"></a></p>
+
+		</div>
+
+<!-- google_ad_section_end -->
+
+</div>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<div class="day">
+<h2><a href="http://d.hatena.ne.jp/kompiro/20110626" rel="nofollow"><span class="date">2011-06-26</span></a></h2>
+
+<div class="body">
+
+<!-- google_ad_section_start -->
+
+		<div class="section">
+			<h3 class="title"><a href="/kompiro/20110626/1309093111" name="1309093111">Quick JUnit Notification Pluginその2</a></h3>
+			<p class="sectionheader"><span class="sectioncategory"><a href="/kompiro/searchdiary?word=%2A%5BQuick%20JUnit%5D" class="sectioncategory">Quick JUnit</a></span></p>
+			<p>カッとなって作ってしまった。</p>
+			<p><a href="http://f.hatena.ne.jp/kompiro/20110626215625" class="hatena-fotolife" target="_blank"><img src="http://cdn-ak.f.st-hatena.com/images/fotolife/k/kompiro/20110626/20110626215625.png" alt="f:id:kompiro:20110626215625p:image" title="f:id:kompiro:20110626215625p:image" class="hatena-fotolife"></a></p>
+			<p><a href="http://f.hatena.ne.jp/kompiro/20110626215626" class="hatena-fotolife" target="_blank"><img src="http://cdn-ak.f.st-hatena.com/images/fotolife/k/kompiro/20110626/20110626215626.png" alt="f:id:kompiro:20110626215626p:image" title="f:id:kompiro:20110626215626p:image" class="hatena-fotolife"></a></p>
+			<p>やっぱ色変わらないとダメっすよね。REDとGREENは作ってみたけれども、もう一色なんか欲しいですよね。どうしたらいいんでそ。あと、アイコンももうちょっとなんとかできる気が。</p>
+			<p><a href="http://quick-junit.sourceforge.jp/updates/dev/" target="_blank">http://quick-junit.sourceforge.jp/updates/dev/</a></p>
+			<p>から<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%A4%A5%F3%A5%B9%A5%C8%A1%BC%A5%EB">インストール</a>できるっす。</p>
+			<h4>追記</h4>
+			<p><a class="keyword" href="http://d.hatena.ne.jp/keyword/Eclipse">Eclipse</a> 3.5以降であれば、Mylynの<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%A2%A5%C3%A5%D7%A5%C7%A1%BC%A5%C8">アップデート</a>も行われますが、Quick JUnit Notification Pluginもお使いいただけます。</p>
+			<p class="share-button sectionfooter"><a href="http://twitter.com/share" class="twitter-share-button" data-lang="ja" data-count="none" data-url="http://d.hatena.ne.jp/kompiro/20110626/1309093111" data-text="Quick JUnit Notification Pluginその2 - Fly me to the Juno! (id:kompiro / @kompiro)">ツイートする</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js" charset="utf-8"></script><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fd.hatena.ne.jp%2Fkompiro%2F20110626%2F1309093111&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe></p>
+
+			<p class="sectionfooter"><a href="/kompiro/20110626/1309093111">Permalink</a> | <a href="/kompiro/20110626/1309093111#c">コメント(0)</a> | <a href="/kompiro/20110626/1309093111#tb">トラックバック(0)</a> | 21:58 <a href="http://b.hatena.ne.jp/entry/http://d.hatena.ne.jp/kompiro/20110626/1309093111" class="bookmark-icon"><img src="http://d.hatena.ne.jp/images/b_entry_de.gif" border="0" title="Quick JUnit Notification Pluginその2を含むブックマーク" alt="Quick JUnit Notification Pluginその2を含むブックマーク" width="16" height="12" class="icon"></a></p>
+
+		</div>
+
+<!-- google_ad_section_end -->
+</div>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<div class="day">
+<h2><a href="http://d.hatena.ne.jp/kompiro/20110625" rel="nofollow"><span class="date">2011-06-25</span></a></h2>
+
+<div class="body">
+
+<!-- google_ad_section_start -->
+
+		<div class="section">
+			<h3 class="title"><a href="/kompiro/20110625/1309017786" name="1309017786">Quick JUnit Notification Plugin</a></h3>
+			<p class="sectionheader"><span class="sectioncategory"><a href="/kompiro/searchdiary?word=%2A%5BQuick%20JUnit%5D" class="sectioncategory">Quick JUnit</a></span></p>
+			<p>JUnitの実行結果を<a class="keyword" href="http://d.hatena.ne.jp/keyword/Growl">Growl</a>がなくても、画面に通知するようにしてみましたよ。</p>
+			<p><a href="http://f.hatena.ne.jp/kompiro/20110626010052" class="hatena-fotolife" target="_blank"><img src="http://cdn-ak.f.st-hatena.com/images/fotolife/k/kompiro/20110626/20110626010052.png" alt="f:id:kompiro:20110626010052p:image" title="f:id:kompiro:20110626010052p:image" class="hatena-fotolife"></a></p>
+			<p>Mylynの3.6が入っていれば動くはず。(<a class="keyword" href="http://d.hatena.ne.jp/keyword/Eclipse">Eclipse</a> 3.7には標準添付っす。)</p>
+			<p><a href="http://quick-junit.sourceforge.jp/updates/dev/" target="_blank">http://quick-junit.sourceforge.jp/updates/dev/</a></p>
+			<p>から<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%A4%A5%F3%A5%B9%A5%C8%A1%BC%A5%EB">インストール</a>できます。</p>
+			<p>Growlとかみたいに、きめ細やかな設定ができないのがちょとつらいですが、よかったらどーぞ。</p>
+			<p><a href="http://f.hatena.ne.jp/kompiro/20110626010624" class="hatena-fotolife" target="_blank"><img src="http://cdn-ak.f.st-hatena.com/images/fotolife/k/kompiro/20110626/20110626010624.png" alt="f:id:kompiro:20110626010624p:image" title="f:id:kompiro:20110626010624p:image" class="hatena-fotolife"></a></p>
+			<p>上記フィーチャーです。</p>
+			<p class="share-button sectionfooter"><a href="http://twitter.com/share" class="twitter-share-button" data-lang="ja" data-count="none" data-url="http://d.hatena.ne.jp/kompiro/20110625/1309017786" data-text="Quick JUnit Notification Plugin - Fly me to the Juno! (id:kompiro / @kompiro)">ツイートする</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js" charset="utf-8"></script><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fd.hatena.ne.jp%2Fkompiro%2F20110625%2F1309017786&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe></p>
+
+			<p class="sectionfooter"><a href="/kompiro/20110625/1309017786">Permalink</a> | <a href="/kompiro/20110625/1309017786#c">コメント(0)</a> | <a href="/kompiro/20110625/1309017786#tb">トラックバック(0)</a> | 01:03 <a href="http://b.hatena.ne.jp/entry/http://d.hatena.ne.jp/kompiro/20110625/1309017786" class="bookmark-icon"><img src="http://d.hatena.ne.jp/images/b_entry_de.gif" border="0" title="Quick JUnit Notification Pluginを含むブックマーク" alt="Quick JUnit Notification Pluginを含むブックマーク" width="16" height="12" class="icon"></a></p>
+
+		</div>
+
+<!-- google_ad_section_end -->
+</div>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<div class="day">
+<h2><a href="http://d.hatena.ne.jp/kompiro/20110624" rel="nofollow"><span class="date">2011-06-24</span></a></h2>
+
+<div class="body">
+
+<!-- google_ad_section_start -->
+
+		<div class="section">
+			<h3 class="title"><a href="/kompiro/20110624/1308922129" name="1308922129">Eclipse 3.7を使い始める前に知っておくといいこと</a></h3>
+			<p class="sectionheader"><span class="sectioncategory"><a href="/kompiro/searchdiary?word=%2A%5BEclipse%5D" class="sectioncategory">Eclipse</a></span></p>
+			<p>今まで使ってたEclipseから、<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%A4%A5%F3%A5%B9%A5%C8%A1%BC%A5%EB">インストール</a>してたフィーチャーを簡単に<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%A4%A5%F3%A5%DD%A1%BC%A5%C8">インポート</a>できるよ！</p>
+			<p>1. File -&gt; Importを選択</p>
+			<p><a href="http://f.hatena.ne.jp/kompiro/20110624222633" class="hatena-fotolife" target="_blank"><img src="http://cdn-ak.f.st-hatena.com/images/fotolife/k/kompiro/20110624/20110624222633.png" alt="f:id:kompiro:20110624222633p:image" title="f:id:kompiro:20110624222633p:image" class="hatena-fotolife"></a></p>
+			<p>2. Install -&gt; From existing Installationを選択</p>
+			<p><a href="http://f.hatena.ne.jp/kompiro/20110624222634" class="hatena-fotolife" target="_blank"><img src="http://cdn-ak.f.st-hatena.com/images/fotolife/k/kompiro/20110624/20110624222634.png" alt="f:id:kompiro:20110624222634p:image" title="f:id:kompiro:20110624222634p:image" class="hatena-fotolife"></a></p>
+			<p>3. 既存のEclipseのパスを指定</p>
+			<p><a href="http://f.hatena.ne.jp/kompiro/20110624222635" class="hatena-fotolife" target="_blank"><img src="http://cdn-ak.f.st-hatena.com/images/fotolife/k/kompiro/20110624/20110624222635.png" alt="f:id:kompiro:20110624222635p:image" title="f:id:kompiro:20110624222635p:image" class="hatena-fotolife"></a></p>
+			<p>するとでーんとインストールしていたフィーチャー一覧が表示されるよ。</p>
+			<p>あとはインポートしたいフィーチャーを選択してね！</p>
+			<p>そんじゃーね。</p>
+			<p class="share-button sectionfooter"><a href="http://twitter.com/share" class="twitter-share-button" data-lang="ja" data-count="none" data-url="http://d.hatena.ne.jp/kompiro/20110624/1308922129" data-text="Eclipse 3.7を使い始める前に知っておくといいこと - Fly me to the Juno! (id:kompiro / @kompiro)">ツイートする</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js" charset="utf-8"></script><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fd.hatena.ne.jp%2Fkompiro%2F20110624%2F1308922129&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe></p>
+
+			<p class="sectionfooter"><a href="/kompiro/20110624/1308922129">Permalink</a> | <a href="/kompiro/20110624/1308922129#c">コメント(0)</a> | <a href="/kompiro/20110624/1308922129#tb">トラックバック(0)</a> | 22:28 <a href="http://b.hatena.ne.jp/entry/http://d.hatena.ne.jp/kompiro/20110624/1308922129" class="bookmark-icon"><img src="http://d.hatena.ne.jp/images/b_entry_de.gif" border="0" title="Eclipse 3.7を使い始める前に知っておくといいことを含むブックマーク" alt="Eclipse 3.7を使い始める前に知っておくといいことを含むブックマーク" width="16" height="12" class="icon"></a></p>
+
+		</div>
+
+<!-- google_ad_section_end -->
+</div>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<div class="day">
+<h2><a href="http://d.hatena.ne.jp/kompiro/20110619" rel="nofollow"><span class="date">2011-06-19</span></a></h2>
+
+<div class="body">
+
+<!-- google_ad_section_start -->
+
+		<div class="section">
+			<h3 class="title"><a href="/kompiro/20110619/1308488478" name="1308488478">Jenkins Maven Repository Server Pluginが簡単すぎて鼻血でた。</a></h3>
+			<p class="sectionheader"><span class="sectioncategory"><a href="/kompiro/searchdiary?word=%2A%5Bmaven%5D" class="sectioncategory">maven</a>, <a href="/kompiro/searchdiary?word=%2A%5Bjenkins%5D" class="sectioncategory">jenkins</a></span></p>
+			<p>Maven3になり、<a class="keyword" href="http://d.hatena.ne.jp/keyword/Eclipse">Eclipse</a><a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%D7%A5%E9%A5%B0%A5%A4%A5%F3">プラグイン</a>も安心して<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%D3%A5%EB%A5%C9">ビルド</a>できる、ってのもあって、最近Mavenでビルドする事が増えてきています。Jenkinsで<a class="keyword" href="http://d.hatena.ne.jp/keyword/CI">CI</a>を回してるんですが、別立てで<a class="keyword" href="http://d.hatena.ne.jp/keyword/Apache">Apache</a>を立てたりするの面倒じゃないですか。で、そういうのを解決するプラグインないか探してみたらありましたわよ奥様。</p>
+			<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Jenkins+Maven+Repository+Server" target="_blank">Jenkins Maven Repository Server - Jenkins - Jenkins Wiki</a>でございます。</p>
+			<p>使い方は簡単です。Jenkinsのプラグイン管理画面からJenkins Maven Repository Serverプラグインを<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%A4%A5%F3%A5%B9%A5%C8%A1%BC%A5%EB">インストール</a>すると、あら不思議。</p>
+<pre>
+[Jenkinsの<a class="keyword" href="http://d.hatena.ne.jp/keyword/URL">URL</a>]/project/repository/everything
+</pre>
+			<p>の下にJenkinsでビルドしている成果物全てのMaven Repositoryができているではありませんか。例えば先日のtraineing.assert<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%E9%A5%A4%A5%D6%A5%E9%A5%EA">ライブラリ</a>をビルドした結果はこんなかんじ。</p>
+			<p><a href="http://build.kompiro.org/plugin/repository/everything/" target="_blank">http://build.kompiro.org/plugin/repository/everything/</a></p>
+			<p>プロジェクトやビルドごとにも<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%EA%A5%DD%A5%B8%A5%C8%A5%EA">リポジトリ</a>を参照できるようなので、お試し下さい。</p>
+			<p class="share-button sectionfooter"><a href="http://twitter.com/share" class="twitter-share-button" data-lang="ja" data-count="none" data-url="http://d.hatena.ne.jp/kompiro/20110619/1308488478" data-text="Jenkins Maven Repository Server Pluginが簡単すぎて鼻血でた。 - Fly me to the Juno! (id:kompiro / @kompiro)">ツイートする</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js" charset="utf-8"></script><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fd.hatena.ne.jp%2Fkompiro%2F20110619%2F1308488478&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe></p>
+
+			<p class="sectionfooter"><a href="/kompiro/20110619/1308488478">Permalink</a> | <a href="/kompiro/20110619/1308488478#c">コメント(0)</a> | <a href="/kompiro/20110619/1308488478#tb">トラックバック(0)</a> | 22:01 <a href="http://b.hatena.ne.jp/entry/http://d.hatena.ne.jp/kompiro/20110619/1308488478" class="bookmark-icon"><img src="http://d.hatena.ne.jp/images/b_entry_de.gif" border="0" title="Jenkins Maven Repository Server Pluginが簡単すぎて鼻血でた。を含むブックマーク" alt="Jenkins Maven Repository Server Pluginが簡単すぎて鼻血でた。を含むブックマーク" width="16" height="12" class="icon"></a></p>
+
+		</div>
+
+<!-- google_ad_section_end -->
+</div>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+</div>
+<div class="calendar" id="pager-bottom">
+  <a rel="prev" href="/kompiro/?of=5" class="prev">&lt;前の5日分</a>&nbsp;
+</div>
+</div>
+
+<div class="sidebar">
+<a href="http://groups.google.com/group/eclipse-plugin-dev"> EclipSKYやってます</a><br/>
+<img src="http://www.eclipse.org/donate/images/friendslogo160.jpg"><br/>
+<img src="http://services.nexodyne.com/email/icon/FzU1aaFUig%3D%3D/kBJuWpA%3D/R01haWw%3D/0/image.png" style="border:0px" border="0">
+<div class="hatena-module hatena-module-profile">
+  <div class="hatena-moduletitle">プロフィール</div>
+  <div class="hatena-modulebody">
+    <div class="hatena-profile">
+      <p class="hatena-profile-image"><a href="/kompiro/about"><img src="http://www.st-hatena.com/users/ko/kompiro/profile.gif" alt="kompiro" /></a></p>
+      <p class="hatena-profile-id"><a href="/kompiro/about">kompiro</a></p>
+      <p class="hatena-profile-body">Planet Eclipseにも参加しています。ソリューションログを軸に書いてます。</p>
+    </div>
+  </div>
+</div>
+
+<script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script src="http://www.gmodules.com/ig/ifr?url=http://labs.metanation.com/github-google-gadget/legacy.xml&amp;up_username=kompiro&amp;up_display_limit=5&amp;synd=open&amp;w=220&amp;h=60&amp;title=kompiro's+GitHub+Repositories&amp;border=http%3A%2F%2Fwww.gmodules.com%2Fig%2Fimages%2F&amp;output=js"></script>
+<div style="width:176px;text-align:center"><embed src="http://twitter.com/flash/twitter_badge.swf"  flashvars="color1=102&type=user&id=5862032"  quality="high" width="176" height="176" name="twitter_badge" align="middle" allowScriptAccess="always" wmode="transparent" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" ></embed><br><a href="http://twitter.com/kompiro" style="font-size: 10px; color: #000066; text-decoration: none">follow kompiro at http://twitter.com</a></div>
+	<div class="hatena-module hatena-module-searchform">
+<div class="hatena-moduletitle">日記の検索</div>
+<div class="hatena-modulebody">
+<form method="GET" action="/kompiro/searchdiary" class="hatena-searchform"><input type="text" name="word" class="hatena-searchform searchform-word" value=""><input type="submit" name=".submit" value="検索" class="hatena-searchform searchform-button"><br><label class="searchform-label-detail"><input type="radio" name="type" value="detail" checked="checked" class="searchform-radio">詳細</label> <label class="searchform-label-list"><input type="radio" name="type" value="list" class="searchform-radio">一覧</label></form>
+
+</div>
+</div>
+
+	<div class="hatena-module hatena-module-calendar2">
+<div class="hatena-moduletitle">カレンダー</div>
+<div class="hatena-modulebody">
+<table class="calendar" summary="calendar">
+<tr>
+<td class="calendar-prev-month" colspan="2"><a href="/kompiro/201202" title="201202" rel="nofollow">&lt;&lt;</a></td>
+<td class="calendar-current-month" colspan="3"><a href="/kompiro/archive/201203" rel="nofollow">2012/03</a></td>
+<td class="calendar-next-month" colspan="2"><a href="/kompiro/201204" title="201204" rel="nofollow">&gt;&gt;</a></td>
+</tr>
+<tr>
+<td class="calendar-sunday">日</td>
+<td class="calendar-weekday">月</td>
+<td class="calendar-weekday">火</td>
+<td class="calendar-weekday">水</td>
+<td class="calendar-weekday">木</td>
+<td class="calendar-weekday">金</td>
+<td class="calendar-saturday">土</td>
+</tr>
+	<tr>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day">1</td>
+		<td class="calendar-day">2</td>
+		<td class="calendar-day">3</td>
+	</tr>
+	<tr>
+		<td class="calendar-day">4</td>
+		<td class="calendar-day">5</td>
+		<td class="calendar-day">6</td>
+		<td class="calendar-day">7</td>
+		<td class="calendar-day">8</td>
+		<td class="calendar-day">9</td>
+		<td class="calendar-day">10</td>
+	</tr>
+	<tr>
+		<td class="calendar-day">11</td>
+		<td class="calendar-day">12</td>
+		<td class="calendar-day">13</td>
+		<td class="calendar-day">14</td>
+		<td class="calendar-day">15</td>
+		<td class="calendar-day">16</td>
+		<td class="calendar-day">17</td>
+	</tr>
+	<tr>
+		<td class="calendar-day">18</td>
+		<td class="calendar-day">19</td>
+		<td class="calendar-day">20</td>
+		<td class="calendar-day">21</td>
+		<td class="calendar-day">22</td>
+		<td class="calendar-day">23</td>
+		<td class="calendar-day">24</td>
+	</tr>
+	<tr>
+		<td class="calendar-day day-today">25</td>
+		<td class="calendar-day">26</td>
+		<td class="calendar-day">27</td>
+		<td class="calendar-day">28</td>
+		<td class="calendar-day">29</td>
+		<td class="calendar-day">30</td>
+		<td class="calendar-day">31</td>
+	</tr>
+</table>
+	</div>
+</div>
+
+
+	<div class="hatena-module hatena-module-section">
+<div class="hatena-moduletitle"><a href="/kompiro/archive">最新タイトル</a></div>
+<div class="hatena-modulebody">
+<ul class="hatena-section">
+<li><a href="http://d.hatena.ne.jp/kompiro/20111211/1323624157">[DevLOVE]DevLOVE HangerFlight - Snow Barrage - でFearless Changeについて話してきました。</a></li>
+<li><a href="http://d.hatena.ne.jp/kompiro/20111211/1323621493">[Shibuya.trac] Shibuya.trac #13に参加して感じた事。</a></li>
+<li><a href="http://d.hatena.ne.jp/kompiro/20111211/1323616210">[Shibuya.trac] Shibuya.trac #13でKanbanについて話してきました。</a></li>
+<li><a href="http://d.hatena.ne.jp/kompiro/20110626/1309093111">[Quick JUnit]Quick JUnit Notification Pluginその2</a></li>
+<li><a href="http://d.hatena.ne.jp/kompiro/20110625/1309017786">[Quick JUnit]Quick JUnit Notification Plugin</a></li>
+<li><a href="http://d.hatena.ne.jp/kompiro/20110624/1308922129">[Eclipse]Eclipse 3.7を使い始める前に知っておくといいこと</a></li>
+<li><a href="http://d.hatena.ne.jp/kompiro/20110619/1308488478">[maven][jenkins]Jenkins Maven Repository Server Pluginが簡単すぎて鼻血でた。</a></li>
+<li><a href="http://d.hatena.ne.jp/kompiro/20110612/1307888259">[テスト]assertion養成ギプスを作ってみた</a></li>
+<li><a href="http://d.hatena.ne.jp/kompiro/20110523/1306144678">[devlove] DevLOVE Spring Bomb 2011をまとめてみた</a></li>
+<li><a href="http://d.hatena.ne.jp/kompiro/20110515/1305441316">[Fearless Change][Agile Japan 2011]Lindaさんへの感謝の言葉をまとめてみた。</a></li>
+</ul>
+</div>
+</div>
+
+	<div class="hatena-module hatena-module-sectioncategory">
+<div class="hatena-moduletitle">カテゴリー</div>
+<div class="hatena-modulebody">
+<ul class="hatena-sectioncategory">
+<li><a href="/kompiro/searchdiary?word=%2A%5BEclipse%5D">Eclipse</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BPlugin%B3%AB%C8%AF%5D">Plugin開発</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5B%C2%CC%A5%B3%A1%BC%A5%C9%5D">駄コード</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BTrac%5D">Trac</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BSpring%5D">Spring</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BOSGi%5D">OSGi</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5B%BC%AB%C6%B0%B2%BD%5D">自動化</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5Bubuntu%5D">ubuntu</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5B%A5%E1%A5%E2%5D">メモ</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5B%CA%D9%B6%AF%B2%F1%5D">勉強会</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5Bmaven%5D">maven</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5B%A5%A2%A5%A4%A5%C7%A5%A3%A5%A2%5D">アイディア</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BPercs%5D">Percs</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BJython%5D">Jython</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BRCP%5D">RCP</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BAnt%5D">Ant</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BTips%5D">Tips</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5B%BB%A8%B5%AD%5D">雑記</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BCI%5D">CI</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BHudson%5D">Hudson</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BPython%5D">Python</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BCodeKATA%5D">CodeKATA</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BRuby%5D">Ruby</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BGlimmer%5D">Glimmer</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BSWT%5D">SWT</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5Bjava%2Dja%5D">java-ja</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5B%A5%C6%A5%B9%A5%C8%5D">テスト</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5B%A5%E9%A5%A4%A5%BB%A5%F3%A5%B9%5D">ライセンス</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BLinux%5D">Linux</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5Btacorpus%5D">tacorpus</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BXMPP%5D">XMPP</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BActiveObjects%5D">ActiveObjects</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BSourceForge%2Enet%5D">SourceForge.net</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BEquinox%5D">Equinox</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BQuick%20JUnit%5D">Quick JUnit</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BJAZZ%5D">JAZZ</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BJava%5D">Java</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5Boblove2008autumn%5D">oblove2008autumn</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BJavaScript%5D">JavaScript</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BRhino%5D">Rhino</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BJAMCircle%5D">JAMCircle</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5B%A5%A2%A5%B8%A5%E3%A5%A4%A5%EB%5D">アジャイル</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BJRuby%5D">JRuby</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BDevLove2008Bridge%5D">DevLove2008Bridge</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5Bgit%5D">git</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BFirefox%5D">Firefox</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5Bdevlove%5D">devlove</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BDreamHost%5D">DreamHost</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5B%C2%CC%CA%B8%5D">駄文</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BEclipSKY%5D">EclipSKY</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BInfoQ%5D">InfoQ</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BSeasarConference2009white%5D">SeasarConference2009white</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BSlideShare%5D">SlideShare</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5B%CB%DD%CC%F5%5D">翻訳</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5Bkinesis%5D">kinesis</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5Bnull%5D">null</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5Bdevlove%2Dmgt%5D">devlove-mgt</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BObjectClub%5D">ObjectClub</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5Boblove2009summer%5D">oblove2009summer</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BAndroid%5D">Android</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BRubyKaigi2009%5D">RubyKaigi2009</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BRCP%B3%AB%C8%AF%5D">RCP開発</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BDevLOVE2009%5D">DevLOVE2009</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5Btddbc%5D">tddbc</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BPax%5D">Pax</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5Bdevsumi2010%5D">devsumi2010</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BTDD%5D">TDD</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BMock%5D">Mock</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BMockito%5D">Mockito</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BQConTokyo%5D">QConTokyo</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BModularity%5D">Modularity</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BMac%5D">Mac</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BGrowl%5D">Growl</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5B%B2%C6%B5%D9%A4%DF%A4%CE%BD%C9%C2%EA%5D">夏休みの宿題</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BPlugin%5D">Plugin</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5B%A5%E2%A5%B8%A5%E5%A5%E9%A5%EA%A5%C6%A5%A3%5D">モジュラリティ</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BJRubyKaigi%5D">JRubyKaigi</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5Bshibutra%5D">shibutra</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5Bshibuya%2Etrac%5D">shibuya.trac</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BScala%5D">Scala</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BJUnit%5D">JUnit</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BOrion%5D">Orion</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BGroovy%5D">Groovy</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BChrome%5D">Chrome</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BFearless%20Change%5D">Fearless Change</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5BAgile%20Japan%202011%5D">Agile Japan 2011</a></li>
+<li><a href="/kompiro/searchdiary?word=%2A%5Bjenkins%5D">jenkins</a></li>
+</ul>
+</div>
+</div>
+
+	<div class="hatena-module hatena-module-comment">
+<div class="hatena-moduletitle">最近のコメント</div>
+<div class="hatena-modulebody">
+<ul class="hatena-recentcomment">
+<li><a href="/kompiro/20110612/1307888259#c">2011-06-12</a>&nbsp;kompiro</li>
+<li><a href="/kompiro/20110612/1307888259#c">2011-06-12</a>&nbsp;cactusman</li>
+<li><a href="/kompiro/20080129/1201613252#c">2008-01-29</a>&nbsp;kompiro</li>
+<li><a href="/kompiro/20080129/1201613252#c">2008-01-29</a>&nbsp;通縋</li>
+<li><a href="/kompiro/20100819/1282236341#c">2010-08-19</a>&nbsp;kompiro</li>
+</ul>
+</div>
+</div>
+
+	<div class="hatena-module hatena-module-trackback">
+<div class="hatena-moduletitle">最近のトラックバック</div>
+<div class="hatena-modulebody">
+<ul class="hatena-recentcomment">
+<li><a href="/kompiro/20111211#tb">2011-12-11</a>&nbsp;<a href="http://twitter.com/quindim/status/156381231993462784">Twitter / @quindim</a></li>
+<li><a href="/kompiro/20111211/1323616210#tb">2011-12-11</a>&nbsp;<a href="http://d.hatena.ne.jp/tmmkr/20111216/p1">tmmkr’s weblog - Sibuya.trac第13回勉強会にいってきました</a></li>
+<li><a href="/kompiro/20111211#tb">2011-12-11</a>&nbsp;<a href="http://twitter.com/hsmt/status/146245918147088384">Twitter / @hsmt</a></li>
+<li><a href="/kompiro/20111211#tb">2011-12-11</a>&nbsp;<a href="http://twitter.com/sato_shi/status/146213500769939456">Twitter / @sato_shi</a></li>
+<li><a href="/kompiro/20111211#tb">2011-12-11</a>&nbsp;<a href="http://twitter.com/ikikko/status/146208023948439552">Twitter / @ikikko</a></li>
+</ul>
+</div>
+</div>
+
+	        <div class="hatena-module hatena-module-rss">
+                <div class="hatena-moduletitle"><a href="http://flymewiththeeclipseway.blogspot.com/">Fly me to the Helios(en)</a></div>
+                <div class="hatena-modulebody">
+                        <ul class="hatena-rss">
+                                <li><a href="http://flymewiththeeclipseway.blogspot.com/2010/08/run-customized-process-to-notify-junit.html" title="I made a plugin to run customized process to notify JUnit results. Before I introduced to notify JUnit results to Grows Eclipse Plugin beforeThen Ketan’s comment, ”+1    for a custom command line preference this would be useful to people on other operating system”. I agreed with him.So I made a plugin.If you’d like to install the plugin, could you please download jar file and copy to your dropins folder in your Eclipse.Default setting is to run growlnotify.If you want to customize that process, please open preference page and choose ”Java-&amp;gt;JUnit-&amp;gt;Process Notification” like below.If I use this plugin on Ubuntu linux 10.4, this plugin integrated with NotifyOSD.The process setting is like below./usr/bin/notify-send -i /home/kompiro/&gt;eclipse/icon.xpm ${summary} ${detail}If I use this plugin on Windows, this plugin integrated with Snarl and Snarl_CMD.The process setting is like below.C:￥Snarl_CMD_1.0￥Snarl_CMD.exe snShowMessage 2 ”${summary}” ”${detail}I think this plugin is not only use for notification. If you’d like to store testing log, you can use shell, script, batch, and so on.Enjoy your testing!">Run customized process to notify JUnit results</a></li>
+                                <li><a href="http://flymewiththeeclipseway.blogspot.com/2010/08/jam-circle-090-is-release.html" title="Today, I released new version of JAM Circle. It supports many features.#4 change icon to lane#5 stick lane when it puts on the other lane.#6 Support export/import board description#15 improved to show action icons (Card and Lane)#16 support category on p2 repository#17 support Trac Board#23 added to store card when cards are created by script#24 show icons tooltips#27 support board template extension pluginThe main features are extension template board and export and import board. So you can share your board for your team members.Please download from sourceforge.net.Enjoy!">JAM Circle 0.9.0 is released</a></li>
+                                <li><a href="http://flymewiththeeclipseway.blogspot.com/2010/07/wizarddialogtestrunner-for-swtbot.html" title="I think SWTBot is a great framework for test on SWT Application like Eclipse.So I always use this framework for my plugins development.But there are no WizardDialog Helper class.So I implemented it below.And this is a sample code how to implemente bu using these class.How do you think about it?">WizardDialogTestRunner for SWTBot</a></li>
+                                <li><a href="http://flymewiththeeclipseway.blogspot.com/2010/06/eclipse-tan-for-helios.html" title="I’m waiting for a long time to release Eclipse Helios!My friend, @torazuka made a new splash screen for Eclipse Helios.If you’d like to use the screen shot, 1. download the image 2. open eclipse.ini3. fix -showsplash path to the bmp file.(You can use relative path like below.)-showsplash ../Resources/splash_eclipse-tan_helios.bmpThe image is published below.http://dl.dropbox.com/u/3779351/MDD/splash_eclipse-tan_helios.bmp">Eclipse-tan for Helios</a></li>
+                                <li><a href="http://flymewiththeeclipseway.blogspot.com/2010/05/notify-junit-results-to-growl-eclipse.html" title="I made a Eclipse Plugin for long-period testing on Eclipse for Mac.Yes!, This plugin notify the test result to Growl.This is simple, but effective to drive to develop your application!This plugin uses native library. So there are some constraint to use it.If you use Eclipse for cocoa 64 bit edition, you can’t use this plugin because the native library can’t load on your Eclipse Environment.The plugin is published below.http://kompiro.org/download/junit.extensions.eclipse.quick.mac.growl_0.1.0.201005252224.jarIf you interested in this plug-in, then download and put it dropins folder!">Notify JUnit Results to Growl Eclipse Plugin</a></li>
+                                <li><a href="http://flymewiththeeclipseway.blogspot.com/2010/04/where-is-ds-annotation.html" title="I used Declarative Service in my application, JAM Circle.Declarative Service is cool stuff.It makes to solve bundles startup order.But I confused a thing.How do I inject the service at startup time?I think services needs to initialize at startup.So I choosed the way to solve by singleton class like below.scr.xml&amp;lt;?xml version=”1.0” encoding=”UTF-8”?&amp;gt;&amp;lt;scr:component xmlns:scr=”http://www.osgi.org/xmlns/scr/v1.1.0” name=”org.kompiro.jamcircle.kanban.ui.KanbanUIContext”&amp;gt;   &amp;lt;implementation class=”org.kompiro.jamcircle.kanban.ui.KanbanUIContext”/&amp;gt;   &amp;lt;reference bind=”setKanbanService” cardinality=”1..1” interface=”org.kompiro.jamcircle.kanban.service.KanbanService” name=”KanbanService” policy=”static”/&amp;gt;   &amp;lt;reference bind=”setScriptingService” cardinality=”1..1” interface=”org.kompiro.jamcircle.scripting.ScriptingService” name=”ScriptingService” policy=”static”/&amp;gt;&amp;lt;/scr:component&amp;gt;and implementation of Context class(The name inspired from ”ApplicationContext”)package org.kompiro.jamcircle.kanban.ui;import org.kompiro.jamcircle.kanban.service.KanbanService;import org.kompiro.jamcircle.scripting.ScriptingService;public class KanbanUIContext {private static KanbanUIContext context;private KanbanService kanbanService;private ScriptingService scriptingService;public KanbanUIContext() {KanbanUIContext.context = this;}public static KanbanUIContext getDefault(){return context;}public KanbanService getKanbanService() {return kanbanService;}public void setKanbanService(KanbanService kanbanService) {this.kanbanService = kanbanService;}public ScriptingService getScriptingService() {return scriptingService;}public void setScriptingService(ScriptingService scriptService) {this.scriptingService = scriptService;}}It’s not good way(T_T)... KanbanUIContext is a singleton class and be used to call ServiceLocator Pattern. It is not easy to test by code...I haven’t know there is no way to inject to use annotation for field injection.Is there any way to use annotation and field injection?">Where is DS Annotation?</a></li>
+                                <li><a href="http://flymewiththeeclipseway.blogspot.com/2010/04/jam-circle-080-released.html" title="Hi all!I’m glad to announce to release my RCP application JAM Circle 0.8.0!Download sitehttps://sourceforge.net/projects/jamcircle/files/Project Pagehttp://kompiro.org/jamcircleThese are New Feature. * Migrated p2 base Eclipse platform * Added some Board customize extension point * JRuby Scripting Console * improved figures design * added Japanese resource * added Eclipes Plug-in Edition * fixed some bugs">JAM Circle 0.8.0 released</a></li>
+                                <li><a href="http://flymewiththeeclipseway.blogspot.com/2010/03/hack-how-to-build-product-headless.html" title="I could’t to make a build product using p2 for mac for a long time.But I solved the issue on my build product.It’s easy hack!The point is it is wrong to export using normal delta pack.So I added a file at  Eclipse.app’s same path.I added a file at delta pack’s include ”Eclipse.app” directory like below./bin/carbon/macos/x86+Eclipse.app+test.txtIt’s fine to build my product!Cheers!">[Hack] How to build a product headless using p2 for mac.</a></li>
+                                <li><a href="http://flymewiththeeclipseway.blogspot.com/2010/01/eclipse-tan.html" title="My friend, @torazuka made a mascot for Eclipse.What a cute mascot, isn’t it?Her name is ”Eclipse-tan”! ”She” supports every programmer to write bright code and  she bring in more productivity for every developer.(Yes, she can support not only Java developer).So she is a good assistant(nursemaid) for every developer!Her ”capabilities” improves every year as Eclipse new release!! When she find some errors in your code, sometimes she angry,and she may be flushed :)">Eclipse-tan</a></li>
+                                <li><a href="http://flymewiththeeclipseway.blogspot.com/2009/11/added-scripting-console-to-my-rcp-app.html" title="I joined at (J)RubyKaigi 2009 on August 18 and 19 and I met the originator of JRuby, Thomas E Enebo.I was very excited and enjoyed that conference.So I developed a new feature for JAMCircle all night.The feature name is ”JAMCircle Scripting Console”.The console is below of MainView and The video shows to control some card using some script.This feature is using JRuby only.Yes I know,e4 supports JavaScript feature like this.How do you think about this feature?">Added Scripting Console to My RCP app</a></li>
+                        </ul>
+                </div>
+        </div>
+
+        <div class="hatena-module hatena-module-pv">
+                <div class="hatena-moduletitle">ページビュー</div>
+                <div class="hatena-modulebody">
+                        <span class="hatena-counter">469420</span>
+                </div>
+        </div>
+
+<script language="javascript" type="text/javascript">
+Hatena.BookmarkWidget.url   = "http://d.hatena.ne.jp/kompiro/";
+Hatena.BookmarkWidget.title = "人気エントリー";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 0;
+Hatena.BookmarkWidget.num   = 5;
+Hatena.BookmarkWidget.theme = "default";
+Hatena.BookmarkWidget.load();
+</script>
+    <div class="hatena-module hatena-module-mycomment">
+        <div class="hatena-moduletitle">最近書いたコメント</div>
+        <div class="hatena-modulebody">
+            <ul class="hatena-recentcomment">
+              <li>2011-11-05&nbsp;<a href="/sinsoku/20101208/1291770514#c">id:sinsoku:20101208:1291770514</a></li>
+              <li>2011-07-19&nbsp;<a href="/absj31/20110716#c">id:absj31:20110716</a></li>
+              <li>2011-07-16&nbsp;<a href="/absj31/20110716#c">id:absj31:20110716</a></li>
+              <li>2011-07-11&nbsp;<a href="/Kazzz/20110703/p1#c">id:Kazzz:20110703:p1</a></li>
+              <li>2011-07-07&nbsp;<a href="/Kazzz/20110703/p1#c">id:Kazzz:20110703:p1</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+<!--
+    google_ad_channel = 'd_user_point';
+    google_max_num_ads = '3';
+    google_encoding = 'euc-jp';
+    hatena_afc_lazy_load = 1;
+    hatena_afc_lazy_load_id = 'google_afc_user_container';
+    google_ad_type     = 'text,image';
+    document.write('<scri' + 'pt charset="utf-8" type="text/javascript" src="http://ad.hatena.ne.jp/js/hatena_afc-compiled.js"></scri' + 'pt>');
+// -->
+</script>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  var days = document.getElementById('days');
+  if (days && days.innerHTML.indexOf("今週のお題") != -1) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'odai', 3]);
+  }
+
+  if (days && /\u6d77\u5916\u30c9\u30e9\u30de\u300e\u30e9\u30a4\u30fb\u30c8\u30a5\u30fb\u30df\u30fc \u5618\u306e\u77ac\u9593\u300f\u89b3\u305f\u3044\uff01|\u300e\u30e9\u30a4\u30fb\u30c8\u30a5\u30fb\u30df\u30fc \u5618\u306e\u77ac\u9593\u300f\u7b2c1\u8a71\u306e\u611f\u60f3\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044|\u4eca\u3060\u304b\u3089\u8a00\u3048\u308b\u300c\u5618\u3092\u3064\u3044\u3066\u3057\u307e\u3063\u305f\u30a8\u30d4\u30bd\u30fc\u30c9\u300d\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044|\u3060\u307e\u3055\u308c\u305f\u3051\u3069\u3001\u8a31\u305b\u3066\u3057\u307e\u3063\u305f\u5618\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'lietome', 3]);
+  }
+
+  if (days && /Visa\u30d7\u30ea\u30da\u30a4\u30c9\u300cV\u30d7\u30ea\u30ab\u300d\u8a66\u3057\u305f\u3044\uff01|Visa\u30d7\u30ea\u30da\u30a4\u30c9\u300cV\u30d7\u30ea\u30ab\u300d\u3001\u81ea\u5206\u306a\u3089\u3053\u3046\u4f7f\u3046\uff01|V\u30d7\u30ea\u30ab\u304c1\u4e07\u5186\u5206\u3042\u3063\u305f\u3089\u3001\u30cd\u30c3\u30c8\u3067\u4f55\u3092\u8cb7\u3044\u307e\u3059\u304b\uff1f/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'vpreca', 3]);
+  }
+
+  if (days && /\u30a2\u30a4\u30c7\u30e0 \u30a8\u30f3\u30b8\u30cb\u30a2\u30ad\u30e3\u30ea\u30a2Hacks\u5171\u6709\u30d7\u30ed\u30b8\u30a7\u30af\u30c8|\u30a8\u30f3\u30b8\u30cb\u30a2\u3068\u3057\u3066\u306e\u3001\u3068\u3063\u3066\u304a\u304d\u306e\u30ad\u30e3\u30ea\u30a2Hacks\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044|\u3042\u306a\u305f\u304c\u30a8\u30f3\u30b8\u30cb\u30a2\u8ee2\u8077\u30b5\u30a4\u30c8\u3092\u4f5c\u308b\u306a\u3089\u3001\u3069\u3093\u306a\u30b5\u30a4\u30c8\u306b\u3057\u307e\u3059\u304b\uff1f|5\u5e74\u5f8c\u306e\u300c\u30a8\u30f3\u30b8\u30cb\u30a2\u306e\u50cd\u304d\u65b9\u300d\u306f\u3001\u3069\u3046\u5909\u308f\u3063\u3066\u3044\u3066\u307b\u3057\u3044\u3067\u3059\u304b\uff1f/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'aidemcareer', 3]);
+  }
+
+  _gaq.push(
+  ['_setAccount', 'UA-441387-31'],
+  ['_setCustomVar', 1, 'afc_type', 'point', 3],
+  ['_setCustomVar', 3, 'theme', 'pokke-blue', 3],
+  ['_trackPageview'],
+  ['b._setAccount', 'UA-7855606-1'],
+  ['b._setDomainName', '.hatena.ne.jp'],
+  ['b._trackPageview']
+  
+  );
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<!-- CG:5,CH:5,ICG:19,ICH:12,T: -->
+</body>
+</html>
