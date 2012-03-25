@@ -4,12 +4,10 @@ describe "clips/new" do
   before(:each) do
     assign(:clip, stub_model(Clip,
       :title => "MyText",
-      :type => "",
+      :og_type => "",
       :image => "MyText",
       :url => "MyText",
-      :description => "MyText",
-      :audio => "MyText",
-      :video => "MyText"
+      :description => "MyText"
     ).as_new_record)
   end
 
@@ -18,13 +16,7 @@ describe "clips/new" do
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form", :action => clips_path, :method => "post" do
-      assert_select "textarea#clip_title", :name => "clip[title]"
-      assert_select "input#clip_type", :name => "clip[type]"
-      assert_select "textarea#clip_image", :name => "clip[image]"
-      assert_select "textarea#clip_url", :name => "clip[url]"
-      assert_select "textarea#clip_description", :name => "clip[description]"
-      assert_select "textarea#clip_audio", :name => "clip[audio]"
-      assert_select "textarea#clip_video", :name => "clip[video]"
+      assert_select "input#clip_url", :name => "clip[url]"
     end
   end
 end
