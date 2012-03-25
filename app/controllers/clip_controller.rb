@@ -1,0 +1,2 @@
+class ClipController < ApplicationController
+end
