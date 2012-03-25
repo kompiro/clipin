@@ -7,6 +7,7 @@ gem 'rails', '3.2.2'
 
 gem 'devise'
 gem 'nokogiri'
+gem "rails-boilerplate"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -18,7 +19,6 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
-  gem "rails-boilerplate"
 end
 
 gem 'jquery-rails'
