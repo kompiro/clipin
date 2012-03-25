@@ -41,6 +41,7 @@ class ClipsController < ApplicationController
   # POST /clips.json
   def create
     @clip = Clip.new(params[:clip])
+    @clip.load
 
     respond_to do |format|
       if @clip.save

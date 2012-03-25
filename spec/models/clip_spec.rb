@@ -5,7 +5,7 @@ describe Clip do
   context 'attributes' do
     subject{Clip.new}
     its(:title)       {should be_nil}
-    its(:type)        {should be_nil}
+    its(:og_type)        {should be_nil}
     its(:image)       {should be_nil}
     its(:description) {should be_nil}
     its(:url)         {should be_nil}
@@ -42,7 +42,7 @@ describe Clip do
         let(:file){'mine.html'}
         let(:url){'http://example.com/mine.html'}
         its(:title)  {should == 'Fly me to the Juno!'}
-        its(:type)  {should == 'blog'}
+        its(:og_type)  {should == 'blog'}
         its(:image)  {should == 'http://www.st-hatena.com/users/ko/kompiro/user_p.gif?'}
         its(:url)  {should == 'http://d.hatena.ne.jp/kompiro/'}
         its(:description)  {should == 'Planet Eclipseにも参加しています。ソリューションログを軸に書いてます。'}

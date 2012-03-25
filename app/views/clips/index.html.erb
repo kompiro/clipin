@@ -1,16 +1,16 @@
 <% content_for :header do %>
 <h1>Listing clips</h1>
 <% end %>
-<ul data-role="list-view">
+<%= link_to 'New Clip', new_clip_path ,'data-role' => 'button'%>
+<br/>
+<ul data-role="listview">
 <% @clips.each do |clip| %>
   <li><%= link_to clip.url do %>
     <% if clip.image.present? %>
-      <%= image_tag clip.url,:size=>'80x80' %>
+      <%= image_tag clip.image,:size=>'80x80' %>
     <% end %>
-    <h3><%= clip.title %></h3>
-    <p>[<%= clip.type %>]<%= clip.description %></p>
-    <%# clip.audio %>
-    <%# clip.video %>
+    <h3 class="title"><%= clip.title %></h3>
+    <p>[<span class="og_type"><%= clip.og_type %></span>]<span class="description"><%= clip.description %></span></p>
   <% end %>
   </li>
 <% end %>
@@ -18,4 +18,3 @@
 
 <br />
 
-<%= link_to 'New Clip', new_clip_path %>

@@ -13,7 +13,7 @@ class Clip < ActiveRecord::Base
           self.title = m.attribute('content').to_s
         end
         if prop.to_s.match(/^og:type/i)
-          self.type = m.attribute('content').to_s
+          self.og_type = m.attribute('content').to_s
         end
         if prop.to_s.match(/^og:image/i)
           self.image = m.attribute('content').to_s

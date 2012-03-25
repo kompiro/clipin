@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120325035208) do
+ActiveRecord::Schema.define(:version => 20120325144455) do
 
   create_table "clips", :force => true do |t|
     t.text     "title"
-    t.string   "type"
+    t.string   "og_type"
     t.text     "image"
     t.text     "url"
     t.text     "description"
