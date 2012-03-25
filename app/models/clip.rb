@@ -9,22 +9,29 @@ class Clip < ActiveRecord::Base
     doc.css('meta').each do |m|
       prop = m.attribute('property')
       if prop
+        content = m.attribute('content').to_s.encode('utf-8')
         if prop.to_s.match(/^og:title/i)
-          self.title = m.attribute('content').to_s
+          self.title = content
         end
         if prop.to_s.match(/^og:type/i)
-          self.og_type = m.attribute('content').to_s
+          self.og_type = content
         end
         if prop.to_s.match(/^og:image/i)
-          self.image = m.attribute('content').to_s
+          self.image = content
         end
         if prop.to_s.match(/^og:url/i)
-          self.url = m.attribute('content').to_s
+          self.url = content
         end
         if prop.to_s.match(/^og:description/i)
-          self.description = m.attribute('content').to_s
+          self.description = content
         end
       end
+    end
+    if self.title.nil?
+      self.title = doc.xpath('//title/text()').to_s.encode('utf-8')
+    end
+    if self.description.nil?
+      self.description = doc.xpath('//meta[@name="description"]/@content').to_s.encode('utf-8')
     end
   end
 end

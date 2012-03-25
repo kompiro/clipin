@@ -34,18 +34,27 @@ describe Clip do
       end
       describe 'load empty content' do
         let(:url){'http://example.com/empty.html'}
-        its(:title)  {should be_nil}
+        its(:title)  {should == ''}
       end
     end
     context 'normal cases' do
-      describe 'load content' do
+      describe 'load ogp content' do
         let(:file){'mine.html'}
         let(:url){'http://example.com/mine.html'}
-        its(:title)  {should == 'Fly me to the Juno!'}
-        its(:og_type)  {should == 'blog'}
-        its(:image)  {should == 'http://www.st-hatena.com/users/ko/kompiro/user_p.gif?'}
-        its(:url)  {should == 'http://d.hatena.ne.jp/kompiro/'}
+        its(:title)        {should == 'Fly me to the Juno!'}
+        its(:og_type)      {should == 'blog'}
+        its(:image)        {should == 'http://www.st-hatena.com/users/ko/kompiro/user_p.gif?'}
+        its(:url)          {should == 'http://d.hatena.ne.jp/kompiro/'}
         its(:description)  {should == 'Planet Eclipseにも参加しています。ソリューションログを軸に書いてます。'}
+      end
+      describe 'load not ogp content' do
+        let(:file){'not_ogp.html'}
+        let(:url){'http://example.com/not_ogp.html'}
+        its(:title)        {should == 'ゆるキャラ「まんべくん」哀れな末路 - ソーシャルメディア炎上事件簿：ITpro'}
+        its(:og_type)      {should be_nil}
+        its(:image)        {should == 'http://itpro.nikkeibp.co.jp/article/COLUMN/20111111/374386/top.jpg'}
+        its(:url)          {should == 'http://example.com/not_ogp.html'}
+        its(:description)  {should == '　キャラクターの面白さがメディアでもたびたび紹介されるようになるにつれ、まんべくんは変節していった。それはもはや自由奔放という枠を超え、他者をおとしめることもいとわない、過激な毒舌へとエスカレートしていった。'}
       end
     end
   end
