@@ -1,0 +1,35 @@
+<h1>Listing clips</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Type</th>
+    <th>Image</th>
+    <th>Url</th>
+    <th>Description</th>
+    <th>Audio</th>
+    <th>Video</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @clips.each do |clip| %>
+  <tr>
+    <td><%= clip.title %></td>
+    <td><%= clip.type %></td>
+    <td><%= clip.image %></td>
+    <td><%= clip.url %></td>
+    <td><%= clip.description %></td>
+    <td><%= clip.audio %></td>
+    <td><%= clip.video %></td>
+    <td><%= link_to 'Show', clip %></td>
+    <td><%= link_to 'Edit', edit_clip_path(clip) %></td>
+    <td><%= link_to 'Destroy', clip, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Clip', new_clip_path %>
