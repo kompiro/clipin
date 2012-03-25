@@ -39,10 +39,13 @@
       <p class="alert"><%= alert %></p>
       <%= yield %>
     </div><!-- /content -->
-
+    <%
+=begin
     <div data-role="footer">
-      <%= yield :footer %>
+      <%= yield :footer % >
     </div><!-- /footer -->
+=end
+%>
 
   </div><!-- /page -->
 
