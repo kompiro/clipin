@@ -15,7 +15,9 @@ lastPostFunc = (count)->
     $.get '/clips.json',
       page: count
       , (clips)->
-        console.log clips
+        if clips.length is 0
+          loading = true
+          return
         for clip in clips
           $("#clip_list").append(JST['templates/clip_item'](clip:clip))
         $("#clip_list").listview('refresh')
