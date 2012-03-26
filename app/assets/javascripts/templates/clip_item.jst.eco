@@ -1,4 +1,4 @@
-<li><a href="clip.url" rel='external'>
+<li><a href="<%= @clip.url %>" rel='external'>
   <% if @clip.image?: %>
     <img src="<%= @clip.image %>" width="80" height='80' />
   <% else: %>

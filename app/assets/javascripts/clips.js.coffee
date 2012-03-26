@@ -9,6 +9,7 @@ $(window).scroll(()->
   if  $(window).scrollTop() > $(document).height() - $(window).height() - 100
     lastPostFunc(page_num)
 )
+$('#next_clips').click(lastPostFunc)
 lastPostFunc = (count)->
   unless loading
     loading = true
@@ -17,6 +18,7 @@ lastPostFunc = (count)->
       , (clips)->
         if clips.length is 0
           loading = true
+          $('#next_clips').css('display','none')
           return
         for clip in clips
           $("#clip_list").append(JST['templates/clip_item'](clip:clip))
