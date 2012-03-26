@@ -2,6 +2,7 @@
 require 'spec_helper'
 
 describe Clip do
+  fixtures :clips
   context 'attributes' do
     subject{Clip.new}
     its(:title)       {should be_nil}
@@ -56,6 +57,20 @@ describe Clip do
         its(:url)          {should == 'http://example.com/not_ogp.html'}
         its(:description)  {should == '　キャラクターの面白さがメディアでもたびたび紹介されるようになるにつれ、まんべくんは変節していった。それはもはや自由奔放という枠を超え、他者をおとしめることもいとわない、過激な毒舌へとエスカレートしていった。'}
       end
+    end
+  end
+  context 'paging' do
+    describe 'first page' do
+      subject{Clip.page}
+      its(:length){should eq 7}
+    end
+    describe 'second page' do
+      subject{Clip.page(2)}
+      its(:length){should eq 6}
+    end
+    describe 'third page' do
+      subject{Clip.page(3)}
+      its(:length){should eq 0}
     end
   end
 end

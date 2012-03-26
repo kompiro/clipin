@@ -2,6 +2,9 @@ require 'open-uri'
 require 'nokogiri'
 
 class Clip < ActiveRecord::Base
+
+  scope :page, lambda {|page_num = 1| limit(7).offset(7 * ([page_num.to_i, 1].max - 1))}
+
   def load
     return false if url.nil? or url.empty?
     return false unless url.start_with?('http:') or url.start_with?('https:')
