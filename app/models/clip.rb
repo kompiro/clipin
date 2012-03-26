@@ -3,7 +3,9 @@ require 'nokogiri'
 
 class Clip < ActiveRecord::Base
 
-  scope :page, lambda {|page_num = 1| limit(7).offset(7 * ([page_num.to_i, 1].max - 1))}
+  PAGE_CONTENT = 8
+
+  scope :page, lambda {|page_num = 1| limit(PAGE_CONTENT).offset(PAGE_CONTENT * ([page_num.to_i, 1].max - 1))}
 
   def load
     return false if url.nil? or url.empty?

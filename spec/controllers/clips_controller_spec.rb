@@ -35,10 +35,15 @@ describe ClipsController do
   end
 
   describe "GET index" do
-    it "assigns all clips as @clips" do
+    it "assigns first clips as @clips" do
       clip = Clip.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:clips).should eq([clip])
+      assigns(:clips).should eq(Clip.page)
+    end
+    it "assigns second clips as @clips" do
+      clip = Clip.create! valid_attributes
+      get :index, {:page => 2}, valid_session
+      assigns(:clips).should eq(Clip.page(2))
     end
   end
 

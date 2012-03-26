@@ -62,11 +62,11 @@ describe Clip do
   context 'paging' do
     describe 'first page' do
       subject{Clip.page}
-      its(:length){should eq 7}
+      its(:length){should eq 8}
     end
     describe 'second page' do
       subject{Clip.page(2)}
-      its(:length){should eq 6}
+      its(:length){should eq 5}
     end
     describe 'third page' do
       subject{Clip.page(3)}
