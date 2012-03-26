@@ -37,21 +37,23 @@ group :development, :test do
   gem 'webrat'
   gem 'database_cleaner'
 
-  # sporkを使う場合（0.8.5ではエラーになる場合があるため、バージョンを指定）
+  # spork
   gem 'spork', '~> 0.9.0.rc'
 
-  # guardを使う場合
+  # guard
   gem 'rb-fsevent'
   gem 'guard-spork'
   gem 'guard-rspec'
   gem 'guard-cucumber'
 
-  # notifyを使う場合(Ubuntu)
-  #gem 'libnotify'
-  #gem 'rb-inotify'
+  # notification
+  if RUBY_PLATFORM.downcase.include?('linux')
+    gem 'libnotify'
+    gem 'rb-inotify'
+  elsif RUBY_PLATFORM.downcase.include?('darwin')
+    gem 'growl'
+  end
 
-  # Growlを使う場合(Mac)
-  gem 'growl'
 end
 
 # To use ActiveModel has_secure_password
