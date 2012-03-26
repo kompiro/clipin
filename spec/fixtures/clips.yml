@@ -1,0 +1,166 @@
+---
+clips_001:
+  id: 1
+  title: twitter-bootstrap-rails
+  og_type: githubog:gitrepository
+  image: https://a248.e.akamai.net/assets.github.com/images/gravatars/gravatar-140.png?1329275960
+  url: https://github.com/seyhunak/twitter-bootstrap-rails
+  description: twitter-bootstrap-rails - Twitter Bootstrap for Rails 3.1 Asset Pipeline
+    (Updated to Bootstrap 2)
+  audio: 
+  video: 
+  created_at: '2012-03-26 01:15:25.967320'
+  updated_at: '2012-03-26 01:15:25.967320'
+clips_002:
+  id: 2
+  title: jquery-mobile
+  og_type: githubog:gitrepository
+  image: https://a248.e.akamai.net/assets.github.com/images/gravatars/gravatar-140.png?1329275960
+  url: https://github.com/jquery/jquery-mobile
+  description: jquery-mobile - jQuery Mobile Framework
+  audio: 
+  video: 
+  created_at: '2012-03-26 01:16:58.976236'
+  updated_at: '2012-03-26 01:16:58.976236'
+clips_003:
+  id: 3
+  title: jquerymobile-router
+  og_type: githubog:gitrepository
+  image: https://a248.e.akamai.net/assets.github.com/images/gravatars/gravatar-140.png?1329275881
+  url: https://github.com/azicchetti/jquerymobile-router
+  description: jquerymobile-router - A router/controller for jquery mobile. Also adds
+    support for client-side parameters in the hash part of the url. The routes handles
+    regexp based routes. This plugin can be used alone or (better) with Backbone.js
+    or Spine.js, because it's originally meant to replace their router with something
+    integrated with jQM.
+  audio: 
+  video: 
+  created_at: '2012-03-26 01:18:12.678216'
+  updated_at: '2012-03-26 01:18:12.678216'
+clips_004:
+  id: 4
+  title: ! 'jQuery: The Write Less, Do More, JavaScript Library'
+  og_type: 
+  image: 
+  url: http://jquery.com/
+  description: ''
+  audio: 
+  video: 
+  created_at: '2012-03-26 01:18:39.849138'
+  updated_at: '2012-03-26 01:18:39.849138'
+clips_005:
+  id: 5
+  title: Backbone.js
+  og_type: 
+  image: 
+  url: http://documentcloud.github.com/backbone/
+  description: ''
+  audio: 
+  video: 
+  created_at: '2012-03-26 01:19:00.638626'
+  updated_at: '2012-03-26 01:19:00.638626'
+clips_006:
+  id: 6
+  title: backbone
+  og_type: githubog:gitrepository
+  image: https://a248.e.akamai.net/assets.github.com/images/gravatars/gravatar-140.png?1329275856
+  url: https://github.com/documentcloud/backbone
+  description: backbone - Give your JS App some Backbone with Models, Views, Collections,
+    and Events
+  audio: 
+  video: 
+  created_at: '2012-03-26 01:19:14.449974'
+  updated_at: '2012-03-26 01:19:14.449974'
+clips_007:
+  id: 7
+  title: bootstrap
+  og_type: githubog:gitrepository
+  image: https://a248.e.akamai.net/assets.github.com/images/gravatars/gravatar-140.png?1329275859
+  url: https://github.com/twitter/bootstrap
+  description: bootstrap - HTML, CSS, and JS toolkit from Twitter
+  audio: 
+  video: 
+  created_at: '2012-03-26 01:20:30.927467'
+  updated_at: '2012-03-26 01:20:30.927467'
+clips_008:
+  id: 8
+  title: jquery-ui-bootstrap
+  og_type: githubog:gitrepository
+  image: https://a248.e.akamai.net/assets.github.com/images/gravatars/gravatar-140.png?1329275856
+  url: https://github.com/addyosmani/jquery-ui-bootstrap
+  description: jquery-ui-bootstrap - A jQuery UI theme based on Twitter Bootstrap
+  audio: 
+  video: 
+  created_at: '2012-03-26 01:20:55.773105'
+  updated_at: '2012-03-26 01:20:55.773105'
+clips_009:
+  id: 9
+  title: ! 'ドットインストールが『登録不要ですべての動画が見放題！』になりました #dotinstall'
+  og_type: article
+  image: http://www.ideaxidea.com/wp-content/uploads/2012/03/blog_top.png
+  url: http://www.ideaxidea.com/archives/2012/03/dotinstall_renewal.html
+  description: ! 'さてドットインストールのリニューアルを行いました。いろいろありますのでざざっと。 ■ ユーザー登録不要ですべての動画が見放題に！
+    動画を見るだけでしたらユーザー登録を不要にしました。これでお友達やご同僚の方にぐっとおすすめしやすくなったのではないかな、と思います。  ↑ 登録なしだと一部機能が制限されますが、動画は問題なく見ることができます。
+    なお、「学習状況の管理」「ソースコードの閲覧」「自分メモ」などに関してはユーザー登録が必要です。動画を見て「勉強してみよう！」と思った方はぜひご登録くださいね。
+    ■ 「Rubyの基礎」などを追加！総動画数は807本に！ 「3/22までに800本の動画を作る！」を目標にがんばってきたのですが、無事に達成できました・・・正直あぶなかったｗ。ご要望の多かった「Rubyの基礎」についてもざっとまとめましたのでぜひご覧下さい。  ↑
+    このあたりを追加。UNIXコマンドとかおすすめです。 これで56レッスン、総動画数は807本になりました。 ■ ドットインストールの使い方を動画にまとめました
+    前々から作ろうと思っていた紹介動画を作りました。どんな機能があるの？と気になる方はぜひ。  ↑ 2分弱の映像です。 ■ 株式会社ドットインストールを作りました
+    本気でいきます。会社つくりました。目指すのは「すべての人にプログラミングを」です。  &raquo; 株式会社ドットインストール  ↑ 名刺も作った！ あわせてプライバシーポリシーや利用規約も変更しましたのでユーザーの方には別途メールをお送りしますね。
+    ■ ロゴのリニューアル 「.インストール」的だったところを差し替えました（動画のエンディングはちょっと、なのですが）。  ↑ ちょいとバランス悪いですが、わかりやすくなったかと。
+    ■ その他のお知らせ ざざっと。  Facebookページの「いいね！」が5,000を超えました。ありがとうございます！ 登録ユーザー数は26,000名を超えました！うれしいです。
+    学習メモの検索ができるようになりました。ホームからご利用ください。  以上、ですかね。今週は怒涛の作業でしたが、ひきつづきガンガン行きます！応援してもらえるとうれしいです。
+    &raquo; 3分動画でマスターする初心者向けプログラミング学習サイト - ドットインストール '
+  audio: 
+  video: 
+  created_at: '2012-03-26 01:27:28.300059'
+  updated_at: '2012-03-26 01:27:28.300059'
+clips_010:
+  id: 10
+  title: CSS3で作られた雲の立体感がやばい
+  og_type: article
+  image: http://www.ideaxidea.com/wp-content/uploads/2012/03/www.clicktorelease.com_code_css3dclouds_.png
+  url: http://www.ideaxidea.com/archives/2012/03/css3clouds.html
+  description: ! 'あぁ、これはすごいわ。吸い込まれるっすね。  いくつかパラメータをいじれるので是非お試しを（Michael Bayってのが笑える）。
+    &raquo; CSS3 Clouds '
+  audio: 
+  video: 
+  created_at: '2012-03-26 01:28:09.588415'
+  updated_at: '2012-03-26 01:28:09.588415'
+clips_011:
+  id: 11
+  title: ! '『Zen-codingの基礎』をドットインストールに追加しました！ #dotinstall'
+  og_type: article
+  image: http://www.ideaxidea.com/wp-content/uploads/2012/03/zen-1.png
+  url: http://www.ideaxidea.com/archives/2012/03/zen-coding_added.html
+  description: ! 'さて少しマニアックですが、昔から作りたかったZen-Codingのレッスンを作りましたよっと。HTMLを爆速で入力したい場合に便利ですよね。
+    なお、いろいろ悩んだのですが、vimでのレッスンにしました・・・。  ↑ 対応しているエディタが限られるのがあれですが。 vim使いの方、もしくはZen-coding対応のエディタを使われている方はいかがでしょうか。こちらからどうぞ。
+    &raquo; Zen-codingの基礎 - ドットインストール なお、Zen-codingの威力を知るには以下の動画もおすすめですよ。 Zen Coding
+    v0.5 from Sergey Chikuyonok on Vimeo. ↑ 6分とちょっと長いですが。 さて、これで総動画数は818本ですね。どんどんいこう。
+    &raquo; 3分動画でマスターする初心者向けプログラミング学習サイト - ドットインストール '
+  audio: 
+  video: 
+  created_at: '2012-03-26 01:29:23.372189'
+  updated_at: '2012-03-26 01:29:23.372189'
+clips_012:
+  id: 12
+  title: kaminari
+  og_type: githubog:gitrepository
+  image: https://a248.e.akamai.net/assets.github.com/images/gravatars/gravatar-140.png?1329275881
+  url: https://github.com/amatsuda/kaminari
+  description: kaminari - A Scope & Engine based, clean, powerful, customizable and
+    sophisticated paginator for Rails 3
+  audio: 
+  video: 
+  created_at: '2012-03-26 01:35:33.403673'
+  updated_at: '2012-03-26 01:35:33.403673'
+clips_013:
+  id: 13
+  title: Log in · GitHub
+  og_type: 
+  image: 
+  url: https://github.com/organizations/ChangeVision
+  description: ''
+  audio: 
+  video: 
+  created_at: '2012-03-26 01:37:14.346823'
+  updated_at: '2012-03-26 01:37:14.346823'
