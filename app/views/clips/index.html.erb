@@ -3,7 +3,7 @@
 <% end %>
 <%= link_to 'New Clip', new_clip_path ,'data-role' => 'button'%>
 <br/>
-<ul data-role="listview">
+<ul data-role="listview" id="clip_list">
 <% @clips.each do |clip| %>
   <li><%= link_to clip.url ,:rel => 'external' do %>
     <% if clip.image.present? %>
