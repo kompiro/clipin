@@ -17,7 +17,7 @@ lastPostFunc = (count)->
       , (clips)->
         console.log clips
         for clip in clips
-          $("#clip_list").append("<li>#{clip.title}</li>")
+          $("#clip_list").append(JST['templates/clip_item'](clip:clip))
         $("#clip_list").listview('refresh')
         loading = false
         page_num = page_num + 1

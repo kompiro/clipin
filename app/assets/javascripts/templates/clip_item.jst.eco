@@ -1,0 +1,16 @@
+<li><a href="clip.url" rel='external'>
+  <% if @clip.image?: %>
+    <img src="<%= @clip.image %>" width="80" height='80' />
+  <% else: %>
+    <img src="/assets/not_found.png" width="80" height='80' />
+  <% end %>
+  <h3 class="title"><%= @clip.title %></h3>
+  <p>
+    <span class="description"><%= @clip.description %></span>
+    </p>
+  <p class='ui-li-aside'>
+  <% if @clip.og_type?: %>
+    [<span class="og_type"><%= @clip.og_type %></span>]
+  <% end %>
+  </p></a>
+</li>
