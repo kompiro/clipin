@@ -9,7 +9,10 @@ $(window).scroll(()->
   if  $(window).scrollTop() > $(document).height() - $(window).height() - 100
     lastPostFunc(page_num)
 )
-$('#next_clips').click(lastPostFunc)
+$('#next_clips').live('click', ->
+  lastPostFunc(page_num)
+)
+
 lastPostFunc = (count)->
   unless loading
     loading = true
