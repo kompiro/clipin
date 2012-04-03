@@ -40,13 +40,22 @@ describe Clip do
     end
     context 'normal cases' do
       describe 'load ogp content' do
-        let(:file){'mine.html'}
-        let(:url){'http://example.com/mine.html'}
+        let(:file)         {'mine.html'}
+        let(:url)          {'http://d.hatena.ne.jp/kompiro/'}
         its(:title)        {should == 'Fly me to the Juno!'}
         its(:og_type)      {should == 'blog'}
         its(:image)        {should == 'http://www.st-hatena.com/users/ko/kompiro/user_p.gif?'}
         its(:url)          {should == 'http://d.hatena.ne.jp/kompiro/'}
         its(:description)  {should == 'Planet Eclipseにも参加しています。ソリューションログを軸に書いてます。'}
+      end
+      describe 'different url' do
+        let(:file)         {'github.html'}
+        let(:url)          {'https://github.com/plataformatec/devise/wiki/OmniAuth%3A-Overview'}
+        its(:title)        {should == 'OmniAuth: Overview · plataformatec/devise Wiki'}
+        its(:og_type)      {should == 'githubog:gitrepository'}
+        its(:image)        {should == 'https://a248.e.akamai.net/assets.github.com/images/gravatars/gravatar-140.png?1329275856'}
+        its(:url)          {should == 'https://github.com/plataformatec/devise/wiki/OmniAuth%3A-Overview'}
+        its(:description)  {should == 'devise - Flexible authentication solution for Rails with Warden.'}
       end
       describe 'load not ogp content' do
         let(:file){'not_ogp.html'}
