@@ -1,0 +1,16 @@
+<a href="<%= url %> rel="external">
+  <% if(image){ %>
+    <img src='<%= image %>' alt='summary_image' width='80' height='80'/>
+  <% }else{ %>
+    <img src='/assets/not_found.png' alt='not_found_image' width='80' height='80'/>
+  <% } %>
+  <h3 class="title"><%= title %></h3>
+  <p>
+    <span class="description"><%= description %></span>
+    </p>
+  <% if(og_type){%>
+    <p class='ui-li-aside'>
+      [<span class="og_type"><%= og_type %></span>]
+    </p>
+  <% } %>
+</a>

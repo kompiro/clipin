@@ -15,4 +15,9 @@
 //= require jquery_ujs
 //= require jquery.mobile.init
 //= require jquery.mobile-1.1.0-rc.1
+//= require underscore
+//= require backbone
+//= require backbone_rails_sync
+//= require backbone_datalink
+//= require backbone/clipin
 //= require_tree .

@@ -1,29 +1,16 @@
 <% content_for :header do %>
-<h1>Listing clips</h1>
+<h1>Clips</h1>
 <% end %>
 <%= link_to 'New Clip', new_clip_path ,'data-role' => 'button'%>
 <br/>
-<ul data-role="listview" id="clip_list">
-<% @clips.each do |clip| %>
-  <li><%= link_to clip.url ,:rel => 'external' do %>
-    <% if clip.image.present? %>
-      <%= image_tag clip.image,:size=>'80x80' %>
-    <% else %>
-      <%= image_tag '/assets/not_found.png',:size=>'80x80' %>
-    <% end %>
-    <h3 class="title"><%= clip.title %></h3>
-    <p>
-      <span class="description"><%= clip.description %></span>
-      </p>
-    <p class='ui-li-aside'>
-    <% if clip.og_type.present? %>
-      [<span class="og_type"><%= clip.og_type %></span>]
-    <% end %>
-    </p>
-  <% end %>
-  </li>
-<% end %>
-</ul>
+<div id="clips"></div>
+<script type="text/javascript">
+  $(function() {
+      // Blog is the app name
+      window.router = new Clipin.Routers.ClipsRouter({clips: <%= @clips.to_json.html_safe -%>});
+      Backbone.history.start();
+      });
+</script>
 
 <br />
 
