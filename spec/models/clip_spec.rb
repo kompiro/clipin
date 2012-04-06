@@ -38,6 +38,13 @@ describe Clip do
         its(:title)  {should == ''}
       end
     end
+    context 'illegal cases' do
+      describe 'load ogp content' do
+        let(:file){'error.html'}
+        let(:url){'http://example.com/error.html'}
+        its(:title)        {should == 'Backbone.js'}
+      end
+    end
     context 'normal cases' do
       describe 'load ogp content' do
         let(:file)         {'mine.html'}
