@@ -23,14 +23,13 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
         data:
           page:@page_num
         success:(clips)=>
-          if clips.length is 0
-            @loading = true
-            @el_next_clip().css('display','none')
-            return
-          clips.each(@addOne)
           @el_clip_list().listview('refresh')
-          @loading = false
-          @page_num = @page_num + 1
+          if clips.length is 8
+            @loading = false
+            @page_num = @page_num + 1
+            return
+          @loading = true
+          @el_next_clip().css('display','none')
       )
 
   addAll: () =>
