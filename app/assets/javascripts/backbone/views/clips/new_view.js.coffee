@@ -23,7 +23,7 @@ class Clipin.Views.Clips.NewView extends Backbone.View
     @collection.create(@model.toJSON(),
       success: (clip) =>
         @model = clip
-        window.location.hash = "/#{@model.id}"
+        window.location.hash = "/index"
 
       error: (clip, jqXHR) =>
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
