@@ -40,9 +40,10 @@ describe Clip do
     end
     context 'illegal cases' do
       describe 'load ogp content' do
-        let(:file){'error.html'}
-        let(:url){'http://example.com/error.html'}
+        let(:file)         {'error.html'}
+        let(:url)          {'http://example.com/error.html'}
         its(:title)        {should == 'Backbone.js'}
+        its(:url)          {should == 'http://example.com/error.html'}
       end
     end
     context 'normal cases' do
