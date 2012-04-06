@@ -24,7 +24,7 @@ describe ClipsController do
   # Clip. As you add validations to Clip, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {url:'http://example.com/'}
   end
 
   # This should return the minimal set of values that should be in the session
