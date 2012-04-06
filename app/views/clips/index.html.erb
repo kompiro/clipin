@@ -1,18 +1,6 @@
-<% content_for :header do %>
-<h1>Clips</h1>
-<% end %>
-<%= link_to 'New Clip', new_clip_path ,'data-role' => 'button'%>
-<br/>
-<div id="clips"></div>
 <script type="text/javascript">
-  $(function() {
-      // Blog is the app name
+  $(document).ready(function() {
       window.router = new Clipin.Routers.ClipsRouter({clips: <%= @clips.to_json.html_safe -%>});
       Backbone.history.start();
-      });
+  });
 </script>
-
-<br />
-
-<%= link_to 'Load next','#' ,'data-role' => 'button',:id => "next_clips" %>
-

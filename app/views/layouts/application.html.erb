@@ -24,30 +24,10 @@
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= yield %>
 </head>
 
 <body>
-
-  <div data-role="page">
-
-    <div data-role="header">
-      <%= yield :header %>
-    </div><!-- /header -->
-
-    <div data-role="content">
-      <p id="notice"><%= notice %></p>
-      <p id="alert"><%= alert %></p>
-      <%= yield %>
-    </div><!-- /content -->
-    <%
-=begin
-    <div data-role="footer">
-      <%= yield :footer % >
-    </div><!-- /footer -->
-=end
-%>
-
-  </div><!-- /page -->
 
 
   <% if Rails.env.production? %>

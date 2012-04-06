@@ -4,20 +4,21 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     @clips.reset options.clips
 
   routes:
-    "/new"      : "newClip"
-    "/index"    : "index"
-    "/:id/edit" : "edit"
-    "/:id"      : "show"
+    "new"      : "newClip"
+    "index"    : "index"
+    ":id/edit" : "edit"
+    ":id"      : "show"
     ".*"        : "index"
 
   newClip: ->
-    @view = new Clipin.Views.Clips.NewView(collection: @clips)
-    $("#clips").html(@view.render().el)
+    console.log 'new'
+    page = new Clipin.Views.Clips.NewView(collection: @clips)
+    @changePage(page)
 
   index: ->
-    @view = new Clipin.Views.Clips.IndexView(clips: @clips)
-    $("#clips").html(@view.render().el)
-    $("#clips").find("ul").listview()
+    console.log 'index'
+    page = new Clipin.Views.Clips.IndexView(clips: @clips)
+    @changePage(page)
 
   show: (id) ->
     clip = @clips.get(id)
@@ -30,3 +31,9 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
 
     @view = new Clipin.Views.Clips.EditView(model: clip)
     $("#clips").html(@view.render().el)
+
+  changePage:(page)->
+    $(page.el).attr('data-role','page')
+    page.render()
+    $('body').append($(page.el))
+    $.mobile.changePage($(page.el),changeHash:false)

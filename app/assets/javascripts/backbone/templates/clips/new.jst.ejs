@@ -1,50 +1,19 @@
-<h1>New clip</h1>
+  <div data-role="header">
+    <h1>New Clip</h1>
+  </div><!-- /header -->
 
-<form id="new-clip" name="clip">
-  <div class="field">
-    <label for="title"> title:</label>
-    <input type="text" name="title" id="title" value="<%= title %>" >
-  </div>
+  <div data-role="content">
+    <form id="new-clip" name="clip">
+      <div data-role="fieldcontain">
+        <label for="url"> url:</label>
+        <input type="text" value="<%= url %>" id="url" name="url"/>
+      </div>
+      <div class="actions">
+        <div class="ui-grid-a">
+          <div class="ui-block-a"><a href="#/index" data-role='button'>Back</a></div>
+          <div class="ui-block-b"><input type="submit" value="Create Clip" data-theme='b'/></div>
+        </div>
+      </div>
+    </form>
+  </div><!-- /content -->
 
-  <div class="field">
-    <label for="og_type"> og_type:</label>
-    <input type="text" name="og_type" id="og_type" value="<%= og_type %>" >
-  </div>
-
-  <div class="field">
-    <label for="image"> image:</label>
-    <input type="text" name="image" id="image" value="<%= image %>" >
-  </div>
-
-  <div class="field">
-    <label for="url"> url:</label>
-    <input type="text" name="url" id="url" value="<%= url %>" >
-  </div>
-
-  <div class="field">
-    <label for="description"> description:</label>
-    <input type="text" name="description" id="description" value="<%= description %>" >
-  </div>
-
-  <div class="field">
-    <label for="audio"> audio:</label>
-    <input type="text" name="audio" id="audio" value="<%= audio %>" >
-  </div>
-
-  <div class="field">
-    <label for="video"> video:</label>
-    <input type="text" name="video" id="video" value="<%= video %>" >
-  </div>
-
-  <div class="field">
-    <label for="created_at"> created_at:</label>
-    <input type="text" name="created_at" id="created_at" value="<%= created_at %>" >
-  </div>
-
-  <div class="actions">
-    <input type="submit" value="Create Clip" />
-  </div>
-
-</form>
-
-<a href="#/index">Back</a>

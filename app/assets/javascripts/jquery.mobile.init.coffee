@@ -3,6 +3,7 @@ $(document).bind 'mobileinit',->
   $.mobile.linkBindingEnabled = false
   $.mobile.hashListeningEnabled = false
   $.mobile.pushStateEnabled = false
+  @
 
 $('div[data-role="page"]').live('pagehide',(event, ui)->
       $(event.currentTarget).remove()
