@@ -16,7 +16,7 @@ describe Clip do
       doc = Nokogiri::HTML(open("#{Rails.root}/spec/support/ogp/#{file}"))
       Nokogiri::HTML::Document.stub!(:parse).and_return(doc)
       @clip = Clip.new(:url => url)
-      @clip.load
+      @result = @clip.load
     end
     subject{@clip}
     let(:file){'empty.html'}
@@ -36,6 +36,7 @@ describe Clip do
       end
       describe 'url is empty string case' do
         let(:url){''}
+        it {@result.should be_false}
         its(:title)   {should be_nil}
         context 'errors' do
           subject{@clip.errors}
@@ -49,6 +50,7 @@ describe Clip do
       end
       context 'illegal url' do
         let(:url){'//example.com/empty.html'}
+        it {@result.should be_false}
         its(:title)  {should be_nil}
         context 'errors' do
           subject{@clip.errors}
@@ -62,6 +64,7 @@ describe Clip do
       end
       describe 'load empty content' do
         let(:url){'http://example.com/empty.html'}
+        it {@result.should be_true}
         its(:title)  {should == ''}
         context 'errors' do
           subject{@clip.errors}
@@ -75,6 +78,7 @@ describe Clip do
       describe 'load ogp content' do
         let(:file)         {'error.html'}
         let(:url)          {'http://example.com/error.html'}
+        it {@result.should be_true}
         its(:title)        {should == 'Backbone.js'}
         its(:url)          {should == 'http://example.com/error.html'}
       end
@@ -83,6 +87,7 @@ describe Clip do
       describe 'load ogp content' do
         let(:file)         {'mine.html'}
         let(:url)          {'http://d.hatena.ne.jp/kompiro/'}
+        it {@result.should be_true}
         its(:title)        {should == 'Fly me to the Juno!'}
         its(:og_type)      {should == 'blog'}
         its(:image)        {should == 'http://www.st-hatena.com/users/ko/kompiro/user_p.gif?'}
@@ -92,6 +97,7 @@ describe Clip do
       describe 'different url' do
         let(:file)         {'github.html'}
         let(:url)          {'https://github.com/plataformatec/devise/wiki/OmniAuth%3A-Overview'}
+        it {@result.should be_true}
         its(:title)        {should == 'OmniAuth: Overview · plataformatec/devise Wiki'}
         its(:og_type)      {should == 'githubog:gitrepository'}
         its(:image)        {should == 'https://a248.e.akamai.net/assets.github.com/images/gravatars/gravatar-140.png?1329275856'}
@@ -101,11 +107,22 @@ describe Clip do
       describe 'load not ogp content' do
         let(:file){'not_ogp.html'}
         let(:url){'http://example.com/not_ogp.html'}
+        it {@result.should be_true}
         its(:title)        {should == 'ゆるキャラ「まんべくん」哀れな末路 - ソーシャルメディア炎上事件簿：ITpro'}
         its(:og_type)      {should be_nil}
         its(:image)        {should == 'http://itpro.nikkeibp.co.jp/article/COLUMN/20111111/374386/top.jpg'}
         its(:url)          {should == 'http://example.com/not_ogp.html'}
         its(:description)  {should == '　キャラクターの面白さがメディアでもたびたび紹介されるようになるにつれ、まんべくんは変節していった。それはもはや自由奔放という枠を超え、他者をおとしめることもいとわない、過激な毒舌へとエスカレートしていった。'}
+      end
+      describe 'load toggeter content' do
+        let(:file){'togetter.html'}
+        let(:url){'http://togetter.com/li/284806'}
+        it {@result.should be_true}
+        its(:title)        {should == '夏場の電力ピーク時の数時間、製造業は節電のために稼働を止められるのか？現場の人に聞いてみた。 - Togetter'}
+        its(:og_type)      {should == 'article'}
+        its(:image)        {should == 'http://api.twitter.com/1/users/profile_image/Polaris_sky.json?size=bigger'}
+        its(:url)          {should == 'http://togetter.com/li/284806'}
+        its(:description)  {should == '日本のGDPの約2割を稼ぎ、約1000万人の雇用を擁する製造業。製造業はその性質上大量の電力を消費します（全体の4割の電力を製造業が使用）。原発が停止した現在、一部の反原発派な方々から「夏場の数時間の為に原発を動かす必要がない」とか「その数時間だけ節電すれば原発は要らない」という声が聞こえてきます。が、製造業にとってその数時間は大事なんじゃないか？と現場の人にきいてみたら貴重なご意見をいただきました。貴重なご意見本当に有難う御座いました。m(_ _)m'}
       end
     end
   end

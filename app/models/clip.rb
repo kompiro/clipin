@@ -37,5 +37,6 @@ class Clip < ActiveRecord::Base
     if self.description.nil?
       self.description = doc.xpath('//meta[@name="description"]/@content').to_s.encode('utf-8')
     end
+    return true
   end
 end
