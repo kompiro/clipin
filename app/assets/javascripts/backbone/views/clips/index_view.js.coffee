@@ -5,7 +5,9 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
 
   initialize: () ->
     @options.clips.bind('reset', @addAll)
+    @options.clips.bind('add', @addOne)
     @page_num = 2
+    @last_length = @options.clips.length
     @loading = false
 
     $(window).scroll(()=>
@@ -20,16 +22,18 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
     unless @loading
       @loading = true
       @options.clips.fetch(
+        add:true
         data:
           page:@page_num
         success:(clips)=>
-          @el_clip_list().listview('refresh')
-          if clips.length is 8
-            @loading = false
-            @page_num = @page_num + 1
+          if clips.length is @last_length
+            @loading = true
+            @el_next_clip().css('display','none')
             return
-          @loading = true
-          @el_next_clip().css('display','none')
+          @el_clip_list().listview('refresh')
+          @last_length = clips.length
+          @loading = false
+          @page_num = @page_num + 1
       )
 
   addAll: () =>
