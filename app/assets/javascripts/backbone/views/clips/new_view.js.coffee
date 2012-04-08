@@ -34,6 +34,8 @@ class Clipin.Views.Clips.NewView extends Backbone.View
 
       error: (clip, jqXHR) =>
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
+
+      at:0
     )
 
   render: ->
