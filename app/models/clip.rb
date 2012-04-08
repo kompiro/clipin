@@ -8,8 +8,14 @@ class Clip < ActiveRecord::Base
   scope :page, lambda {|page_num = 1| order('created_at DESC').limit(PAGE_CONTENT).offset(PAGE_CONTENT * ([page_num.to_i, 1].max - 1))}
 
   def load
-    return false if url.nil? or url.empty?
-    return false unless url.start_with?('http:') or url.start_with?('https:')
+    if url.nil? or url.empty?
+      errors.add :url, "can't be blank"
+      return false
+    end
+    unless url.start_with?('http:') or url.start_with?('https:')
+      errors.add :url, "should start with 'http:' or 'https:'"
+      return false
+    end
     doc = Nokogiri::HTML(open(url))
     self.title = doc.xpath('//title/text()').to_s.encode('utf-8')
     self.url = url

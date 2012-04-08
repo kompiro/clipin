@@ -6,7 +6,7 @@ describe Clip do
   context 'attributes' do
     subject{Clip.new}
     its(:title)       {should be_nil}
-    its(:og_type)        {should be_nil}
+    its(:og_type)     {should be_nil}
     its(:image)       {should be_nil}
     its(:description) {should be_nil}
     its(:url)         {should be_nil}
@@ -22,20 +22,53 @@ describe Clip do
     let(:file){'empty.html'}
     context 'error cases' do
       describe 'url is nil case' do
-        let(:url){nil}
+        let(:url)     {nil}
         its(:title)   {should be_nil}
+        context 'errors' do
+          subject{@clip.errors}
+          it 'has one error' do
+            subject.size.should be 1
+          end
+          it 'has url error' do
+            @clip.errors[:url][0].should == "can't be blank"
+          end
+        end
       end
       describe 'url is empty string case' do
         let(:url){''}
         its(:title)   {should be_nil}
+        context 'errors' do
+          subject{@clip.errors}
+          it 'has one error' do
+            subject.size.should be 1
+          end
+          it 'has url error' do
+            @clip.errors[:url][0].should == "can't be blank"
+          end
+        end
       end
       context 'illegal url' do
         let(:url){'//example.com/empty.html'}
         its(:title)  {should be_nil}
+        context 'errors' do
+          subject{@clip.errors}
+          it 'has one error' do
+            subject.size.should be 1
+          end
+          it 'has url error' do
+            @clip.errors[:url][0].should == "should start with 'http:' or 'https:'"
+          end
+        end
       end
       describe 'load empty content' do
         let(:url){'http://example.com/empty.html'}
         its(:title)  {should == ''}
+        context 'errors' do
+          subject{@clip.errors}
+          it 'has no errors' do
+            subject.size.should be 0
+          end
+        end
       end
     end
     context 'illegal cases' do
