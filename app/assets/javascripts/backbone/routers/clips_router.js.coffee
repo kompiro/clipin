@@ -12,7 +12,10 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
 
   newClip: ->
     console.log 'new'
-    page = new Clipin.Views.Clips.NewView(collection: @clips)
+    page = new Clipin.Views.Clips.NewView(
+      collection: @clips
+      router : @
+    )
     @changePage(page)
 
   index: ->
