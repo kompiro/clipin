@@ -8,10 +8,17 @@ class Clipin.Views.Clips.NewView extends Backbone.View
 
   constructor: (options) ->
     super(options)
+    @router = options.router
     @model = new @collection.model()
 
-    @model.bind("change:errors", () =>
-      this.render()
+    @model.bind("change:errors", (model,errors) =>
+      if errors?
+        if errors.url?
+          _.each(errors.url,(error)->
+            $('.error_explanation').append("<li>#{error}</li>")
+          )
+      else
+        $('.error_explanation').html('')
     )
 
   save: (e) ->
@@ -23,7 +30,7 @@ class Clipin.Views.Clips.NewView extends Backbone.View
     @collection.create(@model.toJSON(),
       success: (clip) =>
         @model = clip
-        window.location.hash = "/index"
+        @router.navigate("index",{trigger:true})
 
       error: (clip, jqXHR) =>
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
