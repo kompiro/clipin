@@ -5,7 +5,7 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
 
   initialize: () ->
     @options.clips.bind('reset', @addAll)
-    @options.clips.bind('add', @addOne)
+    @options.clips.bind('add', @add)
     @page_num = 2
     @last_length = @options.clips.length
     @loading = false
@@ -39,7 +39,11 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
   addAll: () =>
     @options.clips.each(@addOne)
 
-  addOne: (clip) =>
+  add:(clip,clips,options)=>
+    @addOne(clip,options.index,clips.models)
+
+  addOne: (clip,index,clips) =>
+    console.log "#{index},#{clips[index].attributes.created_at}"
     view = new Clipin.Views.Clips.ClipView({model : clip})
     @el_clip_list().append(view.render().el)
 
