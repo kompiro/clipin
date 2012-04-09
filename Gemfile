@@ -39,6 +39,7 @@ group :development, :test do
   gem "cucumber-rails", require: false
   gem 'webrat'
   gem 'database_cleaner'
+  gem 'jasmine-rails'
 
   # spork
   gem 'spork', '~> 0.9.0.rc'
