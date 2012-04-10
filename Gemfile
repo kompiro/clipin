@@ -40,7 +40,7 @@ group :development, :test do
   gem 'webrat'
   gem 'database_cleaner'
   gem 'jasmine-rails'
-
+  gem 'guard-jasmine-headless-webkit'
   # spork
   gem 'spork', '~> 0.9.0.rc'
 
