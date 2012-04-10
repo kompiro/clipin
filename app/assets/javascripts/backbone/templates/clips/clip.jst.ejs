@@ -4,13 +4,19 @@
   <% }else{ %>
     <img src='/assets/not_found.png' alt='not_found_image' width='80' height='80'/>
   <% } %>
-  <h3 class="title"><%= title %></h3>
+  <% if(og_type){ %>
+    <h3 class="title">[<%= og_type %>] <%= title %></h3>
+  <% }else{ %>
+    <h3 class="title"><%= title %></h3>
+  <% } %>
   <p>
     <span class="description"><%= description %></span>
     </p>
-  <% if(og_type){%>
-    <p class='ui-li-aside'>
-      [<span class="og_type"><%= og_type %></span>]
+  <% if(created_at){ %>
+  <p class='ui-li-aside'>
+    <span class="created_at"><%= moment(created_at).format('HH:mm A') %></span>
     </p>
   <% } %>
 </a>
+<a href="#">test</a>
+
