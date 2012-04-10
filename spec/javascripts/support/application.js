@@ -13,8 +13,6 @@
 //= require plugins
 //= require jquery
 //= require jquery_ujs
-// require jquery.mobile.init
-// require jquery_mobile
 //= require underscore
 //= require backbone
 //= require backbone_rails_sync

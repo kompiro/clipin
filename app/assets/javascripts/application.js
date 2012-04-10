@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require plugins
+//= require moment
 //= require jquery
 //= require jquery_ujs
 //= require jquery.mobile.init

@@ -12,6 +12,7 @@
 #
 src_files:
   - "spec/javascripts/support/application.js"
+  - "vendor/assets/javascripts/moment.js"
   - "app/assets/javascripts/backbone/**/*.coffee"
 
 # stylesheets
