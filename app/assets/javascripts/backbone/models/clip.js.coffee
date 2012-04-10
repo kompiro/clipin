@@ -12,7 +12,7 @@ class Clipin.Models.Clip extends Backbone.Model
     created_at: null
 
   created_at_date:->
-    moment(@created_at)
+    moment(@get('created_at'))
 
   same_created_date:(target)->
     @created_at_date().diff(target.created_at_date(),'days') is 0
