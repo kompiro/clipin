@@ -1,3 +1,13 @@
 // Place all the styles related to the clips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.ui-li-aside{
+  width:60px;
+}
+.ui-li-has-alt .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-alt {
+  padding-right: 55px;
+}
+img.clip_image {
+  width: 79px;
+  height: 79px;
+}
