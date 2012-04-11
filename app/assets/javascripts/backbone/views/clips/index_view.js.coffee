@@ -14,7 +14,9 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
       if  $(window).scrollTop() > $(document).height() - $(window).height() - 100
         @lastPostFunc()
     )
-    @el_next_clip().live('click', =>
+    @el_next_clip().live('vclick', (e)=>
+      e.preventDefault()
+      e.stopPropagation()
       @lastPostFunc()
     )
 
