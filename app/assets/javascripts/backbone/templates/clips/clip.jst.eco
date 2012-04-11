@@ -10,5 +10,5 @@
   </p>
   <% end %>
 </a>
-<a href="#">edit</a>
+<a href="#<%= @id %>/edit">edit</a>
 

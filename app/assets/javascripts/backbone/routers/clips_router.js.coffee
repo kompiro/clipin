@@ -32,8 +32,8 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
   edit: (id) ->
     clip = @clips.get(id)
 
-    @view = new Clipin.Views.Clips.EditView(model: clip)
-    $("#clips").html(@view.render().el)
+    page = new Clipin.Views.Clips.EditView(model: clip)
+    @changePage(page)
 
   changePage:(page)->
     $(page.el).attr('data-role','page')

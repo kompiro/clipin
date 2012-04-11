@@ -1,0 +1,18 @@
+  <div data-role="header">
+    <h1>Edit Clip</h1>
+  </div><!-- /header -->
+
+  <div data-role="content">
+    <h4>Title:</h4>
+    <p><%= @title %></p>
+    <h4>Image:</h4>
+    <p><img src='<%= if @image then @image else '/assets/not_found.png' %>' alt='summary_image' class="clip_image"/></p>
+    <h4>Description:</h4>
+    <p><%= @description %></p>
+    <h4>URL:</h4>
+    <p><a href="<%= @url %>"><%= @url %></a></p>
+    <br/>
+    <input type="button" class="clip_pin" value="Pin" data-theme='e' data-icon='pin'/>
+    <input type="button" class="clip_delete" value="Delete" data-theme='a' data-icon='delete'/>
+    <a href="#/index" data-role='button' data-icon="arrow-l">Back</a>
+  </div><!-- /content -->
