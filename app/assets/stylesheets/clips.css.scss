@@ -19,3 +19,12 @@ img.clip_image {
     padding-left: 5px;
   }
 }
+.ui-icon-pin {
+    background-image: url("/assets/pin.png");
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .ui-icon-pin {
+      background-image: url("/assets/pin-hd.png");
+      background-size: 18px 18px;
+  }
+}
