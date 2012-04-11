@@ -1,0 +1,22 @@
+<a href="<%= @url %>" rel="external">
+  <% if @image: %>
+    <img src='<%= @image %>' alt='summary_image' width='80' height='80'/>
+  <% else: %>
+    <img src='/assets/not_found.png' alt='not_found_image' width='80' height='80'/>
+    <% end %>
+  <% if @og_type: %>
+    <h3 class="title">[<%= @og_type %>] <%= @title %></h3>
+  <% else: %>
+    <h3 class="title"><%= @title %></h3>
+    <% end %>
+  <p>
+    <span class="description"><%= @description %></span>
+    </p>
+  <% if @created_at: %>
+  <p class='ui-li-aside'>
+    <span class="created_at"><%= moment(@created_at).format('HH:mm A') %></span>
+    </p>
+    <% end %>
+</a>
+<a href="#">test</a>
+
