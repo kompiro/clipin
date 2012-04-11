@@ -11,3 +11,11 @@ img.clip_image {
   width: 79px;
   height: 79px;
 }
+@media screen and (max-width: 480px) {
+  img.clip_image {
+    display: none;
+  }
+  .ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb {
+    padding-left: 5px;
+  }
+}
