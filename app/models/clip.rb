@@ -6,6 +6,7 @@ class Clip < ActiveRecord::Base
   PAGE_CONTENT = 8
 
   scope :page, lambda {|page_num = 1| order('created_at DESC').limit(PAGE_CONTENT).offset(PAGE_CONTENT * ([page_num.to_i, 1].max - 1))}
+  scope :pinned, lambda { where(:pin => true).order('updated_at DESC').limit(PAGE_CONTENT)}
 
   def load
     if url.nil? or url.empty?

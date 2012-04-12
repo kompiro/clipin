@@ -1,7 +1,10 @@
 class Clipin.Routers.ClipsRouter extends Backbone.Router
   initialize: (options) ->
     @clips = new Clipin.Collections.ClipsCollection()
+    @pinned_clips = new Clipin.Collections.ClipsCollection()
+    @pinned_clips.url = '/clips/pinned'
     @clips.reset options.clips
+    @pinned_clips.reset options.pinned_clips
 
   routes:
     "new"      : "newClip"
@@ -18,7 +21,10 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     @changePage(page)
 
   index: ->
-    page = new Clipin.Views.Clips.IndexView(clips: @clips)
+    page = new Clipin.Views.Clips.IndexView(
+      clips: @clips
+      pinned_clips: @pinned_clips
+    )
     @changePage(page)
 
   show: (id) ->

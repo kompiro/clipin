@@ -7,10 +7,20 @@ class ClipsController < ApplicationController
       @clips = Clip.page page_num
     else
       @clips = Clip.page
+      @pinned_clips = Clip.pinned
     end
 
     respond_to do |format|
       format.html # index.html.erb
+      format.json { render json: @clips }
+    end
+  end
+
+  # GET /pinned_clips.json
+  def pinned
+      @clips = Clip.pinned
+
+    respond_to do |format|
       format.json { render json: @clips }
     end
   end

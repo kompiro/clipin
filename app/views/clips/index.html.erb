@@ -1,6 +1,9 @@
 <script type="text/javascript">
   $(document).ready(function() {
-      window.router = new Clipin.Routers.ClipsRouter({clips: <%= @clips.to_json.html_safe -%>});
+      window.router = new Clipin.Routers.ClipsRouter({
+        clips: <%= @clips.to_json.html_safe -%>,
+        pinned_clips: <%= @pinned_clips.to_json.html_safe -%>
+      });
       Backbone.history.start();
   });
 </script>

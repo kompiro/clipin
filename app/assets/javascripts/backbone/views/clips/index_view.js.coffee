@@ -39,6 +39,12 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
       )
 
   addAll: () =>
+    if @options.pinned_clips.length isnt 0
+      separator = new Clipin.Views.Clips.PinnedSeparatorView()
+      @el_clip_list().append(separator.render().el)
+      @options.pinned_clips.each(@addOne)
+      separator = new Clipin.Views.Clips.AllSeparatorView()
+      @el_clip_list().append(separator.render().el)
     @options.clips.each(@addOne)
 
   add:(clip,clips,options)=>
@@ -53,7 +59,7 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
     @el_clip_list().append(view.render().el)
 
   render: =>
-    $(@el).html(@template(clips: @options.clips.toJSON() ))
+    $(@el).html(@template())
     @addAll()
 
     return this
@@ -63,3 +69,24 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
 
   el_clip_list : ->
     $(@el).find('ul.clip_list')
+
+class Clipin.Views.Clips.PinnedSeparatorView extends Backbone.View
+  tagName: "li"
+  render: ->
+    $(@el).attr('data-theme','e')
+    $(@el).html('Pinned')
+    return this
+
+class Clipin.Views.Clips.AllSeparatorView extends Backbone.View
+  tagName: "li"
+  render: ->
+    $(@el).attr('data-theme','d')
+    $(@el).html('All')
+    return this
+
+class Clipin.Views.Clips.DateSeparatorView extends Backbone.View
+  tagName: "li"
+  render: ->
+    $(@el).attr('data-role','list-divider')
+    $(@el).html(moment(@model).format('YYYY/MM/DD'))
+    return this
