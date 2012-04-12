@@ -12,7 +12,11 @@
     <h4>URL:</h4>
     <p><a href="<%= @url %>"><%= @url %></a></p>
     <br/>
+    <% unless @pin: %>
     <input type="button" class="clip_pin" value="Pin" data-theme='e' data-icon='pin'/>
+    <% else: %>
+    <input type="button" class="clip_unpin" value="Unpin" data-theme='e' data-icon='pin'/>
+    <% end %>
     <input type="button" class="clip_delete" value="Delete" data-theme='a' data-icon='delete'/>
     <a href="#/index" data-role='button' data-icon="arrow-l">Back</a>
   </div><!-- /content -->

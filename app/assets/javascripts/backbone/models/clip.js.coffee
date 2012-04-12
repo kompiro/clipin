@@ -10,6 +10,7 @@ class Clipin.Models.Clip extends Backbone.Model
     audio: null
     video: null
     created_at: null
+    pin: false
 
   created_at_date:->
     moment(@get('created_at'))

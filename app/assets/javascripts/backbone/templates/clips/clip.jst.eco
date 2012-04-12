@@ -1,6 +1,11 @@
 <a href="<%= @url %>" rel="external">
   <img src='<%= if @image then @image else '/assets/not_found.png' %>' alt='summary_image' class="clip_image"/>
-  <h3 class="title"><%= "[#{@og_type}]" if @og_type %> <%= @title %></h3>
+  <h3 class="title">
+    <% if @pin: %>
+    <img src='/assets/pin-icon.png' alt='pin' class="pin"/>
+    <% end %>
+    <%= "[#{@og_type}]" if @og_type %> <%= @title %>
+  </h3>
   <p>
     <span class="description"><%= @description %></span>
     </p>

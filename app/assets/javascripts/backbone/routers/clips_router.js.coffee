@@ -11,7 +11,6 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     ".*"        : "index"
 
   newClip: ->
-    console.log 'new'
     page = new Clipin.Views.Clips.NewView(
       collection: @clips
       router : @
@@ -19,7 +18,6 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     @changePage(page)
 
   index: ->
-    console.log 'index'
     page = new Clipin.Views.Clips.IndexView(clips: @clips)
     @changePage(page)
 
@@ -32,7 +30,10 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
   edit: (id) ->
     clip = @clips.get(id)
 
-    page = new Clipin.Views.Clips.EditView(model: clip)
+    page = new Clipin.Views.Clips.EditView(
+      model: clip
+      router : @
+    )
     @changePage(page)
 
   changePage:(page)->
