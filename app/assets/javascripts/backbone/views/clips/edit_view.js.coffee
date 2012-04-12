@@ -4,21 +4,16 @@ class Clipin.Views.Clips.EditView extends Backbone.View
   template : JST["backbone/templates/clips/edit"]
 
   events :
-    "submit #edit-clip" : "update"
+    "vclick .clip_pin"    : "pin"
+    "vclick .clip_unpin"  : "unpin"
+    "vclick .clip_delete" : "delete"
 
-  update : (e) ->
-    e.preventDefault()
-    e.stopPropagation()
+  pin : ->
+    console.log 'pin'
 
-    @model.save(null,
-      success : (clip) =>
-        @model = clip
-        window.location.hash = "/#{@model.id}"
-    )
+  delete : ->
+    console.log 'delete'
 
   render : ->
     $(@el).html(@template(@model.toJSON() ))
-
-    this.$("form").backboneLink(@model)
-
     return this
