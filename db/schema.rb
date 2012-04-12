@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120325144455) do
+ActiveRecord::Schema.define(:version => 20120412145405) do
 
   create_table "clips", :force => true do |t|
     t.text     "title"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20120325144455) do
     t.text     "video"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.boolean  "pin"
   end
 
 end
