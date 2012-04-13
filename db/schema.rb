@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120413083618) do
+ActiveRecord::Schema.define(:version => 20120413104543) do
 
   create_table "clips", :force => true do |t|
     t.text     "title"
@@ -25,6 +25,19 @@ ActiveRecord::Schema.define(:version => 20120413083618) do
     t.datetime "updated_at",                     :null => false
     t.boolean  "pin",         :default => false
     t.boolean  "trash",       :default => false
+  end
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "clip_id",    :null => false
+    t.integer  "tag_id",     :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

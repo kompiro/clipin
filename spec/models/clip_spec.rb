@@ -10,6 +10,8 @@ describe Clip do
     its(:image)       {should be_nil}
     its(:description) {should be_nil}
     its(:url)         {should be_nil}
+    its(:pin)         {should be_false}
+    its(:trash)       {should be_false}
   end
   context 'load og content' do
     before do

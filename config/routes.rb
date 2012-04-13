@@ -1,4 +1,6 @@
 Clipin::Application.routes.draw do
+  resources :tags
+
   resources :clips do
     collection do
       get :pinned
