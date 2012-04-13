@@ -10,3 +10,13 @@
     <br/>
     <a href='#' data-role='button' class="next_clips">next clips</a>
   </div><!-- /content -->
+
+  <div data-role="footer" data-position='fixed'>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="/#tags" data-icon='tags'>Tags</a></li>
+        <li><a href="#" data-icon='share'>Share</a></li>
+        <li><a href="#" data-icon='gear'>Setup</a></li>
+      </ul>
+    </div><!-- /navbar -->
+  </div><!-- /footer -->
