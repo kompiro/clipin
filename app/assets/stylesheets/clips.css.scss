@@ -25,6 +25,12 @@ img.clip_image {
 .ui-icon-trash {
     background-image: url("/assets/trash.png");
 }
+.ui-icon-tags {
+    background-image: url("/assets/tags.png");
+}
+.ui-icon-share {
+    background-image: url("/assets/share.png");
+}
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
   .ui-icon-pin {
       background-image: url("/assets/pin-hd.png");
@@ -32,6 +38,14 @@ img.clip_image {
   }
   .ui-icon-trash {
       background-image: url("/assets/trash-hd.png");
+      background-size: 18px 18px;
+  }
+  .ui-icon-tags {
+      background-image: url("/assets/tags-hd.png");
+      background-size: 18px 18px;
+  }
+  .ui-icon-share {
+      background-image: url("/assets/share-hd.png");
       background-size: 18px 18px;
   }
 }
