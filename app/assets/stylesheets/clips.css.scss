@@ -22,9 +22,16 @@ img.clip_image {
 .ui-icon-pin {
     background-image: url("/assets/pin.png");
 }
+.ui-icon-trash {
+    background-image: url("/assets/trash.png");
+}
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
   .ui-icon-pin {
       background-image: url("/assets/pin-hd.png");
+      background-size: 18px 18px;
+  }
+  .ui-icon-trash {
+      background-image: url("/assets/trash-hd.png");
       background-size: 18px 18px;
   }
 }
