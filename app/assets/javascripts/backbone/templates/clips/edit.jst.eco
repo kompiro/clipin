@@ -10,13 +10,13 @@
     <h4>Description:</h4>
     <p><%= @description %></p>
     <h4>URL:</h4>
-    <p><a href="<%= @url %>"><%= @url %></a></p>
-    <br/>
+    <p><%= @url %></p>
+    <a href="<%= @url %>" data-icon='arrow-r' data-role='button' data-theme='b' >Open</a>
     <% unless @pin: %>
     <input type="button" class="clip_pin" value="Pin" data-theme='e' data-icon='pin'/>
     <% else: %>
     <input type="button" class="clip_unpin" value="Unpin" data-theme='e' data-icon='pin'/>
     <% end %>
-    <input type="button" class="clip_delete" value="Delete" data-theme='a' data-icon='delete'/>
+    <input type='button' class='clip_trash' value="Trash" data-theme='a' data-icon='trash'/>
     <a href="#/index" data-role='button' data-icon="arrow-l">Back</a>
   </div><!-- /content -->

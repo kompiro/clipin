@@ -6,7 +6,7 @@ class Clipin.Views.Clips.EditView extends Backbone.View
   events :
     "vclick .clip_pin"    : "pin"
     "vclick .clip_unpin"  : "unpin"
-    "vclick .clip_delete" : "delete"
+    "vclick .clip_trash"  : "trash"
 
   pin : ->
     @model.save pin : true,
@@ -18,8 +18,10 @@ class Clipin.Views.Clips.EditView extends Backbone.View
       success:->
         @router.navigate("index",{trigger:true})
 
-  delete : ->
-    console.log 'delete'
+  trash : ->
+    @model.save trash : true,
+      success:->
+        @router.navigate("index",{trigger:true})
 
   render : ->
     $(@el).html(@template(@model.toJSON()))
