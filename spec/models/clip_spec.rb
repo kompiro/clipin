@@ -128,6 +128,33 @@ describe Clip do
       end
     end
   end
+  context 'tags' do
+    before do
+      doc = Nokogiri::HTML(open("#{Rails.root}/spec/support/ogp/#{file}"))
+      Nokogiri::HTML::Document.stub!(:parse).and_return(doc)
+      @clip = Clip.new(:url => url)
+      @result = @clip.load
+      @clip.save
+      @clip.tagging
+    end
+    subject{@clip}
+    describe 'add tag by og_type' do
+      let(:file)         {'mine.html'}
+      let(:url)          {'http://d.hatena.ne.jp/kompiro/'}
+      it{subject.tags.size().should eq 1}
+      it{subject.tags[0].name.should eq 'blog'}
+    end
+    describe 'does not save same name tag' do
+      let(:file){'github.html'}
+      let(:url){'http://example.com/github.html'}
+      it{Tag.where(:name => 'githubog:gitrepository').size().should eq 1}
+    end
+    describe 'does not have og_type' do
+      let(:file){'not_ogp.html'}
+      let(:url){'http://example.com/not_ogp.html'}
+      it{subject.tags.size().should eq 0}
+    end
+  end
   context 'paging' do
     describe 'first page' do
       subject{Clip.page}
