@@ -1,0 +1,20 @@
+  <div data-role="header">
+    <h1>Tags</h1>
+  </div><!-- /header -->
+
+  <div data-role="content">
+    <ul data-role="listview" class="tag_list">
+    </ul>
+    <br/>
+    <a href='#' data-role='button' class="next_tags">next tags</a>
+  </div><!-- /content -->
+
+  <div data-role="footer" data-position='fixed'>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="/#tags" data-icon='tags'>Tags</a></li>
+        <li><a href="#" data-icon='share'>Share</a></li>
+        <li><a href="#" data-icon='gear'>Setup</a></li>
+      </ul>
+    </div><!-- /navbar -->
+  </div><!-- /footer -->

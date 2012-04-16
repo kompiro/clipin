@@ -3,16 +3,7 @@ Clipin.Views.Tags ||= {}
 class Clipin.Views.Tags.TagView extends Backbone.View
   template: JST["backbone/templates/tags/tag"]
 
-  events:
-    "click .destroy" : "destroy"
-
-  tagName: "tr"
-
-  destroy: () ->
-    @model.destroy()
-    this.remove()
-
-    return false
+  tagName: "li"
 
   render: ->
     $(@el).html(@template(@model.toJSON() ))
