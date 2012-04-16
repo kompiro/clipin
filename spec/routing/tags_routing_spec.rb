@@ -31,5 +31,9 @@ describe TagsController do
       delete("/tags/1").should route_to("tags#destroy", :id => "1")
     end
 
+    it "routes to clips#index" do
+      get("/tags/1/clips").should route_to("clips#index",:tag_id => '1')
+    end
+
   end
 end

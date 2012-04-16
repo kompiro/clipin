@@ -15,10 +15,10 @@ class Clipin.Views.Tags.IndexView extends Backbone.View
 
   render: =>
     $(@el).html(@template(tags: @options.tags.toJSON() ))
-    @$(".tag_list").append("<li data-theme='e'><a href='/clips#pinned'>Pin</a></li>")
-    @$(".tag_list").append("<li data-theme='c'><a href='/clips#index'>Index</a></li>")
+    @$(".tag_list").append("<li data-theme='e'><a href='/clips/pinned'>Pin</a></li>")
+    @$(".tag_list").append("<li data-theme='c'><a href='/clips'>Index</a></li>")
     @addAll()
-    @$(".tag_list").append("<li data-theme='a'><a href='/clips#trashed'>Trash</a></li>")
+    @$(".tag_list").append("<li data-theme='a'><a href='/clips/trashed'>Trash</a></li>")
 
     return this
 

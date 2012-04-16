@@ -151,3 +151,9 @@ clips_013:
   video:
   created_at: '2012-03-26 01:37:14.346823'
   updated_at: '2012-03-26 01:37:14.346823'
+pinned:
+  title: Pinned Clips
+  pin: true
+trashed:
+  title: Trashed Clips
+  trash: true
