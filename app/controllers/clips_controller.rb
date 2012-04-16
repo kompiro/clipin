@@ -2,13 +2,20 @@ class ClipsController < ApplicationController
   # GET /clips
   # GET /clips.json
   def index
-    page_num = params[:page]
-    if page_num.present?
-      @clips = Clip.page page_num
+    tag_id = params[:tag_id]
+    if tag_id.present?
+      @tag = Tag.find(tag_id)
+      @clips = @tag.clips
+      @title = @tag.name
     else
-      @clips = Clip.page
+      @title = 'All'
+      page_num = params[:page]
+      if page_num.present?
+        @clips = Clip.page page_num
+      else
+        @clips = Clip.page
+      end
     end
-    @title = 'All'
 
     respond_to do |format|
       format.html # index.html.erb
