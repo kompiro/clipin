@@ -24,7 +24,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'jquery_mobile-rails', '1.1.0.rc2'
+gem 'jquery_mobile-rails', '1.1.0'
 
 # for Heroku environment
 group :production do
