@@ -8,15 +8,23 @@
   padding-right: 55px;
 }
 img.clip_image {
-  width: 79px;
+  width:  79px;
   height: 79px;
 }
 @media screen and (max-width: 480px) {
   img.clip_image {
-    display: none;
+    width:  32px;
+    height: 32px;
+    top:    8px;
   }
   .ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb {
-    padding-left: 5px;
+    padding-left: 37px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    min-height: 40px;
+  }
+  .ui-li-heading{
+    margin: .4em 0;
   }
 }
 .ui-icon-pin {
