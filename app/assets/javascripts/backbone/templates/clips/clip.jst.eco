@@ -1,4 +1,4 @@
-<a href="<%= @url %>" rel="external">
+<a href="#<%= @id %>/edit">
   <img src='<%= if @image then @image else '/assets/not_found.png' %>' alt='summary_image' class="clip_image"/>
   <h3 class="title">
     <% if @pin: %>
@@ -15,5 +15,4 @@
   </p>
   <% end %>
 </a>
-<a href="#<%= @id %>/edit">edit</a>
 

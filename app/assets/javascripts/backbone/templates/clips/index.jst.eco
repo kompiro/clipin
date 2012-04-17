@@ -4,7 +4,7 @@
   </div><!-- /header -->
 
   <div data-role="content">
-    <ul data-role="listview" class="clip_list" data-split-icon="gear" data-split-theme="d">
+    <ul data-role="listview" class="clip_list">
     </ul>
     <br/>
     <a href='#' data-role='button' class="next_clips">next clips</a>
