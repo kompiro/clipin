@@ -17,7 +17,7 @@ class Clipin.Models.Clip extends Backbone.Model
     moment(@get('created_at'))
 
   same_created_date:(target)->
-    @created_at_date().diff(target.created_at_date(),'days') is 0
+    @created_at_date().format('YYYYMMDD') is target.created_at_date().format('YYYYMMDD')
 
 class Clipin.Collections.ClipsCollection extends Backbone.Collection
   model: Clipin.Models.Clip
