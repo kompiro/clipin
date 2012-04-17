@@ -1,10 +1,9 @@
-  <div data-role="header">
+  <div data-role="header" data-position='fixed'>
     <h1><%= @title %></h1>
+    <a href="#new" data-icon="plus" class='ui-btn-right'>New</a>
   </div><!-- /header -->
 
   <div data-role="content">
-    <a href="#new" data-role="button" id="new_clip">New Clip</a>
-    <br/>
     <ul data-role="listview" class="clip_list" data-split-icon="gear" data-split-theme="d">
     </ul>
     <br/>

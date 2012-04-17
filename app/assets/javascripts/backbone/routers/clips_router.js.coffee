@@ -40,6 +40,9 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
       router : @
     )
     @changePage(page)
+    try
+      FB.XFBML.parse()
+    catch error
 
   changePage:(page)->
     $(page.el).attr('data-role','page')

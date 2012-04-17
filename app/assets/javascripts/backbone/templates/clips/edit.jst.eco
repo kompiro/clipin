@@ -11,6 +11,7 @@
     <p><%= @description %></p>
     <h4>URL:</h4>
     <p><%= @url %></p>
+    <fb:like href="<%= @url %>" send="false" width="320" show-faces="true"></fb:like>
     <a href="<%= @url %>" data-icon='arrow-r' data-role='button' data-theme='b' >Open</a>
     <% unless @pin: %>
     <input type="button" class="clip_pin" value="Pin" data-theme='e' data-icon='pin'/>
