@@ -3,6 +3,9 @@ Clipin.Views.Clips ||= {}
 class Clipin.Views.Clips.IndexView extends Backbone.View
   template: JST["backbone/templates/clips/index"]
 
+  events:
+    "pagehide" : "pagehide"
+
   initialize: () ->
     @options.clips.bind('reset', @addAll)
     @options.clips.bind('add', @add)
@@ -10,15 +13,17 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
     @last_length = @options.clips.length
     @loading = false
 
-    $(window).scroll(()=>
-      if  $(window).scrollTop() > $(document).height() - $(window).height() - 100
-        @lastPostFunc()
-    )
+    $(window).scroll(@scroll)
     @el_next_clip().live('vclick', (e)=>
       e.preventDefault()
       e.stopPropagation()
       @lastPostFunc()
     )
+
+  scroll:()=>
+    if  $(window).scrollTop() > $(document).height() - $(window).height() - 100
+      @lastPostFunc()
+
 
   lastPostFunc : ()->
     unless @loading
@@ -57,6 +62,9 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
     @addAll()
 
     return this
+
+  pagehide:->
+    $(window).unbind('scroll',@scroll)
 
   el_next_clip:->
     $(@el).find('.next_clips')
