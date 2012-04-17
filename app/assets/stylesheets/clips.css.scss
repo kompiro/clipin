@@ -1,6 +1,9 @@
 // Place all the styles related to the clips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.ui-header .ui-title, .ui-footer .ui-title{
+  margin: .6em .8em
+}
 .ui-li-aside{
   width:60px;
 }
