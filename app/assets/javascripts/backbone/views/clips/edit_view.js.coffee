@@ -20,7 +20,8 @@ class Clipin.Views.Clips.EditView extends Backbone.View
 
   trash : ->
     @model.save trash : true,
-      success:->
+      success:(model)->
+        model.collection.remove model
         @router.navigate("index",{trigger:true})
 
   render : ->
