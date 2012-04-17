@@ -41,6 +41,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     )
     @changePage(page)
     try
+      twttr.widgets.load()
       FB.XFBML.parse()
     catch error
 
