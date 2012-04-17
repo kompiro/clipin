@@ -1,6 +1,6 @@
 class Clipin.Models.Clip extends Backbone.Model
   paramRoot: 'clip'
-  url: '/clips'
+  urlRoot: '/clips'
 
   defaults:
     title: null
