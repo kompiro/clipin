@@ -52,7 +52,8 @@ class ClipsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @clip }
+      format.json { render json: @clip.to_json(
+        :include => {:tags => { :except => [:created_at, :updated_at]}})}
     end
   end
 
