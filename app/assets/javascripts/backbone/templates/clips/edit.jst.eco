@@ -6,7 +6,7 @@
     <h4>Title:</h4>
     <p><%= @title %></p>
     <h4>Image:</h4>
-    <p><img src='<%= if @image then @image else '/assets/not_found.png' %>' alt='summary_image' class="clip_image"/></p>
+    <p><img src='<%= if @image then @image else '/assets/not_found.png' %>' alt='summary_image' class="clip_image" onerror="loadImgError(this)"/></p>
     <h4>Description:</h4>
     <p><%= @description %></p>
     <h4>URL:</h4>
