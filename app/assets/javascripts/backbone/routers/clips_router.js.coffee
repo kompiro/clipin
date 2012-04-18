@@ -27,14 +27,19 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     @changePage(page)
 
   show: (id) ->
-    clip = @clips.get(id)
-
-    @view = new Clipin.Views.Clips.ShowView(model: clip)
-    $("#clips").html(@view.render().el)
+    @edit id
 
   edit: (id) ->
     clip = @clips.get(id)
+    if clip?
+      @show_edit_view clip
+      return
+    clip = new Clipin.Models.Clip(id:id)
+    clip.fetch
+      success:(clip)=>
+        @show_edit_view clip
 
+  show_edit_view: (clip)->
     page = new Clipin.Views.Clips.EditView(
       model: clip
       router : @
