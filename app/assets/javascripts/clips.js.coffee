@@ -7,3 +7,10 @@ window.loadImgError = (source)->
   source.src = '/assets/not_found.png'
   source.onerror = ''
   true
+
+window.TAG_COLOR =
+  ['red','orange','yellow','light-green',
+  'green','light-blue','blue','purple']
+window.tagColor = (tag_id)->
+  color = window.TAG_COLOR[tag_id % TAG_COLOR.length]
+  "tag-#{color}"
