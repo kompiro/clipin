@@ -60,3 +60,44 @@ img.clip_image {
       background-size: 18px 18px;
   }
 }
+.tag {
+  padding: 1px 4px 2px;
+  font-size: 10.998px;
+  font-weight: bold;
+  line-height: 13px;
+  color: #ffffff;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #999999;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.tag-red {
+  background-color: #ed1c24;
+}
+.tag-orange {
+  background-color: #f7931e;
+  color: #111111;
+}
+.tag-yellow {
+  background-color: #fcee21;
+  color: #111111;
+}
+.tag-light-green {
+  background-color: #8cc63f;
+}
+.tag-green {
+  background-color: #009245;
+}
+.tag-light-blue {
+  background-color: #33ccff;
+  color: #111111;
+}
+.tag-blue {
+  background-color: #0071bc;
+}
+.tag-purple {
+  background-color: #93278f;
+}

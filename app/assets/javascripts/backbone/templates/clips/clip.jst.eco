@@ -4,7 +4,10 @@
     <% if @pin: %>
     <img src='/assets/pin-icon.png' alt='pin' class="pin"/>
     <% end %>
-    <%= "[#{@og_type}]" if @og_type %> <%= @title %>
+    <% if @og_type: %>
+      <span class='tag tag-light-green'><%= @og_type %></span>
+    <% end %>
+    <%= @title %>
   </h3>
   <p>
     <span class="description"><%= @description %></span>
