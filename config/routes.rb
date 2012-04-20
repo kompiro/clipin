@@ -9,5 +9,6 @@ Clipin::Application.routes.draw do
     end
   end
   root :to => "clips#index"
+  match '/auth/:provider/callback', to: 'sessions#create'
   mount JasmineRails::Engine => "/specs" unless Rails.env.production?
 end
