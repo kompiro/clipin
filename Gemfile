@@ -5,7 +5,8 @@ gem 'rails', '3.2.2'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 gem 'nokogiri'
 gem 'rails-boilerplate'
 gem "rails-backbone"
