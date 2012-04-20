@@ -94,6 +94,7 @@ class ClipsController < ApplicationController
   # PUT /clips/1.json
   def update
     @clip = Clip.find(params[:id])
+    params[:clip][:tags] = load_tags(params)
 
     respond_to do |format|
       if @clip.update_attributes(params[:clip])
@@ -116,5 +117,15 @@ class ClipsController < ApplicationController
       format.html { redirect_to clips_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def load_tags(params)
+    loaded_tags = []
+    params[:clip][:tags].each do |tag|
+      loaded_tags << Tag.find(tag[:id])
+    end
+    loaded_tags
   end
 end
