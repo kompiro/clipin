@@ -52,9 +52,7 @@ group :development, :test do
   gem 'guard-cucumber'
 
   # notification
-  if RUBY_PLATFORM.downcase.include?('darwin')
-    gem 'growl'
-  end
+  gem 'growl', :require => false if RUBY_PLATFORM =~ /darwin/i
 
 end
 
