@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  has_many :clips
+
   def self.create_with_omniauth(auth)
     begin
       create! do |user|

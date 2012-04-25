@@ -77,6 +77,7 @@ class ClipsController < ApplicationController
   # POST /clips.json
   def create
     @clip = Clip.new(params[:clip])
+    @clip.user = current_user
 
     respond_to do |format|
       if @clip.load and @clip.save

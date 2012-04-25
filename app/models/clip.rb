@@ -5,6 +5,7 @@ class Clip < ActiveRecord::Base
 
   has_many :taggings
   has_many :tags, :through => :taggings
+  belongs_to :user
   PAGE_CONTENT = 8
 
   scope :page,    lambda {|page_num = 1| where(:trash => false).order('created_at DESC').limit(PAGE_CONTENT).offset(PAGE_CONTENT * ([page_num.to_i, 1].max - 1))}
