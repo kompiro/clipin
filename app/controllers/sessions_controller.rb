@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
   def create
-    puts auth_hash
+    auth = auth_hash
+    user = User.where(:provider => auth['provider'],
+        :uid => auth['uid']).first || User.create_with_omniauth(auth)
+    session[:user_id] = user.id
     redirect_to '/clips#index'
   end
 

@@ -8,3 +8,12 @@
 %w(music article video).each do |tag|
   Tag.find_or_create_by_name(tag)
 end
+
+Tag.all.each do |tag|
+  tag.user_id = 1
+  tag.save
+end
+Clip.all.each do |clip|
+  clip.user_id = 1
+  clip.save
+end
