@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def create
     puts auth_hash
-    redirect_to '/'
+    redirect_to '/clips#index'
   end
 
   protected

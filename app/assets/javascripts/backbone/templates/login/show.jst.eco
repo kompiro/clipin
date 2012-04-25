@@ -1,0 +1,7 @@
+  <div data-role="header" data-position='fixed'>
+    <h1>Login</h1>
+  </div><!-- /header -->
+  <div data-role="content">
+    <div id="fb-root"></div>
+    <a href='/auth/facebook' id='fb-login' data-role='button' data-theme='b'>Facebook Login</a>
+  </div><!-- /content -->

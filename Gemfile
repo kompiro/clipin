@@ -52,12 +52,9 @@ group :development, :test do
   gem 'guard-cucumber'
 
   # notification
-  #if RUBY_PLATFORM.downcase.include?('linux')
-    gem 'libnotify'
-    gem 'rb-inotify'
-  #elsif RUBY_PLATFORM.downcase.include?('darwin')
+  if RUBY_PLATFORM.downcase.include?('darwin')
     gem 'growl'
-  #end
+  end
 
 end
 
