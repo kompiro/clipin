@@ -124,6 +124,7 @@ class ClipsController < ApplicationController
 
   def load_tags(params)
     loaded_tags = []
+    return loaded_tags if params[:clip][:tags].nil?
     params[:clip][:tags].each do |tag|
       loaded_tags << Tag.find(tag[:id])
     end

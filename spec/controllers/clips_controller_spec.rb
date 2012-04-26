@@ -115,7 +115,7 @@ describe ClipsController do
         # specifies that the Clip created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Clip.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
+        Clip.any_instance.should_receive(:update_attributes).with({'these' => 'params','tags' => []})
         put :update, {:id => clip.to_param, :clip => {'these' => 'params'}}, valid_session
       end
 
