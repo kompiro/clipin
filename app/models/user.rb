@@ -16,4 +16,10 @@ class User < ActiveRecord::Base
       raise Exception, "cannot create user record"
     end
   end
+  def self.current=(user)
+    @current_user = user
+  end
+  def self.current
+    @current_user
+  end
 end

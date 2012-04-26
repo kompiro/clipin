@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
     auth = auth_hash
     user = User.where(:provider => auth['provider'],
         :uid => auth['uid']).first || User.create_with_omniauth(auth)
+    User.current = user
     session[:user_id] = user.id
     redirect_to '/clips#index'
   end

@@ -12,6 +12,11 @@ class Clip < ActiveRecord::Base
   scope :pinned,  lambda { where(:pin => true,:trash => false).order('updated_at DESC').limit(PAGE_CONTENT)}
   scope :trashed, lambda { where(:trash => true).order('updated_at DESC').limit(PAGE_CONTENT)}
 
+  def save
+    self.user = User.current
+    super
+  end
+
   def load
     if url.nil? or url.empty?
       errors.add :url, "can't be blank"
