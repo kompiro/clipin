@@ -11,8 +11,17 @@
     <p><%= @description %></p>
     <h4>URL:</h4>
     <p><%= @url %></p>
-    <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= @url %>" data-text="<%= @title %>">Tweet</a>
-    <fb:like href="<%= @url %>" send="false" width="320" layout="button_count"></fb:like>
+    <ul class='list-inline-block'>
+      <li class='twitter'>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= @url %>" data-text="<%= @title %>">Tweet</a>
+      </li>
+      <li class='facebook'>
+        <fb:like href="<%= @url %>" send="false" width="50" layout="button_count"></fb:like>
+      </li>
+      <li class='hatena'>
+      <a href="http://b.hatena.ne.jp/entry/<%= @url %>" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="<%= @title %>"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="hatena" width="20" height="20" style="border: none;" /></a>
+      </li>
+    </ul>
     <a href="<%= @url %>" data-icon='arrow-r' data-role='button' data-theme='b' rel='external'>Open</a>
     <% unless @pin: %>
     <input type="button" class="clip_pin" value="Pin" data-theme='e' data-icon='pin'/>
