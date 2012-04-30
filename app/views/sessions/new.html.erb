@@ -1,0 +1,9 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+      window.router = new Clipin.Routers.SessionRouter({
+          path: '<%= request.fullpath %>',
+          title: '<%= @title %>'
+      });
+      Backbone.history.start();
+  });
+</script>

@@ -35,6 +35,7 @@ Spork.prefork do
     # instead of true.
     config.use_transactional_fixtures = true
     ActiveSupport::Dependencies.clear
+    config.include FactoryGirl::Syntax::Methods
   end
 
 end
@@ -107,5 +108,7 @@ RSpec.configure do |config|
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
+  ActiveSupport::Dependencies.clear
+  config.include FactoryGirl::Syntax::Methods
 
 end

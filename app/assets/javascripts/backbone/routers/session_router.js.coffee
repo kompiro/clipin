@@ -1,11 +1,11 @@
-class Clipin.Routers.HomeRouter extends Backbone.Router
+class Clipin.Routers.SessionRouter extends Backbone.Router
   initialize: (options) ->
 
   routes:
     ".*"        : "index"
 
   index: ->
-    page = new Clipin.Views.Login.ShowView()
+    page = new Clipin.Views.Session.NewView()
     @changePage(page)
 
   changePage:(page)->

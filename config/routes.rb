@@ -8,7 +8,9 @@ Clipin::Application.routes.draw do
       get :pinned,:trashed
     end
   end
-  root :to => "home#index"
+  root :to => "sessions#new"
+  resources :sessions, :only => 'new'
   match '/auth/:provider/callback', to: 'sessions#create'
+
   mount JasmineRails::Engine => "/specs" unless Rails.env.production?
 end

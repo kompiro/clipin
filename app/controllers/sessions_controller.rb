@@ -1,4 +1,9 @@
 class SessionsController < ApplicationController
+  skip_before_filter :authenticate!, :only => %w[new create]
+
+  def new
+  end
+
   def create
     auth = auth_hash
     user = User.where(:provider => auth['provider'],
