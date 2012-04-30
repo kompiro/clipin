@@ -2,6 +2,10 @@ class SessionsController < ApplicationController
   skip_before_filter :authenticate!, :only => %w[new create]
 
   def new
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: {:error => 'authorized error'} }
+    end
   end
 
   def create
