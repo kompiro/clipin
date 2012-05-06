@@ -42,6 +42,8 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'jasmine-rails'
   gem 'guard-jasmine-headless-webkit'
+  gem 'factory_girl'
+  gem "factory_girl_rails", "~> 3.0"
   # spork
   gem 'spork', '~> 0.9.0.rc'
 
