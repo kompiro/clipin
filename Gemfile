@@ -45,6 +45,8 @@ group :development, :test do
   gem 'guard-jasmine-headless-webkit'
   gem 'factory_girl'
   gem "factory_girl_rails", "~> 3.0"
+  gem 'pry'
+  gem 'pry-doc'
   # spork
   gem 'spork', '~> 0.9.0.rc'
 
