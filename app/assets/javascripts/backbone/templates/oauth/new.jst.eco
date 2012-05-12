@@ -1,0 +1,25 @@
+  <div data-role="header">
+    <h1>Register your application</h1>
+  </div><!-- /header -->
+
+  <div data-role="content">
+    <form id="new-oauth" name="oauth">
+      <ul class="error_explanation">
+      </ul>
+      <div data-role="fieldcontain">
+        <label for="name">Application name:</label>
+        <input type="text" value="<%= @name %>" id="name" name="name"/>
+      </div>
+      <div data-role="fieldcontain">
+        <label for="redirect_uri">Callback URI:</label>
+        <input type="text" value="<%= @redirect_uri %>" id="redirect_uri" name="redirect_uri"/>
+      </div>
+      <div class="actions">
+        <div class="ui-grid-a">
+          <div class="ui-block-a"><a href="/" data-role='button' data-icon='arrow-l'>Home</a></div>
+          <div class="ui-block-b"><input type="submit" value="Register Application" data-theme='b'/></div>
+        </div>
+      </div>
+    </form>
+  </div><!-- /content -->
+

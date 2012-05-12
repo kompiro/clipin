@@ -1,10 +1,10 @@
-Clipin.Views.Clips ||= {}
+Clipin.Views.OAuth ||= {}
 
-class Clipin.Views.Clips.NewView extends Backbone.View
-  template: JST["backbone/templates/clips/new"]
+class Clipin.Views.OAuth.NewView extends Backbone.View
+  template: JST["backbone/templates/oauth/new"]
 
   events:
-    "submit #new-clip": "save"
+    "submit #new-oauth": "save"
 
   constructor: (options) ->
     super(options)
@@ -28,18 +28,16 @@ class Clipin.Views.Clips.NewView extends Backbone.View
     @model.unset("errors")
 
     @collection.create(@model.toJSON(),
-      success: (clip) =>
-        @model = clip
-        @router.navigate("index",{trigger:true})
+      success: (model) =>
+        @router.show(model.id)
 
       error: (clip, jqXHR) =>
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
 
-      at:0
     )
 
   render: ->
-    $(@el).html(@template(@model.toJSON()))
+    $(@el).html(@template(@model.toJSON() ))
 
     this.$("form").backboneLink(@model)
 

@@ -8,9 +8,11 @@ Clipin::Application.routes.draw do
       get :pinned,:trashed
     end
   end
-  root :to => "sessions#new"
+  root :to => "clips#index"
   resources :sessions, :only => 'new'
   match '/auth/:provider/callback', to: 'sessions#create'
+  resources :oauth
+  get '/extensions/chrome_oauth', to: 'oauth#chrome'
 
   mount JasmineRails::Engine => "/specs" unless Rails.env.production?
 end
