@@ -8,8 +8,8 @@ class Clipin.Views.OAuth.NewView extends Backbone.View
 
   constructor: (options) ->
     super(options)
-    @router = options.router
     @model = new @collection.model()
+    @router = options.router
 
     @model.bind("change:errors", (model,errors) =>
       if errors?
@@ -29,7 +29,7 @@ class Clipin.Views.OAuth.NewView extends Backbone.View
 
     @collection.create(@model.toJSON(),
       success: (model) =>
-        @router.show(model.id)
+        @router.show(model)
 
       error: (clip, jqXHR) =>
         @model.set({errors: $.parseJSON(jqXHR.responseText)})

@@ -1,0 +1,12 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+      window.router = new Clipin.Routers.OAuthAuthorizeRouter(
+        {
+          model: <%= @oauth2.client.to_json().html_safe %>,
+          client_secret: "<%= params[:client_secret] %>",
+          response_type: "<%= params[:response_type] %>"
+        }
+      );
+      Backbone.history.start();
+  });
+</script>

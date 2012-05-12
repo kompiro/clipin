@@ -1,0 +1,15 @@
+
+  <div data-role="header">
+    <h1>Application Authorization</h1>
+  </div><!-- /header -->
+
+  <div data-role="content">
+    <form id="authorize-oauth" name="authorize">
+      <h4>Application name:</h4>
+      <p><%= @name %></p>
+      <input type="hidden" name="redirect_uri" value="<%= @redirect_uri %>">
+      <input type="hidden" name="client_id" value="<%= @client_id %>">
+      <input type="submit" value="Allow Application" data-theme='b'/>
+    </form>
+  </div><!-- /content -->
+

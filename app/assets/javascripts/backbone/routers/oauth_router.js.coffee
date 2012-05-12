@@ -13,16 +13,11 @@ class Clipin.Routers.OAuthRouter extends Backbone.Router
     )
     @changePage(page)
 
-  show: (id)->
-    @model = new @collection.model()
-    @model.id = id
-    @model.fetch(
-      success:(model,response)=>
-        page = new Clipin.Views.OAuth.ShowView(
-          model : model
-        )
-        @changePage(page)
-    )
+  show: (model)->
+     page = new Clipin.Views.OAuth.ShowView(
+       model : model
+     )
+     @changePage(page)
 
   changePage:(page)->
     $(page.el).attr('data-role','page')

@@ -11,8 +11,13 @@ Clipin::Application.routes.draw do
   root :to => "clips#index"
   resources :sessions, :only => 'new'
   match '/auth/:provider/callback', to: 'sessions#create'
-  resources :oauth
-  get '/extensions/chrome_oauth', to: 'oauth#chrome'
+  scope "/oauth" do
+    resources :apps
+  end
+
+  match "/oauth/authorize" => "apps#authorize", :via => %w[get post]
+  match "/oauth/allow" => "apps#allow", :via => "put"
+  get '/extensions/chrome_oauth', to: 'oauth/apps#chrome'
 
   mount JasmineRails::Engine => "/specs" unless Rails.env.production?
 end

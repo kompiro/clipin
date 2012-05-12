@@ -9,8 +9,8 @@
     <p><%= @redirect_uri %></p>
     <h4>Client ID:</h4>
     <p><%= @client_id %></p>
-    <h4>Client Secret Hash:</h4>
-    <p><%= @client_secret_hash %></p>
+    <h4>Client Secret:</h4>
+    <p><%= @client_secret %></p>
   <a href="/" data-role='button' data-icon='arrow-l'>Home</a>
   </div><!-- /content -->
 
