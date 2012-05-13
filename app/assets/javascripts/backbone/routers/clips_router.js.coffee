@@ -8,9 +8,10 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
   routes:
     "new"      : "newClip"
     "index"    : "index"
+    "conf"     : "conf"
     ":id/edit" : "edit"
     ":id"      : "show"
-    ".*"        : "index"
+    ".*"       : "index"
 
   newClip: ->
     page = new Clipin.Views.Clips.NewView(
@@ -24,6 +25,10 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
       clips: @clips
       title: @title
     )
+    @changePage(page)
+
+  conf: ->
+    page = new Clipin.Views.Clips.ConfView()
     @changePage(page)
 
   show: (id) ->

@@ -1,13 +1,10 @@
   <div data-role="header" data-position='fixed'>
-    <h1><%= @title %></h1>
-    <a href="#new" data-icon="plus" class='ui-btn-right'>New</a>
+    <h1>User Configuration</h1>
   </div><!-- /header -->
 
   <div data-role="content">
-    <ul data-role="listview" class="clip_list">
-    </ul>
-    <br/>
-    <a href='#' data-role='button' class="next_clips">next clips</a>
+    <a href='/sessions/logout' data-role='button' class="logout" data-theme='a'>Logout</a>
+    <a href='#' data-role='button' class="home">Home</a>
   </div><!-- /content -->
 
   <div data-role="footer" data-position='fixed'>

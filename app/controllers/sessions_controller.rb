@@ -8,6 +8,11 @@ class SessionsController < ApplicationController
     end
   end
 
+  def delete
+    session[:user_id] = nil
+    redirect_to sessions_login_url
+  end
+
   def create
     auth = auth_hash
     user = User.where(:provider => auth['provider'],

@@ -9,7 +9,8 @@ Clipin::Application.routes.draw do
     end
   end
   root :to => "clips#index"
-  resources :sessions, :only => 'new'
+  match '/sessions/login', to: 'sessions#new'
+  match '/sessions/logout', to: 'sessions#delete'
   match '/auth/:provider/callback', to: 'sessions#create'
   scope "/oauth" do
     resources :apps
