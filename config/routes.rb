@@ -17,6 +17,7 @@ Clipin::Application.routes.draw do
 
   match "/oauth/authorize" => "apps#authorize", :via => %w[get post]
   match "/oauth/allow" => "apps#allow", :via => "put"
+  match "/oauth/access_token" => "apps#access_token", :via => "get"
   get '/extensions/chrome_oauth', to: 'oauth/apps#chrome'
 
   mount JasmineRails::Engine => "/specs" unless Rails.env.production?

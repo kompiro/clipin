@@ -43,6 +43,16 @@ class AppsController < ApplicationController
     end
   end
 
+  def access_token
+    @owner  = User.find_by_id(session[:user_id])
+    if @owner.nil?
+      redirect_to :new_session
+    end
+    @oauth2 = OAuth2::Provider.parse(@owner, env)
+    @access_token = { :access_token => @oauth2.access_token }
+    render :json => @access_token.to_json
+  end
+
   def allow
     @user = User.find_by_id(session[:user_id])
     @auth = OAuth2::Provider::Authorization.new(@user, params[:oauth])
