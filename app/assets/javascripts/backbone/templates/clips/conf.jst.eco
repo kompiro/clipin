@@ -3,6 +3,7 @@
   </div><!-- /header -->
 
   <div data-role="content">
+    <a href='/clipin.crx' data-role='button' class="logout" data-theme='b'>Clipin Chrome Extension</a>
     <a href='/sessions/logout' data-role='button' class="logout" data-theme='a'>Logout</a>
     <a href='#' data-role='button' class="home">Home</a>
   </div><!-- /content -->
