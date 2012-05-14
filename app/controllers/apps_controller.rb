@@ -30,10 +30,10 @@ class AppsController < ApplicationController
     end
     @oauth2 = OAuth2::Provider.parse(@owner, env)
 
-    #if @oauth2.redirect?
-    #  redirect_to @oauth2.redirect_uri, status: @oauth2.response_status
-    #  return
-    #end
+    if @oauth2.redirect?
+      redirect_to @oauth2.redirect_uri, status: @oauth2.response_status
+      return
+    end
 
     if @oauth2.response_body.present?
       response.headers = @oauth2.response_headers
