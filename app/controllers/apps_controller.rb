@@ -30,10 +30,10 @@ class AppsController < ApplicationController
     end
     @oauth2 = OAuth2::Provider.parse(@owner, env)
 
-    if @oauth2.redirect?
-      redirect_to @oauth2.redirect_uri, status: @oauth2.response_status
-      return
-    end
+    #if @oauth2.redirect?
+    #  redirect_to @oauth2.redirect_uri, status: @oauth2.response_status
+    #  return
+    #end
 
     if @oauth2.response_body.present?
       response.headers = @oauth2.response_headers
@@ -55,10 +55,10 @@ class AppsController < ApplicationController
 
   def allow
     @user = User.find_by_id(session[:user_id])
-    @auth = OAuth2::Provider::Authorization.new(@user, params[:oauth])
+    @oauth2 = OAuth2::Provider::Authorization.new(@user, params[:oauth])
 
-    @auth.grant_access!
-    redirect_to @auth.redirect_uri, status: @auth.response_status
+    @oauth2.grant_access!
+    render :json => {:redirect_uri => @oauth2.redirect_uri}.to_json, status: @oauth2.response_status # this api accessed by json
   end
 
   def show

@@ -19,9 +19,12 @@ class Clipin.Views.OAuth.AuthorizeView extends Backbone.View
 
     @model.save(@model.toJSON(),
       success: (model) =>
-        window.close()
+        window.location = model.redirect_uri
 
-      error: (clip, jqXHR) =>
+      error: (model, jqXHR) =>
+        if jqXHR.status is 302 #found is ok
+          window.location = model.redirect_uri
+          return
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
 
     )
