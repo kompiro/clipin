@@ -49,8 +49,11 @@ class AppsController < ApplicationController
       redirect_to :new_session
     end
     @oauth2 = OAuth2::Provider.parse(@owner, env)
-    @access_token = { :access_token => @oauth2.access_token }
-    render :json => @access_token.to_json
+    @token = {
+      :access_token => @oauth2.access_token ,
+      :expires_in => @oauth2.expires_in
+    }
+    render :json => @token.to_json
   end
 
   def allow
