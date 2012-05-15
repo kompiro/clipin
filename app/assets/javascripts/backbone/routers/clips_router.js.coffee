@@ -7,7 +7,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
 
   routes:
     "new"      : "newClip"
-    "index"    : "index"
+    "index"    : "index_fetch"
     "conf"     : "conf"
     ":id/edit" : "edit"
     ":id"      : "show"
@@ -19,6 +19,10 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
       router : @
     )
     @changePage(page)
+
+  index_fetch:->
+    @clips.fetch()
+    @index()
 
   index: ->
     page = new Clipin.Views.Clips.IndexView(
