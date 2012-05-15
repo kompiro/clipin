@@ -24,15 +24,18 @@ class Clipin.Views.Clips.NewView extends Backbone.View
   save: (e) ->
     e.preventDefault()
     e.stopPropagation()
+    $.mobile.showPageLoadingMsg()
 
     @model.unset("errors")
 
     @collection.create(@model.toJSON(),
       success: (clip) =>
         @model = clip
+        $.mobile.hidePageLoadingMsg()
         @router.navigate("index",{trigger:true})
 
       error: (clip, jqXHR) =>
+        $.mobile.hidePageLoadingMsg()
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
 
       at:0
