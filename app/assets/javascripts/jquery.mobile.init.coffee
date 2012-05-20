@@ -5,6 +5,8 @@ $(document).bind 'mobileinit',->
   $.mobile.pushStateEnabled = false
   @
 
+ $.ajaxSetup({cache:false})
+
 $('div[data-role="page"]').live('pagehide',(event, ui)->
       $(event.currentTarget).remove()
 )

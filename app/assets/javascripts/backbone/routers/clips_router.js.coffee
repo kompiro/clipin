@@ -21,8 +21,10 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     @changePage(page)
 
   index_fetch:->
-    @clips.fetch()
-    @index()
+    @clips.fetch
+     success:(collection)=>
+       @clips.reset(collection.models)
+       @index()
 
   index: ->
     page = new Clipin.Views.Clips.IndexView(
