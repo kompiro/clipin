@@ -29,14 +29,6 @@ guard 'rspec', :version => 2, :cli => '--drb',
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
 end
 
-spec_location = "spec/javascripts/%s_spec"
-
-guard 'jasmine-headless-webkit' do
-  watch(%r{^.*/assets/javascripts/backbone/(.*)\.(js|coffee)$}) { 'spec/javascripts' }
-  watch(%r{^spec/javascripts/(.*)_spec\..*}) { |m| newest_js_file(spec_location % m[1]) }
-  watch(%r{^spec/javascripts/supports/(.*).(js|coffee)$}) { 'spec/javascripts' }
-end
-
 guard 'cucumber', :cli => '--drb --format progress --no-profile',
   :all_on_start => false, :all_after_pass => false do
   watch(%r{^features/.+\.feature$})
@@ -44,3 +36,9 @@ guard 'cucumber', :cli => '--drb --format progress --no-profile',
   watch(%r{^features/step_definitions/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }
 end
 
+
+guard 'jasmine' do
+  watch(%r{spec/javascripts/spec\.(js\.coffee|js|coffee)$})         { "spec/javascripts" }
+  watch(%r{spec/javascripts/.+_spec\.(js\.coffee|js|coffee)$})
+  watch(%r{app/assets/javascripts/backbone/(.+?)\.(js\.coffee|js|coffee)$}) { 'spec/javascripts' }
+end

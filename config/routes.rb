@@ -26,5 +26,4 @@ Clipin::Application.routes.draw do
     end
   end
 
-  mount JasmineRails::Engine => "/specs" unless Rails.env.production?
 end

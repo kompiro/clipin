@@ -41,8 +41,8 @@ group :development, :test do
   gem "cucumber-rails", require: false
   gem 'webrat'
   gem 'database_cleaner'
-  gem 'jasmine-rails'
-  gem 'guard-jasmine-headless-webkit'
+  gem "jasminerice"
+  gem "guard-jasmine"
   gem 'factory_girl'
   gem "factory_girl_rails", "~> 3.0"
   gem 'pry'

@@ -1,3 +1,5 @@
+#= require backbone/models/clip
+
 describe 'Clip',->
 
   clip = null
