@@ -6,15 +6,15 @@ class Clip < ActiveRecord::Base
   has_many :taggings
   has_many :tags, :through => :taggings
   belongs_to :user
+  before_save :set_user
   PAGE_CONTENT = 8
 
   scope :page,    lambda {|page_num = 1| where(:user_id => User.current).where(:trash => false).order('created_at DESC').limit(PAGE_CONTENT).offset(PAGE_CONTENT * ([page_num.to_i, 1].max - 1))}
   scope :pinned,  lambda { where(:user_id => User.current).where(:pin => true,:trash => false).order('updated_at DESC').limit(PAGE_CONTENT)}
   scope :trashed, lambda { where(:user_id => User.current).where(:trash => true).order('updated_at DESC').limit(PAGE_CONTENT)}
 
-  def save
+  def set_user
     self.user = User.current
-    super
   end
 
   def load
@@ -26,7 +26,17 @@ class Clip < ActiveRecord::Base
       errors.add :url, "should start with 'http:' or 'https:'"
       return false
     end
-    doc = Nokogiri::HTML(open(url))
+    io = open(url)
+    charset = io.charset
+    if charset == "iso-8859-1"
+      charset = io.scan(/charset="?([^\s"]*)/i).flatten.inject(Hash.new{0}){|a, b|
+        a[b]+=1
+        a
+      }.to_a.sort_by{|a|
+        a[1]
+      }.reverse.first[0]
+    end
+    doc = Nokogiri.HTML(io.read,url,charset)
     self.title = doc.xpath('//title/text()').to_s.encode('utf-8')
     self.url = url
     doc.css('meta').each do |m|

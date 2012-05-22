@@ -10,8 +10,25 @@ describe Clip do
     its(:image)       {should be_nil}
     its(:description) {should be_nil}
     its(:url)         {should be_nil}
+    its(:user)        {should be_nil}
     its(:pin)         {should be_false}
     its(:trash)       {should be_false}
+  end
+  context 'user' do
+    before do
+      User.current = create(:user)
+      @clip = Clip.new(:url => 'http://example.com/')
+      @clip.save
+    end
+    after do
+      User.current = nil
+    end
+    it 'should be created' do
+      User.current.should_not be_nil
+    end
+    it 'should have user after saved' do
+      @clip.user.should_not be_nil
+    end
   end
   context 'load og content' do
     before do
@@ -144,6 +161,12 @@ describe Clip do
         its(:image)        {should == 'http://api.twitter.com/1/users/profile_image/Polaris_sky.json?size=bigger'}
         its(:url)          {should == 'http://togetter.com/li/284806'}
         its(:description)  {should == '日本のGDPの約2割を稼ぎ、約1000万人の雇用を擁する製造業。製造業はその性質上大量の電力を消費します（全体の4割の電力を製造業が使用）。原発が停止した現在、一部の反原発派な方々から「夏場の数時間の為に原発を動かす必要がない」とか「その数時間だけ節電すれば原発は要らない」という声が聞こえてきます。が、製造業にとってその数時間は大事なんじゃないか？と現場の人にきいてみたら貴重なご意見をいただきました。貴重なご意見本当に有難う御座いました。m(_ _)m'}
+      end
+      describe 'load youtube content' do
+        let(:file){'youtube.html'}
+        let(:url){'http://www.youtube.com/watch?v=I7nKNs6dUJ4'}
+        it {@result.should be_true}
+        its(:title)        {should == 'TV初「モテキ」漫画家・久保ミツロウが大暴れ!!'}
       end
     end
   end
