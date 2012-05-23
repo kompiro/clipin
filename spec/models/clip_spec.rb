@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
+require 'open-uri'
 
 describe Clip do
   fixtures :clips
@@ -32,13 +33,17 @@ describe Clip do
   end
   context 'load og content' do
     before do
-      doc = Nokogiri::HTML(open("#{Rails.root}/spec/support/ogp/#{file}"))
-      Nokogiri::HTML::Document.stub!(:parse).and_return(doc)
+      read = mock('open')
+      doc = open("#{Rails.root}/spec/support/ogp/#{file}")
       @clip = Clip.new(:url => url)
+      read.stub(:read).and_return(doc)
+      read.stub(:charset).and_return(charset)
+      @clip.stub!(:open).and_return(read)
       @result = @clip.load
     end
     subject{@clip}
     let(:file){'empty.html'}
+    let(:charset){'utf-8'}
     context 'error cases' do
       describe 'url is nil case' do
         let(:url)     {nil}
@@ -97,7 +102,8 @@ describe Clip do
       describe 'load ogp content' do
         let(:file)         {'error.html'}
         let(:url)          {'http://example.com/error.html'}
-        it {@result.should be_true}
+        let(:charset)      {'utf-8'}
+        it                 {@result.should be_true}
         its(:title)        {should == 'Backbone.js'}
         its(:url)          {should == 'http://example.com/error.html'}
       end
@@ -106,7 +112,8 @@ describe Clip do
       describe 'load ogp content' do
         let(:file)         {'mine.html'}
         let(:url)          {'http://d.hatena.ne.jp/kompiro/'}
-        it {@result.should be_true}
+        let(:charset)      {'euc-jp'}
+        it                 {@result.should be_true}
         its(:title)        {should == 'Fly me to the Juno!'}
         its(:og_type)      {should == 'blog'}
         its(:image)        {should == 'http://www.st-hatena.com/users/ko/kompiro/user_p.gif?'}
@@ -123,7 +130,8 @@ describe Clip do
       describe 'different url' do
         let(:file)         {'github.html'}
         let(:url)          {'https://github.com/plataformatec/devise/wiki/OmniAuth%3A-Overview'}
-        it {@result.should be_true}
+        let(:charset)      {'utf-8'}
+        it                 {@result.should be_true}
         its(:title)        {should == 'OmniAuth: Overview · plataformatec/devise Wiki'}
         its(:og_type)      {should == 'githubog:gitrepository'}
         its(:image)        {should == 'https://a248.e.akamai.net/assets.github.com/images/gravatars/gravatar-140.png?1329275856'}
@@ -139,7 +147,8 @@ describe Clip do
       describe 'load not ogp content' do
         let(:file){'not_ogp.html'}
         let(:url){'http://example.com/not_ogp.html'}
-        it {@result.should be_true}
+        let(:charset)      {'euc-jp'}
+        it                 {@result.should be_true}
         its(:title)        {should == 'ゆるキャラ「まんべくん」哀れな末路 - ソーシャルメディア炎上事件簿：ITpro'}
         its(:og_type)      {should be_nil}
         its(:image)        {should == 'http://itpro.nikkeibp.co.jp/article/COLUMN/20111111/374386/top.jpg'}
@@ -153,9 +162,10 @@ describe Clip do
         end
       end
       describe 'load toggeter content' do
-        let(:file){'togetter.html'}
-        let(:url){'http://togetter.com/li/284806'}
-        it {@result.should be_true}
+        let(:file)         {'togetter.html'}
+        let(:url)          {'http://togetter.com/li/284806'}
+        let(:charset)      {'utf-8'}
+        it                 {@result.should be_true}
         its(:title)        {should == '夏場の電力ピーク時の数時間、製造業は節電のために稼働を止められるのか？現場の人に聞いてみた。 - Togetter'}
         its(:og_type)      {should == 'article'}
         its(:image)        {should == 'http://api.twitter.com/1/users/profile_image/Polaris_sky.json?size=bigger'}
@@ -163,10 +173,11 @@ describe Clip do
         its(:description)  {should == '日本のGDPの約2割を稼ぎ、約1000万人の雇用を擁する製造業。製造業はその性質上大量の電力を消費します（全体の4割の電力を製造業が使用）。原発が停止した現在、一部の反原発派な方々から「夏場の数時間の為に原発を動かす必要がない」とか「その数時間だけ節電すれば原発は要らない」という声が聞こえてきます。が、製造業にとってその数時間は大事なんじゃないか？と現場の人にきいてみたら貴重なご意見をいただきました。貴重なご意見本当に有難う御座いました。m(_ _)m'}
       end
       describe 'load youtube content' do
-        let(:file){'youtube.html'}
-        let(:url){'http://www.youtube.com/watch?v=I7nKNs6dUJ4'}
-        it {@result.should be_true}
-        its(:title)        {should == 'TV初「モテキ」漫画家・久保ミツロウが大暴れ!!'}
+        let(:file)         {'youtube.html'}
+        let(:url)          {'http://www.youtube.com/watch?v=I7nKNs6dUJ4'}
+        let(:charset)      {'utf-8'}
+        it                 {@result.should be_true}
+        its(:title)        {should == "TV初「モテキ」漫画家・久保ミツロウが大暴れ!!\n      - YouTube"}
       end
     end
   end

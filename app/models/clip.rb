@@ -37,8 +37,12 @@ class Clip < ActiveRecord::Base
         a[1]
       }.reverse.first[0]
     end
-    doc = Nokogiri.HTML(read)
-    self.title = doc.xpath('//title/text()').text.encode('utf-8')
+    if charset == 'utf-8'
+      doc = Nokogiri.HTML(read,url,'utf-8')
+    else
+      doc = Nokogiri.HTML(read)
+    end
+    self.title = doc.xpath('//title/text()').text.encode('utf-8').strip
     self.url = url
     doc.css('meta').each do |m|
       prop = m.attribute('property')
