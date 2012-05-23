@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe OauthController do
+describe AppsController do
 
 end
