@@ -28,15 +28,16 @@ class Clip < ActiveRecord::Base
     end
     io = open(url)
     charset = io.charset
+    read = io.read
     if charset == "iso-8859-1"
-      charset = io.scan(/charset="?([^\s"]*)/i).flatten.inject(Hash.new{0}){|a, b|
+      charset = read.scan(/charset="?([^\s"]*)/i).flatten.inject(Hash.new{0}){|a, b|
         a[b]+=1
         a
       }.to_a.sort_by{|a|
         a[1]
       }.reverse.first[0]
     end
-    doc = Nokogiri.HTML(io.read)
+    doc = Nokogiri.HTML(read)
     self.title = doc.xpath('//title/text()').text.encode('utf-8')
     self.url = url
     doc.css('meta').each do |m|
