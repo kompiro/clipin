@@ -179,6 +179,13 @@ describe Clip do
         it                 {@result.should be_true}
         its(:title)        {should == "TV初「モテキ」漫画家・久保ミツロウが大暴れ!!\n      - YouTube"}
       end
+      describe 'load tumblr content' do
+        let(:file)         {'tumblr.html'}
+        let(:url)          {'http://sinjow.tumblr.com/post/23523733772/mixi-sns-twitter-140'}
+        let(:charset)      {'utf-8'}
+        it                 {@result.should be_true}
+        its(:title)        {should == "散歩男爵Tumblaneur | mixiがコケた教訓って「SNSは余計なお世話をするな」ってことだな。Twitterは140字縛りを崩..."}
+      end
     end
   end
   context 'pinned' do
