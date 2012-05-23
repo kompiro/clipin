@@ -36,13 +36,13 @@ class Clip < ActiveRecord::Base
         a[1]
       }.reverse.first[0]
     end
-    doc = Nokogiri.HTML(io.read,url,charset)
-    self.title = doc.xpath('//title/text()').to_s.encode('utf-8')
+    doc = Nokogiri.HTML(io.read)
+    self.title = doc.xpath('//title/text()').text.encode('utf-8')
     self.url = url
     doc.css('meta').each do |m|
       prop = m.attribute('property')
       if prop
-        content = m.attribute('content').to_s.encode('utf-8')
+        content = m.attribute('content').text.encode('utf-8')
         if prop.to_s.match(/^og:type/i)
           self.og_type = content
         end
@@ -55,7 +55,7 @@ class Clip < ActiveRecord::Base
       end
     end
     if self.description.nil?
-      self.description = doc.xpath('//meta[@name="description"]/@content').to_s.encode('utf-8')
+      self.description = doc.xpath('//meta[@name="description"]/@content').text.encode('utf-8')
     end
     return true
   end
