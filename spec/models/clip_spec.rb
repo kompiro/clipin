@@ -33,11 +33,13 @@ describe Clip do
   end
   context 'load og content' do
     before do
-      read = mock('open')
       doc = open("#{Rails.root}/spec/support/ogp/#{file}")
-      @clip = Clip.new(:url => url)
-      read.stub(:read).and_return(doc)
+
+      read = mock('open')
+      read.stub(:read).and_return(doc.read)
       read.stub(:charset).and_return(charset)
+
+      @clip = Clip.new(:url => url)
       @clip.stub!(:open).and_return(read)
       @result = @clip.load
     end
@@ -185,6 +187,13 @@ describe Clip do
         let(:charset)      {'utf-8'}
         it                 {@result.should be_true}
         its(:title)        {should == "散歩男爵Tumblaneur | mixiがコケた教訓って「SNSは余計なお世話をするな」ってことだな。Twitterは140字縛りを崩..."}
+      end
+      describe 'load atmarkit content' do
+        let(:file)         {'atmark.html'}
+        let(:url)          {'http://www.atmarkit.co.jp/im/carc/serial/jobjmdl03/jobjmdl03_2.html'}
+        let(:charset)      {'iso-8859-1'}
+        it                 {@result.should be_true}
+        its(:title)        {should == "＠IT：Javaオブジェクトモデリング 第3回"}
       end
     end
   end

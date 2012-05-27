@@ -31,7 +31,7 @@ describe ClipsController do
   # in order to pass any filters (e.g. authentication) defined in
   # ClipsController. Be sure to keep this updated too.
   def valid_session
-    {}
+    {user_id:1}
   end
 
   describe "GET index" do

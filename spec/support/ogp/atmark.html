@@ -1,0 +1,1533 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja"><!-- #BeginTemplate "/Templates/im_carc01.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+
+<TITLE>＠IT：Javaオブジェクトモデリング 第3回</TITLE>
+
+<!-- #EndEditable -->
+<meta http-equiv="content-type" content="text/html;charset=shift_jis">
+<meta http-equiv="content-script-type" content="text/javascript">
+<meta http-equiv="content-style-type" content="text/css">
+<link rel="stylesheet" href="/im/stylesheet/articles.css" type="text/css" media="all">
+<script type="text/javascript" src="/parts/javascript/common/jquery.js"></script>
+<script type="text/javascript" src="/parts/javascript/common/common.js"></script>
+<script type="text/javascript" src="/parts/javascript/bbs_json.js"></script>
+
+</head>
+<body>
+<a name="articletop"></a>
+<!-- wrap -->
+<div id="wrap">
+<div id="gnavi"><ul><li><a href="http://www.atmarkit.co.jp/">＠IT</a></li><li><a href="http://core.atmarkit.co.jp/">＠IT CORE</a></li><li><a href="http://www.atmarkit.co.jp/im/">＠IT情報マネジメント</a></li><li><a href="http://monoist.atmarkit.co.jp/">＠IT MONOist</a></li><li><a href="http://jibun.atmarkit.co.jp/">＠IT自分戦略研究所</a></li><li><a href="http://www.itmedia.co.jp/">ITmedia</a></li><li><a href="http://techtarget.itmedia.co.jp/">TechTarget</a></li><li><a href="http://bizmakoto.jp">誠</a></li><li><a href="http://eetimes.jp/">EE Times</a></li><li><a href="http://ednjapan.cancom-j.com/">EDN Japan</a></li></ul></div>
+<div id="header" class="gnavi-box">
+<div id="header_l"><a href="/im/"><img src="/im/include/header/images/logo_header.gif" alt="＠IT情報マネジメント－情報システムの“企画・導入・設計・運用”の課題を解決する" border="0" style="border: 0px;"></a></div>
+<div id="header_r">
+<div id="search">
+<script type="text/javascript">
+function encuri() {
+	location.replace('/misc/search/search.html?cx=002351675112469469566:kxfahjlc-8o&q=' + encodeURIComponent(document.qform.q.value) + '&cof=FORID%3A9');
+}
+</script>
+<!-- Google CSE Search Box Begins -->
+  <form name="qform" onsubmit="return false;" id="searchbox_002351675112469469566:kxfahjlc-8o" action="">
+    <input type="hidden" name="cx" value="002351675112469469566:kxfahjlc-8o" />
+    <input type="hidden" name="cof" value="FORID:9" />
+    <input name="q" type="text" size="20" onKeyPress="if (event.keyCode == 13) encuri();" />
+    <input type="submit" name="sa" value="検索" onclick="encuri();" />
+  </form>
+  <script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=searchbox_002351675112469469566%3Akxfahjlc-8o"></script>
+<!-- Google CSE Search Box Ends --></div>
+</div>
+<div id="header_ad">
+<!-- ad_start_new -->
+<script language="JavaScript" type="text/javascript">
+   <!--
+   var pid="784200682";
+   var locs="ITN";
+   var random=new Date();
+
+   var js_url='http://dlv.itmedia.jp/adsv/v1?posall='+locs+'&id='+pid+'&t=js&rnd='+random.getTime();
+   document.write('<sc'+'ript language="JavaScript" type="text/javascript" src="'+js_url+'">');
+   document.write('</sc'+'ript>');
+   //-->
+</script>
+<noscript>
+ <iframe height=90 width=728 marginwidth=0 marginheight=0 hspace=0
+   vspace=0 frameborder=0 scrolling=no src="http://dlv.itmedia.jp/adsv/v1?posall=ITN&id=784200682">
+ </iframe>
+</noscript>
+<!-- ad_end_new -->
+
+</div>
+</div>
+<div id="navibar">
+<div class="navibar_styl"><a href="http://www.atmarkit.co.jp/">＠IT総合トップ</a> &gt; <a href="/im/index.html">情報マネジメント</a> &gt; <a href="/im/carc/index.html">アーキテクチャ</a> &gt; 
+<!-- #BeginEditable "navititle" -->Javaオブジェクトモデリング 
+      第3回 <!-- #EndEditable --></div>
+</div>
+<!-- main -->
+<div id="main">
+<!-- centercol -->
+<div id="centercol">
+<div id="headmenu-area">
+
+<!-- eventtext-area -->
+
+
+	
+		<div id="eventtext-area"><!-- ad_start_new -->
+<script language="JavaScript" type="text/javascript">
+   <!--
+   var pid="784200682";
+   var locs="ITOT1";
+   var random=new Date();
+
+   var js_url='http://dlv.itmedia.jp/adsv/v1?posall='+locs+'&id='+pid+'&t=js&rnd='+random.getTime();
+   document.write('<sc'+'ript language="JavaScript" type="text/javascript" src="'+js_url+'">');
+   document.write('</sc'+'ript>');
+   //-->
+</script>
+<noscript>
+ <iframe height=19 width=395 marginwidth=0 marginheight=0 hspace=0
+   vspace=0 frameborder=0 scrolling=no src="http://dlv.itmedia.jp/adsv/v1?posall=ITOT1&id=784200682">
+ </iframe>
+</noscript>
+<!-- ad_end_new -->
+</div>
+	
+
+
+<!-- /eventtext-area -->
+
+<!-- socialbtn-area -->
+<div id="socialbtn-area">
+<!-- print -->
+<div class="socialbtn print">
+<a onclick="designCnt('im_print ', location.href);" href="/club/print/print.php" title="印刷"><img src="/include/headmenu/images/ico_printer3.gif" border="0" align="absmiddle" alt="印刷"></a>
+</div>
+<!-- twitter -->
+<div class="socialbtn twitter">
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-lang="ja">Tweet</a>
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js" charset="UTF-8"></script>
+</div>
+<!-- hatebu -->
+<div class="socialbtn hatebu">
+<a href="http://b.hatena.ne.jp/entry/http://www.atmarkit.co.jp/im/carc/serial/jobjmdl03/jobjmdl03_2.html" class="hatena-bookmark-button" data-hatena-bookmark-title="＠IT情報マネジメント" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加" data-hatena-bookmark-mode="popup"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button_wo_al.js" charset="utf-8" async="async"></script>
+</div>
+<!-- facebook like -->
+<div class="socialbtn facebooklike">
+<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.atmarkit.co.jp%2F/im/carc/serial/jobjmdl03/jobjmdl03_2.html&amp;layout=button_count&amp;show_faces=false&amp;width=50&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:105px; height:21px;" allowTransparency="true"></iframe>
+</div>
+</div><!-- /socialbtn-area -->
+
+</div>
+<!-- /headmenu-area -->
+<div id="keyword"><!-- COMPONENT -->
+</div>
+<!-- #BeginEditable "contents" --> 
+      <p><img src="/fjava/devs/jobjmdl01/jobjmdl_gra2.gif" width="100" height="116" align="right"><br>
+        <b>連載<br>
+        <br>
+        Javaオブジェクトモデリング</b></p>
+      <p><font size="+1"><b><font size="+1"><b><font color="#006600" size="3">第3回<br>
+        静的モデル：</font></b></font><font color="#006600" size="3">クラスにおけるUMLとJavaのマッピング（1）</font><font color="#006600"><br>
+        <br>
+        </font></b></font></p>
+      <table width="480" border="0" cellspacing="0" cellpadding="4">
+        <tr> 
+          <td bgcolor="#006600"><b><font color="#FFFFFF"><a name="2"></a>2.UMLの 
+            “クラス”</font></b></td>
+        </tr>
+      </table>
+      <br>
+      <div id="crec">
+<dl>
+<dt>- PR -</dt>
+<dd><!-- ad_start_new -->
+<script language="JavaScript" type="text/javascript">
+   <!--
+   var pid="784200682";
+   var locs="ITR";
+   var random=new Date();
+
+   var js_url='http://dlv.itmedia.jp/adsv/v1?posall='+locs+'&id='+pid+'&t=js&rnd='+random.getTime();
+   document.write('<sc'+'ript language="JavaScript" type="text/javascript" src="'+js_url+'">');
+   document.write('</sc'+'ript>');
+   //-->
+</script>
+<noscript>
+ <iframe height=300 width=300 marginwidth=0 marginheight=0 hspace=0
+   vspace=0 frameborder=0 scrolling=no src="http://dlv.itmedia.jp/adsv/v1?posall=ITR&id=784200682">
+ </iframe>
+</noscript>
+<!-- ad_end_new -->
+</dd>
+</dl>
+</div>
+      　本節ではUMLの “クラス”として、以下の3つの分類子の構造について見ていきます。<b><b></b><font color="#993300"><b><font color="#006600"><br>
+      </font></b></font></b> 
+      <ul>
+        <li>クラス</li>
+        <li>インターフェイス</li>
+        <li>例外<br>
+        </li>
+      </ul>
+      <b><font color="#993300"><b><font color="#006600">■■</font></b></font><b>2.1 
+      </b>クラス</b><b><font color="#993300"><b><font color="#006600">■■</font></b></font></b><br>
+      <br>
+      　クラスは分類子の一種であり、クラス図における中核的なモデル要素です。<br>
+      <br>
+      <b><font color="#006600">●</font>2.1.1 アイコン<br>
+      <br>
+      　 </b>UMLでは、クラスを示すアイコンは、前回ご紹介したとおり<b>図3</b>に示したものです。文章ではなく図なので、大量の情報がコンパクトにまとめられています。<br>
+      <br>
+      <table border="0" cellspacing="0" cellpadding="4" align="center">
+        <tr> 
+          <td><img src="/fjava/devs/jobjmdl03/fig3.gif" width="443" height="238"></td>
+        </tr>
+        <tr> 
+          <td><font size="2"><b>図3　クラスアイコン</b></font></td>
+        </tr>
+      </table>
+      <br>
+      　クラスアイコンは、複数の区画から構成されます。1番上にあるのが「名前区画（name compartment）」です。その下に、属性用の「並び区画（list 
+      compartment）」、オペレーション用の並び区画が続いています。並び区画は利用者の目的によっていくつ使ってもよいのですが、属性用とオペレーション用のものがUMLの標準仕様で定義されています。<br>
+      <br>
+      <b><font color="#006600">●</font>2.1.2 メタモデル</b><br>
+      <br>
+      　クラスアイコンから分かるUMLクラスのメタモデルは<b>図4</b>となります。このメタモデルを前提に、UMLクラスの構成について調べていきましょう。なお、このメタモデルは本連載の説明用のもので、UMLの定義する正式なメタモデルとは異なっています。<br>
+      <br>
+      <table border="0" cellspacing="0" cellpadding="4" align="center">
+        <tr> 
+          <td><img src="/fjava/devs/jobjmdl03/fig4.gif" width="490" height="342"></td>
+        </tr>
+        <tr> 
+          <td><font size="2"><b>図4　クラスメタモデル</b></font></td>
+        </tr>
+      </table>
+      <br>
+      　<b>図4</b>のUMLクラスのメタモデルは、UMLクラスが以下の構造になっていることを示しています。 
+      <ul>
+        <li>パッケージに所属していないか、1つのパッケージに所属しているかのいずれか</li>
+        <li>1つの可視性を持っている</li>
+        <li>1つのクラス名を持っている</li>
+        <li>ステレオタイプを0個以上複数個持っている</li>
+        <li>要素プロパティを1つ持っていることがある</li>
+        <li>要素プロパティは0個以上複数個のプロパティを持っている</li>
+        <li>0個以上複数個の属性を持っている</li>
+        <li>0個以上複数個のオペレーションを持っている<br>
+        </li>
+      </ul>
+      　ステレオタイプはクラスの種類を指定するためのモデル要素です。指定できるステレオタイプの個数はUML 1.3では1つのみでしたが、UML 1.4より 
+      複数のステレオタイプが指定できるようになりました。とはいえ、通常は複数のステレオタイプを同時に使用することはあまり多くないでしょう。<br>
+      <br>
+      　UMLのクラスはオブジェクト指向という観点から見るとオーソドックスな構成になっています。ステレオタイプや要素プロパティといった拡張機構を使って、クラスをチューニングして使用することが前提になっているわけです。<br>
+      <br>
+      <b><font color="#006600">●</font>2.1.3 ステレオタイプ</b><br>
+      <br>
+      　下記の表にUMLの標準仕様で定められているクラス用の標準ステレオタイプを示します。下記の表では、ステレオタイプとその意味に加えて、UML1.3およびUML1.4での定義状況、Javaでの利用とその理由を示しています。<br>
+      <br>
+      <table width="480" border="0" cellspacing="3" cellpadding="2" align="center">
+        <tr bgcolor="#006600"> 
+          <td><b><font color="#FFFFFF" size="2">ステレオタイプ</font></b></td>
+          <td><b><font color="#FFFFFF" size="2">意味</font></b></td>
+          <td><b><font color="#FFFFFF" size="2">1.3</font></b></td>
+          <td><font color="#FFFFFF" size="2"><b>1.4</b></font></td>
+          <td width="35"><b><font color="#FFFFFF" size="2">Java</font></b></td>
+          <td><b><font color="#FFFFFF" size="2">理由</font></b></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">metaClass</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">メタクラス</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">Javaに対応機能あり</font></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top" bgcolor="#CCCCCC"><font size="2">powertype</font></td>
+          <td valign="top" bgcolor="#CCCCCC"><font size="2">パワータイプ</font></td>
+          <td valign="top" bgcolor="#CCCCCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#CCCCCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#CCCCCC"><font size="2">-</font></td>
+          <td valign="top" bgcolor="#CCCCCC"><font size="2">Javaの言語仕様外</font></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">process</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">重量な実行コンテキスト(UNIXのプロセスに相当)</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">-</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">Javaの言語仕様外</font></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top"><font size="2">thread</font></td>
+          <td valign="top"><font size="2">軽量な実行コンテキスト(UNIXのスレッドに相当)</font></td>
+          <td valign="top"><font size="2">○</font></td>
+          <td valign="top"><font size="2">○</font></td>
+          <td valign="top"><font size="2">○</font></td>
+          <td valign="top"><font size="2">Javaに対応機能あり</font></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">utility</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">ユーティリティ</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">◎</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">Javaで実装可能</font></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top"><font size="2">auxility</font></td>
+          <td valign="top"><font size="2">補助的に用いられるクラス</font></td>
+          <td valign="top"><font size="2">-</font></td>
+          <td valign="top"><font size="2">○</font></td>
+          <td valign="top"><font size="2">△</font></td>
+          <td valign="top"><font size="2">補助的に利用</font></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">focus</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">コアロジックやコアコントロールフローを定義するためのクラ 
+            ス</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">-</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">△</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">補助的に利用</font></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top"><font size="2">implementation</font></td>
+          <td valign="top"><font size="2">実装クラス</font></td>
+          <td valign="top"><font size="2">-</font></td>
+          <td valign="top"><font size="2">○</font></td>
+          <td valign="top"><font size="2">-</font></td>
+          <td valign="top"><font size="2">分析モデルと設計モデルの関係を示す場合に利 用</font></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">implementation<br>
+            Class</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">実装クラス</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">-</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">-</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">分析モデルと設計モデルの関係を示す場合に利 
+            用</font></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top"><font size="2">type</font></td>
+          <td valign="top"><font size="2">タイプ</font></td>
+          <td valign="top"><font size="2">○</font></td>
+          <td valign="top"><font size="2">○</font></td>
+          <td valign="top"><font size="2">-</font></td>
+          <td valign="top"><font size="2">分析モデルと設計モデルの関係を示す場合に利 用</font></td>
+        </tr>
+      </table>
+      <br>
+      　これらの標準ステレオタイプから、Java向けの設計モデルで利用するものを絞り込みます。<br>
+      <br>
+      　 typeとimplementationClass（UML 1.4ではimplementation）は、分析レベルのクラス（type）と設計レベルのクラス（implementationClass）を対比させる場合に使用するステレオタイプです。Javaの設計モデルに直接利用することはあまりないので、本連載の検討対象とはしません。<br>
+      <br>
+      　 metaClassは、「そのインスタンスがクラスであるクラス」、すなわちメタクラスを示すステレオタイプです。Javaではjava.lang.Classがこのメタクラスに相当します。Smalltalkなどの言語ではメタクラスを操作することでさまざまなテクニックを用いることができるのですが、Javaではメタクラスを直接操作するような処理を行うことができないため、設計モデルの作成においてはあまり重要度の高いモデル要素ではありません。<br>
+      <br>
+      　 powertypeは、「そのインスタンスがほかのタイプのサブタイプであるタイプ」、すなわちパワータイプを示すステレオタイプです。分析レベルのステレオタイプなので、本連載の検討対象外です。<br>
+      <br>
+      　 processは “重要な実行コンテキスト”というと分かりにくいですが、UNIXにおけるプロセスに相当する実行単位を示すステレオタイプです。Javaのクラスには直接相当する機能がないので、本連載の検討対象外です。 
+      <br>
+      <br>
+      　 threadはUNIXにおけるスレッドに相当する実行単位を示すステレオタイプです。Javaではjava.lang.Treadを用いて実現することができます。。<br>
+      <br>
+      　 utilityは、インスタンスオブジェクトを持たず、クラススコープのオペレーションや属性を持つクラスです。Javaで直接相当する言語仕様はありませんが、Javaで実装することは可能です。<br>
+      <br>
+      　 auxilityとfocusはUML 1.4で新規に導入されたステレオタイプです。この2つのステレオタイプはJavaの設計モデルでも利用できますが補助的に用いられるものであり、UMLとJavaとのマッピングには影響を与えないと考えられるので、本連載の検討対象とはしません。<br>
+      <br>
+      　 以上の検討の結果、本連載で検討対象とするクラス用ステレオタイプは以下のものとなります。<br>
+      <ul>
+        <li>metaClass</li>
+        <li>thread</li>
+        <li>utility<br>
+        </li>
+      </ul>
+      <table width="95%" border="0" cellspacing="0" cellpadding="6" bgcolor="#FFFF99">
+        <tr> 
+          <td> 
+            <div align="center"><b><font size="2">クラスの標準ステレオタイプ</font></b></div>
+          </td>
+        </tr>
+        <tr> 
+          <td><font size="2">　UMLのメタモデル上は、クラスは分類子の一種となっています。分類子はmetaClass、 powertype、 
+            process、 thread、 utilityの5つのステレオタイプを 定義しており、このステレオタイプがそのままクラスにも引き継がれています。クラス自身はauxility（UML 
+            1.4）、 focus（UML 1.4）、 implementation（UML 1.4）、 implementationClass（UML 
+            1.3）、 typeのステレオタイプを定義しています。 <br>
+            <br>
+            　 以上の結果として、クラスはUML 1.3ではmetaClass、 powertype、 process、 thread、 utility、 
+            implementationClass、 typeの7つのステレオタイプ、UML 1.4ではmetaClass、 powertype、 
+            process、 thread、 utility、 auxility、 focus、 implementation、 typeの9つのステレオタイプが定義されていることになります。 
+            <br>
+            <br>
+            　 もちろん、これらのステレオタイプは常に用いなければならないというわけではなく、対象となるモデルによって取捨選択を行います。本連載のターゲットはJavaによる実装のための設計モデルですから、この方針にのっとって利用するステレオタイプを決めていきます。<br>
+            <br>
+            </font></td>
+        </tr>
+      </table>
+      <b><br>
+      <font color="#006600">●</font>2.1.4 プロパティ</b> <br>
+      <br>
+      　 UMLの仕様上は要素プロパティにはタグ付き値（tagged value）と制約（constraint）が格納されますが、これらを総称して本連載では「プロパティ」と呼ぶことにします。下記の表にUMLの標準仕様で定められているクラス用のプロパティを示します。表では、ステレオタイプとその意味に加えて、UML1.3およびUML1.4での定義状況、Javaでの利用とその理由を示しています。<br>
+      <br>
+      <table width="480" border="0" cellspacing="3" cellpadding="2" align="center">
+        <tr bgcolor="#006600"> 
+          <td><b><font color="#FFFFFF" size="2">プロパティ</font></b></td>
+          <td><b><font color="#FFFFFF" size="2">意味</font></b></td>
+          <td><b><font color="#FFFFFF" size="2">1.3</font></b></td>
+          <td><font color="#FFFFFF" size="2"><b>1.4</b></font></td>
+          <td><b><font color="#FFFFFF" size="2">Java</font></b></td>
+          <td><b><font color="#FFFFFF" size="2">理由</font></b></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">active</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">アクティブオブジェクト</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">△</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">Javaに対応機能あり</font></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top" bgcolor="#CCCCCC"><font size="2">root</font></td>
+          <td valign="top" bgcolor="#CCCCCC"><font size="2">汎化のルートクラス</font></td>
+          <td valign="top" bgcolor="#CCCCCC" width="30"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#CCCCCC" width="26"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#CCCCCC"><font size="2">△</font></td>
+          <td valign="top" bgcolor="#CCCCCC"><font size="2">参考情報</font></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">leaf</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">汎化のリーフクラス</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">△</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">Javaに対応機能あり</font></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top"><font size="2">abstract</font></td>
+          <td valign="top"><font size="2">抽象クラス</font></td>
+          <td valign="top"><font size="2">○</font></td>
+          <td valign="top"><font size="2">○</font></td>
+          <td valign="top"><font size="2">◎</font></td>
+          <td valign="top"><font size="2">Javaに対応機能あり</font></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">persistence</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">オブジェクトの永続化の状態を示す(transitoryまたはpersistent)</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">-</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">△</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">Java対応のオブジェクト指向データベースで利用</font></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top"><font size="2">semantics</font></td>
+          <td valign="top"><font size="2">意味規定</font></td>
+          <td valign="top"><font size="2">○</font></td>
+          <td valign="top"><font size="2">○</font></td>
+          <td valign="top"><font size="2">-</font></td>
+          <td valign="top"><font size="2">メタモデル</font></td>
+        </tr>
+      </table>
+      <br>
+      　activeは、スレッドを内蔵したオブジェクトであり、いわゆるアクティブオブジェクトを示します。Javaではマルチスレッドによる実装で実現することができます。<br>
+      <br>
+      　 rootは、クラスがルートクラスであることを示します。Javaではjava.lang.Objectがすべてのクラスのルートクラスなので、rootの性質を指定できる対象となります。<br>
+      <br>
+      　 leafは、クラスがサブクラスを持たない継承の末端にあることを示します。Javaでは修飾子finalで表現することができます。<br>
+      <br>
+      　 abstractは、クラスが抽象クラスであることを示します。Javaでは修飾子abstractで表現することができます。<br>
+      <br>
+      　 persistenceは、オブジェクトの永続性に関する状態を示します。値としてtransitoryまたはpersistentを指定します。transitoryは永続化対象外のオブジェクト、persistentは永続化対象のオブジェクトを示します。 
+      <br>
+      <br>
+      　 semanticsは、メタレベルの情報であり、Javaとのマッピングには無関係なので、本連載では検討対象外とします。<br>
+      <br>
+      　 以上の検討の結果、本連載で検討対象とするクラス用プロパティは以下のものとなります。<br>
+      <ul>
+        <li>active</li>
+        <li>root</li>
+        <li>leaf</li>
+        <li>abstract</li>
+        <li>persistence<br>
+        </li>
+      </ul>
+      <table width="95%" border="0" cellspacing="0" cellpadding="6" bgcolor="#FFFF99">
+        <tr> 
+          <td> 
+            <div align="center"><b><font size="2">プロパティ</font></b></div>
+          </td>
+        </tr>
+        <tr> 
+          <td> <font size="2">　クラスの要素プロパティにクラスの性質を示すための情報を記述することができます。また属性やオペレーションのプロパティ文字列も同様の機能を持っています。<br>
+            <br>
+            　 UMLの正式の仕様では、要素プロパティやプロパティ文字列には、制約（constraint）またはタグ付き値（tagged value）が設定されます。厳密な議論をする場合には、制約とタグ付き値を区別する必要がありますが、本連載では分かりやすさを重視して、要素プロパティおよびプロパティ文字列に格納される制約およびタグ付き値を総称して「プロパティ」と呼ぶことにします。</font></td>
+        </tr>
+      </table>
+      <b><br>
+      <font color="#006600">●</font>2.1.5 Javaで利用するUMLクラスの種類<br>
+      <br>
+      　 </b>UMLにおける “クラス”は、ステレオタイプやプロパティによってさまざまな意味や機能を付加することができます。UMLの “クラス”であるクラス、インターフェイス、例外とステレオタイプの関係は下記の表に示しました。インターフェイスと例外にmetaClass、 
+      thread、 utilityというステレオタイプを使用することはないので、結果として以下の種類の“クラス”が利用可能ということになります。<br>
+      <ul>
+        <li>（ステレオタイプのない）普通のクラス</li>
+        <li>ステレオタイプmetaClassのクラス</li>
+        <li>ステレオタイプthreadのクラス</li>
+        <li>ステレオタイプutilityのクラス</li>
+        <li>インターフェイス</li>
+        <li>例外<br>
+        </li>
+      </ul>
+      <table width="480" border="0" cellspacing="3" cellpadding="2" align="center">
+        <tr bgcolor="#FFFFFF"> 
+          <td><b><font size="2"></font></b></td>
+          <td colspan="4"><b><font color="#000000" size="2">ステレオタイプ</font></b></td>
+        </tr>
+        <tr bgcolor="#006600"> 
+          <td valign="top" bgcolor="#FFFFFF"><b><font size="2">“クラス”</font></b></td>
+          <td><b><font size="2" color="#FFFFFF">なし</font></b></td>
+          <td><b><font size="2" color="#FFFFFF">metaClass</font></b></td>
+          <td><b><font size="2" color="#FFFFFF">thread</font></b></td>
+          <td><b><font size="2" color="#FFFFFF">utility</font></b></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top" bgcolor="#006600"><b><font size="2" color="#FFFFFF">クラス</font></b></td>
+          <td valign="top" bgcolor="#CCCCCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#CCCCCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#CCCCCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#CCCCCC"><font size="2">○</font></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top" bgcolor="#006600"><b><font size="2" color="#FFFFFF">インターフェイス</font></b></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">-</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">-</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">-</font></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top" bgcolor="#006600"><b><font size="2" color="#FFFFFF">例外</font></b></td>
+          <td valign="top"><font size="2">○</font></td>
+          <td valign="top"><font size="2">-</font></td>
+          <td valign="top"><font size="2">-</font></td>
+          <td valign="top"><font size="2">-</font></td>
+        </tr>
+      </table>
+      <br>
+      　UMLの“クラス”であるクラス、インターフェイス、例外とプロパティの関係は次の表に示します。クラスはすべてのプロパティを設定可能です。インターフェイスは意味的にはrootとleafが設定可能になります。例外は基本的にはクラスと同様ですが指定して意味があるプロパティはroot、leaf、abstractとなります。 
+      <br>
+      <br>
+      <table width="480" border="0" cellspacing="3" cellpadding="2" align="center">
+        <tr bgcolor="#006600"> 
+          <td bgcolor="#FFFFFF"><b><font size="2"></font></b></td>
+          <td colspan="5" bgcolor="#FFFFFF"><b><font size="2">プロパティ</font></b></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top" bgcolor="#FFFFFF"><b><font size="2">“クラス”</font></b></td>
+          <td bgcolor="#006600"><b><font color="#FFFFFF" size="2">active</font></b></td>
+          <td bgcolor="#006600"><b><font color="#FFFFFF" size="2">root</font></b></td>
+          <td bgcolor="#006600"><b><font color="#FFFFFF" size="2">leaf</font></b></td>
+          <td bgcolor="#006600"><b><font color="#FFFFFF" size="2">abstract</font></b></td>
+          <td bgcolor="#006600"><b><font color="#FFFFFF" size="2">persistence</font></b></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top" bgcolor="#006600"><b><font size="2" color="#FFFFFF">クラス</font></b></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top" bgcolor="#006600"><b><font size="2" color="#FFFFFF">インターフェイス</font></b></td>
+          <td valign="top"><font size="2">-</font></td>
+          <td valign="top"><font size="2">○</font></td>
+          <td valign="top"><font size="2">○</font></td>
+          <td valign="top"><font size="2">-</font></td>
+          <td valign="top"><font size="2">-</font></td>
+        </tr>
+        <tr bgcolor="#CCCCCC"> 
+          <td valign="top" bgcolor="#006600"><b><font size="2" color="#FFFFFF">例外</font></b></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">-</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">○</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">-</font></td>
+          <td valign="top" bgcolor="#FFFFCC"><font size="2">△</font></td>
+        </tr>
+      </table>
+      <br>
+      <table width="100%" border="0">
+        <tr> 
+          <td width="44%" align="LEFT"><a href="/fjava/devs/jobjmdl03/jobjmdl03_1.html"><img src="/images/prev.gif" width="88" height="17" border="0"></a></td>
+          <td width="7%" align="LEFT"> 
+            <div align="LEFT"><b>2/4</b></div>
+          </td>
+          <td width="49%" align="RIGHT"><b><a href="/fjava/devs/jobjmdl03/jobjmdl03_3.html"><img src="/images/next.gif" width="85" height="17" border="0"></a></b></td>
+        </tr>
+      </table>
+      <br>
+      <table border="0" cellspacing="0" cellpadding="4" width="363" align="center" height="100%">
+        <tr bgcolor="#006600"> 
+          <td colspan="2"><font size="2"><b><font color="#FFFFFF">Javaオブジェクトモデリング　第3回</font></b></font></td>
+        </tr>
+        <tr bgcolor="#CCCC99"> 
+          <td valign="top" width="6%">　</td>
+          <td width="94%"><font size="2"><a href="/fjava/devs/jobjmdl03/jobjmdl03_1.html"><b>分類子と“クラス”</b></a></font></td>
+        </tr>
+        <tr bgcolor="#CCCC99"> 
+          <td valign="top" width="6%"><font size="2"><img src="/images/thispag2.gif" width="12" height="12"></font></td>
+          <td width="94%" bgcolor="#CCCC99"><a href="/fjava/devs/jobjmdl03/jobjmdl03_2.html"><font size="2"><b>UMLの“クラス”（1）</b></font></a></td>
+        </tr>
+        <tr bgcolor="#CCCC99"> 
+          <td valign="top" width="6%">　</td>
+          <td width="94%"><a href="/fjava/devs/jobjmdl03/jobjmdl03_3.html"><font size="2"><b>UMLの“クラス”（2）</b></font></a></td>
+        </tr>
+        <tr bgcolor="#CCCC99"> 
+          <td valign="top" width="6%">　</td>
+          <td width="94%"><font size="2"><a href="/fjava/devs/jobjmdl03/jobjmdl03_4.html"><b>Javaの“クラス”</b></a></font></td>
+        </tr>
+      </table>
+      <br>
+      <br>
+      <table align="left">
+        <tr> 
+          <td><img src="/fjava/devs/jobjmdlindex/backn2.gif" width="137" height="18"></td>
+          <td><b><a href="/fjava/devs/jobjmdlindex/jobjmdindex.html"><font size="2">Javaオブジェクトモデリング 
+            INDEX</font></a></b></td>
+        </tr>
+      </table>
+      <br>
+      <br>
+      <table width="450" border="0" cellspacing="0" cellpadding="0">
+        <tr valign="MIDDLE"> 
+          <td width="139"><font size="2"><b><img src="/images/backn1.gif" width="137" height="18" border="0"></b></font></td>
+          <td width="311"><b><a href="/farc/rensai-index/"><font size="2">IT Architect 
+            連載記事一覧</font></a></b></td>
+        </tr>
+      </table>
+      <!-- #EndEditable -->
+
+<br>
+<div id="frec">
+<!-- ad_start_new -->
+<script language="JavaScript" type="text/javascript">
+   <!--
+   var pid="784200682";
+   var locs="ITF";
+   var random=new Date();
+
+   var js_url='http://dlv.itmedia.jp/adsv/v1?posall='+locs+'&id='+pid+'&t=js&rnd='+random.getTime();
+   document.write('<sc'+'ript language="JavaScript" type="text/javascript" src="'+js_url+'">');
+   document.write('</sc'+'ript>');
+   //-->
+</script>
+<noscript>
+ <iframe height=300 width=500 marginwidth=0 marginheight=0 hspace=0
+   vspace=0 frameborder=0 scrolling=no src="http://dlv.itmedia.jp/adsv/v1?posall=ITF&id=784200682">
+ </iframe>
+</noscript>
+<!-- ad_end_new -->
+
+</div>
+<div class="newziaBox newzia_wp">
+<h3>ホワイトペーパー<small>（<a href="http://wp.techtarget.itmedia.co.jp/">TechTargetジャパン</a>）</small></h3>
+<script charset="utf-8" src="http://connect.newzia.jp/channels/179/script.js" type="text/javascript"></script>
+<script charset="utf-8" src="http://connect.newzia.jp/channels/180/script.js" type="text/javascript"></script>
+</div>
+
+<div class="btmlist">
+<div class="title">アーキテクチャ 新着記事</div>
+<ul>
+<li><a href="/im/carc/special/fivemodeling/00.html">5分で絶対に分かるモデリング</a></li>
+<li><a href="/im/carc/serial/analysis/04/01.html">現場調査の成功は、実施日の選択次第</a></li>
+<li><a href="/im/carc/serial/siyou/03/01.html">“実行可能な仕様書のライブラリ”を知的社会資本に</a></li>
+<li><a href="/im/carc/serial/userprincipal/02/01.html">ビジネス価値の見極めが、開発効率を決める</a></li>
+<li><a href="/im/carc/serial/siyou/02/01.html">実行可能な仕様書は“設計できるプログラマ”が書く</a></li>
+</ul>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr> 
+<td bgcolor="#006699"><img src="/include/footer/images/dotclear.gif" width="1" height="1"></td>
+</tr>
+<tr><td bgcolor="#EEEEEE"> 
+<table border="0" cellpadding="0" cellspacing="4">
+<tr> 
+<td><font size="2"><a href="/applymember/club/mail_news.html"><b>＠IT情報マネジメント メールマガジン</b></a>　情報マネージャのための情報源（無料）</font></td>
+</tr>
+<tr> 
+<form action="/applymember/regist/terms.php" method="post">
+<td><font size="2"> 
+<input name="e_mail" type="text" value="メールアドレスを入力してください" size="50" onFocus="if (this.value=='メールアドレスを入力してください') {this.value='';}">
+<input type="hidden" name="opt[]" value="100">
+<input type="hidden" name="opt[]" value="81">
+<input type="hidden" name="opt[]" value="99">
+<input type="hidden" name="opt[]" value="77">
+<input type="submit" value="申し込み">
+</font></td>
+</form>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td bgcolor="#006699"><img src="/include/footer/images/dotclear.gif" width="1" height="1"></td></tr>
+</table>
+<br>
+<div class="btmlist">
+<div class="title">＠IT情報マネジメント 新着記事</div>
+<ul>
+<li><a href="/im/cits/serial/innovator/08/01.html">ITリーダーは、“IT部門本来の使命”を実現せよ</a></li>
+<li><a href="/im/fa/serial/excel/01/01.html">私たちがExcelをこれほど使う理由</a></li>
+<li><a href="/im/cits/serial/cmmi/02/01.html">“開発のよくある問題”を解決するCMMIの3大メリット</a></li>
+<li><a href="/im/cits/serial/bookguide/90/01.html">ナイトライダーも示唆する人とシステムのあるべき関係</a></li>
+<li><a href="/im/cits/serial/dilbert/267/01.html">上司には、真実を告げてはいけない</a></li>
+<li><a href="/im/fa/serial/fsa_ifrs/16/01.html">サントリー、出光、東京ガス IFRS対応の近未来は</a></li>
+<li><a href="/im/cits/serial/bookguide/89/01.html">アップルが成功し、ソニーが失敗した理由</a></li>
+<li><a href="/im/cits/serial/dilbert/266/01.html">「Photoshop」という言葉を悪口に使ってはいけない</a></li>
+<li><a href="/im/cits/serial/smb/54/01.html">IT関係者は、原発事故から何を学ぶべきか</a></li>
+<li><a href="/im/cits/serial/bizknowledge/09/01.html">顧客の囲い込みに、ITが不可欠となる教育業</a></li>
+</ul>
+</div>
+<br>
+<div class="managemail"><b>この記事に対するご意見をお寄せください</b>　<a href="m&#97;i&#108;&#116;&#111;&#58;&#109;a&#110;&#97;g&#101;&#109;ai&#108;&#64;&#97;&#116;&#109;&#97;r&#107;it.&#99;&#111;.&#106;p">&#109;a&#110;&#97;g&#101;&#109;ai&#108;&#64;&#97;&#116;&#109;&#97;r&#107;it.&#99;&#111;.&#106;p</a></div>
+
+
+<div id="btm-ttwpjob">
+<h3>キャリアアップ</h3>
+<script type="text/javascript" src="/parts/include/atit/btmtxt_job.txt"></script>
+</div>
+</div>
+<!-- centercol end -->
+<!-- rightcol -->
+<div id="rightcol">
+
+
+
+<p id="rightlogo"><a href="/im/carc/"><img src="/parts/images/im/carc_logo_s.gif" alt="アーキテクチャ" border="0"></a></p>
+ 
+
+<div id="sponsor">
+<h2>スポンサーからのお知らせ</h2>
+<div>
+
+
+<span><!-- ad_start_new -->
+<script language="JavaScript" type="text/javascript">
+   <!--
+   var pid="784200682";
+   var locs="ITTI1";
+   var random=new Date();
+
+   var js_url='http://dlv.itmedia.jp/adsv/v1?posall='+locs+'&id='+pid+'&t=js&rnd='+random.getTime();
+   document.write('<sc'+'ript language="JavaScript" type="text/javascript" src="'+js_url+'">');
+   document.write('</sc'+'ript>');
+   //-->
+</script>
+<noscript>
+ <iframe height=48 width=284 marginwidth=0 marginheight=0 hspace=0
+   vspace=0 frameborder=0 scrolling=no src="http://dlv.itmedia.jp/adsv/v1?posall=ITTI1&id=784200682">
+ </iframe>
+</noscript>
+<!-- ad_end_new -->
+</span>
+<span><!-- ad_start_new -->
+<script language="JavaScript" type="text/javascript">
+   <!--
+   var pid="784200682";
+   var locs="ITTI2";
+   var random=new Date();
+
+   var js_url='http://dlv.itmedia.jp/adsv/v1?posall='+locs+'&id='+pid+'&t=js&rnd='+random.getTime();
+   document.write('<sc'+'ript language="JavaScript" type="text/javascript" src="'+js_url+'">');
+   document.write('</sc'+'ript>');
+   //-->
+</script>
+<noscript>
+ <iframe height=48 width=284 marginwidth=0 marginheight=0 hspace=0
+   vspace=0 frameborder=0 scrolling=no src="http://dlv.itmedia.jp/adsv/v1?posall=ITTI2&id=784200682">
+ </iframe>
+</noscript>
+<!-- ad_end_new -->
+</span>
+<span><!-- ad_start_new -->
+<script language="JavaScript" type="text/javascript">
+   <!--
+   var pid="784200682";
+   var locs="ITTI3";
+   var random=new Date();
+
+   var js_url='http://dlv.itmedia.jp/adsv/v1?posall='+locs+'&id='+pid+'&t=js&rnd='+random.getTime();
+   document.write('<sc'+'ript language="JavaScript" type="text/javascript" src="'+js_url+'">');
+   document.write('</sc'+'ript>');
+   //-->
+</script>
+<noscript>
+ <iframe height=48 width=284 marginwidth=0 marginheight=0 hspace=0
+   vspace=0 frameborder=0 scrolling=no src="http://dlv.itmedia.jp/adsv/v1?posall=ITTI3&id=784200682">
+ </iframe>
+</noscript>
+<!-- ad_end_new -->
+</span>
+<span><!-- ad_start_new -->
+<script language="JavaScript" type="text/javascript">
+   <!--
+   var pid="784200682";
+   var locs="ITTI4";
+   var random=new Date();
+
+   var js_url='http://dlv.itmedia.jp/adsv/v1?posall='+locs+'&id='+pid+'&t=js&rnd='+random.getTime();
+   document.write('<sc'+'ript language="JavaScript" type="text/javascript" src="'+js_url+'">');
+   document.write('</sc'+'ript>');
+   //-->
+</script>
+<noscript>
+ <iframe height=48 width=284 marginwidth=0 marginheight=0 hspace=0
+   vspace=0 frameborder=0 scrolling=no src="http://dlv.itmedia.jp/adsv/v1?posall=ITTI4&id=784200682">
+ </iframe>
+</noscript>
+<!-- ad_end_new -->
+</span>
+<span><!-- ad_start_new -->
+<script language="JavaScript" type="text/javascript">
+   <!--
+   var pid="784200682";
+   var locs="ITTI5";
+   var random=new Date();
+
+   var js_url='http://dlv.itmedia.jp/adsv/v1?posall='+locs+'&id='+pid+'&t=js&rnd='+random.getTime();
+   document.write('<sc'+'ript language="JavaScript" type="text/javascript" src="'+js_url+'">');
+   document.write('</sc'+'ript>');
+   //-->
+</script>
+<noscript>
+ <iframe height=48 width=284 marginwidth=0 marginheight=0 hspace=0
+   vspace=0 frameborder=0 scrolling=no src="http://dlv.itmedia.jp/adsv/v1?posall=ITTI5&id=784200682">
+ </iframe>
+</noscript>
+<!-- ad_end_new -->
+</span>
+
+</div>
+</div>
+
+
+<!-- AD template start -->
+<style type="text/css"><!--
+#ISALR {
+font-size:12px !important;
+font-family:"ＭＳ Ｐゴシック", Osaka, "ヒラギノ角ゴ Pro W3" !important;
+width:300px !important;
+line-height:14px !important;
+}
+#ISALR a{ text-decoration: none !important;}
+#ISALR a:link{ text-decoration: none !important;}
+#ISALR a:visited{ text-decoration: none !important;}
+#ISALR a:hover{ text-decoration: underline !important;}
+#ISALR .ISALR_newmark {color:red !important;font-weight:bold !important;}
+#ISALR .ISALR_maintitle {background:url(http://img.itmedia.jp/so/p/image/tieup/ISALR_heading_atit.gif) no-repeat 0px 0px #FFF !important;text-indent:-9999px !important;height:22px !important;margin-bottom:0px !important;}
+#ISALR .ISALR_cont {margin:0px 0px 0px 0px !important;padding:8px 0px 8px 6px !important;border-bottom:0px solid #FFF !important;clear:both !important;height:1% !important;}
+#ISALR .ISALR_img {float:left !important;padding-right:6px !important;padding-bottom:0px !important;}
+#ISALR .ISALR_img img {border:0px !important;}
+#ISALR .ISALR_abs {clear:left !important;}
+#ISALR .ISALR_indexLink {text-align:right !important;padding:3px !important;}
+#ISALR .ISALRP_newmark {color:red !important;font-weight:bold !important;}
+#ISALR .ISALRP_maintitle {background:url(http://img.itmedia.jp/so/p/image/tieup/ISALR_heading_atit.gif) no-repeat 0px 0px #FFF !important;text-indent:-9999px !important;height:22px !important;margin-bottom:0px !important;}
+#ISALR .ISALRP_cont {margin:0px 0px 0px 0px !important;padding:8px 0px 8px 6px !important;border-bottom:0px solid #FFF !important;clear:both !important;height:1% !important;}
+#ISALR .ISALRP_img {float:left !important;padding-right:6px !important;padding-bottom:0px !important;}
+#ISALR .ISALRP_img img {border:0px !important;}
+#ISALR .ISALRP_abs {clear:left !important;}
+#ISALR .ISALRP_indexLink {text-align:right !important;padding:3px !important;}
+--></style>
+<div id="ISALR"><div class="ISALR_maintitle">＠IT Sepcial</div>
+<div class="ISALR-body" id="ISALR-body">
+<!-- ad_start_new -->
+<script language="JavaScript" type="text/javascript">
+   <!--
+   var pid="784200682";
+   var locs="10ISALR";
+   var random=new Date();
+
+   var js_url='http://dlv.itmedia.jp/adsv/v1?posall='+locs+'&id='+pid+'&t=js&rnd='+random.getTime();
+   document.write('<sc'+'ript language="JavaScript" type="text/javascript" src="'+js_url+'">');
+   document.write('</sc'+'ript>');
+   //-->
+</script>
+<noscript>
+ <iframe height=102 width=300 marginwidth=0 marginheight=0 hspace=0
+   vspace=0 frameborder=0 scrolling=no src="http://dlv.itmedia.jp/adsv/v1?posall=10ISALR&id=784200682">
+ </iframe>
+</noscript>
+<!-- ad_end_new -->
+
+<!-- ad_start_new -->
+<script language="JavaScript" type="text/javascript">
+   <!--
+   var pid="784200682";
+   var locs="10ISALRP";
+   var random=new Date();
+
+   var js_url='http://dlv.itmedia.jp/adsv/v1?posall='+locs+'&id='+pid+'&t=js&rnd='+random.getTime();
+   document.write('<sc'+'ript language="JavaScript" type="text/javascript" src="'+js_url+'">');
+   document.write('</sc'+'ript>');
+   //-->
+</script>
+<noscript>
+ <iframe height=102 width=300 marginwidth=0 marginheight=0 hspace=0
+   vspace=0 frameborder=0 scrolling=no src="http://dlv.itmedia.jp/adsv/v1?posall=10ISALRP&id=784200682">
+ </iframe>
+</noscript>
+<!-- ad_end_new -->
+
+</div>
+<div class="ISALR_indexLink"><img src="http://img.itmedia.jp/so/p/image/tieup/arrow_white.gif" hspace="1" align="absmiddle" alt="→"> <a href="/ad/adindex/im/pr_specialarchive.html">＠IT情報マネジメント Special ヘ</a></div>
+</div>
+<script type="text/javascript">
+    var addivid = "ISALR";
+    var addividpv = "ISALRP";
+    var adparts = document.getElementById(addivid);
+    var adinhtml = adparts.innerHTML;
+
+    rObj = new RegExp('st=noad.*pos=' + addivid + ' ');
+    rObjP = new RegExp('st=noad.*pos=' + addividpv + ' ');
+    if (adinhtml.match(rObj) && adinhtml.match(rObjP)) {
+        document.getElementById(addivid).style.display="none";
+    } else {
+        var aditems = adArraySort(addivid + "_cont");
+        var aditemspv = adArraySort(addividpv + "_cont");
+        document.getElementById(addivid + "-body").innerHTML += aditems;
+        document.getElementById(addivid + "-body").innerHTML += aditemspv;
+    }
+
+    var adnowtime = adgetUnixTime();
+    adnowtime = adnowtime - ( 86400 * 3 ) ;
+    var admatch_str = "^<!-- ([0-9]+) -->$";
+    var adinhtmlspan = adparts.getElementsByTagName("span");
+
+    for (var adtie=0; adtie < adinhtmlspan.length; adtie++) {
+        var adtext = adinhtmlspan[adtie].innerHTML;
+        var admatch_ret = new RegExp(admatch_str).exec(adtext);
+        if ( admatch_ret && adnowtime <= admatch_ret[1] ){
+            adinhtmlspan[adtie].innerHTML = "New!";
+        }
+    }
+    function adgetUnixTime() {
+        return parseInt((new Date)/1000);
+    }
+    function adArraySort(aditem){
+        var adstrtmp = adparts.getElementsByTagName("div");
+        var adstr = new Array();
+        var adremove = new Array();
+
+        for (var adstart=0; adstart < adstrtmp.length; adstart++) {
+            if(adstrtmp[adstart].className == aditem){
+                adstr.push("<div class=" + aditem + ">" + adstrtmp[adstart].innerHTML + "</div>");
+                adremove.push(adstrtmp[adstart]);
+            }
+        }
+        for(var i = 0; i < adremove.length; i++){
+                adremove[i].parentNode.removeChild(adremove[i]);
+        }
+        adstr.sort().reverse();
+        adstr = adstr.join("");
+        return adstr;
+    }
+</script>
+<!-- AD template end -->
+
+
+<!-- EVENTCAL -->
+
+<!-- Event Calender -->
+<div id="calendar" class="rcBox txtTtl"><h2 style="color:#444 !important;">イベントカレンダー</h2>
+<div class="calendarOuter">
+
+<!-- calendar ad -->
+<div id="calendarInnerPR">
+<p>PickUpイベント</p><span class="prmark">- PR -</span>
+<ul>
+<!-- ad_start_new -->
+<script language="JavaScript" type="text/javascript">
+   <!--
+   var pid="784200530";
+   var locs="3ITTE";
+   var random=new Date();
+
+   var js_url='http://dlv.itmedia.jp/adsv/v1?posall='+locs+'&id='+pid+'&t=js&rnd='+random.getTime();
+   document.write('<sc'+'ript language="JavaScript" type="text/javascript" src="'+js_url+'">');
+   document.write('</sc'+'ript>');
+   //-->
+</script>
+<noscript>
+ <iframe height=120 width=290 marginwidth=0 marginheight=0 hspace=0
+   vspace=0 frameborder=0 scrolling=no src="http://dlv.itmedia.jp/adsv/v1?posall=3ITTE&id=784200530">
+ </iframe>
+</noscript>
+<!-- ad_end_new -->
+
+</ul>
+</div>
+
+<script type="text/javascript">
+    var addivid = "calendarInnerPR";
+    var adparts = document.getElementById(addivid);
+    var adinhtml = adparts.innerHTML;
+    rObj = new RegExp('st=noad');
+    if (adinhtml.match(rObj)) {
+        document.getElementById(addivid).style.display="none";
+    }
+</script>
+
+<style type="text/css"><!--
+#calendarInnerPR {
+clear:both;
+background:none transparent;
+margin:0!important;
+padding:0 0 10px !important;
+border:0 none!important;
+position:relative;
+font-size:12px;
+line-height:140%;
+}
+#calendarInnerPR p {
+font-weight:bold;
+background:url(http://img.itmedia.jp/so/p/image/i_arow.gif) no-repeat 4px 7px!important;
+padding:5px 0 0 19px;
+font-size:12px;
+letter-spacing: 0.1ex;
+line-height: 140%;
+margin:0;
+}
+#calendarInnerPR span.prmark {
+display:block;
+font-size:9px;
+font-weight:normal;
+color:#444;
+width:35px;
+margin:0;
+padding:0;
+position:absolute;
+top:3px;
+right:0;
+}
+#calendarInnerPR ul {
+border-bottom:0 solid #DDD;
+list-style:none;
+margin:0;
+padding:4px 4px 0;
+}
+#calendarInnerPR ul li {
+background:url(http://img.itmedia.jp/so/p/image/ad_evecal_ulli2.gif) no-repeat 0 1px;
+border-top:0 none;
+border-bottom: 1px dotted #DDD;
+margin-bottom: 0;
+padding: 0 0 0 23px;
+height:24px;
+width:auto;
+overflow: hidden;
+letter-spacing:0.1ex;
+}
+#calendarInnerPR ul li a {
+font-size:12px;
+letter-spacing: 0.1pt;
+padding:1px 0 0;
+text-decoration:none;
+margin:0;
+line-height:23px;
+display:block;
+}
+--></style>
+
+
+<!-- /calendar ad  -->
+
+<div id="calendarInner">
+<p>アクセスランキング</p>
+
+<ul>
+<li><span id="rank1">1位</span><a href="http://www.atmarkit.co.jp/event/calendar/detail.php?event_id=487016">仮想化サミット2012　東京</a></li>
+<li><span id="rank2">2位</span><a href="http://www.atmarkit.co.jp/event/calendar/detail.php?event_id=487035">ここまで来た高機能部品！スマホ・クラウ…</a></li>
+<li><span id="rank3">3位</span><a href="http://www.atmarkit.co.jp/event/calendar/detail.php?event_id=491401"> 【デモで徹底解説】VMware vSphereの潜在…</a></li>
+<li><span id="rank4">4位</span><a href="http://www.atmarkit.co.jp/event/calendar/detail.php?event_id=486954">クラウドビジネスメッセ in 名古屋</a></li>
+<li><span id="rank5">5位</span><a href="http://www.atmarkit.co.jp/event/calendar/detail.php?event_id=477570">論理的文章作成基礎</a></li>
+</ul>
+
+
+</div>
+<span class="cal-bt"><a href="http://www.atmarkit.co.jp/event/" target="_blank">もっと見る</a></span>
+</div>
+</div>
+<!-- Event Calender end -->
+
+<!-- /EVENTCAL -->
+
+<div id="job-info" class="rcBox txtTtl">
+<h2>転職／派遣情報を探す</h2>
+<div>
+<p><a href="http://www.atmarkit.co.jp/job/jc/" class="icon" onclick="designCnt('atit_rcelinfo_job_ico' , this.href);">
+<img src="http://jibun.atmarkit.co.jp/info/job_new/job02.jpg" alt="エンジニアの求人情報、ただいま増加中" height=40 width=40>
+</a>
+<span class="job-textinfo">
+<a href="http://www.atmarkit.co.jp/job/jc/" onclick="designCnt('atit_rcelinfo_job',this.href);">
+<strong>エンジニアの求人情報、ただいま増加中</strong><br>
+【転職サーチ】SIer／Web企業／新規事業<br>
+スマホ開発で、あなたのキャリアを生かす<br>
+</a></span>
+</p>
+<p><a href="http://www.atmarkit.co.jp/job/jt/aud/index.php" class="icon" onclick="designCnt('atit_rcelinfo_job_ico' , this.href);">
+<img src="http://jibun.atmarkit.co.jp/info/job_new/job.jpg" alt="派遣エンジニアにお役立ちの仕事情報" height=40 width=40>
+</a>
+<span class="job-textinfo">
+<a href="http://www.atmarkit.co.jp/job/jt/aud/index.php" onclick="designCnt('atit_rcelinfo_job',this.href);">
+<strong>派遣エンジニアにお役立ちの仕事情報</strong><br>
+「派遣・フリーで働くメリット」とは？<br>
+活躍する派遣エンジニアの本音<br>
+</a></span>
+</p>
+<p class="job-link">
+<a href="http://jibun.atmarkit.co.jp/lcareer01/" onclick="designCnt('atit_rcelinfo', this.href)">エンジニアのキャリア実現を応援します</a>
+</p></div>
+</div>
+
+<div id="ji-skill">
+<h4><img src="/include/rightmenu/images/ttl_skillup_300.gif" alt="スキルアップ　～＠IT自分戦略研究所" width="300" height="21" vspace="5"></h4>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/misc/ct.php?id=TR840400">
+ITトレメ 「ビジネス基礎」シリーズ開始<br>
+「マナー＆コミュニケーション編」「法律・知財・債権管理編」</a></li>
+</ul>
+<h5>*＊先週の人気講座ランキング＊*<br>
+<small>～ Android編 ～</small></h5>
+<ul class="skill-rank">
+<li><strong id="rank1">1位</strong><a href="http://jibun.atmarkit.co.jp/scenter/learning/learning_n_k_Android%83A%83v%83%8A%83P%81%5B%83V%83%87%83%93%8AJ%94%AD%93%FC%96%E5.html">Androidアプリケーション開発入門【株式会社ナレッジエックス】</a><br class="clearfix"></li>
+<li><strong id="rank2">2位</strong><a href="http://jibun.atmarkit.co.jp/scenter/learning/learning_n_k_Android%83A%83v%83%8A%83P%81%5B%83V%83%87%83%93%8AJ%94%AD%89%9E%97p.html">Androidアプリケーション開発応用【株式会社カサレアル】</a><br class="clearfix"></li>
+<li><strong id="rank3">3位</strong><a href="http://jibun.atmarkit.co.jp/scenter/learning/learning_n_k_Android%83A%83v%83%8A%83P%81%5B%83V%83%87%83%93%8AJ%94%AD%93%FC%96%E5.html">Androidアプリケーション開発入門【株式会社カサレアル】</a><br class="clearfix"></li>
+</ul>
+</div>
+
+<script type="text/javascript" src="/parts/include/cms/subColseminar.txt"></script>
+<div class="newziaBox newzia_article">
+<h3>TechTargetジャパン</h3>
+<script charset="utf-8" src="http://connect.newzia.jp/channels/182/script.js" type="text/javascript"></script>
+<script charset="utf-8" src="http://connect.newzia.jp/channels/181/script.js" type="text/javascript"></script>
+</div>
+
+<!-- AD template start -->
+<style type="text/css"><!--
+#ISALRU {
+font-size:12px !important;
+font-family:"ＭＳ Ｐゴシック", Osaka, "ヒラギノ角ゴ Pro W3" !important;
+width:390px !important;
+line-height:15px !important;
+font-size:12px !important;
+width:300px !important;
+line-height:15px !important;
+letter-spacing:1px !important;
+}
+#ISALRU a{ text-decoration: none !important;}
+#ISALRU a:link{ text-decoration: none !important;}
+#ISALRU a:visited{ text-decoration: none !important;}
+#ISALRU a:hover{ text-decoration: underline !important;}
+#ISALRU {font-size:12px;width:300px;line-height:15px;letter-spacing:1px;}
+#ISALRU .ISALRU_newmark {color:red;font-weight:bold;}
+#ISALRU .ISALRU_maintitle {background:url(http://img.itmedia.jp/so/p/image/tieup/ISALRU_heading_im.gif) no-repeat 0px 0px #FFF;text-indent:-9999px;height:22px;margin-bottom:0px;}
+#ISALRU .ISALRU_title {}
+#ISALRU .ISALRU_cont {margin:0px 0px 0px 0px;padding:8px 0px 8px 22px;border-bottom:0px solid #FFF;clear:both;height:1%;background:url(http://img.itmedia.jp/so/p/image/tieup/ISALRU_icon_im.gif) no-repeat 0px 10px}
+#ISALRU .ISALRUP_newmark {color:red;font-weight:bold;}
+#ISALRU .ISALRUP_maintitle {background:url(http://img.itmedia.jp/so/p/image/tieup/ISALRU_heading_im.gif) no-repeat 0px 0px #FFF;text-indent:-9999px;height:22px;margin-bottom:0px;}
+#ISALRU .ISALRUP_title {}
+#ISALRU .ISALRUP_cont {margin:0px 0px 0px 0px;padding:8px 0px 8px 22px;border-bottom:0px solid #FFF;clear:both;height:1%;background:url(http://img.itmedia.jp/so/p/image/tieup/ISALRU_icon_im.gif) no-repeat 0px 10px}
+#ISALRU .ISALRU_indexLink {text-align:right;padding:3px;}
+--></style>
+<div id="ISALRU"><div class="ISALRU_maintitle">＠IT Sepcial</div>
+<div class="ISALRU-body" id="ISALRU-body">
+<!-- ad_start_new -->
+<script language="JavaScript" type="text/javascript">
+   <!--
+   var pid="784200682";
+   var locs="20ISALRU";
+   var random=new Date();
+
+   var js_url='http://dlv.itmedia.jp/adsv/v1?posall='+locs+'&id='+pid+'&t=js&rnd='+random.getTime();
+   document.write('<sc'+'ript language="JavaScript" type="text/javascript" src="'+js_url+'">');
+   document.write('</sc'+'ript>');
+   //-->
+</script>
+<noscript>
+ <iframe height=61 width=300 marginwidth=0 marginheight=0 hspace=0
+   vspace=0 frameborder=0 scrolling=no src="http://dlv.itmedia.jp/adsv/v1?posall=20ISALRU&id=784200682">
+ </iframe>
+</noscript>
+<!-- ad_end_new -->
+
+<!-- ad_start_new -->
+<script language="JavaScript" type="text/javascript">
+   <!--
+   var pid="784200682";
+   var locs="20ISALRUP";
+   var random=new Date();
+
+   var js_url='http://dlv.itmedia.jp/adsv/v1?posall='+locs+'&id='+pid+'&t=js&rnd='+random.getTime();
+   document.write('<sc'+'ript language="JavaScript" type="text/javascript" src="'+js_url+'">');
+   document.write('</sc'+'ript>');
+   //-->
+</script>
+<noscript>
+ <iframe height=61 width=300 marginwidth=0 marginheight=0 hspace=0
+   vspace=0 frameborder=0 scrolling=no src="http://dlv.itmedia.jp/adsv/v1?posall=20ISALRUP&id=784200682">
+ </iframe>
+</noscript>
+<!-- ad_end_new -->
+
+</div>
+<div class="ISALRU_indexLink"><img src="http://img.itmedia.jp/so/p/image/tieup/arrow_white.gif" hspace="1" align="absmiddle" alt="→"> <a href="/ad/adindex/im/pr_specialarchive.html">＠IT情報マネジメント Special ヘ</a></div>
+</div>
+<script type="text/javascript">
+    var addivid = "ISALRU";
+    var addividpv = "ISALRUP";
+    var adparts = document.getElementById(addivid);
+    var adinhtml = adparts.innerHTML;
+
+    rObj = new RegExp('st=noad.*pos=' + addivid + ' ');
+    rObjP = new RegExp('st=noad.*pos=' + addividpv + ' ');
+    if (adinhtml.match(rObj) && adinhtml.match(rObjP)) {
+        document.getElementById(addivid).style.display="none";
+    } else {
+        var aditems = adArraySort(addivid + "_cont");
+        var aditemspv = adArraySort(addividpv + "_cont");
+        document.getElementById(addivid + "-body").innerHTML += aditems;
+        document.getElementById(addivid + "-body").innerHTML += aditemspv;
+    }
+
+    var adnowtime = adgetUnixTime();
+    adnowtime = adnowtime - ( 86400 * 3 ) ;
+    var admatch_str = "^<!-- ([0-9]+) -->$";
+    var adinhtmlspan = adparts.getElementsByTagName("span");
+
+    for (var adtie=0; adtie < adinhtmlspan.length; adtie++) {
+        var adtext = adinhtmlspan[adtie].innerHTML;
+        var admatch_ret = new RegExp(admatch_str).exec(adtext);
+        if ( admatch_ret && adnowtime <= admatch_ret[1] ){
+            adinhtmlspan[adtie].innerHTML = "New!";
+        }
+    }
+    function adgetUnixTime() {
+        return parseInt((new Date)/1000);
+    }
+    function adArraySort(aditem){
+        var adstrtmp = adparts.getElementsByTagName("div");
+        var adstr = new Array();
+        var adremove = new Array();
+
+        for (var adstart=0; adstart < adstrtmp.length; adstart++) {
+            if(adstrtmp[adstart].className == aditem){
+                adstr.push("<div class=" + aditem + ">" + adstrtmp[adstart].innerHTML + "</div>");
+                adremove.push(adstrtmp[adstart]);
+            }
+        }
+        for(var i = 0; i < adremove.length; i++){
+                adremove[i].parentNode.removeChild(adremove[i]);
+        }
+        adstr.sort().reverse();
+        adstr = adstr.join("");
+        return adstr;
+    }
+</script>
+<!-- AD template end -->
+<!-- AD template start -->
+<style type="text/css"><!--
+#ISFLR {
+font-size:12px !important;
+font-family:"ＭＳ Ｐゴシック", Osaka, "ヒラギノ角ゴ Pro W3" !important;
+width:300px !important;
+line-height:15px !important;
+letter-spacing:1px !important;
+}
+#ISFLR .ISFLR_newmark {color:red !important;font-weight:bold !important;}
+#ISFLR .ISFLR_maintitle {background:url(http://img.itmedia.jp/so/p/image/tieup/ISFLR_heading_atit.gif) no-repeat 0px 0px #FFF !important;text-indent:-9999px !important;height:22px !important;margin-bottom:4px !important;}
+#ISFLR .ISFLR_cont {margin:0px auto !important;padding:2px 0px 8px 0px !important;border-bottom:0px solid #FFF !important;clear:both !important;height:1% !important;text-align:center;}
+#ISFLR .ISFLR_cont img {border:0px !important;}
+#ISFLR .ISFLRP_cont {margin:0px auto !important;padding:2px 0px 8px 0px !important;border-bottom:0px solid #FFF !important;clear:both !important;height:1% !important;text-align:center;}
+#ISFLR .ISFLRP_cont img {border:0px !important;}
+--></style>
+<div id="ISFLR"><div class="ISFLR_maintitle">ソリューションFLASH</div>
+<div class="ISFLR-body" id="ISFLR-body">
+<!-- ad_start_new -->
+<script language="JavaScript" type="text/javascript">
+   <!--
+   var pid="784200682";
+   var locs="10ISFLR";
+   var random=new Date();
+
+   var js_url='http://dlv.itmedia.jp/adsv/v1?posall='+locs+'&id='+pid+'&t=js&rnd='+random.getTime();
+   document.write('<sc'+'ript language="JavaScript" type="text/javascript" src="'+js_url+'">');
+   document.write('</sc'+'ript>');
+   //-->
+</script>
+<noscript>
+ <iframe height=50 width=290 marginwidth=0 marginheight=0 hspace=0
+   vspace=0 frameborder=0 scrolling=no src="http://dlv.itmedia.jp/adsv/v1?posall=10ISFLR&id=784200682">
+ </iframe>
+</noscript>
+<!-- ad_end_new -->
+
+<!-- ad_start_new -->
+<script language="JavaScript" type="text/javascript">
+   <!--
+   var pid="784200682";
+   var locs="10ISFLRP";
+   var random=new Date();
+
+   var js_url='http://dlv.itmedia.jp/adsv/v1?posall='+locs+'&id='+pid+'&t=js&rnd='+random.getTime();
+   document.write('<sc'+'ript language="JavaScript" type="text/javascript" src="'+js_url+'">');
+   document.write('</sc'+'ript>');
+   //-->
+</script>
+<noscript>
+ <iframe height=50 width=290 marginwidth=0 marginheight=0 hspace=0
+   vspace=0 frameborder=0 scrolling=no src="http://dlv.itmedia.jp/adsv/v1?posall=10ISFLRP&id=784200682">
+ </iframe>
+</noscript>
+<!-- ad_end_new -->
+</div>
+</div>
+<script type="text/javascript">
+    var addivid = "ISFLR";
+    var addividpv = "ISFLRP";
+    var adparts = document.getElementById(addivid);
+    var adinhtml = adparts.innerHTML;
+
+    rObj = new RegExp('st=noad.*pos=' + addivid + ' ');
+    rObjP = new RegExp('st=noad.*pos=' + addividpv + ' ');
+    if (adinhtml.match(rObj) && adinhtml.match(rObjP)) {
+        document.getElementById(addivid).style.display="none";
+    } else {
+        var aditems = adArraySort(addivid + "_cont");
+        var aditemspv = adArraySort(addividpv + "_cont");
+        document.getElementById(addivid + "-body").innerHTML += aditems;
+        document.getElementById(addivid + "-body").innerHTML += aditemspv;
+    }
+
+    var adnowtime = adgetUnixTime();
+    adnowtime = adnowtime - ( 86400 * 3 ) ;
+    var admatch_str = "^<!-- ([0-9]+) -->$";
+    var adinhtmlspan = adparts.getElementsByTagName("span");
+
+    for (var adtie=0; adtie < adinhtmlspan.length; adtie++) {
+        var adtext = adinhtmlspan[adtie].innerHTML;
+        var admatch_ret = new RegExp(admatch_str).exec(adtext);
+        if ( admatch_ret && adnowtime <= admatch_ret[1] ){
+            adinhtmlspan[adtie].innerHTML = "New!";
+        }
+    }
+    function adgetUnixTime() {
+        return parseInt((new Date)/1000);
+    }
+    function adArraySort(aditem){
+        var adstrtmp = adparts.getElementsByTagName("div");
+        var adstr = new Array();
+        var adremove = new Array();
+
+        for (var adstart=0; adstart < adstrtmp.length; adstart++) {
+            if(adstrtmp[adstart].className == aditem){
+                adstr.push("<div class=" + aditem + ">" + adstrtmp[adstart].innerHTML + "</div>");
+                adremove.push(adstrtmp[adstart]);
+            }
+        }
+        for(var i = 0; i < adremove.length; i++){
+                adremove[i].parentNode.removeChild(adremove[i]);
+        }
+        adstr.sort().reverse();
+        adstr = adstr.join("");
+        return adstr;
+    }
+</script>
+<!-- AD template end -->
+
+
+
+
+
+<div id="kyujinim">
+<h2>求人情報</h2>
+<div>
+
+
+<span><!-- ad_start_new -->
+<script language="JavaScript" type="text/javascript">
+   <!--
+   var pid="784200674";
+   var locs="ITTN3";
+   var random=new Date();
+
+   var js_url='http://dlv.itmedia.jp/adsv/v1?posall='+locs+'&id='+pid+'&t=js&rnd='+random.getTime();
+   document.write('<sc'+'ript language="JavaScript" type="text/javascript" src="'+js_url+'">');
+   document.write('</sc'+'ript>');
+   //-->
+</script>
+<noscript>
+ <iframe height=80 width=284 marginwidth=0 marginheight=0 hspace=0
+   vspace=0 frameborder=0 scrolling=no src="http://dlv.itmedia.jp/adsv/v1?posall=ITTN3&id=784200674">
+ </iframe>
+</noscript>
+<!-- ad_end_new -->
+</span>
+<span><!-- ad_start_new -->
+<script language="JavaScript" type="text/javascript">
+   <!--
+   var pid="784200674";
+   var locs="ITTN1";
+   var random=new Date();
+
+   var js_url='http://dlv.itmedia.jp/adsv/v1?posall='+locs+'&id='+pid+'&t=js&rnd='+random.getTime();
+   document.write('<sc'+'ript language="JavaScript" type="text/javascript" src="'+js_url+'">');
+   document.write('</sc'+'ript>');
+   //-->
+</script>
+<noscript>
+ <iframe height=80 width=284 marginwidth=0 marginheight=0 hspace=0
+   vspace=0 frameborder=0 scrolling=no src="http://dlv.itmedia.jp/adsv/v1?posall=ITTN1&id=784200674">
+ </iframe>
+</noscript>
+<!-- ad_end_new -->
+</span>
+<span><!-- ad_start_new -->
+<script language="JavaScript" type="text/javascript">
+   <!--
+   var pid="784200674";
+   var locs="ITTN2";
+   var random=new Date();
+
+   var js_url='http://dlv.itmedia.jp/adsv/v1?posall='+locs+'&id='+pid+'&t=js&rnd='+random.getTime();
+   document.write('<sc'+'ript language="JavaScript" type="text/javascript" src="'+js_url+'">');
+   document.write('</sc'+'ript>');
+   //-->
+</script>
+<noscript>
+ <iframe height=80 width=284 marginwidth=0 marginheight=0 hspace=0
+   vspace=0 frameborder=0 scrolling=no src="http://dlv.itmedia.jp/adsv/v1?posall=ITTN2&id=784200674">
+ </iframe>
+</noscript>
+<!-- ad_end_new -->
+</span>
+
+</div>
+</div>
+
+
+</div>
+<!-- rightcol end -->
+
+<br style="clear: both;">
+<!-- footer -->
+<div id="footer">
+<div class="footer_padding">
+<div class="footer_logo"><a href="/im/"><img src="/im/include/footer/images/logo_footer.gif" alt="＠IT情報マネジメント" width="146" height="24" border="0"></a></div>
+<div class="footer_txtlink"><a href="/im/">＠IT情報マネジメント トップ</a>｜<a href="/im/carc/">アーキテクチャ トップ</a>｜<a href="http://ap.atmarkit.co.jp/bbs/im/carc/">会議室</a>｜<a href="/aboutus/termofuse/termofuse.html">利用規約</a>｜<a href="http://corp.itmedia.co.jp/corp/privacy.html">プライバシーポリシー</a>｜<a href="/im/info/sitemap/sitemap.html">サイトマップ</a></div>
+<br style="clear:both;">
+<br>
+<div align="left"><font size="1">Copyright(c) 2000-2012 ITmedia Inc.<br>
+  著作権はアイティメディア株式会社またはその記事の筆者に属します。（<a href="/aboutus/copyright/copyright.html">著作権について</a>）<br>
+  当サイトに掲載されている記事や画像などの無断転載を禁止します。<br>
+  「＠IT」「＠IT自分戦略研究所」「＠IT情報マネジメント」「JOB＠IT」「＠ITハイブックス」「ITmedia」は、アイティメディア株式会社の登録商標です。<br>
+  当サイトに関するお問い合わせは「<a href="/aboutus/contact_us/contact_us.html" target="_top">＠ITへのお問い合わせ</a>」をご覧ください。<br>
+</font></div>&nbsp;  
+</div>
+<!-- SiteCatalyst code version: H.2.
+Copyright 1997-2005 Omniture, Inc. More info available at
+http://www.omniture.com -->
+<script language="JavaScript" src="/javascript/s_code.js"></script>
+<script language="JavaScript"><!--
+/* You may give each page an identifying name, server, and channel on
+the next lines. */
+function $() {
+  var elements = new Array();
+  for (var i = 0; i < arguments.length; i++) {
+    var element = arguments[i];
+    if (typeof element == 'string')
+      element = document.getElementById(element);
+    if (arguments.length == 1)
+      return element;
+    elements.push(element);
+  }
+  return elements;
+}
+s.pageName=document.URL.replace( /(\?|#).*$/, '' );
+s.server="www.atmarkit.co.jp"
+s.channel="＠IT情報マネジメント アーキテクチャ"
+s.pageType=""
+s.hier1="root,atmarkit,im,carc,cont,articles"
+s.hier2="atmarkit,im,carc,cont,articles"
+s.hier3="im,carc,cont,articles"
+s.prop1=document.URL.replace( /(\?|#).*$/, '' );
+s.prop2="root,atmarkit,im,carc,cont,articles"
+if ( $('update') == undefined )
+  s.prop3='';
+else
+  s.prop3=$('update').innerHTML.replace(/\d+分\s更新/,"");
+if ( $('byline') == undefined )
+  s.prop4=''
+else
+  s.prop4=$('byline').innerHTML.replace(/<b>|<\/b>/ig,'').replace(/\[|\]/g,'');
+/* s.prop5 : ad link name reserves */
+s.prop5=""
+s.prop6="im"
+s.prop7="im,carc"
+s.prop8=document.title
+s.prop9=navigator.userAgent
+s.prop10=document.URL.replace( /(\?|#).*$/, '' );
+/* s.prop13 : document.URL reserves */
+
+/* E-commerce Variables */
+s.campaign=""
+s.state=""
+s.zip=""
+s.events="event3"
+s.products=""
+s.purchaseID=""
+s.eVar1=""
+s.eVar2=""
+s.eVar3=""
+s.eVar4=""
+s.eVar5=""
+s.prop20="＠IT情報マネジメント";
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script><!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.2. -->
+<!-- claria tag start -->
+<!-- claria tag end -->
+
+<!-- mitag -->
+
+
+
+<!-- ad_start_new -->
+<script language="JavaScript" type="text/javascript">
+   <!--
+   var pid="784200682";
+   var locs="N";
+   var random=new Date();
+
+   var js_url='http://dlv.itmedia.jp/adsv/v1?posall='+locs+'&id='+pid+'&t=js&rnd='+random.getTime();
+   document.write('<sc'+'ript language="JavaScript" type="text/javascript" src="'+js_url+'">');
+   document.write('</sc'+'ript>');
+   //-->
+</script>
+<noscript>
+ <iframe height=1 width=1 marginwidth=0 marginheight=0 hspace=0
+   vspace=0 frameborder=0 scrolling=no src="http://dlv.itmedia.jp/adsv/v1?posall=N&id=784200682">
+ </iframe>
+</noscript>
+<!-- ad_end_new -->
+
+</div>
+<!-- footer end -->
+</div>
+<!-- main end -->
+</div>
+<!-- wrap end -->
+</body>
+<!-- #EndTemplate --></html>      
