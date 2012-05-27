@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'open-uri'
 require 'nokogiri'
 require 'nkf'
@@ -28,12 +30,16 @@ class Clip < ActiveRecord::Base
       return false
     end
     doc = create_doc url
-    self.title = doc.xpath('//title/text()').text.encode('utf-8').strip
+    self.title = doc.xpath('//title/text()').text
+    begin
+      self.title = self.title.strip
+    rescue ArgumentError
+    end
     self.url = url
     doc.css('meta').each do |m|
       prop = m.attribute('property')
       if prop
-        content = m.attribute('content').text.encode('utf-8')
+        content = m.attribute('content').text
         if prop.to_s.match(/^og:type/i)
           self.og_type = content
         end
@@ -46,7 +52,7 @@ class Clip < ActiveRecord::Base
       end
     end
     if self.description.nil?
-      self.description = doc.xpath('//meta[@name="description"]/@content').text.encode('utf-8')
+      self.description = doc.xpath('//meta[@name="description"]/@content').text
     end
     return true
   end
@@ -62,9 +68,12 @@ class Clip < ActiveRecord::Base
 
   def create_doc(url)
     io = open(url)
+    charset = io.charset
     read = io.read
-    if io.charset != 'utf-8'
+    if charset.downcase != 'utf-8'
       read = NKF.nkf('-w', read)
+    else
+      read = read.encode("UTF-8", "UTF-8", :invalid => :replace, :undef => :replace)
     end
     doc = Nokogiri.HTML(read)
   end
