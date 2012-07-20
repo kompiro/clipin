@@ -12,7 +12,6 @@ gem 'rails-boilerplate'
 gem "rails-backbone"
 gem 'eco'
 gem 'doorkeeper'
-gem 'oauth2-provider', :require => 'oauth2/provider', :git => 'git://github.com/songkick/oauth2-provider'
 
 # Gems used only for assets and not required
 # in production environments by default.
