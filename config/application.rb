@@ -69,8 +69,5 @@ module Clipin
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    # declare for oauth2 provider
-    OAuth2::Provider.realm = 'Clipin'
-
   end
 end

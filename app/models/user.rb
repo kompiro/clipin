@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  include OAuth2::Model::ResourceOwner
-  include OAuth2::Model::ClientOwner
   has_many :interesting_pieces_of_data
   has_many :clips
 

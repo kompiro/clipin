@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.2'
+gem 'rails', '3.2.6'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -11,7 +11,7 @@ gem 'nokogiri'
 gem 'rails-boilerplate'
 gem "rails-backbone"
 gem 'eco'
-gem 'oauth2-provider', :require => 'oauth2/provider', :git => 'git://github.com/songkick/oauth2-provider'
+gem 'doorkeeper'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -47,6 +47,7 @@ group :development, :test do
   gem "factory_girl_rails", "~> 3.0"
   gem 'pry'
   gem 'pry-doc'
+  gem 'fakeweb'
   # spork
   gem 'spork', '~> 0.9.0.rc'
 

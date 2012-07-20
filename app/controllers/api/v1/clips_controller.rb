@@ -1,12 +1,7 @@
 class Api::V1::ClipsController < ApplicationController
   respond_to :json
-  before_filter :oauth_authenticate!
   skip_before_filter :verify_authenticity_token # allow CSRF
-
-  def oauth_authenticate!
-    token = OAuth2::Provider.access_token(nil, [], env)
-    render json: {:error => 'OAuth Authentication Error'}.to_json(),status: :unauthorized unless token.valid?
-  end
+  doorkeeper_for :all
 
   def index
     tag_id = params[:tag_id]
@@ -70,5 +65,11 @@ class Api::V1::ClipsController < ApplicationController
       loaded_tags << Tag.find(tag[:id])
     end
     loaded_tags
+  end
+
+  def current_user
+    if doorkeeper_token
+      @current_user ||= User.find(doorkeeper_token.resource_owner_id)
+    end
   end
 end
