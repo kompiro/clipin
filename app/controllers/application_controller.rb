@@ -8,6 +8,13 @@ class ApplicationController < ActionController::Base
       User.current = user
       return user
     end
+    unless cookies.signed[:user_id].nil?
+      user_id = cookies.signed[:user_id]
+      session[:user_id] = user_id
+      user = User.find user_id
+      User.current = user
+      return user
+    end
   end
 
   def authenticate!

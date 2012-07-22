@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
 
   def delete
     session[:user_id] = nil
+    cookies.signed[:user_id] = nil
     redirect_to sessions_login_url
   end
 
@@ -16,6 +17,7 @@ class SessionsController < ApplicationController
         :uid => auth['uid']).first || User.create_with_omniauth(auth)
     User.current = user
     session[:user_id] = user.id
+    cookies.signed[:user_id] = {:value => user.id,:expires => 1.year.from_now}
     redirect_to '/clips#index'
   end
 
