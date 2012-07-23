@@ -13,6 +13,10 @@ gem "rails-backbone"
 gem 'eco'
 gem 'doorkeeper'
 
+# Deploy with Capistrano
+gem 'capistrano'
+# Use unicorn as the app server
+gem 'unicorn'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
