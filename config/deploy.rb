@@ -15,6 +15,7 @@ set :branch, "master"
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
+set :normalize_asset_timestamps, false
 
 set :default_environment, {
   'PATH' => "$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH",
