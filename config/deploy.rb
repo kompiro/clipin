@@ -7,7 +7,7 @@ set :user, "deployer"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
-set :bundle_cmd, 'sh $HOME/.bashrc && bundle'
+set :bundle_cmd, "/home/#{user}/.rbenv/shims/bundle"
 
 set :scm, "git"
 set :repository, "ssh://deployer@157.7.128.227/opt/repos/clipin"
