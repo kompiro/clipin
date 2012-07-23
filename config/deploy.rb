@@ -2,14 +2,14 @@ require "bundler/capistrano"
 
 server "157.7.128.227", :web, :app, :db, primary: true
 
-set :application, "blog"
+set :application, "clipin"
 set :user, "deployer"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
 
 set :scm, "git"
-set :repository, "git@github.com:eifion/#{application}.git"
+set :repository, "file:/opt/repos/clipin.git"
 set :branch, "master"
 
 default_run_options[:pty] = true
