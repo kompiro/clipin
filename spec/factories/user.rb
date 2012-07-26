@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :user do
-    uid 'test'
-    provider "for_test"
+    id 1
+    uid '1234'
+    provider "facebook"
   end
 end

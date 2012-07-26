@@ -20,6 +20,10 @@ require 'spec_helper'
 
 describe ClipsController do
 
+  before do
+    create(:user)
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Clip. As you add validations to Clip, be sure to
   # update the return value of this method accordingly.
