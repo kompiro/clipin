@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-require_dependency 'support/clip'
+require_dependency 'support/web_loader'
 
 class Clip < ActiveRecord::Base
 
@@ -24,6 +24,11 @@ class Clip < ActiveRecord::Base
     end
     tag = Tag.find_or_create_by_name self.og_type
     Tagging.create({:clip => self, :tag => tag})
+  end
+
+  def load
+    loader = WebLoader.new(self)
+    loader.load
   end
 
 end
