@@ -1,0 +1,1404 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html lang="en">
+ <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# slideshare: http://ogp.me/ns/fb/slideshare#">
+   <meta charset="utf-8" />
+   <!--
+   __________.__SlideShare_______               __
+   \______   \__| ____ \______   \ ____   _____/  |_
+    |    |  _/  |/ ___\ |    |  _//  _ \ /  _ \   __\
+    |    |   \  / /_/  >|    |   (  <_> |  <_> )  |
+    |______  /__\___  / |______  /\____/ \____/|__|
+           \/  /_____/         \/
+   -->
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <!-- SL:start:notranslate -->
+  <title>TDDBCの前にTDDについて知っておいてもらいたい３つのこと</title>
+  <!-- SL:end:notranslate -->
+  <meta name="viewport" content="width=1024" />
+  <!-- SL:start:notranslate -->
+  <meta name="description" content="2011/10/22 オープンラボ岡山でのTDDBC前座講演。" />
+  <!-- SL:end:notranslate -->
+  <link href="http://public.slidesharecdn.com/bigboot/css/ss-core.css?65ac8644c3" media="screen" rel="stylesheet" type="text/css" />
+  <meta name="robots" content="index" /><link href="http://public.slidesharecdn.com/slideview/styles/combined.css?c5619b32" rel="stylesheet" type="text/css" media="all" />
+  
+  
+  
+  <!--<link rel="stylesheet" media="all and (min-width: 748px) and (max-width: 977px)" href="grid-748.css"> 
+  <link rel="stylesheet" media="all and (min-width: 0px) and (max-width: 747px)" href="grid-300.css">-->
+  <script id="page-json" type="text/javascript"><!--
+ var slideshare_object = {"stats":{"url":"http://www.slideshare.net/~/slideshow/stats/9827200.json"},"cached_template_url":"//public.slidesharecdn.com/get_cacheable_template","voting_widget_host":"/","activities":{"favorites":{"total":5,"count":5,"url":"http://www.slideshare.net/~/slideshow/favorites_list/9827200.json"},"community":{"total":0,"count":0,"url":"http://www.slideshare.net/~/slideshow/community_list/9827200.json"}},"dev":false,"asset_id":"36361","preview":"no","startSlide":1,"user":{"member_type":"non-member"},"userimage_placeholder":"//public.slidesharecdn.com/images/user-48x48.jpg","relative_static_origin_server":"//public.slidesharecdn.com/","facebook_app_id":2490221586,"flagging":{"flagged_value":null},"stripped_title":"tddbctdd","favorites":{"top_tags":["2011","okayama","olojp","tdd","Test-driven development","Kent Beck"]},"presentationId":9827200,"key":false,"_auth_token_name":"authenticity_token","downloads":{"allow":true,"sp_isdwnl":true},"show_branding":1,"pvt":0,"default_tab":".svMoreAuthor","_auth_token":"32EpaUlazkVJqpXK8qYBCeIx22XCmc4+g0+0T64Q4Ek=","jsplayer":{"is_private":false,"player_type":"presentation","slide_error_template":"\u003Cdiv style=\"background-color:#000;\"\u003E\n  \u003Cdiv style=\"background-color:#D3D1CE;position:relative;\"\u003E\n    \u003Cimg src='//public.slidesharecdn.com/images/ssplayer/error_dudes.png' style=\"position:absolute;top:0;left:0;\"/\u003E\n    \u003Cdiv style=\"margin:5;position:absolute;font-family: 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;line-height:1.25 ;top:20%;color:#2d2d2d;\"\u003E\n      We were unable to load the slide.\u003Cbr/\u003E\n      \u003Cinput type=\"button\" value=\"Reload slide\" style=\"cursor: pointer;display: inline-block;background-color: #e6e6e6;background-repeat: no-repeat;background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(25%, #ffffff), to(#e6e6e6));background-image: -webkit-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);background-image: -moz-linear-gradient(top, #ffffff, #ffffff 25%, #e6e6e6);background-image: -ms-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);background-image: -o-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);background-image: linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);padding: .3em .8em .3em;margin:.4em 0 0 1px;text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);color: #333;line-height: normal; font-size:.7em;border: 1px solid #ccc;border-bottom-color: #bbb;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);-webkit-transition: 0.1s linear all;-moz-transition: 0.1s linear all;-ms-transition: 0.1s linear all;-o-transition: 0.1s linear all;transition: 0.1s linear all;\"/\u003E\n    \u003C/div\u003E\n  \u003C/div\u003E\n\u003C/div\u003E\n","container":"svPlayerId","image_bucket_location":"//images.slidesharecdn.com/tddfortddbcokayama-111022061559-phpapp02","sharescreen":{"twitter_share":"http://www.slideshare.net/share/tweet/9827200/Check%20out%20this%20SlideShare%20presentation%20:%20TDDBC%E3%81%AE%E5%89%8D%E3%81%ABTDD%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E7%9F%A5%E3%81%A3%E3%81%A6%E3%81%8A%E3%81%84%E3%81%A6%E3%82%82%E3%82%89%E3%81%84%E3%81%9F%E3%81%84%EF%BC%93%E3%81%A4%E3%81%AE%E3%81%93%E3%81%A8","slideshow_id":9827200,"html":"\u003Cstyle\u003E\n\n/* JS Player Share screen */\n\n/* CSS Reset */\n\n.shareScreen div, \n.shareScreen span, \n.shareScreen a, \n.shareScreen img, \n.shareScreen ol, \n.shareScreen ul,\n.shareScreen li, \n.shareScreen label, \n.shareScreen fieldset, \n.shareScreen p{\n  border: 0; \n  color: #333;\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  margin: 0; padding: 0; \n  vertical-align: baseline; \n  line-height:1;\n  text-align:left; \n}\n\n.shareScreen { \n  background-image: -moz-linear-gradient(#ececec, #a8a8a8);\n  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ececec), to(#a8a8a8));\n  background-image: -o-linear-gradient(#ececec, #a8a8a8);\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ececec', EndColorStr='#a8a8a8'); \n  -ms-filter: \"progid:DXImageTransform.Microsoft.gradient(startColorStr='#ececec', EndColorStr='#a8a8a8')\";\n  height: 200px; font-size: 12px; overflow: hidden; padding: 25px; position: relative; width: 300px; \n}\n.shareScreen.tiny {\n  height: 240px; padding: 15px; width: 250px;\n}\n.shareScreen.tiny .shareMethods input {\n  width: 112px;\n}\n.shareScreen.tiny .submit label {\n  width: 0;\n}\n\n.shareScreen.small {\n  height: 210px; padding: 15px; width: 280px;\n}\n.shareScreen.small .close,\n.shareScreen.tiny .close {\n  right: 0;\n  top: -10px;\n}\n.shareScreen.small .shareMethods input {\n  width: 127px;\n}\n\n.shareScreen .close { \n  float: right; \n  font-family: tahoma; \n  font-weight: 700; \n  height: 16px; position: relative; right: -10px; top: -20px; width: 0; \n  display: relative;\n}\n\n.shareScreen .shareMethods {\n\tmargin: 0 0 10px;\n\toverflow: hidden;\n\twidth: auto;\n}\n.shareMethods li,\n.emailShare li { \n  list-style: none; \n  margin: 0 0 10px;\n  overflow: hidden;\n  width: auto;\n}\n\n.shareMethods li {\n  float: left;\n}\n\n.shareMethods li.embed {\n  margin-right: 10px;\n}\n\n.shareMethods label {\n  width: 45px;\n}\n\n.shareMethods label {\n  display: block;\n  font-size: 10px; \n  font-weight: 700;\n  margin: 0 0 5px;\n  text-transform: uppercase; \n}\n\n.shareMethods input { \n  border: 1px solid #999; \n  margin: 0; padding: 2px; \n  font-size:10px;\n  width: 138px;\n}\n\n.emailShare { \n  border-bottom: 1px solid #999;\n  margin: 0 0 10px;\n}\n.emailShare legend {\n  border-bottom: 1px solid #999;\n  display: block;\n  float: left;\n  font-size: 10px;\n  font-weight: 700;\n  line-height: 1.5;\n  margin: 0 0 15px;\n  padding: 0;\n  text-transform: uppercase;\n  width: 100%;\n}\n.emailShare ul {\n  clear: both;\n  overflow: hidden;\n  width: auto;\n}\n.emailShare .title            { border-bottom: 1px solid #999; display: block; margin-bottom: 1em; padding-bottom: 3px; }\n\n.emailShare label             { float: left; font-size: 11px; line-height: 1.5; width: 70px; }\n.emailShare input{ \n  border: 1px solid #999;\n  margin: 0;\n  padding: 2px;\n  width: 200px;\n  font-size: 10px;\n}\n\n.emailShare .submit input           { background-position: -20px -20px; border-radius: 3px; cursor: pointer; height: 23px; width: 53px; }\n.emailShare .submit input:hover     { background-position: -91px -60px; }\n.emailShare .submit input:active    { background-position: -162px -100px; }\n\n.shareScreen a,\n.shareScreen a:hover                { text-decoration: none; }\n\n.thirdPartyShare {\n  overflow: hidden;\n  width: auto;\n}\n.thirdPartyShare li                 { display: inline; float: left; margin-right: 10px; }\n.thirdPartyShare li a               { display: block; height: 18px; width: 56px; }\n\n.thirdPartyShare li a.Twitter           { background-position: -187px -168px; }\n.thirdPartyShare li a.Twitter:hover     { background-position: -187px -208px; }\n\n.thirdPartyShare li a.Facebook          { background-position: -20px -168px; }\n.thirdPartyShare li a.Facebook:hover    { background-position: -20px -208px; }\n\n.thirdPartyShare li a.Linkedin          { background-position: -107px -168px; }\n.thirdPartyShare li a.Linkedin:hover    { background-position: -107px -208px; }\n\n\n.shareSprite                  { background-image: url(data:image/png;base64,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); background-repeat: no-repeat; background-color: transparent; }\n\n\u003C/style\u003E  \n\u003Cdiv class=\"shareScreen\"\u003E\n  \u003Cdiv id=\"fb-root\"\u003E\u003C/div\u003E\n  \u003Cscript\u003E\n  (function(d, s, id) {\n    var js, fjs = d.getElementsByTagName(s)[0];\n    if (d.getElementById(id)) {return;}\n    js = d.createElement(s); js.id = id;\n    js.src = \"//connect.facebook.net/en_US/all.js\";\n    fjs.parentNode.insertBefore(js, fjs);\n    }(document, 'script', 'facebook-jssdk'));\n     window.fbAsyncInit = function() {\n          FB.init({\n            appId  : '2490221586',\n            status : true, // check login status\n            cookie : true, // enable cookies to allow the server to access the session\n            xfbml  : true, // parse XFBML\n            oauth  : true,  // to enable OAuth 2.0\n            channelUrl  : '//public.slidesharecdn.com/channel.html'\n          });\n    }\n\u003C/script\u003E\n  \u003Ca href=\"#\" class=\"close\"\u003E\u0026times;\u003C/a\u003E\n  \u003Cul class=\"shareMethods\"\u003E\n    \u003Cli class=\"embed\"\u003E\n      \u003Clabel for=\"embed-code\"\u003EEmbed\u003C/label\u003E\n      \u003Cinput type='text' class=\"shareScreenEmbedCode\" value=\"code\" name=\"embed-code\" /\u003E\n    \u003C/li\u003E\n    \u003Cli class=\"url last\"\u003E\n      \u003Clabel for=\"embed-url\"\u003EURL\u003C/label\u003E\n      \u003Cinput type='text' class=\"shareScreenSSUrl\" value=\"code\" name=\"embed-url\" /\u003E\n\t\u003C/li\u003E\n  \u003C/ul\u003E\n  \u003Cform class=\"emailShare\"\u003E\n    \u003Cfieldset\u003E\n      \u003Clegend\u003EEmail this\u003C/legend\u003E\n      \u003Cinput type=\"hidden\" class=\"shareDefaultMessage\" value=\"I think you will find this useful.\" /\u003E\n      \u003Cul\u003E\n        \u003Cli\u003E\n          \u003Clabel for=\"name\"\u003EYour name\u003C/label\u003E\n          \u003Cinput class='shareScreenFromName' type=\"text\" value=\"\" /\u003E\n        \u003C/li\u003E\n        \u003Cli\u003E\n          \u003Clabel for=\"mailID\"\u003EEmail to\u003C/label\u003E\n          \u003Cinput class=\"shareScreenMailID\" type=\"text\" value=\"\" /\u003E\n        \u003C/li\u003E\n        \u003Cli class=\"submit\"\u003E\n          \u003Clabel\u003E\u0026nbsp;\u003C/label\u003E\n          \u003Cinput class=\"shareSprite\" type=\"submit\" value=\"\" /\u003E\n        \u003C/li\u003E        \n      \u003C/ul\u003E\n      \u003C/fieldset\u003E\n  \u003C/form\u003E\n  \u003Cul class=\"thirdPartyShare\"\u003E\n    \u003Cli\u003E\u003Ca href=\"#\" class=\"shareSprite Twitter\"\u003E\u0026nbsp;\u003C/a\u003E\u003C/li\u003E\n    \u003Cli\u003E\u003Ca href=\"#\" class=\"shareSprite Linkedin\"\u003E\u0026nbsp;\u003C/a\u003E\u003C/li\u003E\n    \u003Cli\u003E\n      \u003Cdiv class=\"fb-like\" data-send=\"false\" data-layout=\"button_count\" data-width=\"100\" data-show-faces=\"false\"\u003E\u003C/div\n    \u003C/li\u003E\n  \u003C/ul\u003E\n\u003C/div\u003E\u003C!-- shareScreen ends here --\u003E","url":"http://www.slideshare.net/kkd/tddbctdd","linkedin_share":"http://www.slideshare.net/share/linkedin/9827200/SlideShare:%20TDDBC%E3%81%AE%E5%89%8D%E3%81%ABTDD%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E7%9F%A5%E3%81%A3%E3%81%A6%E3%81%8A%E3%81%84%E3%81%A6%E3%82%82%E3%82%89%E3%81%84%E3%81%9F%E3%81%84%EF%BC%93%E3%81%A4%E3%81%AE%E3%81%93%E3%81%A8","user_name":"","facebook_share":"http://www.slideshare.net/share/facebook/9827200/Check%20out%20this%20SlideShare%20presentation%20:%20TDDBC%E3%81%AE%E5%89%8D%E3%81%ABTDD%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E7%9F%A5%E3%81%A3%E3%81%A6%E3%81%8A%E3%81%84%E3%81%A6%E3%82%82%E3%82%89%E3%81%84%E3%81%9F%E3%81%84%EF%BC%93%E3%81%A4%E3%81%AE%E3%81%93%E3%81%A8","title":"TDDBC\u306e\u524d\u306bTDD\u306b\u3064\u3044\u3066\u77e5\u3063\u3066\u304a\u3044\u3066\u3082\u3089\u3044\u305f\u3044\uff13\u3064\u306e\u3053\u3068"},"hosted_in":"slideview","image_ready":true,"fullscreen_bgcolor":"White","meta_error_template":"\u003Cdiv style=\"background-color:#000;\"\u003E\n  \u003Cdiv style=\"background-color:#D3D1CE;position:relative;\"\u003E\n    \u003Cimg src='//public.slidesharecdn.com/images/ssplayer/error_dudes.png' style=\"position:absolute;top:0;left:0;\"/\u003E\n    \u003Cdiv style=\"margin:5;position:absolute;font-family: 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;line-height:1.25;top:20%;color:#2d2d2d;\"\u003E\n      We have encountered an error,\u003Cbr/\u003Eplease refresh the page\n    \u003C/div\u003E\n  \u003C/div\u003E\n\u003C/div\u003E","embed_code":"\u003Ciframe src=\"http://www.slideshare.net/slideshow/embed_code/9827200\" width=\"427\" height=\"356\" frameborder=\"0\" marginwidth=\"0\" marginheight=\"0\" scrolling=\"no\" style=\"border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px\" allowfullscreen\u003E \u003C/iframe\u003E \u003Cdiv style=\"margin-bottom:5px\"\u003E \u003Cstrong\u003E \u003Ca href=\"http://www.slideshare.net/kkd/tddbctdd\" title=\"TDDBC\u306e\u524d\u306bTDD\u306b\u3064\u3044\u3066\u77e5\u3063\u3066\u304a\u3044\u3066\u3082\u3089\u3044\u305f\u3044\uff13\u3064\u306e\u3053\u3068\" target=\"_blank\"\u003ETDDBC\u306e\u524d\u306bTDD\u306b\u3064\u3044\u3066\u77e5\u3063\u3066\u304a\u3044\u3066\u3082\u3089\u3044\u305f\u3044\uff13\u3064\u306e\u3053\u3068\u003C/a\u003E \u003C/strong\u003E from \u003Cstrong\u003E\u003Ca href=\"http://www.slideshare.net/kkd\" target=\"_blank\"\u003ETakeshi Kakeda\u003C/a\u003E\u003C/strong\u003E \u003C/div\u003E","use_ssl":false,"stripped_title":"tddbctdd","html_ttffont_url_suffix":".js","has_audio":false,"player_bgcolor":"#4C4946","bucket_location":"//html.slidesharecdn.com/tddfortddbcokayama-111022061559-phpapp02/","html_eotfont_url_suffix":"-eot.js","timestamp":1319282194,"has_lead":false,"toolbar_html":"\u003Cstyle\u003E\n\n.hide                   { display:none; }\n\n.toolbar                { background-image: -moz-linear-gradient(#ececec, #a8a8a8);\n                          background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ececec), to(#a8a8a8));\n                          background-image: -o-linear-gradient(#ececec, #a8a8a8);\n                          filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ececec', EndColorStr='#a8a8a8'); \n                          -ms-filter: \"progid:DXImageTransform.Microsoft.gradient(startColorStr='#ececec', EndColorStr='#a8a8a8')\"; \n                          border-bottom: 1px solid #888; border-top: 1px solid #ccc; overflow: hidden; margin: 0; padding: 3px 6px; position: relative; width: auto; }\n\n.toolbar .nav           { border: 0; display: block; font: inherit; margin: 0 auto; padding: 1px 0 0; text-align: center; vertical-align: baseline; width: 114px; }\n.toolbar .nav input     { color: #444; }                                                \n.toolbar .nav label     { cursor: pointer; }\n.toolbar .nav a:link    { -webkit-tap-highlight-color: #FF5E99; }\n\n\n.toolbar.tiny a.btnShare,\n.toolbar.small a.btnShare {\n  background-position: -7px -1127px;\n  width: 28px;\n}\n\n.toolbar.tiny a.btnShare:hover,\n.toolbar.small a.btnShare:hover {\n  background-position: -46px -1164px;\n}\n\n.toolbar.tiny .goToSlideLabel,\n.toolbar.small .goToSlideLabel {\n  display: none;\n}\n\n.toolbar a{ \n  background: url(http://public.slidesharecdn.com/images/sprite-player.png?b72302b5ad) no-repeat;\n  float: left; height: 28px;\n  text-indent: -9999em;\n  width: 28px; \n}\n\n.toolbar a.btnViewOnSS                          { background-position: -26px -808px; border: 1px solid transparent; display: none; height: 26px; margin-top: 2px; width: 88px; }\n.toolbar a.btnViewOnSS:hover                    { background-position: -124px -838px; }\n\n.toolbar.tiny a.btnViewOnSS,\n.toolbar.small a.btnViewOnSS { \n  background-position: -23px -928px; \n  width: 29px;\n}\n.toolbar.tiny a.btnViewOnSS:hover,\n.toolbar.small a.btnViewOnSS:hover { \n  background-position: -60px -964px; \n  width: 29px;\n}\n\n.toolbar a.btnPrevious                          { background-position: -6px -326px; margin-right: 2px; }\n.toolbar a.btnPrevious:hover                    { background-position: -46px -366px; }\n.toolbar a.btnPrevious:active                   { background-position: -86px -405px; }\n\n.toolbar a.btnNext                              { background-position: -166px -486px; }\n.toolbar a.btnNext:hover                        { background-position: -206px -526px; }\n.toolbar a.btnNext:active                       { background-position: -246px -565px; }\n.toolbar .navActions a                          { padding: 6px 0 0; }\n.toolbar a.btnShare                             { background-position: -8px -1257px; border: 1px solid transparent; border-radius: 4px; margin-right: 5px; padding: 6px 0; }\n.toolbar a.btnShare:hover                       { background-position: -46px -1294px; }\n\n.toolbar a.btnShare-big                         { background-position: -8px -1258px; border: 1px solid transparent; border-radius: 4px; \n                                                  float: right; height: 21px; margin-right: 5px; padding: 6px 4px 6px 0; width: 60px;\n                                                  -webkit-border-radius: 4px; -moz-border-radius: 4px; }\n.toolbar a.btnShare-big:hover                   { background-position: -46px -1295px; }\n.toolbar a.btnShare-big:active                  { background-position: -145px -1334px; }\n\n.toolbar label                                  { display: block; font-size: 11px; font-family: \"Lucida Grande\", Verdana, Arial, Helvetica, sans-serif; \n                                                  line-height: 1.5; float: right; padding: 8px 6px 0 0; margin: 0; }\n.toolbar input                                  { background-image: -moz-linear-gradient(#ddd, #fff);\n                                                  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ddd), to(#fff));\n                                                  background-image: -webkit-linear-gradient(#ddd, #fff); \n                                                  background-image: -o-linear-gradient(#ddd, #fff);\n                                                  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#dddddd', EndColorStr='#eeeeee'); \n                                                  -ms-filter: \"progid:DXImageTransform.Microsoft.gradient(startColorStr='#dddddd', EndColorStr='#eeeeee')\";\n                                                  -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0;\n                                                  border: 1px solid #AAA; border-left: 1px solid #888; border-top: 1px solid #888; \n                                                  font-family: \"Lucida Grande\", Verdana, Arial, Helvetica, sans-serif; font-size: 11px; \n                                                  height: 12px; line-height: 1.2; margin: 0 3px 0 0; padding: 1px 1px 1px 0; text-align: right; \n                                                  vertical-align: baseline; width: 24px; }\n\n.toolbar a.btnFullScreen                        { background-position: -327px -325px; float: right; width: 24px; }\n.toolbar a.btnFullScreen:hover                  { background-position: -367px -365px; }\n.toolbar a.btnFullScreen:active                 { background-position: -447px -445px; }\n\n.toolbar a.btnLeaveFullScreen                   { background-position: -4px -1040px; display:none; float: right; \n                                                  width: 24px; }\n.toolbar a.btnLeaveFullScreen:hover             { background-position: -34px -1080px; }\n\n\n.modeLabel                                      { color: #111; float: left; font-weight: 700; font-size:12px; padding-top: 6px; text-shadow: 1px 1px 1px #fff; width: 100px; }\n                                  \n\u003C/style\u003E\n\n\u003C!--[if IE 7]\u003E\n  \u003Cstyle\u003E\n    .toolbar .navActions { position: relative; top: -28px; }\n    div.toolbar .nav {margin-left : 37%; }\n  \u003C/style\u003E\n\u003C![endif]--\u003E\n \n\u003Cstyle\u003E\n.toolbar a.btnFirst                             { background-position: -2px -6px; }\n.toolbar a.btnFirst:hover                       { background-position: -42px -46px; }\n.toolbar a.btnFirst:active                      { background-position: -82px -85px; }\n\n.toolbar a.btnLast                              { background-position: -168px -166px; width: 20px; }\n.toolbar a.btnLast:hover                        { background-position: -208px -206px; }\n.toolbar a.btnLast:active                       { background-position: -248px -245px; }\n\n.toolbar a.btnShare                             { float: right; height: 22px; width: 62px; }\n\n\u003C/style\u003E\n  \u003Ca href=\"#\" class=\"sprite btnViewOnSS\" title=\"View on SlideShare\"\u003E\u0026nbsp;\u003C/a\u003E\u003C!-- view on SS --\u003E\n  \u003Cdiv class=\"nav\"\u003E\n    \u003Ca href=\"#btnFirst\" class=\"btnFirst\" title=\"First Slide\" rel=\"nofollow\"\u003E\u0026laquo;\u003C/a\u003E\n    \u003Ca href=\"#btnPrevious\" class=\"btnPrevious\" title=\"Previous Slide\" rel=\"nofollow\"\u003E\u0026lsaquo;\u003C/a\u003E\n    \u003Ca href=\"#btnNext\" class=\"btnNext\" title=\"Next Slide\" rel=\"nofollow\"\u003E\u0026rsaquo;\u003C/a\u003E\n    \u003Ca href=\"#btnLast\" class=\"btnLast\" title=\"Last Slide\" rel=\"nofollow\"\u003E\u0026raquo;\u003C/a\u003E\n  \u003C/div\u003E\n  \u003Cdiv class=\"navActions\"\u003E\n    \u003Ca href=\"#\" class=\"btnFullScreen\" title=\"View Fullscreen\" rel=\"nofollow\"\u003E\u0026nbsp;\u003C/a\u003E\n    \u003Ca href=\"#\" class=\"btnLeaveFullScreen\" title=\"Exit Fullscreen\" rel=\"nofollow\"\u003E\u0026nbsp;\u003C/a\u003E\n    \u003Clabel class=\"goToSlideLabel\"\u003E\u003Cinput type=\"text\" name=\"goToSlide\" value=\"1\" /\u003E\u003Cspan\u003E/123\u003C/span\u003E\u003C/label\u003E\n    \u003Ca href=\"#\" class=\"btnShare\" title=\"Share\" rel=\"nofollow\"\u003E\u003C/a\u003E\n  \u003C/div\u003E\n","disable_share":true,"spinner_url_fullscreen":"//public.slidesharecdn.com/images/ssplayer/loading_white.gif","slide_count":77,"slideview_url":"/kkd/tddbctdd","has_video":false,"ppt_location":"tddfortddbcokayama-111022061559-phpapp02","replayscreen":{"html":"\u003Cstyle type=\"text/css\"\u003E\n  .replayScreenReplay {\n    display: block; \n    font-family: \"Helvetica Neue\",Helvetica,Arial,sans-serif;\n    font-size: 12px;\n    width: 7em;\n    padding: 6px 10px 6px 14px;\n    line-height: 1.5;\n    text-align: center;\n    background: url(\"../../images/sprite-gradients.png\") repeat-x scroll 0 -62px #C7C7C7;\n    border: 1px solid #888888;\n    border-radius: 2px 2px 2px 2px;\n    cursor: pointer;\n    font-weight: 700;\n    text-shadow: 1px 1px 1px #FFFFFF;\n    height: 18px;\n  }\n  a.replayScreenReplay, a.replayScreenReplay:hover, a.replayScreenReplay:visited{\n    color : #333333;\n    text-decoration:none;\n    outline: 0 none;\n  }\n\u003C/style\u003E\n\u003Ca href=\"#\" class=\"replayScreenReplay\" \u003EView again\u003C/a\u003E"},"inpage_full_screen":true,"id":9827200,"mode":"html","fullscreen_url":"/fullscreen/kkd/tddbctdd","spinner_url":"//public.slidesharecdn.com/images/ssplayer/loading_bigfoot.gif","video_slides_count":0,"page":1,"lastscreen":{"related":[{"views":223,"author_login":"WagnerCollegeNYC","url":"/WagnerCollegeNYC/2011-eyh-israelwest-bank-presentation","thumbnail":"//cdn.slidesharecdn.com/ss_thumbnails/2011eyhisraelpresentation-110628122725-phpapp02-thumbnail-2.jpg?1309284658","title":"2011 EYH Israel-West Bank presentation","author":"Wagner College"},{"views":78,"author_login":"barryweeber","url":"/barryweeber/eco-2011-logo-rev","thumbnail":"//cdn.slidesharecdn.com/ss_thumbnails/eco2011logorev-110718213331-phpapp02-thumbnail-2.jpg?1311042846","title":"Eco 2011 logo rev","author":"ECO NZ"},{"views":224,"author_login":"silviadelavega","url":"/silviadelavega/vacaciones-8579974","thumbnail":"//cdn.slidesharecdn.com/ss_thumbnails/vacaciones-110712235249-phpapp02-thumbnail-2.jpg?1310532829","title":"Vacaciones","author":"silviadelavega"},{"views":447,"author_login":"xiaoxiaocamster","url":"/xiaoxiaocamster/2011-fashion-pictures-para-sa-present","thumbnail":"//cdn.slidesharecdn.com/ss_thumbnails/2011fashionpicturesparasapresent-110308053555-phpapp02-thumbnail-2.jpg?1299584218","title":"2011 fashion pictures para sa present","author":"xiaoxiaocamster"},{"views":408,"author_login":"zdoll","url":"/zdoll/spirited-away-remediation-sp3-curtin-uni","thumbnail":"//cdn.slidesharecdn.com/ss_thumbnails/spiritedawayremediationsp3curtinuni-111017014406-phpapp02-thumbnail-2.jpg?1318834123","title":"MED104 Spirited Away Remediation Pr...","author":"zdoll"},{"views":74,"author_login":"dani2994","url":"/dani2994/rally2011","thumbnail":"//cdn.slidesharecdn.com/ss_thumbnails/rally-2011-110408025726-phpapp02-thumbnail-2.jpg?1302250394","title":"Rally.2011","author":"dani2994"}],"html":"\u003C!--[if IE 7]\u003E\n  \u003Cstyle\u003E\n    .small.lastScreen{\n      margin-top:23%;\n    }\n    .normal.lastScreen{\n      margin-top:8%;\n    }\n    .lastScreen{\n      margin-top:13%;\n    }\n  \u003C/style\u003E\n\u003C![endif]--\u003E\n\n\u003Cstyle\u003E\n/* JS Player last screen */\n\n.lastScreen div, .lastScreen span, .lastScreen a, .lastScreen img, .lastScreen ol, .lastScreen ul, .lastScreen li, .lastScreen label, .lastScreen p    { border: 0; font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;margin: 0; padding: 0; vertical-align: baseline; line-height:1.3; text-align:left;}\n\n.lastScreen                     { display: table-cell; font-size: 12px; margin: 0 auto; position: relative; \n                                  vertical-align: middle;}\n\n.lastScreenContainer            { display: table; left: 0; position: absolute;\n                                  top: 0; vertical-align: middle; }\n.lastScreen-sprite              { background-color: transparent; background-image: url(data:image/png;base64,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); background-repeat: no-repeat; }\n\n.lastActions,\n.relatedPresentation ul         { list-style: none; margin: 0; }\n\nul.lastActions                  { line-height: 1; margin: 0 auto 12px; overflow: hidden; position: relative; width: 460px; }\n.lastActions li                 { float: left; display: inline; margin-right: 12px; }\n.lastActions li.last            { float: right; margin: 0; }\n\n.lastActions a                  { color: #444; display: block; font-size: 12px; font-weight: 700; padding: 10px 12px 10px 38px; text-transform: uppercase; }\n.lastActions a:hover            { text-decoration: none; }\n\n.lastActions .email,\n.lastActions .replay            { background-color: #999; background-image: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAiCAIAAAD3Zu8CAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACpJREFUeNpi+osEWICYAQaozPnz5w+C8+/fP5L10NBtA88h0qfI4QYQYABY+W434K4VRAAAAABJRU5ErkJggg==\"); background-repeat: repeat-x; }\n\n.lastActions .email a           { background-position:  -2px -5px; width: 40px; text-decoration: none; }\n.lastActions .replay a          { background-position: -3px -40px; padding: 10px 25px 10px 10px; text-decoration: none; }\n\n.lastActions .embed,\n.lastActions .url               { position: relative; }\n.lastActions .url               { margin: 0; }\n\n.lastActions label              { color: #CCC; font-size: 10px; font-family: \"Lucida Grande\", Tahoma, Verdana, Arial, sans-serif; \n                                  line-height: 1; padding: 0  2px; text-transform: uppercase; }\n.lastActions input              { border: 1px solid #000; display: block; font-size: 11px; height: 11px; margin: 0; padding: 4px 2px; resize: none; width: 140px; }\n\n.lastScreen .relatedPresentation { \n  background-color: #DDD;\n  background-image: -moz-linear-gradient(#ECECEC, #A8A8A8);\n  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ECECEC), to(#A8A8A8));\n  background-image: -o-linear-gradient(#ECECEC, #A8A8A8);\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ececec', EndColorStr='#a8a8a8');\n  -ms-filter: \"progid:DXImageTransform.Microsoft.gradient(startColorStr='#ececec', EndColorStr='#a8a8a8')\";\n  background-repeat: repeat-x;\n  height: 210px; margin: 0 auto; padding: 15px; position: relative; width: 430px; \n  }\n\n.relatedPresentation .close { \n  color: #777; float: right; font-size: 16px; height: 16px;\n  line-height: 0.8; position: absolute; right: 5px; text-align: center; top: 6px; width: 17px; \n  }\n\n.relatedPresentation a.close:hover\n                                { background: #777; color: #CCC;\n                                  -webkit-border-radius: 9px; -moz-border-radius: 9px; border-radius: 9px; }\n\n.relatedPresentation ul a.relatedThumb,\n.relatedPresentation ul li,\n.relatedPresentation ul li div  { float: left; }\n\n.relatedPresentation ul         { clear: both; height: 198px; position: relative; }\n.relatedPresentation ul li      { height: 94px; margin: 0 0 10px; width: 400px; }\n.relatedPresentation ul li:hover {background-color:#EEE;}\n.relatedPresentation a,\n.relatedPresentation a:hover    { text-decoration: none; }\n\ndiv.presentationMeta            { margin: 0 0 0 7px; }\ndiv.presentationMeta .relatedTitle     { color: #444; display: block; font-size: 13px; font-weight: 700; margin: 2px 0; width: 242px; }\ndiv.presentationMeta p,\ndiv.presentationMeta p a        { color: #888; font-size: 11px; font-weight: 400; margin: 0; right: 4px; top: -8px; }\ndiv.presentationMeta p a,\ndiv.presentationMeta p .relatedViews\n                                { color: #666; }\n\n.relatedPresentation .relatedNav { bottom: 5px; position: absolute; right: 5px; }\n\n.relatedNav a                   { float: right; height: 12px; margin: 0 5px; width: 8px; }\n.relatedNav .lastScreenPrev     { background-position: -16px -112px; }\n.relatedNav .lastScreenNext     { background-position: -16px -142px; }\n.relatedContent .relatedThumb img   { border: 1px solid #AAA; display: block; height: 90px; padding: 1px; width: 120px; }\n\n\n.small.lastScreen .relatedPresentation {\n  display: none;\n}\n.small.lastScreen .lastActions {\n  margin: 0 auto;\n  width: 206px;\n}\n.small.lastScreen .lastActions li {\n  margin: 0 0 12px;\n}\n.small.lastScreen .lastActions li.email {\n  width: 100px;\n}\n.small .lastActions .email a {\n  margin: 0 auto;\n}\n.small .lastActions input {\n  width: 200px;\n}\n.small .lastActions .last {\n  position: absolute;\n  top: 0;\n  left: 112px;\n}\n\n.normal.lastScreen .lastActions {\n  width: 378px;\n}\n.normal.lastScreen .relatedPresentation {\n  width: 346px;\n}\n.normal .lastActions input {\n  width: 100px;\n}\n.normal .relatedPresentation ul li { \n  height: 94px; margin: 0 0 10px; width: 335px; \n}\n.normal .presentationMeta .relatedTitle {\n  width: 200px;\n}\n\n\u003C/style\u003E\n\u003Cdiv class=\"lastScreen\"\u003E\n  \u003Cul class=\"lastActions\"\u003E\n    \u003Cli class=\"email\"\u003E\u003Ca href=\"#\" class=\"lastScreen-sprite lastScreenEmailShare j-tooltip\" data-original-title=\"Email this to your contacts\" title=\"Email this to your contacts\" \u003Eemail\u003C/a\u003E\u003C/li\u003E\n    \u003Cli class=\"embed\"\u003E\u003Clabel \u003Eembed\u003C/label\u003E\u003Cinput type='text' class=\"lastScreenEmbedCode j-tooltip\" data-original-title=\"Embed this on your website or blog\" title=\"Embed this on your website or blog\" /\u003E\u003C/li\u003E\n    \u003Cli class=\"url\"\u003E\u003Clabel \u003Eurl\u003C/label\u003E\u003Cinput type='text' class=\"lastScreenSSUrl j-tooltip\" data-original-title=\"View on Slideshare\" title=\"View on Slideshare\" /\u003E\u003C/li\u003E\n    \u003Cli class=\"replay last\"\u003E\u003Ca href=\"#\" class=\"lastScreen-sprite lastScreenReplay j-tooltip\" data-original-title=\"View again\" title=\"View again\" \u003E\u0026nbsp;\u003C/a\u003E\u003C/li\u003E\n  \u003C/ul\u003E\n  \u003Cdiv class=\"relatedPresentation\"\u003E\n  \u003Ca href=\"#\" class=\"close\"\u003E\u0026times;\u003C/a\u003E\n    \u003Cul\u003E\n      \u003Cli class='relatedContent'\u003E\n        \u003Ca class=\"relatedThumb\" href=\"#\" target=\"_blank\"\u003E\u003Cimg src=\"//public.slidesharecdn.com/images/thumbnail.png\"\u003E\u003C/a\u003E\n        \u003Cdiv class=\"presentationMeta\"\u003E\n          \u003Ca href=\"#\" class=\"relatedTitle\" target=\"_blank\"\u003Etitle comes here\u003C/a\u003E\n          \u003Cp\u003EFrom: \u003Ca class=\"relatedAuthor\" href=\"#\" target=\"_blank\"\u003EName comes here\u003C/a\u003E\u003C/p\u003E\n          \u003Cp\u003EViews: \u003Cspan class=\"relatedViews\"\u003EViews comes here\u003C/span\u003E\u003C/p\u003E\n        \u003C/div\u003E\n      \u003C/li\u003E\n\n      \u003Cli class='relatedContent'\u003E\n        \u003Ca class=\"relatedThumb\" href=\"#\" target=\"_blank\"\u003E\u003Cimg src=\"//public.slidesharecdn.com/images/thumbnail.png\"\u003E\u003C/a\u003E\n        \u003Cdiv class=\"presentationMeta\"\u003E\n          \u003Ca href=\"#\" class=\"relatedTitle\" target=\"_blank\"\u003Etitle comes here\u003C/a\u003E\n          \u003Cp\u003EFrom: \u003Ca class=\"relatedAuthor\" href=\"#\" target=\"_blank\"\u003EName comes here\u003C/a\u003E\u003C/p\u003E\n          \u003Cp\u003EViews: \u003Cspan class=\"relatedViews\"\u003EViews comes here\u003C/span\u003E\u003C/p\u003E\n        \u003C/div\u003E\n      \u003C/li\u003E\n      \n    \u003C/ul\u003E\n    \u003Cdiv class=\"relatedNav\"\u003E\n      \u003Ca href=\"#\" class=\"lastScreen-sprite lastScreenNext\"\u003E\u0026nbsp;\u003C/a\u003E\n      \u003Ca href=\"#\" class=\"lastScreen-sprite lastScreenPrev\"\u003E\u0026nbsp;\u003C/a\u003E\n    \u003C/div\u003E\n    \n  \u003C/div\u003E\n\u003C/div\u003E\u003C!-- last screen ends here --\u003E","url":"http://www.slideshare.net/kkd/tddbctdd"}},"show_ads":{"player_ad":"\u003Cdiv class=\"playerAd h-player-banner lostchild noAdForLead\"\u003E\n  \u003Ca href=\"#\" class=\"removeAd closeThis\" title=\"Remove this advertisement\"\u003E\u0026times;\u003C/a\u003E\n  \u003Cdiv class=\"h-mid-banner-content\"\u003E\u003Cscript type=\"text/javascript\"\u003E slideshare_object.SS_LI_FillAd({ tile : 2, zone : 'public_slide', dart_code: '%3Bkw%3DProgramming%3Bkw%3DMethodologies%3Bkw%3DAgile%3Bkw%3DTests%3Bkw%3DUnit%2Btesting%3Bkw%3DTest-driven%2Bdevelopment%3Bkw%3DKent%2BBeck%3Bkw%3DMercurial%3Bcat%3Dbusiness-mgmt%3Bcat%3Dtechnology', width: 728, height: 90 }); \u003C/script\u003E\u003C/div\u003E\n\u003C/div\u003E\n","comments_favorites_ad":"\u003Cdiv class=\"commentsFavoritesAd lostchild\"\u003E\n  \u003Cdiv class=\"commentsFavoritesAdDiv\"\u003E\u003Cscript type=\"text/javascript\"\u003E slideshare_object.SS_LI_FillAd({ tile : 3, zone : 'public_slide', dart_code: '%3Bkw%3DProgramming%3Bkw%3DMethodologies%3Bkw%3DAgile%3Bkw%3DTests%3Bkw%3DUnit%2Btesting%3Bkw%3DTest-driven%2Bdevelopment%3Bkw%3DKent%2BBeck%3Bkw%3DMercurial%3Bcat%3Dbusiness-mgmt%3Bcat%3Dtechnology', width: 728, height: 90 }); \u003C/script\u003E\u003C/div\u003E\n\u003C/div\u003E\n"},"version_no":"1319282194","embeds_count":5,"slideshow":{"for_experiment":false,"type":"presentation","is_audio":false,"iframe_code":"\u003Ciframe src=\"{iframe_url}\" width=\"{width}\" height=\"{height}\" frameborder=\"0\" marginwidth=\"0\" marginheight=\"0\" scrolling=\"no\" style=\"border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px\" allowfullscreen\u003E \u003C/iframe\u003E \u003Cdiv style=\"margin-bottom:5px\"\u003E \u003Cstrong\u003E \u003Ca href=\"http://www.slideshare.net/kkd/tddbctdd\" title=\"TDDBC\u306e\u524d\u306bTDD\u306b\u3064\u3044\u3066\u77e5\u3063\u3066\u304a\u3044\u3066\u3082\u3089\u3044\u305f\u3044\uff13\u3064\u306e\u3053\u3068\" target=\"_blank\"\u003ETDDBC\u306e\u524d\u306bTDD\u306b\u3064\u3044\u3066\u77e5\u3063\u3066\u304a\u3044\u3066\u3082\u3089\u3044\u305f\u3044\uff13\u3064\u306e\u3053\u3068\u003C/a\u003E \u003C/strong\u003E from \u003Cstrong\u003E\u003Ca href=\"http://www.slideshare.net/kkd\" target=\"_blank\"\u003ETakeshi Kakeda\u003C/a\u003E\u003C/strong\u003E \u003C/div\u003E","show_related_content":"1","view_action_state":"unpublished","embed_sizes":{"presets":{"preset2":{"displaySize":{"width":50,"height":38},"size":{"width":425,"height":355}},"preset3":{"displaySize":{"width":60,"height":45},"size":{"width":510,"height":420}},"preset4":{"displaySize":{"width":70,"height":53},"size":{"width":595,"height":485}},"preset1":{"displaySize":{"width":40,"height":30},"size":{"width":340,"height":290}}},"config":{"defaultPreset":"preset2"}},"allow_embeds":true,"is_author_premium":false,"pin_image_url":"http://m.slidesharecdn.com/convert.php?file=tddfortddbcokayama-111022061559-phpapp02-slide-1.jpg","form_is_blocking":false,"total_slides":77,"iframe_url":"http://www.slideshare.net/slideshow/embed_code/9827200","form_after_slide_number":null,"wp_code":"[slideshare id=9827200\u0026doc=tddfortddbcokayama-111022061559-phpapp02]","user_name":"Takeshi Kakeda","user_login":"kkd","title":"TDDBC\u306e\u524d\u306bTDD\u306b\u3064\u3044\u3066\u77e5\u3063\u3066\u304a\u3044\u3066\u3082\u3089\u3044\u305f\u3044\uff13\u3064\u306e\u3053\u3068","fullscreen_bg_color":"White","ss_url":"http://www.slideshare.net/kkd/tddbctdd","id":"9827200"},"fb_app_name":"slideshare","slideshow_placeholder":"//public.slidesharecdn.com/images/thumbnail.png","category":{"featured":0},"sharing_more":{"url":"http://www.slideshare.net/~/slideshow/sharing_more/9827200.html"},"comments":{"slideview_template":"\u003Cli\u003E\n                    \u003Ca href=\"#\" title=\"Commenter Title\" class=\"notranslate commenter h-commenter j-author-photo\" rel=\"nofollow\"\u003E\n                        \u003Cimg class=\"nickname\" src=\"/images/user-48x48.png\" height=\"48\" alt=\"Full Name\" original=\"/images/user-48x48.png\" width=\"48\" /\u003E\n                        \u003Cstrong class=\"h-username j-username notranslate\"\u003EFull Name\u003C/strong\u003E\u003Cspan class=\"bioStub notranslate\"\u003E\u003Cspan class=\"h-commenter-role\"\u003E\u003C/span\u003E\u003Cspan class=\"h-commenter-org\"\u003E\u003C/span\u003E\u003C/span\u003E\n                    \u003C/a\u003E\n                    \u003Cspan class=\"commentText h-comment-text notranslate\"\u003E\n                        Comment goes here. \n                    \u003C/span\u003E\n                    \u003Cspan class=\"commentMeta h-comment-meta\"\u003E\n                      \u003Cspan class=\"commentTimestamp h-timestamp\"\u003E12 hours ago\u003C/span\u003E\n                      \u003Cspan class=\"commentActions h-comment-actions hide\"\u003E\n                        \u003Cbutton class=\"j-reply btn btn-mini\"\u003EReply\u003C/button\u003E\n                        \u003Cbutton class=\"action-edit btn btn-mini\"\u003Eedit\u003C/button\u003E\n                        \u003Cbutton class=\"action-delete btn btn-mini\"\u003Edelete\u003C/button\u003E\n                        \u003Cbutton class=\"action-spam btn btn-mini\"\u003Espam\u003C/button\u003E\n                        \u003Ca href=\"#\" class=\"action-block\" rel=\"nofollow\"\u003Eblock\u003C/a\u003E\n                      \u003C/span\u003E\n                    \u003C/span\u003E\n                    \u003Cdiv class=\"alertMessage blockMessage warning\" id=\"confirmDialog\"\u003E\n                        \u003Cspan class=\"title\"\u003EAre you sure you want to\u003C/span\u003E\n                        \u003Cbutton class=\"btn btn-mini\" id=\"yes\"\u003EYes\u003C/button\u003E\n                        \u003Cbutton class=\"btn btn-mini\" id=\"no\"\u003ENo\u003C/button\u003E\n                    \u003C/div\u003E\n                \u003C/li\u003E","captcha_url":"http://s3.amazonaws.com/ss-captchas/","ajaxurl":"http://www.slideshare.net/~/slideshow/comments/9827200.json","total_count":0,"template":null},"doc":"tddfortddbcokayama-111022061559-phpapp02","totalSlides":77,"useHttp":1,"gam_cat_name":"business-mgmt","topnav":{"get_url":"/top_nav"}}; var user_info = {"name":null,"su":false,"is_pro":"false","userGroup":"non-member","fb_access_token":null,"is_opengraph_user":false,"id":null,"is_fbuser":null,"fb_userid":null,"opengraph_permissions":{},"loggedin":false,"login":"guest"} ; 
+//--></script><script src="//public.slidesharecdn.com/slideview/scripts/combined_init.js?1421e7c0" id="load_combined"></script>
+<script>SS_stubborn_js_loader('//public.slidesharecdn.com/slideview/scripts/combined.js?8d9dabac')</script>
+  <script id="page-load" type="text/javascript">
+  // <![CDATA[
+    var timer = (new Date()).getTime();
+    var _jspl = {}
+    _jspl.pageInitTime = timer;
+  // ]]> 
+  </script>
+  <script id="ga-init" type="text/javascript">
+  // <![CDATA[
+    window._gaq = [];
+  // ]]>
+  </script>
+  <script id="rails_environment" type="text/javascript">
+// <![CDATA[
+slideshare_object.deploy_environment = 'production';
+// ]]>
+</script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+   
+  <!--[if lt IE 9]><script src="//public.slidesharecdn.com/javascripts/plugins/html5.js"></script><![endif]-->
+
+  <link href="//public.slidesharecdn.com/images/favicon.ico" rel="Shortcut Icon" />
+  <link href="http://www.slideshare.net/kkd/tddbctdd" rel="canonical" />
+  <link href="/rss/latest" title="RSS" rel="alternate" type="application/rss+xml" />
+  <link href="/search/opensearch.xml" title="SlideShare Search" rel="search" type="application/opensearchdescription+xml" />
+  <link href="http://www.slideshare.net/api/oembed/2?format=json&amp;url=http://www.slideshare.net/kkd/tddbctdd" title="Slideshow oEmbed Profile" rel="alternate" type="application/json+oembed" />
+  <link href="http://www.slideshare.net/api/oembed/2?format=xml&amp;url=http://www.slideshare.net/kkd/tddbctdd" title="Slideshow oEmbed Profile" rel="alternate" type="text/xml+oembed" />
+  <link href="http://www.slideshare.net/mobile/kkd/tddbctdd" rel="alternate" media="handheld" />
+  <!-- fb open graph meta tags -->
+  <meta name="fb_app_id" property="fb:app_id" class="fb_og_meta" content="2490221586" />
+  <meta name="og_type" property="og:type" class="fb_og_meta" content="slideshare:presentation" />
+  <meta name="og_url" property="og:url" class="fb_og_meta" content="http://www.slideshare.net/kkd/tddbctdd" />
+  <meta name="og_image" property="og:image" class="fb_og_meta" content="http://cdn.slidesharecdn.com/ss_thumbnails/tddfortddbcokayama-111022061559-phpapp02-thumbnail-2.jpg?1319282194" />
+  <!-- SL:start:notranslate -->
+  <meta name="og_title" property="og:title" class="fb_og_meta" content="TDDBCの前にTDDについて知っておいてもらいたい３つのこと" />
+  <meta name="og_description" property="og:description" class="fb_og_meta" content="2011/10/22 オープンラボ岡山でのTDDBC前座講演。" />
+  <!-- SL:end:notranslate -->
+  <meta name="slideshow_published_time" property="slideshare:published" class="fb_og_meta" content="2011-10-22T06:15:56-05:00" />
+  <meta name="slideshow_author" property="slideshare:author" class="fb_og_meta" content="http://www.slideshare.net/kkd" />
+  <meta name="slideshow_view_count" property="slideshare:view_count" class="fb_og_meta" content="1739" />
+  <meta name="slideshow_embed_count" property="slideshare:embed_count" class="fb_og_meta" content="5" />
+  <meta name="slideshow_comment_count" property="slideshare:comment_count" class="fb_og_meta" content="0" />
+  <meta name="slideshow_download_count" property="slideshare:download_count" class="fb_og_meta" content="13" />
+  <meta name="slideshow_created_at" property="slideshare:created_at" class="fb_og_meta" content="Sat Oct 22 06:15:56 -0500 2011" />
+  <meta name="slideshow_updated_at" property="slideshare:updated_at" class="fb_og_meta" content="Sat Oct 22 06:16:34 -0500 2011" />
+  <meta name="slideshow_featured_on" property="slideshare:featured_on" class="fb_og_meta" content="" />
+  <meta name="slideshow_favorites_count" property="slideshare:favorites_count" class="fb_og_meta" content="5" />
+  <meta name="slideshow_category" property="slideshare:category" class="fb_og_meta" content="Technology" />
+  
+  <!-- SL:start:notranslate -->
+  <meta name="twitter:card" value="player" />
+  <meta name="twitter:site" value="@slideshare" />
+  <meta name="twitter:player" property="twitter_player" value="https://www.slideshare.net/slideshow/embed_code/9827200" />
+  <meta name="twitter:player:width" value="342" />
+  <meta name="twitter:player:height" value="291" />
+  <meta name="twitter:image" property="twitter_image" value="https://images.slidesharecdn.com/tddfortddbcokayama-111022061559-phpapp02/85/slide-1-320.jpg" />
+  <!-- SL:end:notranslate -->
+  </head>
+  
+  <body >
+
+    <div class="fb-global-msg-container hide">
+</div>
+    <div class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <a href="/" title="Homepage" class="sprite-brand hide-text" rel="tooltip" id="j-slideshare-logo">SlideShare</a>
+            <form class="navbar-search pull-left" method="get" action="/search/slideshow">
+              <input class="iconTemp-search hide-text" type="submit" />
+              <input name="searchfrom" type="hidden" value="header" />
+              <input name="q" class="search-query" id="search_query_top" type="text" placeholder="Search&hellip;" autocomplete="off" />
+              <div class="suggestionContainer"></div>
+            </form>
+            
+            <ul class="nav">
+                <li><span><a href="/upload" class="btn btn-primary" rel="nofollow">Upload</a></span></li>
+                <li class="dropdown" id="browse">
+                    <a href="#browse" class="dropdown-toggle-caret" data-toggle="dropdown">Browse <span class="divider">&nbsp;</span><b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/popular">Popular</a>
+                        </li>
+                        <li>
+                            <a href="/most-downloaded">Downloaded</a>
+                        </li>
+                        <li>
+                            <a href="/most-favorited">Favorited</a>
+                        </li>
+                        <li>
+                            <a href="/pro_accounts">Channels</a>
+                        </li>
+                        <li>
+                            <a href="/popular?media=videos">Videos</a>
+                        </li>
+                        <li>
+                            <a href="/zipcast">Zipcasts</a>
+                        </li>
+                    </ul>
+                </li>                
+            </ul>
+            <div class="pull-right" id="topNavLinks-11">
+ <ul class="nav pull-right" id="login_link">
+
+ 
+     <li>
+        <a href="/business/premium/plans?cmp_src=main_nav" title="Upgrade to SlideShare PRO" class="goPro j-tooltip" onclick="window._gaq = _gaq || []; _gaq.push(['_trackEvent', 'top_nav','topnav','business-index']);">
+            Go <span class="goProLabel">Pro</span> 
+        </a>
+     </li>
+ 
+ 
+ 
+ 
+ 
+     <li>
+         <a href="https://www.slideshare.net/login" class="void_fancybox void_redirect_link">Login</a>
+     </li>
+     <li>
+         <a href="https://www.slideshare.net/signup" class="void_fancybox void_redirect_link" title="Signup now for a SlideShare account">Signup</a>
+     </li>
+ 
+ 
+ </ul>
+ 
+ 
+
+
+ 
+   
+ 
+ 
+ 
+ <script language="javascript">
+   (function($,$$) {
+     function isPaymentPending() {
+       if(window.cookie && window.cookie('proNotice') === null) {
+         $.ajax({
+           url: '/business/premium/is_payment_pending_or_churned_out',
+           type: 'POST',
+           dataType: 'json',
+           success: function(reply){
+             if (reply.status === true) {
+               if(!reply.churn || (reply.churn && window.cookie('churnNotice') === null)) {
+                 var element_array = [$('header'), $('div.headerWrapper'), $('.navbar')];
+                 $.each(element_array, function() {
+                   if(this.length > 0) {
+                     this.append(reply.msg);
+                   }
+                 });
+               }
+               $('#j-close_pro_notice').click(function(e){
+                 e.preventDefault();
+                 $('#j-pro_notice').slideUp('slow', function(){
+                  if(reply.churn) {
+                    cookie('churnNotice', true); // doesn't expire
+                    } else {
+                    cookie('proNotice', true, {expires: 0.006944}); // 10 minutes
+                  }
+                  $('#j-pro_notice').remove();
+                });
+              });
+              $('#j-pro_notice').slideDown('slow');
+            }
+          }
+        });
+      }
+    }
+    function currencyInfo() {
+      if(window.cookie && window.cookie('currencyNotice') === null) {
+        $.ajax({
+          url: '/business/premium/currency_info',
+          type: 'POST',
+          dataType: 'json',
+          success: function(reply){
+            if (reply.status) {
+              var element_array = [$('header'), $('div.headerWrapper'), $('.navbar')];
+              $.each(element_array, function() {
+                if(this.length > 0) {
+                  this.append(reply.msg);
+                }
+              });
+              $('#j-close_currency_notice').click(function(e){
+                e.preventDefault();
+                $('#j-currency_notice').slideUp('slow', function(){
+                  cookie('currencyNotice', true, { path: '/', expires: 30 }); // 30 days
+                  $('#j-currency_notice').remove();
+                });
+              });
+              $('#j-currency_notice').slideDown('slow');
+            }
+          }
+        });
+      }
+    }
+    function notification() {
+      $.ajax( {
+        url: "/newsfeed/get_newsfeed_count",
+        type: 'GET',
+        async: true,
+        dataType: 'json',
+        success: function ( data ){
+          if (data.count > 0) {
+            $('.j-intro-newsfeedcount').html('check ' +data.count);
+            $('.j-icon_NoNotification, .j-icon_Notification').toggleClass('hide');
+            $('.j-icon_Notification span').html(data.count);
+            if (typeof Tinycon !== 'undefined'){
+              Tinycon.setBubble(data.count);
+            }
+          }
+        },
+        error: function (jqXHR){
+        }
+      });
+    }
+      
+      $(".j-icon_NoNotification").click(function(e){
+        recordGAMenuEvent('Newsfeed', 'NoNotification_clicked');
+      });
+      
+      $(".j-icon_Notification").click(function(e){
+        recordGAMenuEvent('Newsfeed', 'Notification_clicked');
+      });
+      
+      $(".j-help").click(function(e){
+        recordGAMenuEvent('Dropdown_Menu_Top_navigation', 'help_topnav_clicked');
+      });
+      
+      $(".j-newsfeed").click(function(e){
+        recordGAMenuEvent('Dropdown_Menu_Top_navigation', 'newsfeed_topnav_clicked');
+      });
+      
+      $(".j-public-profile").click(function(e){
+        recordGAMenuEvent('Dropdown_Menu_Top_navigation', 'public_profile_topnav_clicked');
+      });
+      
+      $(".j-uploads").click(function(e){
+        recordGAMenuEvent('Dropdown_Menu_Top_navigation', 'my_uploads_topnav_clicked');
+      });
+      
+      $(".j-zipcasts").click(function(e){
+        recordGAMenuEvent('Dropdown_Menu_Top_navigation', 'my_zipcasts_topnav_clicked');
+      });
+      
+      $(".j-edit-profile").click(function(e){
+        recordGAMenuEvent('Dropdown_Menu_Top_navigation', 'edit_profile_topnav_clicked');
+      });
+      
+      $(".j-analytics").click(function(e){
+        recordGAMenuEvent('Dropdown_Menu_Top_navigation', 'analytics_topnav_clicked');
+      });
+      
+      $(".j-logout").click(function(e){
+        recordGAMenuEvent('Dropdown_Menu_Top_navigation', 'logout_topnav_clicked');
+      });
+      
+      // Record GA event for the menu item 
+      function recordGAMenuEvent(menuItem, event) {
+        _gaq.push(['_trackEvent', menuItem, event]);
+      }
+      
+      $(window).load(function(){
+        currencyInfo();
+        if($$.user.loggedin) {
+          notification();
+          isPaymentPending();
+        }
+      });
+    })(jQuery,slideshare_object);
+
+    </script>
+    
+</div>
+          </div>
+        </div>
+    </div>
+    
+   
+ 
+      <div id="fb-root"></div>
+      <div class="admanager-section"><script type="text/javascript">
+document.write(unescape("%3Cscript src='" + (document.location.protocol == "https:" ? "https://" : "http://") + "partner.googleadservices.com/gampad/google_service.js' %3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+GS_googleAddAdSenseService("ca-pub-5203428669823392");
+GS_googleEnableAllServices();
+</script>
+<script type="text/javascript">
+GA_googleAddAttr('cat', 'business-mgmt');
+GA_googleAddAttr('ztag', 'programming');
+GA_googleAddAttr('ztag', 'methodologies');
+GA_googleAddAttr('ztag', 'agile');
+GA_googleAddAttr('ztag', 'tests');
+GA_googleAddAttr('ztag', 'unit-testing');
+GA_googleAddAttr('ztag', 'test-driven-development');
+GA_googleAddAttr('ztag', 'kent-beck');
+GA_googleAddAttr('ztag', 'mercurial');
+GA_googleAddAttr('contest', 'none');
+GA_googleAddAttr('misc', 'presentation');
+
+
+</script>
+
+
+<script type="text/javascript">
+GA_googleAddSlot("ca-pub-5203428669823392", "slideview_top_728_90");
+</script>
+
+
+<script type="text/javascript">
+  GA_googleAddSlot("ca-pub-5203428669823392", "slideview_right_skyscraper");
+</script>
+
+<script type="text/javascript">
+GA_googleAddSlot("ca-pub-5203428669823392", "slideview_below_transcript");
+</script>
+
+<script type="text/javascript">
+  GA_googleAddSlot("ca-pub-5203428669823392", "slideview_player_leaderboard");
+</script>
+
+<script type="text/javascript"> 
+GA_googleAddSlot("ca-pub-5203428669823392", "slideview_comments_favorites_728_90"); 
+</script>
+
+<script type="text/javascript">GA_googleAddAdSensePageAttr("google_hints", "TDDBC\u306e\u524d\u306bTDD\u306b\u3064\u3044\u3066\u77e5\u3063\u3066\u304a\u3044\u3066\u3082\u3089\u3044\u305f\u3044\uff13\u3064\u306e\u3053\u3068");</script>
+<script type="text/javascript">
+ GA_googleUseSyncSRARendering();
+  GA_googleFetchAds();
+</script>
+
+
+<!--
+<script type="text/javascript">  
+var google_adnum = 0;
+var random_number = Math.random();
+if (random_number < 0.55){ 
+GA_googleAddAttr("ztag", "Web-1");
+ } else { GA_googleAddAttr("ztag", "Go-1"); } 
+</script>
+-->
+</div>
+
+    <section>
+        
+        <div class="sectionElements container">
+        <div class="banner h-top-ad">
+            <div class="leaderboard1" style="height:90px"><script type="text/javascript"> slideshare_object.SS_LI_FillAd({ tile : 1, zone : 'slideview', dart_code: '%3Bkw%3DProgramming%3Bkw%3DMethodologies%3Bkw%3DAgile%3Bkw%3DTests%3Bkw%3DUnit%2Btesting%3Bkw%3DTest-driven%2Bdevelopment%3Bkw%3DKent%2BBeck%3Bkw%3DMercurial%3Bcat%3Dbusiness-mgmt%3Bcat%3Dtechnology', width: 728, height: 90 }); </script></div>
+            
+        </div>
+        
+        <div class="" id="flashNotice"></div>
+        <div class="playerWrapper" style="width: 728px;">
+            <div class="actions">
+                <ul class="ssActions h-tools">
+                    <li class="action-share public-only"><a href="#" title="Email this presentation to your contacts" class="sprite iconEmail j-tooltip" rel="nofollow">Email</a></li>
+                    <li class="action-addfav public-only"><a href="/signup?from=favorite&from_source=http%3A%2F%2Fwww.slideshare.net%2Fkkd%2Ftddbctdd" title="Mark this as a favorite" class="sprite iconFav j-tooltip" rel="nofollow">Favorite</a></li>
+                    <li class="action-fav public-only" style="display:none">
+                      <a href="#" title="Saved to your favorites" class="sprite iconFavOn j-tooltip" rel="nofollow">Favorited</a>
+                       <a href="#" title="Remove from favorites" class="removeFav delete j-tooltip" rel="nofollow">&times;</a>
+                    </li>
+                    
+                    <li class="action-download" style=""><a href="/signup?from=download&from_source=http://www.slideshare.net/kkd/tddbctdd/download&download_id=9827200-5b2414ff91e845fe303fb8f62c6ce33259954021-slideshow" title="Download this presentation" class="sprite iconDownload j-tooltip" rel="nofollow">Download</a></li>
+                    <li class="action-spam h-action-spam"><a href="#" title="Mark this presentation as spam" class="spam-link j-tooltip" rel="nofollow"><span class="iconTemp-flag">&nbsp;</span>Flag</a></li>
+                      
+                    <li class="hide h-private-notice last"><span title="Private Content" class="iconPrivate">Private Content</span></li>
+                    <li class="action-embed h-action-embed"><a href="#" class="sprite iconEmbed" rel="nofollow">Embed</a></li>
+                    <li class="expandedOverlay action-embed-code embedPanel h-embed-allow" style="display:none">
+                    <span class="embedPanelBasic input-append">
+                       <label class="j-embed-main-heading">Copy and paste this code into your blog or website</label>
+                       <input class="h-embed-code" readonly="readonly" id="embed-iframe" type="text" value="" /><button class="btn" id="j-iframe-copier">Copy</button>
+                       <span class="success hint" id="j-iframe-msg" style="display:none"></span>
+                     </span>
+                     <strong>
+                       <button title="Customize embed code" class="btn btn-small customizeLink h-action-customize">Customize&hellip;</button>
+                     </strong>
+                     <span class="customizeEmbed" id="h-customize-embed-section" style="display:none">
+                     <label for="embed-customize-withrel checkbox inline">
+                       <input id="embed-customize-withrel" type="checkbox" /> Without related content
+                     </label> 
+                     <label for="embed-customize-slidenumber">
+                       Start from slide number
+                       <!-- Start from page: -->
+                       <select class="notranslate" id="embed-customize-slidenumber">
+<option value="1">1</option>
+
+<option value="2">2</option>
+
+<option value="3">3</option>
+
+<option value="4">4</option>
+
+<option value="5">5</option>
+
+<option value="6">6</option>
+
+<option value="7">7</option>
+
+<option value="8">8</option>
+
+<option value="9">9</option>
+
+<option value="10">10</option>
+
+<option value="11">11</option>
+
+<option value="12">12</option>
+
+<option value="13">13</option>
+
+<option value="14">14</option>
+
+<option value="15">15</option>
+
+<option value="16">16</option>
+
+<option value="17">17</option>
+
+<option value="18">18</option>
+
+<option value="19">19</option>
+
+<option value="20">20</option>
+
+<option value="21">21</option>
+
+<option value="22">22</option>
+
+<option value="23">23</option>
+
+<option value="24">24</option>
+
+<option value="25">25</option>
+
+<option value="26">26</option>
+
+<option value="27">27</option>
+
+<option value="28">28</option>
+
+<option value="29">29</option>
+
+<option value="30">30</option>
+
+<option value="31">31</option>
+
+<option value="32">32</option>
+
+<option value="33">33</option>
+
+<option value="34">34</option>
+
+<option value="35">35</option>
+
+<option value="36">36</option>
+
+<option value="37">37</option>
+
+<option value="38">38</option>
+
+<option value="39">39</option>
+
+<option value="40">40</option>
+
+<option value="41">41</option>
+
+<option value="42">42</option>
+
+<option value="43">43</option>
+
+<option value="44">44</option>
+
+<option value="45">45</option>
+
+<option value="46">46</option>
+
+<option value="47">47</option>
+
+<option value="48">48</option>
+
+<option value="49">49</option>
+
+<option value="50">50</option>
+
+<option value="51">51</option>
+
+<option value="52">52</option>
+
+<option value="53">53</option>
+
+<option value="54">54</option>
+
+<option value="55">55</option>
+
+<option value="56">56</option>
+
+<option value="57">57</option>
+
+<option value="58">58</option>
+
+<option value="59">59</option>
+
+<option value="60">60</option>
+
+<option value="61">61</option>
+
+<option value="62">62</option>
+
+<option value="63">63</option>
+
+<option value="64">64</option>
+
+<option value="65">65</option>
+
+<option value="66">66</option>
+
+<option value="67">67</option>
+
+<option value="68">68</option>
+
+<option value="69">69</option>
+
+<option value="70">70</option>
+
+<option value="71">71</option>
+
+<option value="72">72</option>
+
+<option value="73">73</option>
+
+<option value="74">74</option>
+
+<option value="75">75</option>
+
+<option value="76">76</option>
+
+<option value="77">77</option>
+</select>
+                     </label>
+                     <label class="embedSizeTitle">Size (px)</label>
+                     <span class="j-embed-size embedSizeCustomizer">
+                       <a href="#" class="j-embed-preset-template embedSizeBlock" rel="nofollow">
+                         <span class="j-embed-desc embedSizeDescription">460&times;349</span>
+                         <span class="j-embed-display embedSizeDisplay">
+                         </span>
+                       </a>
+                     </span>
+                     <span class="wp input-append">
+                       <label>Shortcode for WordPress.com blogs <a href="http://help.slideshare.com/entries/20117147-can-i-embed-slideshare-presentations-in-wordpress-blogs-or-which-embed-code-should-i-use-for-my-word" rel="nofollow" target="_blank">?</a></label>
+                        <input name="embed-code" class="text quiet h-wpembedcode" readonly="readonly" id="embedCodeWP" type="text" value="" />
+                         <button class="button" id="j-wp-copier">Copy
+                         <span class="success hint" id="j-wp-msg" style="display:none"></span>
+                      </button></span>
+                     </span>
+                   <button class="cancel btn btn-small">Close</button>
+                  </li>
+
+                  <li class="expandedOverlay action-addspam" style="display:none">
+                    <!-- Flag begins here-->
+                    <div class="flag flag-inappropriate">
+                      <a href="/main/flag?slideshow_id=9827200" class="action-flag" rel="nofollow">
+                        <span title="This presentation has been flagged" class="j-tooltip flagged">Flagged as inappropriate</span>
+                        <span title="Flag this presentation as inappropriate" class="j-tooltip flag">Flag as inappropriate</span>
+                      </a>
+                      <form method="post" action="#" accept-charset="utf-8" style="display:none">
+                        <fieldset>
+                          <legend>Flag as inappropriate</legend>
+                          <p>Select your reason for flagging this <span class="type-string-down">presentation</span> as inappropriate. If needed, use the <a href="/feedback" rel="nofollow">feedback form</a> to let us know more details.</p>
+
+                          
+                          <select name="ia_value">
+                                      <option value="0">None</option>
+                                      <option value="1">Pornographic</option>
+                                      <option value="3">Defamatory</option>
+                                      <option value="4">Illegal/Unlawful</option>
+                                              <option value="6">Spam</option>
+                                      <option value="5">Other Terms Of Service Violation</option>
+                                      
+                                      
+                                      
+                                      
+                                  </select>
+
+                          <input class="button action-submit" type="submit" value="Flag" />
+                          <button class="action-cancel btn btn-small">Cancel</button>
+                        </fieldset>
+                      </form>
+                    </div><!-- Flag ends here-->
+                    <a href="http://www.slideshare.net/terms#dmca" rel="nofollow">File a copyright complaint</a>
+                  </li>
+                  
+                 
+
+                  
+
+                  <li class="expandedOverlay action-unverified-download public-only" style="display:none">
+                     <p>
+                        We have emailed the verification/download link to <strong>"<span class="user-email"></span>"</strong>.
+                        <br />
+                        Login to your email and click the link to download the file directly.
+                      </p>
+                      <form class="changeEmail change-unverified-email">
+                        <fieldset>
+                        <legend>To request the link at a different email address, update it here.</legend>
+                        <input name="unverified-email" class="text unverified-email" value="" />
+                        <input class="submit btn" type="submit" value="Update" />
+                        <a href="#" class="ilink cancel" rel="nofollow">Close</a><br />
+                        <span class="change-unverified-email-validate" style="display:none">Validation messages.</span>
+                        <span class="change-unverified-email-win" style="display:none;color:#0A0">Success message.</span>
+                        <span class="change-unverified-email-fail" style="display:none;color:#A00">Fail message.</span>
+                        </fieldset>
+                      </form>
+                      <p style="margin:0"><span class="hint">Check your bulk/spam folders if you can't find our mail.</span></p>
+                    </li>
+
+                  <li class="expandedOverlay action-leads-contact" style="display:none">
+                    
+                  </li>
+                </ul>
+            </div>
+
+            <div class="player" id="svPlayerId" style="width: 728px; height: 580px;">
+              <div id="lead-div"></div>
+              
+              
+              <div id="jsplayer_placeholder"><img alt="Loading_bigfoot" src="http://public.slidesharecdn.com/images/ssplayer/loading_bigfoot.gif?7bb6a01864" /></div>
+            </div>
+
+            <script id="playerAdScript" type="text/javascript">
+              slideshare_object.configurePlayerAd('player_ad');
+            </script>
+            
+        </div>
+            
+
+        <aside class="h-related-more-tab" >
+            <ul class="tabs">              
+                <li class="active j-related-slideshows h-related-tab"><a href="#">Related</a></li>
+                <li class="h-more-tab j-more-slideshows"><a href="#" class="j-tooltip" rel="nofollow" original-title="More by Takeshi Kakeda">More</a></li>  
+                             
+            </ul>
+            <ul class="notranslate thumbnailGrid hide" id="activityList">
+                <li>
+                  <div data-height="584" data-site="slideshare.net" class="fb-activity" data-width="222" data-app-id="2490221586" data-linktarget="_top" data-recommendations="true" data-action="like,slideshare:comment,slideshare:view" data-border-color="#4C4946" data-colorscheme="dark" data-header="false"></div>
+                </li>
+            </ul>
+            <ul class="notranslate relatedContent thumbnailGrid h-related-slideshows" id="relatedList">
+<li>
+                    <a href="/WagnerCollegeNYC/2011-eyh-israelwest-bank-presentation" title="2011 EYH Israel-West Bank presentation">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="http://cdn.slidesharecdn.com/ss_thumbnails/2011eyhisraelpresentation-110628122725-phpapp02-thumbnail-2.jpg?1309284658" alt="2011 EYH Israel-West Bank presentation" width="120" original="" /></span>
+                        <span class="h-related-title">2011 EYH Israel-West Bank presentation</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/barryweeber/eco-2011-logo-rev" title="Eco 2011 logo rev">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="http://cdn.slidesharecdn.com/ss_thumbnails/eco2011logorev-110718213331-phpapp02-thumbnail-2.jpg?1311042846" alt="Eco 2011 logo rev" width="120" original="" /></span>
+                        <span class="h-related-title">Eco 2011 logo rev</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/silviadelavega/vacaciones-8579974" title="Vacaciones">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="http://cdn.slidesharecdn.com/ss_thumbnails/vacaciones-110712235249-phpapp02-thumbnail-2.jpg?1310532829" alt="Vacaciones" width="120" original="" /></span>
+                        <span class="h-related-title">Vacaciones</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/xiaoxiaocamster/2011-fashion-pictures-para-sa-present" title="2011 fashion pictures para sa present">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="http://cdn.slidesharecdn.com/ss_thumbnails/2011fashionpicturesparasapresent-110308053555-phpapp02-thumbnail-2.jpg?1299584218" alt="2011 fashion pictures para sa present" width="120" original="" /></span>
+                        <span class="h-related-title">2011 fashion pictures para sa present</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/zdoll/spirited-away-remediation-sp3-curtin-uni" title="MED104 Spirited Away Remediation Project SP3 2011">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="http://cdn.slidesharecdn.com/ss_thumbnails/spiritedawayremediationsp3curtinuni-111017014406-phpapp02-thumbnail-2.jpg?1318834123" alt="MED104 Spirited Away Remediation Project SP3 2011" width="120" original="" /></span>
+                        <span class="h-related-title">MED104 Spirited Away Remediation Project&hellip;</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/dani2994/rally2011" title="Rally.2011">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="http://cdn.slidesharecdn.com/ss_thumbnails/rally-2011-110408025726-phpapp02-thumbnail-2.jpg?1302250394" alt="Rally.2011" width="120" original="" /></span>
+                        <span class="h-related-title">Rally.2011</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/dani2994/rally2011-7558112" title="Rally.2011">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="http://cdn.slidesharecdn.com/ss_thumbnails/rally-2011-110408030654-phpapp01-thumbnail-2.jpg?1302250043" alt="Rally.2011" width="120" original="" /></span>
+                        <span class="h-related-title">Rally.2011</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/jorgenmaristuen/fuglen" title="Fuglen">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="http://cdn.slidesharecdn.com/ss_thumbnails/fagligcocktailbilder-110613102334-phpapp02-thumbnail-2.jpg?1308141594" alt="Fuglen" width="120" original="" /></span>
+                        <span class="h-related-title">Fuglen</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/Jerpersonal/2011-review-11314522" title="2011 review">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="2011 review" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/2011review-120128192342-phpapp02-thumbnail-2.jpg?1327800403" /></span>
+                        <span class="h-related-title">2011 review</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/ermerino/lcera-vascular-8453788" title="Úlcera vascular">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="Úlcera vascular" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/lceravascular-110628223027-phpapp02-thumbnail-2.jpg?1309319534" /></span>
+                        <span class="h-related-title">Úlcera vascular</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/ermerino/lcera-vascular-8453814" title="Úlcera vascular">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="Úlcera vascular" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/lceravascular-110628223615-phpapp02-thumbnail-2.jpg?1309318638" /></span>
+                        <span class="h-related-title">Úlcera vascular</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/greta325/mit-sloan-orientation-2009" title="MIT Sloan Orientation 2009">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="MIT Sloan Orientation 2009" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/mitsloanorientation2009-090908135127-phpapp02-thumbnail-2.jpg?1252436018" /></span>
+                        <span class="h-related-title">MIT Sloan Orientation 2009</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/mukundmohan/number-of-science-phd-students-graduating-annually" title="Number of Science PHD students graduating annually">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="Number of Science PHD students graduating annually" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/phdprograms-110709084653-phpapp02-thumbnail-2.jpg?1310371276" /></span>
+                        <span class="h-related-title">Number of Science PHD students graduatin&hellip;</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/lucas-michael/hamptons-5-276163" title="Hamptons 5 27-6_16(3)">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="Hamptons 5 27-6_16(3)" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/hamptons527-6163-110730054700-phpapp02-thumbnail-2.jpg?1312022853" /></span>
+                        <span class="h-related-title">Hamptons 5 27-6_16(3)</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/Rain8ow/vacation-8594014" title="Vacation">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="Vacation" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/vacation-110714061353-phpapp02-thumbnail-2.jpg?1310642247" /></span>
+                        <span class="h-related-title">Vacation</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/krishiggins/paintings-pp" title="Paintings pp">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="Paintings pp" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/paintingspp-110403174634-phpapp02-thumbnail-2.jpg?1301870892" /></span>
+                        <span class="h-related-title">Paintings pp</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/mustangsread/ybk-tshirt" title="Ybk tshirt">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="Ybk tshirt" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/ybktshirt-110219224702-phpapp02-thumbnail-2.jpg?1298178210" /></span>
+                        <span class="h-related-title">Ybk tshirt</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/renata123/secret-wishes-in-2011" title="Secret wishes in 2011">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="Secret wishes in 2011" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/secretwishesin2011-101228020727-phpapp01-thumbnail-2.jpg?1293599031" /></span>
+                        <span class="h-related-title">Secret wishes in 2011</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/shiranshoku/presentatie-workshop" title="Presentatie workshop">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="Presentatie workshop" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/presentatieworkshop-101123113906-phpapp02-thumbnail-2.jpg?1290534611" /></span>
+                        <span class="h-related-title">Presentatie workshop</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/elsatsogl/ss-6427351" title="καλως ηρθες νεα χρονια!!!">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="καλως ηρθες νεα χρονια!!!" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/random-110102024936-phpapp02-thumbnail-2.jpg?1293959149" /></span>
+                        <span class="h-related-title">καλως ηρθες νεα χρονι�&hellip;</span>
+                    </a>
+                </li>
+</ul>
+            
+            <ul class="notranslate moreContent thumbnailGrid h-author-slideshows" id="moreList">
+<li>
+                    <a href="/kkd/project-facilitation-draft-memo" title="Project Facilitation Draft Memo">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="http://cdn.slidesharecdn.com/ss_thumbnails/20040831projectfacilitationmemo-120706015452-phpapp02-thumbnail-2.jpg?1341557811" alt="Project Facilitation Draft Memo" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/20040831projectfacilitationmemo-120706015452-phpapp02-thumbnail-2.jpg?1341557811" /></span>
+                        <span class="h-more-title">Project Facilitation Draft Memo</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/kkd/ss-10058263" title="アジャイルの全体性における技と心の位置付け">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="http://cdn.slidesharecdn.com/ss_thumbnails/agilewholenessmindandtech-111107093912-phpapp02-thumbnail-2.jpg?1320680416" alt="アジャイルの全体性における技と心の位置付け" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/agilewholenessmindandtech-111107093912-phpapp02-thumbnail-2.jpg?1320680416" /></span>
+                        <span class="h-more-title">アジャイルの全体性における�&hellip;</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/kkd/ss-10057840" title="ビジネス加速のためのアジャイル入門">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="http://cdn.slidesharecdn.com/ss_thumbnails/agileforbusinessaccelaration-111107090140-phpapp02-thumbnail-2.jpg?1320825585" alt="ビジネス加速のためのアジャイル入門" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/agileforbusinessaccelaration-111107090140-phpapp02-thumbnail-2.jpg?1320825585" /></span>
+                        <span class="h-more-title">ビジネス加速のためのアジャ�&hellip;</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/kkd/agile459-1" title="Agile459 アジャイル事例研究(1)セミナー オープニング">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="http://cdn.slidesharecdn.com/ss_thumbnails/agile459opening-111103081919-phpapp02-thumbnail-2.jpg?1320326421" alt="Agile459 アジャイル事例研究(1)セミナー オープニング" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/agile459opening-111103081919-phpapp02-thumbnail-2.jpg?1320326421" /></span>
+                        <span class="h-more-title">Agile459 アジャイル事例研究(1)�&hellip;</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/kkd/ss-9684387" title="アジャイルについてわかちあいたい３つのこと">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="http://cdn.slidesharecdn.com/ss_thumbnails/congratsagileshimane20111013-111013180051-phpapp02-thumbnail-2.jpg?1318547034" alt="アジャイルについてわかちあいたい３つのこと" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/congratsagileshimane20111013-111013180051-phpapp02-thumbnail-2.jpg?1318547034" /></span>
+                        <span class="h-more-title">アジャイルについてわかちあ�&hellip;</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/kkd/oblove2011summer-decade" title="オブラブ2011夏 ２つの10年〜これまでと、これから〜">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="http://cdn.slidesharecdn.com/ss_thumbnails/oblove2011summerdecade-110714170948-phpapp01-thumbnail-2.jpg?1310684024" alt="オブラブ2011夏 ２つの10年〜これまでと、これから〜" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/oblove2011summerdecade-110714170948-phpapp01-thumbnail-2.jpg?1310684024" /></span>
+                        <span class="h-more-title">オブラブ2011夏 ２つの10年〜こ&hellip;</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/kkd/ss-7692171" title="課題探究ワークショップ「あなたの課題はアジャイルで解決できる?」">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="http://cdn.slidesharecdn.com/ss_thumbnails/issuethinkingworkshop-110421010339-phpapp02-thumbnail-2.jpg?1303366352" alt="課題探究ワークショップ「あなたの課題はアジャイルで解決できる?」" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/issuethinkingworkshop-110421010339-phpapp02-thumbnail-2.jpg?1303366352" /></span>
+                        <span class="h-more-title">課題探究ワークショップ「あ�&hellip;</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/kkd/ss-7692008" title="課題から紐解くアジャイル">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="http://cdn.slidesharecdn.com/ss_thumbnails/issuedrivenagilepublic-110421003142-phpapp02-thumbnail-2.jpg?1303366376" alt="課題から紐解くアジャイル" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/issuedrivenagilepublic-110421003142-phpapp02-thumbnail-2.jpg?1303366376" /></span>
+                        <span class="h-more-title">課題から紐解くアジャイル</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/kkd/metaphors-we-develop-a-software-by-7661294" title="Metaphors we develop a software by">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="Metaphors we develop a software by" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/metaphorswedevelopasoftwareby-110418040335-phpapp02-thumbnail-2.jpg?1303117810" /></span>
+                        <span class="h-more-title">Metaphors we develop a software by</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/kkd/agilejapan2011-7644523" title="AgileJapan2011 愛媛サテライト オープニング">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="AgileJapan2011 愛媛サテライト オープニング" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/agilejapan2011ehime-110415175216-phpapp02-thumbnail-2.jpg?1302908091" /></span>
+                        <span class="h-more-title">AgileJapan2011 愛媛サテライト オ&hellip;</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/kkd/ss-7065871" title="パタン・ランゲージからプロジェクト・ランゲージへ Part1">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="パタン・ランゲージからプロジェクト・ランゲージへ Part1" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/patternlanguagepart1-110226013635-phpapp02-thumbnail-2.jpg?1298706943" /></span>
+                        <span class="h-more-title">パタン・ランゲージからプロ�&hellip;</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/kkd/pf-6621219" title="プロジェクトファシリテーション〜実践と変化〜">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="プロジェクトファシリテーション〜実践と変化〜" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/pf-110118230536-phpapp01-thumbnail-2.jpg?1295413693" /></span>
+                        <span class="h-more-title">プロジェクトファシリテーシ�&hellip;</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/kkd/xplt" title="XPと環境の微妙な関係夜LT版">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="XPと環境の微妙な関係夜LT版" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/xpeconightlt-110118225616-phpapp02-thumbnail-2.jpg?1295413497" /></span>
+                        <span class="h-more-title">XPと環境の微妙な関係夜LT版</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/kkd/ss-6137088" title="アジャイルプロセス協議会 四国支部 立ち上げ">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="アジャイルプロセス協議会 四国支部 立ち上げ" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/agile45901-101212233131-phpapp02-thumbnail-2.jpg?1292218810" /></span>
+                        <span class="h-more-title">アジャイルプロセス協議会 四&hellip;</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/kkd/user-story-mapping-for-agile-team" title="アジャイルな地図づくり User Story Mapping for Agile Team">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="アジャイルな地図づくり User Story Mapping for Agile Team" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/agiletourosaka2010-101031231949-phpapp02-thumbnail-2.jpg?1288655181" /></span>
+                        <span class="h-more-title">アジャイルな地図づくり User S&hellip;</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/kkd/ss-2928832" title="なぜアレグザンダー祭りを開催したのか？">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="なぜアレグザンダー祭りを開催したのか？" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/alexanderopening-100116092004-phpapp01-thumbnail-2.jpg?1263655337" /></span>
+                        <span class="h-more-title">なぜアレグザンダー祭りを開�&hellip;</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/kkd/the-back-of-agile" title="The Back of &quot;Agile&quot;">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="The Back of &quot;Agile&quot;" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/devlove20091212-091212000334-phpapp02-thumbnail-2.jpg?1260612039" /></span>
+                        <span class="h-more-title">The Back of &quot;Agile&quot;</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/kkd/ssm-2349465" title="SSM+ループ図練習「高知生コン事件」">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="SSM+ループ図練習「高知生コン事件」" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/random-091026094319-phpapp01-thumbnail-2.jpg?1256568285" /></span>
+                        <span class="h-more-title">SSM+ループ図練習「高知生コン&hellip;</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/kkd/whats-lightning-talks" title="What's Lightning Talks?">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="What's Lightning Talks?" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/lightningtalks-091024092457-phpapp01-thumbnail-2.jpg?1256394365" /></span>
+                        <span class="h-more-title">What's Lightning Talks?</span>
+                    </a>
+                </li>
+
+<li>
+                    <a href="/kkd/xp1010" title="私とXPの10年、これからの10年">
+                        <span class="thumbWrapper"><img class="h-thumbnail" src="//public.slidesharecdn.com/images/thumbnail.png" alt="私とXPの10年、これからの10年" width="120" original="http://cdn.slidesharecdn.com/ss_thumbnails/xpjug2009summer-090920171718-phpapp01-thumbnail-2.jpg?1253485100" /></span>
+                        <span class="h-more-title">私とXPの10年、これからの10年</span>
+                    </a>
+                </li>
+</ul>
+            <a href="/upload" title="Share Presentations, Documents, Videos, Slidecasts" class="btn btn-primary j-uploadCTA">Upload</a>
+
+        </aside>
+        <ul class="socialActions public-only">
+                  <li class="social-fb">
+                    <div data-send="false" class="fb-like" data-width="48" data-layout="box_count" data-colorscheme="dark" data-show-faces="false">
+                    </div>                            
+                  </li>
+                   <li class="social-tw">
+                        <a data-via="slideshare" href="https://twitter.com/share" data-url="http://www.slideshare.net/kkd/tddbctdd" class="twitter-share-button" rel="nofollow" data-count="vertical" data-text="Check out this presentation : TDDBCの前にTDDについて知っておいてもらいたい３つのこと">Tweet</a>
+                    </li>
+                    <li class="social-li">
+                       <script data-onsuccess="linkedInShareSuccess" data-counter="top" type="IN/Share"></script>
+                     </li>
+                  <li class="social-go">
+                    <div data-callback="plusone_success" class="g-plusone" data-size="tall" data-annotation="none"></div>
+                  </li>
+                  <li class="social-pi">
+                    <a href="#" title="Pin It" class="j-pinit pin-it-button" target="_blank" count-layout="none"><img alt="Pin It" border="0" src="http://public.slidesharecdn.com/slideview/images/PinExt.png?61ed0472df" /></a>                    
+                  </li>
+                  <li class="social-wp">
+                     <a href="#" class="action-wpshare" title="Embed this on your Wordpress blog" rel="nofollow">Wordpress</a>
+                  </li>
+                </ul>
+        </div><!-- .sectionElements -->
+    </section>
+
+    <article>
+        <div class="articleElements container">
+        <div class="articleCore">
+        <div class="author">
+            <a href="/kkd" title="kkd" class="notranslate h-author">
+                <img class="h-author-image" src="//cdn.slidesharecdn.com/profile-photo-kkd-48x48.jpg?1344029673" height="50" alt="Takeshi Kakeda" width="50" />
+            </a>
+            <span class="h-section-add-contact user-48263"><a href="/signup?from=addcontact&from_source=http%3A%2F%2Fwww.slideshare.net%2Fkkd%2Ftddbctdd" class="button h-follow" rel="nofollow">+ Follow</a></span>
+            <span class="hide indicator j-follow-progress"><img alt="Processing..." height="5" src="http://public.slidesharecdn.com/images/indicator.gif?cca1cac641" style="float:none;" width="21" /></span>
+        </div>
+
+        <div class="title">
+            <h1 class="h-slideshow-title notranslate">TDDBCの前にTDDについて知っておいてもらいたい３つのこと</h1>
+            <h2>by <a href="/kkd" class="j-tooltip h-author-name notranslate" title="kkd" rel="author">Takeshi Kakeda</a> on <em class="h-slideshow-created-at">Oct 22, 2011</em>
+              <strong></strong>
+            </h2>
+        </div>
+        <ul class="basicStats">
+            <li><strong class="j-tooltip h-view-count notranslate" title="1739 views">1,739</strong> views</li>
+        </ul>
+
+        
+
+        <p class="description notranslate">2011/10/22 オープンラボ岡山でのTDDBC前座講演。</p>
+        <div class="descToggleMore">
+            <button class="button j-desc-more">More&hellip;</button>
+        </div>
+
+
+        <p class="descriptionExpanded notranslate">2011/10/22 オープンラボ岡山でのTDDBC前座講演。</p>
+        <div class="descToggle">
+            <button class="button j-desc-less">Less</button>
+        </div>
+
+        <div class="row detailedStats h-detail-stats">
+            <div class="span3 h-generic infoGeneric">
+                <h3>Accessibility</h3>
+                <ul>
+                    <li class="h-view-text"><a href="#text-version" class="j-text-version">View text version</a></li>
+                </ul>
+                <h3 class="h-categories-label">Categories</h3>
+                <ul class="h-slideshow-categories">
+                    <li class="su-category"><a href="/category/business-mgmt">Business &amp; Mgmt</a></li>
+                    <li class="category"><a href="/category/technology" rel="nofollow">Technology</a></li>
+                </ul>
+                <h3>Upload Details</h3>
+                <p>Uploaded via <a href="/" class="api-credit-text" rel="nofollow">SlideShare</a> <span class="h-as-text">as </span><a href="/" class="uploaded-as">Adobe PDF</a></p>
+                <h3>Usage Rights</h3>
+                <p class="license">&copy; All Rights Reserved</p>
+
+
+                <!-- SuperUser actions being here-->
+                <!-- SuperUser actions end here-->
+
+
+            </div>
+            <div class="embedWrapper h-embed-wrapper">
+              <h3 class="h-embed-heading embedHeading"><span class="embed-count">5 Embeds</span> <span class="notranslate from-embed hint">126</span></h3>
+              <div class="span3 h-embeds infoEmbeds">
+                  <table class="notranslate embedDetails">
+                    <tbody>
+<tr>
+                      <td class="url h-url">http://paper.li</td>
+                      <td class="count h-views">118</td> 
+                    </tr>
+
+<tr>
+                      <td class="url h-url">https://si0.twimg.com</td>
+                      <td class="count h-views">4</td> 
+                    </tr>
+
+<tr>
+                      <td class="url h-url">http://a0.twimg.com</td>
+                      <td class="count h-views">2</td> 
+                    </tr>
+
+<tr>
+                      <td class="url h-url">https://twimg0-a.akamaihd.net</td>
+                      <td class="count h-views">1</td> 
+                    </tr>
+
+<tr>
+                      <td class="url h-url">http://us-w1.rockmelt.com</td>
+                      <td class="count h-views">1</td> 
+                    </tr>
+</tbody>
+                  </table>
+              </div>
+              <br />
+              
+              <img class="j-waiting-embeds" src="http://public.slidesharecdn.com/images/indicator.gif?cca1cac641" style="display: none; " />
+            </div>
+            <div class="span3 h-stats infoStats">
+                <h3>Statistics</h3>
+                <dl class="statistics">
+                    <dt class="sprite iconFav">Favorites</dt> <dd class="notranslate favorites">5</dd>
+                    <dt class="sprite iconDownload">Downloads</dt> <dd class="notranslate downloads">13</dd>
+                    <dt class="sprite iconComment">Comments</dt> <dd class="notranslate comments">0</dd>
+                    <dt class="sprite iconEmbedViews">Embed Views</dt> <dd class="notranslate from-embed">126</dd>
+                    <dt class="sprite iconSSViews">Views on SlideShare</dt> <dd class="notranslate on-site">1,613</dd>
+                    <dt class="sprite iconViews">Total Views</dt> <dd class="notranslate views">1,739</dd>
+                </dl>
+                
+                
+            </div>
+
+        </div>
+
+        </div><!-- .articleCore -->
+
+        <div class="skyScraper h-skyscraper-ad">
+          <div class="skyScraperDiv"><script type="text/javascript"> slideshare_object.SS_LI_FillAd({ tile : 5, zone : 'slideview', dart_code: '%3Bkw%3DProgramming%3Bkw%3DMethodologies%3Bkw%3DAgile%3Bkw%3DTests%3Bkw%3DUnit%2Btesting%3Bkw%3DTest-driven%2Bdevelopment%3Bkw%3DKent%2BBeck%3Bkw%3DMercurial%3Bcat%3Dbusiness-mgmt%3Bcat%3Dtechnology', width: 160, height: 600 }); </script></div>
+           
+        </div>
+
+        </div><!-- .articleElements -->
+    </article>
+
+    <div class="assets container">
+        <div class="commentsNotes">
+            <ul class="tabs">
+                <li class="active h-comments-tab j-comments"><a href="#" class="j-comments-tab"><em class="h-comments-count">No comments yet</em></a></li>
+                <li class="j-notes"><a href="#" class="j-notes-tab">Notes on Slide <em class="which-slide-value notranslate">1</em></a></li>
+            </ul>
+            <div class="commentsWrapper">
+            
+            <ul class="commentWrapper h-comment-list" id="commentsList" style="display: none; "></ul>
+            
+            <form class="postComment h-comment-post" method="post" action="#" id="postComment" accept-charset="utf-8">
+              <fieldset>
+
+                
+                <textarea class="h-post-comment-textarea j-post-comment-textarea" rows="4" cols="40"></textarea>
+                <div class="h-non-user-message postCommentSubmit">  
+                  <label class="comments-subscribe checkbox"><input id="followupComments" type="checkbox" /> Subscribe to comments</label>
+                  <a href="/signup?from=comments&from_source=http%3A%2F%2Fwww.slideshare.net%2Fkkd%2Ftddbctdd" class="button" rel="nofollow" id="login-provider-slideshare">Post Comment</a>
+                </div><!-- .h-non-user-message -->
+
+                
+              </fieldset>
+            </form>
+
+
+            <form class="updateComment update-form" method="post" action="#" accept-charset="utf-8">
+              <fieldset>
+                <legend>Edit your comment</legend>
+                <textarea rows="4" cols="40"></textarea>
+                <input class="btn btn-mini action-update" type="submit" value="Update" />
+                <button class="btn btn-mini action-cancel">Cancel</button>
+              </fieldset>
+            </form>
+            </div>
+
+            <ul class="notranslate tabContent h-notes notesWrapper" id="notesList"></ul>
+        </div>
+
+        <!-- 728x90 ad between comments and favorites -->
+        <script id="commentsFavoritesAd" type="text/javascript">
+          slideshare_object.configurePlayerAd('comments_favorites_ad');
+        </script>
+        <!-- End 728x90 ad -->
+
+
+        <!-- Favorites and Downloads start -->
+        <div class="favsDownloads">
+          <ul class="tabs">
+            <li class="active h-favorites-tab j-favorites"><a href="#favsList" rel="nofollow"><em class="h-favorites-count">5 Favorites</em></a></li>
+            
+          </ul>
+          <ul class="favWrapper h-favs-list" id="favsList">
+<li>
+              <a href="/hsbt" class="notranslate favoriter h-favoriter" title="hsbt" rel="nofollow">
+                <img class="nickname" src="//public.slidesharecdn.com/images/user-48x48.jpg" height="48" alt="hsbt" original="//cdn.slidesharecdn.com/profile-photo-hsbt-48x48.jpg?1344206147" width="48" />
+                <strong class="h-username ">Hiroshi SHIBATA</strong><span class="bioStub"><span class="h-favoriter-role">, Software Engineer </span><span class="h-favoriter-org"> at tDiary.org</span></span>
+              </a>
+              <span class="favTags h-tags notranslate"></span>
+              <span class="favoriteMeta">2 days ago</span>
+            </li>
+
+<li>
+              <a href="/jun1108" class="notranslate favoriter h-favoriter" title="jun1108" rel="nofollow">
+                <img class="nickname" src="//public.slidesharecdn.com/images/user-48x48.jpg" height="48" alt="jun1108" original="//public.slidesharecdn.com/images/user-48x48.jpg" width="48" />
+                <strong class="h-username ">jun1108</strong><span class="bioStub"><span class="h-favoriter-role"></span><span class="h-favoriter-org"></span></span>
+              </a>
+              <span class="favTags h-tags notranslate">Tags <strong><a href='/tag/tdd' rel='nofollow'>tdd</a></strong></span>
+              <span class="favoriteMeta">7 months ago</span>
+            </li>
+
+<li>
+              <a href="/haru01" class="notranslate favoriter h-favoriter" title="haru01" rel="nofollow">
+                <img class="nickname" src="//public.slidesharecdn.com/images/user-48x48.jpg" height="48" alt="haru01" original="//cdn.slidesharecdn.com/profile-photo-haru01-48x48.jpg?1344163460" width="48" />
+                <strong class="h-username ">eiji ienaga</strong><span class="bioStub"><span class="h-favoriter-role">, developer </span><span class="h-favoriter-org"> at japan</span></span>
+              </a>
+              <span class="favTags h-tags notranslate"></span>
+              <span class="favoriteMeta">9 months ago</span>
+            </li>
+
+<li>
+              <a href="/objectx" class="notranslate favoriter h-favoriter" title="objectx" rel="nofollow">
+                <img class="nickname" src="//public.slidesharecdn.com/images/user-48x48.jpg" height="48" alt="objectx" original="//public.slidesharecdn.com/images/user-48x48.jpg" width="48" />
+                <strong class="h-username ">Masashi Fujita</strong><span class="bioStub"><span class="h-favoriter-role">, Software Engineer </span><span class="h-favoriter-org"> at Polyphony Digital Inc.</span></span>
+              </a>
+              <span class="favTags h-tags notranslate"></span>
+              <span class="favoriteMeta">9 months ago</span>
+            </li>
+
+<li>
+              <a href="/kanu.orz" class="notranslate favoriter h-favoriter" title="kanu.orz" rel="nofollow">
+                <img class="nickname" src="//public.slidesharecdn.com/images/user-48x48.jpg" height="48" alt="kanu.orz" original="//cdn.slidesharecdn.com/profile-photo-kanu.orz-48x48.jpg?1339376986" width="48" />
+                <strong class="h-username ">Kanu orz</strong><span class="bioStub"><span class="h-favoriter-role">, Leader </span><span class="h-favoriter-org"> at secret!</span></span>
+              </a>
+              <span class="favTags h-tags notranslate"></span>
+              <span class="favoriteMeta">9 months ago</span>
+            </li>
+</ul>
+          <div class="viewMore action-morefavs j-favs-more" style="display:none"><a href="#" class="button" rel="nofollow">More&hellip;</a></div>
+          
+           
+        </div>
+
+        <!-- Favorites and Downloads end -->
+        <div class="notranslate transcript h-slideshow-transcript-bottom">
+            <a rel="nofollow" id="text-version"></a>
+            <h2 class="h-slideshow-title"><span class="notranslate">TDDBCの前にTDDについて知っておいてもらいたい３つのこと</span> &mdash; Presentation Transcript</h2>
+            <ul class="transcripts h-transcripts"><li>2011   10   22 </li><li>#TODO        #TODO Agile459        #TODO TDD        # TODO TDDBC2011   10   22 </li><li>Culture Cultivator   twitter.com/kkd                   Agile Coach        facebook.com/takeshi.kakeda2011   10   22 </li><li>once upon a time...20012011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>http://farm7.static.ﬂickr.com/6158/6169448006_c03b7df4ee_b.jpg2011   10   22 </li><li>2011   10   22 </li><li>#TODO2011   10   22 </li><li>2011/10/29            https://sites.google.com/site/agile459/events/agile_case_study/                                    agilecasestudy012011   10   22 </li><li>#TODO Agile4592011   10   22 </li><li>#TODO Agile4592011   10   22 </li><li>#TODO Agile4592011   10   22 </li><li>#TODO Agile4592011   10   22 </li><li>#TODO TDD2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>Not TDD                           TDD2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>Don’t                 Repeat                 Yourself2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>You Aren’t                   Gonna                  Need It2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>Git               Mercurial            Subversion                Bazzar2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>Jenkins                 ...CruiseControl2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>Red                 Refactor         Green2011   10   22 </li><li>Red                 Refactor         Green                 TDD’s Mantra2011   10   22 </li><li>Red                 Refactor         Green                 TDD’s Mantra2011   10   22 </li><li>Red                 Refactor         Green                 TDD’s Mantra2011   10   22 </li><li>Red                 Refactor         Green                 TDD’s Mantra2011   10   22 </li><li>Test Driven Chart                        Test-Last                 1   3   5   7   9   11   13   15   17   19   21   23   25   27   292011   10   22 </li><li>Test Driven Chart                        Test-Last                 1   3   5   7   9   11   13   15   17   19   21   23   25   27   29                                 ( )2011   10   22 </li><li>Test Driven Chart                       Big-Test-First                 1   3   5   7   9   11   13   15   17   19   21   23   25   27   292011   10   22 </li><li>Test Driven Chart                        Big-Test-First                 1   3   5   7    9   11   13   15   17   19   21   23   25   27   29                                 ( )2011   10   22 </li><li>Test Driven Chart                       TDD                 1   3   5   7   9   11   13   15   17   19   21   23   25   27   292011   10   22 </li><li>Test Driven Chart                        TDD                 1   3   5   7    9   11   13   15   17   19   21   23   25   27   29                                 ( )2011   10   22 </li><li>Green(    )/Refactor(       )                          Red(           )2011   10   22 </li><li>2011   10   22 </li><li>“What if, instead, we treated software                 more like a valuable, productive plant,                  to be nurtured, pruned, harvested,                        fertilized, and watered?”                                                 Kent Beck2011   10   22 </li><li>2011   10   22 </li><li>2011   10   22 </li><li>Target Driven Development2011   10   22 </li><li>2011   10   22 </li><li>http://behaviordrivendevelopment.wikispaces.com/file/view/             TheAgileTestingQuadrants.png2011   10   22 </li><li>Skills                          Process2011   10   22 </li><li>#TODO TDD2011   10   22 </li><li>#TODO TDD2011   10   22 </li><li>#TODO TDD2011   10   22 </li><li># TODO TDDBC2011   10   22 </li><li># TODO TDDBC                 Finished in 30 mins2011   10   22 </li></ul>
+          </div><!-- .transcript -->
+
+          <div class="transcriptAd h-below-transcript-ad">
+            <div class="transcriptAdDiv"><script type="text/javascript"> slideshare_object.SS_LI_FillAd({ tile : 4, zone : 'slideview', dart_code: '%3Bkw%3DProgramming%3Bkw%3DMethodologies%3Bkw%3DAgile%3Bkw%3DTests%3Bkw%3DUnit%2Btesting%3Bkw%3DTest-driven%2Bdevelopment%3Bkw%3DKent%2BBeck%3Bkw%3DMercurial%3Bcat%3Dbusiness-mgmt%3Bcat%3Dtechnology', width: 728, height: 90 }); </script></div>
+            
+          </div>
+
+    </div><!-- .assets -->
+
+           
+           
+           
+           
+           <footer>
+           <div class="footerWrapper">
+           <div class="footer">
+            <div class="footerLeft">
+            <form class="footerSearch" method="get" action="/search/slideshow">
+              <fieldset>
+                <input name="searchfrom" type="hidden" value="footer" />
+                <div class="suggestionContainerFooter">
+                  <input name="q" class="text" id="search_query_bottom" type="text" value="" autocomplete="off" /><input class="ctaNormal" type="submit" value="Search" />
+                </div>
+              </fieldset>
+            </form>
+           <!-- .social-links -->
+           <div class="social-links">
+               <ul>
+                  <li><a href="http://slidesha.re/SlideShareOnLinkedIn" class="iconLinkedInFooter" rel="nofollow">Connect on LinkedIn</a></li>
+                  <li><a href="http://twitter.com/SlideShare" class="iconTwitterFooter" rel="nofollow">Follow us on Twitter</a></li>               
+                  <li><a href="http://www.facebook.com/slideshare" class="iconFacebookFooter" rel="nofollow">Find us on Facebook</a></li>
+                  <li><a href="http://plus.google.com/107202479304826454162" class="iconGooglePlusFooter" rel="nofollow">Find us on Google+</a></li>
+               </ul>
+           </div>
+           <!-- /.social-links -->
+            </div>
+            <div class="links footerRight">
+              <div class="fColumn fColumnSmall">
+                <ul class="linksList">
+                  <li><strong>Learn About Us</strong></li>
+                  <li><a href="/about" title="About us">About</a></li>
+                  <li><a href="/about/workatslideshare" title="Careers">Careers</a></li>
+                  <li><a href="http://blog.slideshare.net" title="Our Blog">Our Blog</a></li>
+                  <li><a href="/about/press" title="Press" rel="nofollow">Press</a></li>
+                  <li><a href="/about/contactus" title="Contact us" rel="nofollow">Contact us</a></li>
+                  
+                    <li><a href="http://help.slideshare.com/home" title="Get Help" rel="nofollow" id="j-helpLink">Help &amp; Support</a></li>
+                  
+                  </ul>
+              </div><!-- .fColumn -->
+              <div class="fColumn fColumnMid">
+                <ul class="linksList">
+                  <li><strong>Using SlideShare</strong></li>
+                  <li><a href="/about" title="SlideShare 101" rel="nofollow">SlideShare 101</a></li>
+                  <li><a href="/terms" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+                  <li><a href="/privacy" title="Privacy Policy" rel="nofollow">Privacy Policy</a></li>
+                  <li><a href="/terms#dmca" title="Copyright &amp; DMCA" rel="nofollow">Copyright &amp; DMCA</a></li>
+                  <li><a href="/community_guidelines" title="Community Guidelines" rel="nofollow">Community Guidelines</a></li>
+                </ul>
+              </div><!-- .fColumn -->
+              <div class="fColumn">
+                <ul class="linksList">
+                  <li><strong>Pro &amp; more</strong></li>
+                  <li><a href="/business/premium/plans?cmp_src=footer" title="Go PRO">Go PRO <sup>New</sup></a></li>
+                  <li><a href="/contact_sales" title="Business Solutions" rel="nofollow">Business Solutions</a></li>
+                  <li><a href="http://premium.slideshare.net/advertise" title="Advertise" rel="nofollow" target="_blank">Advertise on SlideShare</a></li>
+                  <li><a href="http://www.slideshare.net/mobile" title="SlideShare Mobile" rel="nofollow">SlideShare on mobile</a></li>
+                </ul>
+              </div><!-- .fColumn -->
+              <div class="fColumn last">
+                <ul class="linksList">
+                  <li><strong>Developers &amp; API</strong></li>
+                  <li><a href="/developers" rel="nofollow">Developers Section</a></li>
+                  <li><a href="http://groups.google.com/group/slideshare-developers?lnk=srg" rel="nofollow">Developers Group</a></li>
+                  <li><a href="http://engineering.slideshare.com" title="Engineering Blog">Engineering Blog</a></li>
+                  <li><a href="http://www.slideshare.net/widgets/blogbadge" title="Widgets for your blog">Blog Widgets</a></li>
+                </ul>
+              </div><!-- .fColumn -->
+            </div><!-- .links -->
+            <div class="copyright">
+               <p>&copy; 2012 SlideShare Inc. All rights reserved.</p>
+                <a href="http://www.slideshare.net/rss/latest" class="rssFooter" rel="nofollow">RSS Feed</a>
+            </div>   
+           <li class="expandedOverlay action-addfav-new public-only" style="display:none">
+                    <form method="post" action="/search/slideshow" accept-charset="utf-8">
+                      <fieldset>
+                        <label>Favorited! You could also add tags</label>
+                        <input class="text hinted-inputfield favorite-tags j-hint-tooltip" title="separate tags by comma" type="text" value="separate tags by comma" />
+                        <input class="save submit h-fav-new-submit btn" type="submit" value="Post" />
+                        <button class="cancel btn btn-small">Cancel</button>
+                      </fieldset>
+                    </form> 
+                  </li><li class="expandedOverlay action-addfav-edit public-only" style="display:none">
+                    <form method="post" action="/search/slideshow" accept-charset="utf-8">
+                      <fieldset>
+                        <label>Edit your favorites</label>
+                        <input class="text hinted-inputfield favorite-tags j-hint-tooltip" title="separate tags by comma" type="text" value="" />
+                        <br />
+                        <input class="save btn" type="submit" value="Save" />
+                        <button class="cancel btn cancel">Cancel</button>
+                      </fieldset>
+                    </form>
+                  </li></div><!-- .footer -->
+           </div><!-- .footerWrapper -->
+           </footer>
+
+           
+           
+           
+    <div class="h-js-player">
+  <script src="http://public.slidesharecdn.com/javascripts/ssplayer/combined_presentation.js?d435e08214" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+  $(function(){
+    var ele = $('#svPlayerId');
+    ele.empty();
+    player = new SSPlayer(slideshare_object.jsplayer);
+    $(player).bind('slidechanged', function(e){
+      if(typeof(loadDataForSlide) === 'function'){
+        loadDataForSlide(e.ssData.index);
+      }
+    });
+  });
+</script>
+</div>
+
+    <script id="page-load-loggedin" type="text/javascript" charset="utf-8">
+    // <![CDATA[
+      jQuery.extend(slideshare_object.user,user_info);
+      jQuery(window).load(function(){
+        window._gaq.push(['_trackEvent', "Pageload time", "slideview_pageload_logged_in", window.BrowserDetect && BrowserDetect.init(), (new Date()).getTime() - timer ]);
+      });
+    // ]]> 
+    </script>
+    <script src="http://public.slidesharecdn.com/bigboot/js/bootstrap_combined.js?ac6f7bf137" type="text/javascript"></script>
+    <script id="page-load-loggedout" type="text/javascript" charset="utf-8">
+    // <![CDATA[
+      jQuery(window).load(function(){
+        window._gaq.push(['_trackEvent', "Pageload time", "slideview_pageload_logged_out", window.BrowserDetect && BrowserDetect.init(), (new Date()).getTime() - timer ]);
+      });
+    // ]]> 
+    </script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</body>
+</html>

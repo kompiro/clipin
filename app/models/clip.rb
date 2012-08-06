@@ -39,15 +39,19 @@ class Clip < ActiveRecord::Base
     doc.css('meta').each do |m|
       prop = m.attribute('property')
       if prop
-        content = m.attribute('content').text
+        content = m.attribute('content')
+        if content.nil?
+          next
+        end
+        value = content.text
         if prop.to_s.match(/^og:type/i)
-          self.og_type = content
+          self.og_type = value
         end
         if prop.to_s.match(/^og:image/i)
-          self.image = content
+          self.image = value
         end
         if prop.to_s.match(/^og:description/i)
-          self.description = content
+          self.description = value
         end
       end
     end

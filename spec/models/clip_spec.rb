@@ -195,6 +195,13 @@ describe Clip do
         it                 {@result.should be_true}
         its(:title)        {should == "＠IT：Javaオブジェクトモデリング 第3回"}
       end
+      describe 'load slideshare content' do
+        let(:file)         {'slideshare.html'}
+        let(:url)          {'http://www.slideshare.net/kkd/tddbctdd'}
+        let(:charset)      {'utf-8'}
+        it                 {@result.should be_true}
+        its(:title)        {should == "TDDBCの前にTDDについて知っておいてもらいたい３つのこと"}
+      end
     end
   end
   context 'pinned' do
