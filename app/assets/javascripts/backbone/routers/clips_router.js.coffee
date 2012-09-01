@@ -31,7 +31,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
       clips: @clips
       title: @title
     )
-    @changePage(page)
+    page.render()
 
   conf: ->
     page = new Clipin.Views.Clips.ConfView()

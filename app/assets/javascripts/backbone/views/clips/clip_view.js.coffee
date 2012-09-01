@@ -6,7 +6,8 @@ class Clipin.Views.Clips.ClipView extends Backbone.View
   events:
     "click .destroy" : "destroy"
 
-  tagName: "li"
+  tagName: "div"
+  className: "clip"
 
   destroy: () ->
     @model.destroy()

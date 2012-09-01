@@ -6,6 +6,14 @@
 }
 .ui-li-aside{
   width:60px;
+  font-size: 12px;
+  font-weight: normal;
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  float: right;
+  text-align: right;
 }
 .ui-li-has-alt .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-alt {
   padding-right: 55px;
@@ -13,12 +21,22 @@
 img.clip_image {
   width:  79px;
   height: 79px;
+  position: absolute;
+  left: 1px;
+  top: 0;
+  max-height: 80px;
+  max-width: 80px;
 }
 @media screen and (max-width: 480px) {
   img.clip_image {
     width:  32px;
     height: 32px;
     top:    8px;
+    position: absolute;
+    left: 1px;
+    top: 0;
+    max-height: 32px;
+    max-width: 32px;
   }
   .ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb {
     padding-left: 37px;
@@ -106,4 +124,44 @@ img.clip_image {
   vertical-align: top;
   word-spacing: normal;
   zoom: 1;
+}
+
+h3.title {
+  font-size: 16px;
+  font-weight: bold;
+  display: block;
+  margin: .6em 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height:16px;
+}
+.clip {
+  display: block;
+  margin: 0;
+  position: relative;
+  overflow: visible;
+  text-align: left;
+  border-width: 0;
+  border-top-width: 1px;
+}
+.description {
+  font-size: 12px;
+  font-weight: normal;
+  display: block;
+  margin: -0.5em 0 0.6em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.clip a {
+  min-height: 60px;
+  padding: .7em 30px .7em 100px;
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  &:hover{
+     text-decoration: none;
+  }
 }

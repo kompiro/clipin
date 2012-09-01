@@ -1,6 +1,7 @@
 Clipin.Views.Clips ||= {}
 
 class Clipin.Views.Clips.IndexView extends Backbone.View
+  el: "#page"
   template: JST["backbone/templates/clips/index"]
 
   events:
@@ -75,10 +76,10 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
     $(@el).find('.next_clips')
 
   el_clip_list : ->
-    $(@el).find('ul.clip_list')
+    $(@el).find('.clip_list')
 
 class Clipin.Views.Clips.DateSeparatorView extends Backbone.View
-  tagName: "li"
+  tagName: "div"
   render: ->
     $(@el).attr('data-role','list-divider')
     $(@el).html(moment(@model).format('YYYY/MM/DD'))

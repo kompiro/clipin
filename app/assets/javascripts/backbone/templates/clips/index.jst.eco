@@ -4,8 +4,8 @@
   </div><!-- /header -->
 
   <div data-role="content">
-    <ul data-role="listview" class="clip_list">
-    </ul>
+    <div class="clip_list">
+    </div>
     <br/>
     <a href='#' data-role='button' class="next_clips">next clips</a>
   </div><!-- /content -->

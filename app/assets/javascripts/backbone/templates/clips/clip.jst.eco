@@ -1,4 +1,9 @@
 <a href="#<%= @id %>/edit">
+  <% if @created_at: %>
+  <p class='ui-li-aside'>
+    <span class="created_at"><%= moment(@created_at).format('HH:mm A') %></span>
+  </p>
+  <% end %>
   <img src='<%= if @image then @image else '/assets/not_found.png' %>' alt='summary_image' class="clip_image" onerror="loadImgError(this)"/>
   <h3 class="title">
     <% if @pin: %>
@@ -13,11 +18,6 @@
   </h3>
   <p>
     <span class="description"><%= @description %></span>
-    </p>
-  <% if @created_at: %>
-  <p class='ui-li-aside'>
-    <span class="created_at"><%= moment(@created_at).format('HH:mm A') %></span>
   </p>
-  <% end %>
 </a>
 
