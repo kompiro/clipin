@@ -14,8 +14,7 @@
 //= require moment
 //= require jquery
 //= require jquery_ujs
-//= require jquery.mobile.init
-//= require jquery_mobile
+//= require twitter/bootstrap
 //= require underscore
 //= require backbone
 //= require backbone_rails_sync
