@@ -80,6 +80,7 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
 
 class Clipin.Views.Clips.DateSeparatorView extends Backbone.View
   tagName: "div"
+  className: "date-separator"
   render: ->
     $(@el).attr('data-role','list-divider')
     $(@el).html(moment(@model).format('YYYY/MM/DD'))

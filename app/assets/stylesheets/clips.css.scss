@@ -144,6 +144,19 @@ h3.title {
   text-align: left;
   border-width: 0;
   border-top-width: 1px;
+  border-style: solid;
+  border-color: #E9E9E9;
+  a {
+    min-height: 60px;
+    padding: .7em 30px .7em 100px;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    &:hover{
+       text-decoration: none;
+  }
+}
 }
 .description {
   font-size: 12px;
@@ -154,14 +167,18 @@ h3.title {
   overflow: hidden;
   white-space: nowrap;
 }
-.clip a {
-  min-height: 60px;
-  padding: .7em 30px .7em 100px;
-  display: block;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  &:hover{
-     text-decoration: none;
-  }
+.date-separator{
+  border: 1px solid #F2F2F2/*{a-bar-border}*/;
+  background: #EEE /*{a-bar-background-color}*/;
+  color: #3E3E3E /*{a-bar-color}*/;
+  font-weight: bold;
+  text-shadow: 0 /*{a-bar-shadow-x}*/ 1px /*{a-bar-shadow-y}*/ 1px /*{a-bar-shadow-radius}*/ white /*{a-bar-shadow-color}*/;
+  background-image: -webkit-gradient(linear, left top, left bottom, from( white /*{a-bar-background-start}*/), to( #F2F2F2 /*{a-bar-background-end}*/));
+  background-image: -webkit-linear-gradient( white /*{a-bar-background-start}*/, #F2F2F2 /*{a-bar-background-end}*/);
+  background-image: -moz-linear-gradient( white /*{a-bar-background-start}*/, #F2F2F2 /*{a-bar-background-end}*/);
+  background-image: -ms-linear-gradient( white /*{a-bar-background-start}*/, #F2F2F2 /*{a-bar-background-end}*/);
+  background-image: -o-linear-gradient( white /*{a-bar-background-start}*/, #F2F2F2 /*{a-bar-background-end}*/);
+  background-image: linear-gradient( white /*{a-bar-background-start}*/, #F2F2F2 /*{a-bar-background-end}*/);
+  padding: 5px 12px;
+  margin-top: 4px;
 }
