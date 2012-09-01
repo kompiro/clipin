@@ -2,9 +2,10 @@ Clipin.Views.Clips ||= {}
 
 class Clipin.Views.Clips.NewView extends Backbone.View
   template: JST["backbone/templates/clips/new"]
+  el:"#page"
 
   events:
-    "submit #new-clip": "save"
+    "click #new-clip": "save"
 
   constructor: (options) ->
     super(options)
@@ -24,18 +25,15 @@ class Clipin.Views.Clips.NewView extends Backbone.View
   save: (e) ->
     e.preventDefault()
     e.stopPropagation()
-    $.mobile.showPageLoadingMsg()
 
     @model.unset("errors")
 
     @collection.create(@model.toJSON(),
       success: (clip) =>
         @model = clip
-        $.mobile.hidePageLoadingMsg()
         @router.navigate("index",{trigger:true})
 
       error: (clip, jqXHR) =>
-        $.mobile.hidePageLoadingMsg()
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
 
       at:0

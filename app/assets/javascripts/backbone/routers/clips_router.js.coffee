@@ -18,7 +18,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
       collection: @clips
       router : @
     )
-    @changePage(page)
+    page.render()
 
   index_fetch:->
     @clips.fetch

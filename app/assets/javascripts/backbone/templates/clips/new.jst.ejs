@@ -1,8 +1,5 @@
-  <div data-role="header">
-    <h1>New Clip</h1>
-  </div><!-- /header -->
-
-  <div data-role="content">
+<div data-role="content">
+  <h1>New Clip</h1>
     <form id="new-clip" name="clip">
       <ul class="error_explanation">
       </ul>
@@ -10,11 +7,9 @@
         <label for="url">URL:</label>
         <input type="text" value="<%= url %>" id="url" name="url"/>
       </div>
-      <div class="actions">
-        <div class="ui-grid-a">
-          <div class="ui-block-a"><a href="#/index" data-role='button' data-icon='arrow-l'>Back</a></div>
-          <div class="ui-block-b"><input type="submit" value="Create Clip" data-theme='b'/></div>
-        </div>
+      <div class="btn-group">
+        <button id="new-clip" class="btn btn-large btn-primary">Create Clip</button>
+        <a href="#/index" class="btn btn-large" >Back</a>
       </div>
     </form>
   </div><!-- /content -->
