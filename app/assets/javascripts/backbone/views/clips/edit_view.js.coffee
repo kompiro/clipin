@@ -2,6 +2,8 @@ Clipin.Views.Clips ||= {}
 
 class Clipin.Views.Clips.EditView extends Backbone.View
   template : JST["backbone/templates/clips/edit"]
+  el: "#page"
+
 
   events :
     "vclick .clip_pin"    : "pin"

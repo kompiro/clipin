@@ -55,7 +55,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
       model: clip
       router : @
     )
-    @changePage(page)
+    page.render()
     try
       twttr.widgets.load()
       FB.XFBML.parse()
