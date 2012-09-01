@@ -4,6 +4,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     @clips.url = options.path
     @title = options.title
     @clips.reset options.clips
+    @current_page = null;
 
   routes:
     "new"      : "newClip"
@@ -18,7 +19,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
       collection: @clips
       router : @
     )
-    page.render()
+    @changePage(page)
 
   index_fetch:->
     @clips.fetch
@@ -31,7 +32,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
       clips: @clips
       title: @title
     )
-    page.render()
+    @changePage(page)
 
   conf: ->
     page = new Clipin.Views.Clips.ConfView()
@@ -55,14 +56,14 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
       model: clip
       router : @
     )
-    page.render()
+    @changePage(page)
     try
       twttr.widgets.load()
       FB.XFBML.parse()
     catch error
 
   changePage:(page)->
-    $(page.el).attr('data-role','page')
+    @current_page.$el.trigger('pagehide') if @current_page
     page.render()
-    $('body').append($(page.el))
-    $.mobile.changePage($(page.el),changeHash:false)
+    page.$el.trigger('pageshow')
+    @current_page = page
