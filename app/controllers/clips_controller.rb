@@ -2,25 +2,30 @@ class ClipsController < ApplicationController
   # GET /clips
   # GET /clips.json
   def index
-    tag_id = params[:tag_id]
-    if tag_id.present?
-      @tag = Tag.find(tag_id)
-      @clips = @tag.clips
+    tag = params[:tag]
+    page_num = params[:page]
+    if tag.present?
+      @tag = Tag.find_by_name(tag)
+      if page_num.present?
+        @clips = @tag.my_clips page_num
+      else
+        @clips = @tag.my_clips
+      end
       @title = @tag.name
     else
       @title = 'All'
-      page_num = params[:page]
       if page_num.present?
         @clips = Clip.page page_num
       else
         @clips = Clip.page
       end
     end
-    @tags = Tag.all
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: { :clips => @clips, :tags => @tags} }
+      format.html do # index.html.erb
+        @tags = Tag.all
+      end
+      format.json { render :text => @clips.to_json(:include => {:tags => { :except => [:created_at, :updated_at]}})}
     end
   end
 

@@ -7,7 +7,7 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
   events:
     "pagehide" : "pagehide"
     "pageshow" : "pageshow"
-    "vclick .next_clips" : "loadNext"
+    "click .next_clips" : "loadNext"
 
   initialize: () ->
     @options.clips.bind('reset', @addAll)
@@ -38,7 +38,6 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
             @loading = true
             @el_next_clip().css('display','none')
             return
-          @el_clip_list().listview('refresh')
           @last_length = clips.length
           @loading = false
           @page_num = @page_num + 1

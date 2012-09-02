@@ -17,8 +17,15 @@ class Clipin.Views.Clips.MenuView extends Backbone.View
 class Clipin.Views.Clips.MenuItemView extends Backbone.View
   template: JST["backbone/templates/clips/menu_item"]
   tagName:"li"
+  events:
+    "click":"clicked"
 
   render: ->
     $(@el).html(@template(item:@model.toJSON()))
     return this
+
+  clicked:->
+    @$el.parent().children().each ->
+      $(@).removeClass('active')
+    @$el.addClass('active')
 

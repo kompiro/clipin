@@ -1,2 +1,2 @@
-<li class="nav-header">Tags</li>
-<li class="active"><a href="#">All</a></li>
+<li class="nav-header"><i class="icon-tag"></i>Tags</li>
+<li class="active"><a href="#index">All</a></li>

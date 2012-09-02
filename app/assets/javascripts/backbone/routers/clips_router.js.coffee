@@ -1,6 +1,6 @@
 class Clipin.Routers.ClipsRouter extends Backbone.Router
   initialize: (options) ->
-    @clips = new Clipin.Collections.ClipsCollection(options.clips)
+    @clips = new Clipin.Collections.ClipsCollection()
     @clips.url = options.path
     @tags = new Clipin.Collections.TagsCollection(options.tags)
     @title = options.title
@@ -10,12 +10,13 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     @menuView.render()
 
   routes:
-    "new"      : "newClip"
-    "index"    : "index_fetch"
-    "conf"     : "conf"
-    ":id/edit" : "edit"
-    ":id"      : "show"
-    ".*"       : "index"
+    "new"           : "newClip"
+    "index/:tag"    : "index_by_tag"
+    "index"         : "index_fetch"
+    "conf"          : "conf"
+    ":id/edit"      : "edit"
+    ":id"           : "show"
+    ".*"            : "index"
 
   newClip: ->
     page = new Clipin.Views.Clips.NewView(
@@ -23,6 +24,20 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
       router : @
     )
     @changePage(page)
+
+  index_by_tag:(tag)->
+    @clips.fetch
+      data:
+        tag:tag
+      success:(collection)=>
+        console.log(collection)
+        @clips.reset(collection.models)
+        @index()
+
+
+     success:(collection)=>
+       @clips.reset(collection.models)
+       @index()
 
   index_fetch:->
     @clips.fetch

@@ -1,1 +1,1 @@
-<a href="#"><%= @item.name %></a>
+<a href="#index/<%= @item.name %>"><%= @item.name %></a>
