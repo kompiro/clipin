@@ -1,6 +1,6 @@
 
   <div>
     <a href='/clipin.crx' class='btn btn-large'>Clipin Chrome Extension</a>
-    <a href='/sessions/logout' class='btn btn-large'>Logout</a>
+    <a href='/logout' class='btn btn-large'>Logout</a>
   </div><!-- /content -->
 
