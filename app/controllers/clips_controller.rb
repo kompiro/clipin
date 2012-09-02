@@ -16,10 +16,11 @@ class ClipsController < ApplicationController
         @clips = Clip.page
       end
     end
+    @tags = Tag.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @clips }
+      format.json { render json: { :clips => @clips, :tags => @tags} }
     end
   end
 

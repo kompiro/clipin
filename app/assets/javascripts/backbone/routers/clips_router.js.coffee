@@ -1,10 +1,13 @@
 class Clipin.Routers.ClipsRouter extends Backbone.Router
   initialize: (options) ->
-    @clips = new Clipin.Collections.ClipsCollection()
+    @clips = new Clipin.Collections.ClipsCollection(options.clips)
     @clips.url = options.path
+    @tags = new Clipin.Collections.TagsCollection(options.tags)
     @title = options.title
     @clips.reset options.clips
-    @current_page = null;
+    @current_page = null
+    @menuView = new Clipin.Views.Clips.MenuView(model:@tags)
+    @menuView.render()
 
   routes:
     "new"      : "newClip"

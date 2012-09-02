@@ -9,7 +9,6 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
     "pageshow" : "pageshow"
     "vclick .next_clips" : "loadNext"
 
-
   initialize: () ->
     @options.clips.bind('reset', @addAll)
     @options.clips.bind('add', @add)

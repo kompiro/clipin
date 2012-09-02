@@ -2,6 +2,7 @@
   $(document).ready(function() {
       window.router = new Clipin.Routers.ClipsRouter({
           clips: <%= @clips.to_json(:include => {:tags => { :except => [:created_at, :updated_at]}}).html_safe %>,
+          tags: <%= @tags.to_json().html_safe %>,
           path: '<%= request.fullpath %>',
           title: '<%= @title %>'
       });
