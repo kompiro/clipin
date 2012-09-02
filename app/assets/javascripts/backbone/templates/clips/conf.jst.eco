@@ -1,18 +1,6 @@
-  <div data-role="header" data-position='fixed'>
-    <h1>User Configuration</h1>
-  </div><!-- /header -->
 
-  <div data-role="content">
-    <a href='/clipin.crx' data-role='button' class="logout" data-theme='b'>Clipin Chrome Extension</a>
-    <a href='/sessions/logout' data-role='button' class="logout" data-theme='a'>Logout</a>
-    <a href='#' data-role='button' class="home">Home</a>
+  <div>
+    <a href='/clipin.crx' class='btn btn-large'>Clipin Chrome Extension</a>
+    <a href='/sessions/logout' class='btn btn-large'>Logout</a>
   </div><!-- /content -->
 
-  <div data-role="footer" data-position='fixed'>
-    <div data-role="navbar">
-      <ul>
-        <li><a href="/tags" data-icon='tags'>Tags</a></li>
-        <li><a href="#conf" data-icon='gear'>Conf</a></li>
-      </ul>
-    </div><!-- /navbar -->
-  </div><!-- /footer -->
