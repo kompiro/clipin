@@ -35,7 +35,7 @@ gem 'jquery_mobile-rails', '1.1.0'
 
 # for Heroku environment
 group :production do
-  gem 'pg'
+  gem 'pg' , '~> 0.14.1'
 end
 
 group :development, :test do
