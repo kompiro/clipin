@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   def delete
     session[:user_id] = nil
     cookies.signed[:user_id] = nil
-    redirect_to sessions_login_url
+    redirect_to login_path
   end
 
   def create
