@@ -13,8 +13,6 @@ gem "rails-backbone"
 gem 'eco'
 gem 'doorkeeper'
 
-# Deploy with Capistrano
-gem 'capistrano'
 # Use unicorn as the app server
 gem 'unicorn'
 # Gems used only for assets and not required
@@ -64,6 +62,10 @@ group :development, :test do
 
   # notification
   gem 'growl', :require => false if RUBY_PLATFORM =~ /darwin/i
+  # Deploy with Capistrano
+  gem 'capistrano'
+  gem 'capistrano-ext'
+  gem 'capistrano_colors'
 
 end
 
