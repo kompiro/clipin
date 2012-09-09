@@ -10,7 +10,7 @@ class Clip < ActiveRecord::Base
   before_save :set_user
   PAGE_CONTENT = 8
 
-  scope :page,    lambda {|page_num = 1| where(:user_id => User.current).where(:trash => false).order('created_at DESC').limit(PAGE_CONTENT).offset(PAGE_CONTENT * ([page_num.to_i, 1].max - 1))}
+  scope :page,    lambda {|page_num = 1| where(:user_id => User.current).where(:trash => false).order('updated_at DESC').limit(PAGE_CONTENT).offset(PAGE_CONTENT * ([page_num.to_i, 1].max - 1))}
   scope :pinned,  lambda { where(:user_id => User.current).where(:pin => true,:trash => false).order('updated_at DESC').limit(PAGE_CONTENT)}
   scope :trashed, lambda { where(:user_id => User.current).where(:trash => true).order('updated_at DESC').limit(PAGE_CONTENT)}
 

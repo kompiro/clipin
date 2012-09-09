@@ -11,6 +11,7 @@ class Clipin.Models.Clip extends Backbone.Model
     audio: null
     video: null
     created_at: null
+    updated_at: null
     pin: false
     tags: []
 
@@ -19,6 +20,12 @@ class Clipin.Models.Clip extends Backbone.Model
 
   same_created_date:(target)->
     @created_at_date().format('YYYYMMDD') is target.created_at_date().format('YYYYMMDD')
+
+  updated_at_date:->
+    moment(@get('updated_at'))
+
+  same_updated_date:(target)->
+    @updated_at_date().format('YYYYMMDD') is target.updated_at_date().format('YYYYMMDD')
 
 class Clipin.Collections.ClipsCollection extends Backbone.Collection
   model: Clipin.Models.Clip
