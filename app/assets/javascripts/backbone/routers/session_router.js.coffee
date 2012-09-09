@@ -9,7 +9,7 @@ class Clipin.Routers.SessionRouter extends Backbone.Router
     @changePage(page)
 
   changePage:(page)->
-    $(page.el).attr('data-role','page')
+    @current_page.$el.trigger('pagehide') if @current_page
     page.render()
-    $('body').append($(page.el))
-    $.mobile.changePage($(page.el),changeHash:false)
+    page.$el.trigger('pageshow')
+    @current_page = page

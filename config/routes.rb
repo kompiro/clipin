@@ -1,4 +1,6 @@
 Clipin::Application.routes.draw do
+  get "welcome/index"
+
   mount Doorkeeper::Engine => '/oauth'
 
   resources :tags do
@@ -10,7 +12,7 @@ Clipin::Application.routes.draw do
       get :pinned,:trashed
     end
   end
-  root :to => "clips#index"
+  root :to => "home#index"
   match '/login', to: 'sessions#new'
   match '/logout', to: 'sessions#delete'
   match '/auth/:provider/callback', to: 'sessions#create'
