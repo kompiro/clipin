@@ -18,6 +18,6 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate!
-    redirect_to login_url unless current_user.present?
+    redirect_to root_url unless current_user.present?
   end
 end
