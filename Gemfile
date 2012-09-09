@@ -51,7 +51,10 @@ group :development, :test do
   gem 'pry'
   gem 'pry-doc'
   gem 'fakeweb'
-  # spork
+
+  gem 'sextant'
+
+# spork
   gem 'spork', '~> 0.9.0.rc'
 
   # guard
