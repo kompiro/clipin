@@ -82,6 +82,20 @@ class ClipsController < ApplicationController
   # POST /clips
   # POST /clips.json
   def create
+    @clip = Clip.find_by_url params[:clip][:url]
+    unless @clip.nil?
+      @clip.clip_count = @clip.clip_count + 1
+      respond_to do |format|
+        if @clip.save
+          format.html { redirect_to clips_url, notice: 'Clip was successfully updated. it is already created.' }
+          format.json { render json: @clip, status: :no_content, location: @clip }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @clip.errors, status: :unprocessable_entity }
+        end
+      end
+      return
+    end
     @clip = Clip.new(params[:clip])
 
     respond_to do |format|
