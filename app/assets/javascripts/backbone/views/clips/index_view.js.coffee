@@ -50,7 +50,7 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
     @addOne(clip,options.index,clips.models)
 
   addOne: (clip,index,clips) =>
-    if index is 0 or not clips[index - 1].same_created_date(clip)
+    if index is 0 or not clips[index - 1].same_updated_date(clip)
       separator = new Clipin.Views.Clips.DateSeparatorView({model:clip.toJSON().created_at})
       @el_clip_list().append(separator.render().el)
 
