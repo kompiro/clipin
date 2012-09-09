@@ -28,6 +28,18 @@ class Api::V1::ClipsController < ApplicationController
   end
 
   def create
+    @clip = Clip.find_by_url params[:clip][:url]
+    unless @clip.nil?
+      @clip.clip_count = @clip.clip_count + 1
+      respond_to do |format|
+        if @clip.save
+          format.json { render json: @clip, status: :no_content, location: @clip }
+        else
+          format.json { render json: @clip.errors, status: :unprocessable_entity }
+        end
+      end
+      return
+    end
     @clip = Clip.new(params[:clip])
 
     if @clip.load and @clip.save
