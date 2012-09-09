@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120718145255) do
+ActiveRecord::Schema.define(:version => 20120909085256) do
 
   create_table "clips", :force => true do |t|
     t.text     "title"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20120718145255) do
     t.boolean  "pin",         :default => false
     t.boolean  "trash",       :default => false
     t.integer  "user_id"
+    t.integer  "clip_count",  :default => 1
   end
 
   create_table "oauth_access_grants", :force => true do |t|
