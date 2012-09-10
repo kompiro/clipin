@@ -12,11 +12,11 @@ class WebLoader
 
   def load
     if @url.nil? or @url.empty?
-      @clip.errors.add :url, "can't be blank"
+      @clip.errors.add :url, "url can't be empty"
       return false
     end
     unless @url.start_with?('http:') or @url.start_with?('https:')
-      @clip.errors.add :url, "should start with 'http:' or 'https:'"
+      @clip.errors.add :url, "url should start with 'http:' or 'https:'"
       return false
     end
     doc = create_doc
