@@ -29,7 +29,7 @@ describe WebLoader do
             @clip.errors.size.should be 1
           end
           it 'has url error' do
-            @clip.errors[:url][0].should == "can't be blank"
+            @clip.errors[:url][0].should == "url can't be empty"
           end
         end
       end
@@ -43,7 +43,7 @@ describe WebLoader do
             subject.size.should be 1
           end
           it 'has url error' do
-            @clip.errors[:url][0].should == "can't be blank"
+            @clip.errors[:url][0].should == "url can't be empty"
           end
         end
       end
@@ -57,7 +57,7 @@ describe WebLoader do
             subject.size.should be 1
           end
           it 'has url error' do
-            @clip.errors[:url][0].should == "should start with 'http:' or 'https:'"
+            @clip.errors[:url][0].should == "url should start with 'http:' or 'https:'"
           end
         end
       end
@@ -174,6 +174,22 @@ describe WebLoader do
         let(:charset)      {'utf-8'}
         it                 {@result.should be_true}
         its(:title)        {should == "TDDBCの前にTDDについて知っておいてもらいたい３つのこと"}
+      end
+    end
+    context 'recoverable pattern' do
+      describe 'http:/ pattern' do
+        let(:file)         {'empty.html'}
+        let(:url)          {'http:/example.com/'}
+        let(:charset)      {'utf-8'}
+        it                 {@result.should be_true}
+        its(:url)          {should == 'http://example.com/'}
+      end
+      describe 'https:/ pattern' do
+        let(:file)         {'empty.html'}
+        let(:url)          {'https:/example.com/'}
+        let(:charset)      {'utf-8'}
+        it                 {@result.should be_true}
+        its(:url)          {should == 'https://example.com/'}
       end
     end
   end
