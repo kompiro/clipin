@@ -19,6 +19,7 @@ class WebLoader
       @clip.errors.add :url, "url should start with 'http:' or 'https:'"
       return false
     end
+    recover_url
     doc = create_doc
     @clip.title = doc.xpath('//title/text()').text
     begin
@@ -34,6 +35,15 @@ class WebLoader
   end
 
   private
+
+  def recover_url
+    if @url.start_with?('http:')
+      @url = 'http://' + @url.scan(/http:\/\/?(.*)/)[0][0]
+    end
+    if @url.start_with?('https:')
+      @url = 'https://' + @url.scan(/https:\/\/?(.*)/)[0][0]
+    end
+  end
 
   def create_doc
     io = open(@url)

@@ -11,9 +11,7 @@ class ClipsController < ApplicationController
       else
         @clips = @tag.my_clips
       end
-      @title = @tag.name
     else
-      @title = 'All'
       if page_num.present?
         @clips = Clip.page page_num
       else
@@ -82,7 +80,8 @@ class ClipsController < ApplicationController
   # POST /clips
   # POST /clips.json
   def create
-    @clip = Clip.find_by_url params[:clip][:url]
+    url = params[:clip][:url]
+    @clip = Clip.find_by_user_id_and_url current_user.id,url
     unless @clip.nil?
       @clip.clip_count = @clip.clip_count + 1
       respond_to do |format|
@@ -108,6 +107,11 @@ class ClipsController < ApplicationController
         format.json { render json: @clip.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def create_by_bookmarklet
+    url =  params[:url]
+    do_create(url)
   end
 
   # PUT /clips/1
@@ -148,5 +152,34 @@ class ClipsController < ApplicationController
       loaded_tags << Tag.find(tag[:id])
     end
     loaded_tags
+  end
+
+  def do_create(url)
+    @clip = Clip.find_by_user_id_and_url current_user.id,url
+    unless @clip.nil?
+      @clip.clip_count = @clip.clip_count + 1
+      respond_to do |format|
+        if @clip.save
+          format.html { redirect_to clips_url, notice: 'Clip was successfully updated. it is already created.' }
+          format.json { render json: @clip, status: :no_content, location: @clip }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @clip.errors, status: :unprocessable_entity }
+        end
+      end
+      return
+    end
+    @clip = Clip.new({:url => url})
+
+    respond_to do |format|
+      if @clip.load and @clip.save
+        @clip.tagging
+        format.html { redirect_to clips_url, notice: 'Clip was successfully created.' }
+        format.json { render json: @clip, status: :created, location: @clip }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @clip.errors, status: :unprocessable_entity }
+      end
+    end
   end
 end

@@ -23,6 +23,14 @@ describe ClipsController do
     {url:'http://example.com/'}
   end
 
+  def recoverable_http_attributes
+    {url:'http:/example.com/'}
+  end
+
+  def recoverable_https_attributes
+    {url:'https:/example.com/'}
+  end
+
   def valid_session
     {user_id:1}
   end
@@ -64,43 +72,58 @@ describe ClipsController do
   end
 
   describe "POST create" do
-    describe "with valid params" do
+    shared_examples_for 'acceptable attributes' do
       it "creates a new Clip" do
         expect {
-          post :create, {:clip => valid_attributes}, valid_session
+          post :create, {:clip => attributes}, valid_session
         }.to change(Clip, :count).by(1)
       end
 
       it "assigns a newly created clip as @clip" do
-        post :create, {:clip => valid_attributes}, valid_session
+        post :create, {:clip => attributes}, valid_session
         assigns(:clip).should be_a(Clip)
         assigns(:clip).should be_persisted
       end
 
       it "redirects to the created clip" do
-        post :create, {:clip => valid_attributes}, valid_session
+        post :create, {:clip => attributes}, valid_session
         response.should redirect_to(clips_path)
       end
       describe "already created params" do
         before do
-          @clip = Clip.create! valid_attributes
+          @clip = Clip.create! attributes
         end
 
         it "doesn't create newer one" do
           expect {
-            post :create, {:clip => valid_attributes}, valid_session
+            post :create, {:clip => attributes}, valid_session
           }.to change(Clip, :count).by(0)
         end
 
         it "updates clip_count" do
-            post :create, {:clip => valid_attributes}, valid_session
+            post :create, {:clip => attributes}, valid_session
             Clip.find(@clip.id).clip_count.should eq(2)
         end
 
         it "updates updated_by" do
-            post :create, {:clip => valid_attributes}, valid_session
+            post :create, {:clip => attributes}, valid_session
             Clip.find(@clip.id).updated_at.should_not eq(@clip.updated_at)
         end
+      end
+    end
+    describe "with valid params" do
+      it_should_behave_like 'acceptable attributes' do
+        let(:attributes){valid_attributes}
+      end
+    end
+    describe "with recoverable http attributes" do
+      it_should_behave_like 'acceptable attributes' do
+        let(:attributes){recoverable_http_attributes}
+      end
+    end
+    describe "with recoverable https attributes" do
+      it_should_behave_like 'acceptable attributes' do
+        let(:attributes){recoverable_https_attributes}
       end
     end
 
