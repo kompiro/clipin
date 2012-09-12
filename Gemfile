@@ -48,6 +48,7 @@ group :development, :test do
   gem "guard-jasmine"
   gem 'factory_girl'
   gem "factory_girl_rails", "~> 3.0"
+  gem 'forgery', '0.5.0'
   gem 'pry'
   gem 'pry-doc'
   gem 'fakeweb'
