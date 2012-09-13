@@ -32,11 +32,32 @@ describe ClipsController do
       clip = Clip.create! valid_attributes
       get :index, {}, valid_session
       assigns(:clips).should eq(Clip.page)
+      assigns(:tags).should eq(Tag.all)
+      flash[:notice].should be_nil
     end
     it "assigns second clips as @clips" do
       clip = Clip.create! valid_attributes
       get :index, {:page => 2}, valid_session
       assigns(:clips).should eq(Clip.page(2))
+      flash[:notice].should be_nil
+    end
+  end
+
+  describe "GET search" do
+    before do
+      create_list(:clip,20)
+      create_list(:search_clip,20)
+    end
+    it "assigns specified query to search clips" do
+      get :search, {q: 'test'}, valid_session
+      assigns(:clips).should eq(Clip.search 'test')
+      assigns(:tags).should eq(Tag.all)
+      flash[:notice].should be_nil
+    end
+    it "assigns specified query and page to search clips" do
+      get :search, {q: 'test', page: 2}, valid_session
+      assigns(:clips).should eq(Clip.search 'test',2)
+      assigns(:tags).should eq(Tag.all)
     end
   end
 
