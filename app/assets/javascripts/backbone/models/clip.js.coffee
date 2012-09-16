@@ -13,6 +13,9 @@ class Clipin.Models.Clip extends Backbone.Model
     created_at: null
     updated_at: null
     pin: false
+    trash: false
+    clip_count: 0
+    user_id: null
     tags: []
 
   created_at_date:->
@@ -30,3 +33,6 @@ class Clipin.Models.Clip extends Backbone.Model
 class Clipin.Collections.ClipsCollection extends Backbone.Collection
   model: Clipin.Models.Clip
   url: '/clips'
+
+  comparator:(clip)->
+    - moment(clip.get('updated_at')).valueOf()

@@ -46,6 +46,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem "jasminerice"
   gem "guard-jasmine"
+  gem 'sinon-rails'
   gem 'factory_girl'
   gem "factory_girl_rails", "~> 3.0"
   gem 'forgery', '0.5.0'
