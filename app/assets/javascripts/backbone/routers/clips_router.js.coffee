@@ -1,7 +1,6 @@
 class Clipin.Routers.ClipsRouter extends Backbone.Router
   initialize: (options) ->
     @clips = new Clipin.Collections.ClipsCollection()
-    @clips.url = options.path
     @tags = new Clipin.Collections.TagsCollection(options.tags)
     @title = options.title
     @clips.reset options.clips
@@ -37,9 +36,9 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
 
   index_fetch:->
     @clips.fetch
-     success:(collection)=>
-       @clips.reset(collection.models)
-       @index()
+      success:(collection)=>
+        @clips.reset(collection.models)
+        @index()
 
   index: ->
     page = new Clipin.Views.Clips.IndexView(
