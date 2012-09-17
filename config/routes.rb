@@ -9,7 +9,7 @@ Clipin::Application.routes.draw do
 
   resources :clips do
     collection do
-      get :pinned,:trashed
+      get :pinned,:trashed,:search
     end
   end
   get '/g/:url' => 'clips#create_by_bookmarklet',:constraints => { :url => /.*/ }

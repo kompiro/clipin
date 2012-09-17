@@ -19,10 +19,28 @@ class ClipsController < ApplicationController
       end
     end
 
+    @tags = Tag.all
     respond_to do |format|
-      format.html do # index.html.erb
-        @tags = Tag.all
-      end
+      format.html # index.html.erb
+      format.json { render :text => @clips.to_json(:include => {:tags => { :except => [:created_at, :updated_at]}})}
+    end
+  end
+
+  # GET /clips/search.json
+  def search
+    query = params[:q]
+    page_num = params[:page]
+
+    @title = 'Search'
+    if page_num.present?
+      @clips = Clip.search query ,page_num
+    else
+      @clips = Clip.search query
+    end
+
+    @tags = Tag.all
+    respond_to do |format|
+      format.html { render 'index' }
       format.json { render :text => @clips.to_json(:include => {:tags => { :except => [:created_at, :updated_at]}})}
     end
   end

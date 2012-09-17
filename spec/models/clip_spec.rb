@@ -3,7 +3,6 @@ require 'spec_helper'
 require 'open-uri'
 
 describe Clip do
-  fixtures :clips
   context 'attributes' do
     subject{Clip.new}
     its(:title)       {should be_nil}
@@ -31,26 +30,43 @@ describe Clip do
       @clip.user.should_not be_nil
     end
   end
-  context 'pinned' do
-    subject{Clip.pinned}
-    its(:length){should eq 1}
-  end
-  context 'trashed' do
-    subject{Clip.trashed}
-    its(:length){should eq 1}
+  context 'search condition' do
+    before do
+      create_list(:clip,15)
+      create(:clip, pin: true)
+      create(:clip, trash: true)
+    end
+    context 'pinned' do
+      subject{Clip.pinned}
+      its(:length){should eq 1}
+    end
+    context 'trashed' do
+      subject{Clip.trashed}
+      its(:length){should eq 1}
+    end
   end
   context 'paging' do
+    before do
+      create_list(:clip,15)
+    end
     describe 'first page' do
       subject{Clip.page}
       its(:length){should eq 8}
     end
     describe 'second page' do
       subject{Clip.page(2)}
-      its(:length){should eq 6}
+      its(:length){should eq 7}
     end
     describe 'third page' do
       subject{Clip.page(3)}
       its(:length){should eq 0}
     end
+  end
+  context 'search' do
+    before do
+      create(:search_clip)
+    end
+    subject {Clip.search 'test'}
+    its(:length){should eq 1}
   end
 end
