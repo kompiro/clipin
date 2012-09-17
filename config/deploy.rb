@@ -1,8 +1,9 @@
 set :bundle_without,  [:development, :test, :osx]
 
 require "bundler/capistrano"
+set :host, "clipin.me"
 
-server "clipin.me", :web, :app, :db, primary: true
+server "#{host}", :web, :app, :db, primary: true
 
 set :application, "clipin"
 set :user, "deployer"
@@ -12,7 +13,7 @@ set :use_sudo, false
 set :bundle_cmd, "/home/#{user}/.rbenv/shims/bundle"
 
 set :scm, "git"
-set :repository, "ssh://deployer@clipin.me/opt/repos/clipin"
+set :repository, "ssh://deployer@#{host}/opt/repos/clipin"
 set :branch, "master"
 
 default_run_options[:pty] = true
