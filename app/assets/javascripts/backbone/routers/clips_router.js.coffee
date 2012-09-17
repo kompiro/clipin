@@ -1,16 +1,17 @@
 class Clipin.Routers.ClipsRouter extends Backbone.Router
   initialize: (options) ->
     @clips = new Clipin.Collections.ClipsCollection()
-    @clips.url = options.path
     @tags = new Clipin.Collections.TagsCollection(options.tags)
     @title = options.title
     @clips.reset options.clips
     @current_page = null
     @menuView = new Clipin.Views.Clips.MenuView(model:@tags)
     @menuView.render()
+    @headerView = new Clipin.Views.Clips.HeaderView()
 
   routes:
-    "new"           : "newClip"
+    "new"           : "new"
+    "search/:query" : "search"
     "index/:tag"    : "index_by_tag"
     "index"         : "index_fetch"
     "conf"          : "conf"
@@ -18,7 +19,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     ":id"           : "show"
     ".*"            : "index"
 
-  newClip: ->
+  new: ->
     page = new Clipin.Views.Clips.NewView(
       collection: @clips
       router : @
@@ -30,20 +31,14 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
       data:
         tag:tag
       success:(collection)=>
-        console.log(collection)
         @clips.reset(collection.models)
         @index()
 
-
-     success:(collection)=>
-       @clips.reset(collection.models)
-       @index()
-
   index_fetch:->
     @clips.fetch
-     success:(collection)=>
-       @clips.reset(collection.models)
-       @index()
+      success:(collection)=>
+        @clips.reset(collection.models)
+        @index()
 
   index: ->
     page = new Clipin.Views.Clips.IndexView(
@@ -51,6 +46,19 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
       title: @title
     )
     @changePage(page)
+
+  search:(query)->
+    @clips.fetch
+      url:'/clips/search'
+      data:
+        q:query
+      success:(collection)=>
+        @clips.reset(collection.models)
+        page = new Clipin.Views.Clips.IndexView(
+          clips: @clips
+          title: "Search : #{query}"
+        )
+        @changePage(page)
 
   conf: ->
     page = new Clipin.Views.Clips.ConfView()

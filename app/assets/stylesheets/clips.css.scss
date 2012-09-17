@@ -183,3 +183,13 @@ h3.title {
   padding: 5px 12px;
   margin-top: 4px;
 }
+.search-icon {
+  z-index: 3;
+  position: absolute;
+  top: 4px;
+  right: 2px;
+  display: block;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+}
