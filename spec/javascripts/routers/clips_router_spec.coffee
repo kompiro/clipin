@@ -29,6 +29,12 @@ describe 'ClipsRouter routes',->
     expect(@routeSpy).toHaveBeenCalled()
     expect(@routeSpy).toHaveBeenCalledWith()
 
+  it 'fires the index hash with a initial string',->
+    @router.bind 'route:index',@routeSpy
+    @router.navigate '_=_',true
+    expect(@routeSpy).toHaveBeenCalled()
+    expect(@routeSpy).toHaveBeenCalledWith()
+
   it 'fires the clip detail route',->
     @router.bind 'route:show',@routeSpy
     @router.navigate '1',true
