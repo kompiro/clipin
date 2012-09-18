@@ -55,7 +55,7 @@ class Api::V1::ClipsController < ApplicationController
     params[:clip][:tags] = load_tags(params)
 
     if @clip.update_attributes(params[:clip])
-      render json: @clip, status :ok, location: @clip
+      render json: @clip, status: :ok, location: @clip
     else
       render json: @clip.errors, status: :unprocessable_entity
     end
@@ -64,7 +64,7 @@ class Api::V1::ClipsController < ApplicationController
   def destroy
     @clip = Clip.find(params[:id])
     @clip.destroy
-    render json: @clip, status :ok, location: @clip
+    render json: @clip, status: :ok, location: @clip
   end
 
   private
