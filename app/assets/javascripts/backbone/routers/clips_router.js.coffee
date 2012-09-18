@@ -15,9 +15,10 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     "index/:tag"    : "index_by_tag"
     "index"         : "index_fetch"
     "conf"          : "conf"
+    "_=_"           : "index"
     ":id/edit"      : "edit"
     ":id"           : "show"
-    ".*"            : "index"
+    ""            : "index"
 
   new: ->
     page = new Clipin.Views.Clips.NewView(
