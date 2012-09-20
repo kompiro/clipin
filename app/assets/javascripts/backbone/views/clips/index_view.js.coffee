@@ -12,6 +12,7 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
   initialize: () ->
     @options.clips.bind('reset', @addAll)
     @options.clips.bind('add', @add)
+    @tag = @options.tag
     @page_num = 2
     @last_length = @options.clips.length
     @loading = false
@@ -32,19 +33,32 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
   lastPostFunc : ()->
     unless @loading
       @loading = true
-      @options.clips.fetch(
-        add:true
-        data:
-          page:@page_num
-        success:(clips)=>
-          if clips.length is @last_length
-            @loading = true
-            @el_next_clip().css('display','none')
-            return
-          @last_length = clips.length
-          @loading = false
-          @page_num = @page_num + 1
-      )
+      if @tag
+        @options.clips.fetch(
+          add:true
+          data:
+            page:@page_num
+            tag: @tag
+          success:(clips)=>
+            @updateLoadingInformation(clips)
+        )
+      else
+        @options.clips.fetch(
+          add:true
+          data:
+            page:@page_num
+          success:(clips)=>
+            @updateLoadingInformation(clips)
+        )
+
+  updateLoadingInformation : (clips)->
+    if clips.length is @last_length
+      @loading = true
+      @el_next_clip().css('display','none')
+      return
+    @last_length = clips.length
+    @loading = false
+    @page_num = @page_num + 1
 
   addAll: () =>
     @options.clips.each(@addOne)

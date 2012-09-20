@@ -4,12 +4,13 @@ describe 'ClipsRouter routes',->
   beforeEach ->
     @routeSpy = jasmine.createSpy('route')
     @collection = new Backbone.Collection()
+    @fetchStub = spyOn(@collection,'fetch').andReturn(new Backbone.Collection())
     @collection.url = '/clips'
     @collection.model = Clipin.Models.Clip
     @clipViewStub = spyOn(Clipin.Views.Clips,'IndexView').andReturn(new Backbone.View())
     @clipsCollectionStub = spyOn(Clipin.Collections,'ClipsCollection').andReturn(@collection)
     @router = new Clipin.Routers.ClipsRouter {}
-    if(not(Backbone.history.started))
+    if(not(Backbone.History.started))
       try
         Backbone.history.start
           silent:true
@@ -79,16 +80,19 @@ describe 'ClipsRouter routes',->
 
   describe 'index handler',->
 
-    describe 'when no clips exists',->
+    it 'creates a Clip list collection',->
+      @router.index()
+      expect(@clipsCollectionStub).toHaveBeenCalled()
+      expect(@clipViewStub).toHaveBeenCalledWith
+        clips: @collection
+        title: undefined
 
-      beforeEach ->
-        @router.index()
-
-      it 'creates a Clip list collection',->
+    it 'creates a Clip list collection with tags',->
+      runs ->
+        @router.index_by_tag('article')
+      runs ->
         expect(@clipsCollectionStub).toHaveBeenCalled()
         expect(@clipViewStub).toHaveBeenCalledWith
           clips: @collection
           title: undefined
-
-    beforeEach ->
-      @router.index()
+          tag: 'article'
