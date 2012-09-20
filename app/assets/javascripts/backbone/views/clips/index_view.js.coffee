@@ -22,8 +22,11 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
     @lastPostFunc()
 
   scroll:()=>
-    if  $(window).scrollTop() > $(document).height() - $(window).height() - 100
-      @lastPostFunc()
+    # timeout to permit multiposting
+    setTimeout =>
+      if  $(window).scrollTop() > $(document).height() - $(window).height() - 100
+        @lastPostFunc()
+    , 100
 
 
   lastPostFunc : ()->
