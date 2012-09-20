@@ -54,16 +54,17 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     @changePage(page)
 
   search:(query)->
+    page = new Clipin.Views.Clips.IndexView(
+      clips: @clips
+      title: "Search : #{query}"
+      query: query
+    )
     @clips.fetch
       url:'/clips/search'
       data:
         q:query
       success:(collection)=>
         @clips.reset(collection.models)
-        page = new Clipin.Views.Clips.IndexView(
-          clips: @clips
-          title: "Search : #{query}"
-        )
         @changePage(page)
 
   conf: ->
@@ -95,7 +96,8 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     catch error
 
   changePage:(page)->
-    @current_page.$el.trigger('pagehide') if @current_page
+    if @current_page
+      @current_page.$el.trigger('pagehide')
     page.render()
     page.$el.trigger('pageshow')
     @current_page = page

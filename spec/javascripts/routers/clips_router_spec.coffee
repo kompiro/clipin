@@ -87,12 +87,18 @@ describe 'ClipsRouter routes',->
         clips: @collection
         title: undefined
 
-    it 'creates a Clip list collection with tags',->
-      runs ->
-        @router.index_by_tag('article')
-      runs ->
-        expect(@clipsCollectionStub).toHaveBeenCalled()
-        expect(@clipViewStub).toHaveBeenCalledWith
-          clips: @collection
-          title: undefined
-          tag: 'article'
+    it 'creates a Clip list collection with tag',->
+      @router.index_by_tag('article')
+      expect(@clipsCollectionStub).toHaveBeenCalled()
+      expect(@clipViewStub).toHaveBeenCalledWith
+        clips: @collection
+        title: undefined
+        tag: 'article'
+
+    it 'creates a Clip list collection with search query',->
+      @router.search('article')
+      expect(@clipsCollectionStub).toHaveBeenCalled()
+      expect(@clipViewStub).toHaveBeenCalledWith
+        clips: @collection
+        title: "Search : article"
+        query: 'article'

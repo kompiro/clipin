@@ -13,6 +13,7 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
     @options.clips.bind('reset', @addAll)
     @options.clips.bind('add', @add)
     @tag = @options.tag
+    @query = @options.query
     @page_num = 2
     @last_length = @options.clips.length
     @loading = false
@@ -33,23 +34,27 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
   lastPostFunc : ()->
     unless @loading
       @loading = true
+      data = null
+      url = '/clips'
       if @tag
-        @options.clips.fetch(
-          add:true
-          data:
-            page:@page_num
-            tag: @tag
-          success:(clips)=>
-            @updateLoadingInformation(clips)
-        )
+        data =
+          page:@page_num
+          tag: @tag
+      else if @query
+        data =
+          page:@page_num
+          q:@query
+        url = '/clips/search'
       else
-        @options.clips.fetch(
-          add:true
-          data:
-            page:@page_num
-          success:(clips)=>
-            @updateLoadingInformation(clips)
-        )
+        data =
+          page:@page_num
+      @options.clips.fetch(
+        url:url
+        add:true
+        data:data
+        success:(clips)=>
+          @updateLoadingInformation(clips)
+      )
 
   updateLoadingInformation : (clips)->
     if clips.length is @last_length
@@ -86,6 +91,8 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
 
   pagehide:->
     $(window).unbind('scroll',@scroll)
+    @options.clips.unbind('reset', @addAll)
+    @options.clips.unbind('add', @add)
 
   el_next_clip:->
     $(@el).find('.next_clips')
