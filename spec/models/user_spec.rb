@@ -19,5 +19,10 @@ describe User do
       it{subject.should_not be_nil}
       its(:size){should == 5}
     end
+    context 'should relate tags' do
+      subject {@user.tags}
+      it{subject.should_not be_nil}
+      its(:size){should == 5}
+    end
   end
 end
