@@ -32,9 +32,10 @@ describe Clip do
   end
   context 'search condition' do
     before do
-      create_list(:clip,15)
-      create(:clip, pin: true)
-      create(:clip, trash: true)
+      user = create(:user)
+      create_list(:clip,15,user: user)
+      create(:clip, pin: true, user: user)
+      create(:clip, trash: true, user: user)
     end
     context 'pinned' do
       subject{Clip.pinned}
@@ -47,7 +48,8 @@ describe Clip do
   end
   context 'paging' do
     before do
-      create_list(:clip,15)
+      user = create(:user)
+      create_list(:clip,15,user: user)
     end
     describe 'first page' do
       subject{Clip.page}
