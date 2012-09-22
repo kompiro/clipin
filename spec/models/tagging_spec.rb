@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe Tagging do
-  fixtures :clips,:taggings,:tags
+  before do
+    @tagging = create(:tagging)
+  end
   it 'shoud have relation' do
-    tagging = taggings(:taggings_001)
-    tagging.clip.should_not be_nil
+    @tagging.clip.should_not be_nil
   end
 end
