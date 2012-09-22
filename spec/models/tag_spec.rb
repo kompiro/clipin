@@ -13,6 +13,9 @@ describe Tag do
     it 'should relate taggings' do
       @tag.taggings.size.should eq 1
     end
+    it 'should relate user' do
+      @tag.user.should_not be_nil
+    end
     it 'should relate clips' do
       @tag.clips.size.should eq 1
     end
