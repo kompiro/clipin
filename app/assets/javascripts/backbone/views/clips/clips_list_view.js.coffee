@@ -1,8 +1,8 @@
 Clipin.Views.Clips ||= {}
 
-class Clipin.Views.Clips.IndexView extends Backbone.View
-  el: "#page"
-  template: JST["backbone/templates/clips/index"]
+class Clipin.Views.Clips.ClipsListView extends Backbone.View
+  id:'clips_list'
+  template: JST["backbone/templates/clips/clips_list"]
 
   events:
     "pagehide" : "pagehide"

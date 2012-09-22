@@ -7,7 +7,7 @@ describe 'ClipsRouter routes',->
     @fetchStub = spyOn(@collection,'fetch').andReturn(new Backbone.Collection())
     @collection.url = '/clips'
     @collection.model = Clipin.Models.Clip
-    @clipViewStub = spyOn(Clipin.Views.Clips,'IndexView').andReturn(new Backbone.View())
+    @clipViewStub = spyOn(Clipin.Views.Clips,'ClipsListView').andReturn(new Backbone.View())
     @clipsCollectionStub = spyOn(Clipin.Collections,'ClipsCollection').andReturn(@collection)
     @router = new Clipin.Routers.ClipsRouter {}
     if(not(Backbone.History.started))
@@ -21,7 +21,7 @@ describe 'ClipsRouter routes',->
     @router.navigate 'elsewhere'
 
   afterEach ->
-    #Clipin.Views.Clips.IndexView.restore()
+    #Clipin.Views.Clips.ClipsListView.restore()
     #Clipin.Collections.ClipsCollection.restore()
 
   it 'fires the index hash with a blank hash',->
