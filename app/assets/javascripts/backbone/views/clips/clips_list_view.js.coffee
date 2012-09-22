@@ -1,8 +1,8 @@
 Clipin.Views.Clips ||= {}
 
-class Clipin.Views.Clips.IndexView extends Backbone.View
-  el: "#page"
-  template: JST["backbone/templates/clips/index"]
+class Clipin.Views.Clips.ClipsListView extends Backbone.View
+  id:'clips_list'
+  template: JST["backbone/templates/clips/clips_list"]
 
   events:
     "pagehide" : "pagehide"
@@ -12,6 +12,8 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
   initialize: () ->
     @options.clips.bind('reset', @addAll)
     @options.clips.bind('add', @add)
+    @tag = @options.tag
+    @query = @options.query
     @page_num = 2
     @last_length = @options.clips.length
     @loading = false
@@ -22,26 +24,46 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
     @lastPostFunc()
 
   scroll:()=>
-    if  $(window).scrollTop() > $(document).height() - $(window).height() - 100
-      @lastPostFunc()
+    # timeout to permit multiposting
+    setTimeout =>
+      if  $(window).scrollTop() > $(document).height() - $(window).height() - 100
+        @lastPostFunc()
+    , 100
 
 
   lastPostFunc : ()->
     unless @loading
       @loading = true
-      @options.clips.fetch(
-        add:true
-        data:
+      data = null
+      url = '/clips'
+      if @tag
+        data =
           page:@page_num
+          tag: @tag
+      else if @query
+        data =
+          page:@page_num
+          q:@query
+        url = '/clips/search'
+      else
+        data =
+          page:@page_num
+      @options.clips.fetch(
+        url:url
+        add:true
+        data:data
         success:(clips)=>
-          if clips.length is @last_length
-            @loading = true
-            @el_next_clip().css('display','none')
-            return
-          @last_length = clips.length
-          @loading = false
-          @page_num = @page_num + 1
+          @updateLoadingInformation(clips)
       )
+
+  updateLoadingInformation : (clips)->
+    if clips.length is @last_length
+      @loading = true
+      @el_next_clip().css('display','none')
+      return
+    @last_length = clips.length
+    @loading = false
+    @page_num = @page_num + 1
 
   addAll: () =>
     @options.clips.each(@addOne)
@@ -69,6 +91,8 @@ class Clipin.Views.Clips.IndexView extends Backbone.View
 
   pagehide:->
     $(window).unbind('scroll',@scroll)
+    @options.clips.unbind('reset', @addAll)
+    @options.clips.unbind('add', @add)
 
   el_next_clip:->
     $(@el).find('.next_clips')

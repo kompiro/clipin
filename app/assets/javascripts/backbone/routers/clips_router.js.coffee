@@ -2,7 +2,6 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
   initialize: (options) ->
     @clips = new Clipin.Collections.ClipsCollection()
     @tags = new Clipin.Collections.TagsCollection(options.tags)
-    @title = options.title
     @clips.reset options.clips
     @current_page = null
     @menuView = new Clipin.Views.Clips.MenuView(model:@tags)
@@ -28,12 +27,17 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     @changePage(page)
 
   index_by_tag:(tag)->
+    page = new Clipin.Views.Clips.ClipsListView(
+      clips: @clips
+      title: "Tag: #{tag}"
+      tag: tag
+    )
     @clips.fetch
       data:
         tag:tag
       success:(collection)=>
         @clips.reset(collection.models)
-        @index()
+        @changePage(page)
 
   index_fetch:->
     @clips.fetch
@@ -42,23 +46,24 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
         @index()
 
   index: ->
-    page = new Clipin.Views.Clips.IndexView(
+    page = new Clipin.Views.Clips.ClipsListView(
       clips: @clips
-      title: @title
+      title: "All"
     )
     @changePage(page)
 
   search:(query)->
+    page = new Clipin.Views.Clips.ClipsListView(
+      clips: @clips
+      title: "Search : #{query}"
+      query: query
+    )
     @clips.fetch
       url:'/clips/search'
       data:
         q:query
       success:(collection)=>
         @clips.reset(collection.models)
-        page = new Clipin.Views.Clips.IndexView(
-          clips: @clips
-          title: "Search : #{query}"
-        )
         @changePage(page)
 
   conf: ->
@@ -90,7 +95,9 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     catch error
 
   changePage:(page)->
-    @current_page.$el.trigger('pagehide') if @current_page
-    page.render()
+    if @current_page
+      @current_page.$el.trigger('pagehide')
+      @current_page.remove()
+    $("#page").append(page.render().el)
     page.$el.trigger('pageshow')
     @current_page = page

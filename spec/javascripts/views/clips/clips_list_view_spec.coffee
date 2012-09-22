@@ -1,9 +1,9 @@
-#= require backbone/views/clips/index_view
+#= require backbone/views/clips/clips_list_view
 
 describe 'clip index_view',->
 
   beforeEach ->
-    @view = new Clipin.Views.Clips.IndexView
+    @view = new Clipin.Views.Clips.ClipsListView
       clips: new Backbone.Collection
 
   xit 'should create a div element',->
