@@ -30,6 +30,22 @@ describe Clip do
       @clip.user.should_not be_nil
     end
   end
+  context 'tagging' do
+    before do
+      User.current = create(:user)
+      @clip = Clip.new(:url => 'http://example.com/', :og_type => 'website')
+      @clip.save
+      @clip.tagging
+    end
+    after do
+      User.current = nil
+    end
+    context 'tag' do
+      subject{@clip.tags}
+      its(:length){should eq 1}
+      it {@clip.tags[0].user.should == User.current}
+    end
+  end
   context 'search condition' do
     before do
       user = create(:user)
