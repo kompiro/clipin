@@ -19,7 +19,7 @@ class ClipsController < ApplicationController
       end
     end
 
-    @tags = Tag.all
+    @tags = User.current.tags
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :text => @clips.to_json(:include => {:tags => { :except => [:created_at, :updated_at]}})}
@@ -38,7 +38,7 @@ class ClipsController < ApplicationController
       @clips = Clip.search query
     end
 
-    @tags = Tag.all
+    @tags = User.current.tags
     respond_to do |format|
       format.html { render 'index' }
       format.json { render :text => @clips.to_json(:include => {:tags => { :except => [:created_at, :updated_at]}})}

@@ -4,6 +4,7 @@ describe Tag do
   context 'attributes' do
     subject{Tag.new}
     its(:name)       {should be_nil}
+    its(:user)       {should be_nil}
   end
 
   context 'relation' do

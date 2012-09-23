@@ -4,8 +4,14 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     @tags = new Clipin.Collections.TagsCollection(options.tags)
     @clips.reset options.clips
     @current_page = null
-    @menuView = new Clipin.Views.Clips.MenuView(model:@tags)
+    @menuView = new Clipin.Views.Clips.MenuView(model:
+      tags:@tags
+    )
     @menuView.render()
+    @bind 'route:index_by_tag',(args)=>
+      @menuView.active(args)
+    @bind 'route:index_fetch',=>
+      @menuView.active('All')
     @headerView = new Clipin.Views.Clips.HeaderView()
 
   routes:
