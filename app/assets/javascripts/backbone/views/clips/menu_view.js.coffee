@@ -7,25 +7,26 @@ class Clipin.Views.Clips.MenuView extends Backbone.View
 
   render: ->
     $(@el).html(@template())
-    @model.each(@addOne)
+    @addOne new Backbone.Model(name:'All')
+    @model.tags.each(@addOne)
     return this
 
   addOne:(menuItem)=>
     itemView = new Clipin.Views.Clips.MenuItemView(model:menuItem)
     $(@el).append(itemView.render().el)
 
+  active:(menuItemName)->
+    @$el.children().each ->
+      $(@).removeClass('active')
+      if $(@).text().replace(/(^\s+)|(\s+$)/g, "") is menuItemName
+        $(@).addClass('active')
+
+
 class Clipin.Views.Clips.MenuItemView extends Backbone.View
   template: JST["backbone/templates/clips/menu_item"]
   tagName:"li"
-  events:
-    "click":"clicked"
 
   render: ->
     $(@el).html(@template(item:@model.toJSON()))
     return this
-
-  clicked:->
-    @$el.parent().children().each ->
-      $(@).removeClass('active')
-    @$el.addClass('active')
 
