@@ -2,7 +2,6 @@ set :bundle_without,  [:development, :test, :osx]
 
 require "bundler/capistrano"
 set :host, "clipin.me"
-set :port, 5668
 server "#{host}", :web, :app, :db, primary: true
 
 set :application, "clipin"
@@ -18,6 +17,7 @@ set :branch, "master"
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
+ssh_options[:port] = 5668
 set :normalize_asset_timestamps, false
 
 set :default_environment, {
