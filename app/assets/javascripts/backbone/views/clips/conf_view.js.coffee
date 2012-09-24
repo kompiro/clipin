@@ -3,7 +3,7 @@ Clipin.Views.Clips ||= {}
 
 class Clipin.Views.Clips.ConfView extends Backbone.View
   template: JST["backbone/templates/clips/conf"]
-  el:"#page"
+  id:"configuration"
 
   render: ->
     $(@el).html(@template())

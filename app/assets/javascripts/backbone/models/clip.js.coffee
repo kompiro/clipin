@@ -35,4 +35,7 @@ class Clipin.Collections.ClipsCollection extends Backbone.Collection
   url: '/clips'
 
   comparator:(clip)->
-    - moment(clip.get('updated_at')).valueOf()
+    updated_at = clip.get('updated_at')
+    if updated_at is null
+      return Number.MIN_VALUE
+    return - moment(updated_at).valueOf()

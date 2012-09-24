@@ -19,7 +19,7 @@ class ClipsController < ApplicationController
       end
     end
 
-    @tags = Tag.all
+    @tags = User.current.tags
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :text => @clips.to_json(:include => {:tags => { :except => [:created_at, :updated_at]}})}
@@ -38,7 +38,7 @@ class ClipsController < ApplicationController
       @clips = Clip.search query
     end
 
-    @tags = Tag.all
+    @tags = User.current.tags
     respond_to do |format|
       format.html { render 'index' }
       format.json { render :text => @clips.to_json(:include => {:tags => { :except => [:created_at, :updated_at]}})}
@@ -99,32 +99,7 @@ class ClipsController < ApplicationController
   # POST /clips.json
   def create
     url = params[:clip][:url]
-    @clip = Clip.find_by_user_id_and_url current_user.id,url
-    unless @clip.nil?
-      @clip.clip_count = @clip.clip_count + 1
-      respond_to do |format|
-        if @clip.save
-          format.html { redirect_to clips_url, notice: 'Clip was successfully updated. it is already created.' }
-          format.json { render json: @clip, status: :no_content, location: @clip }
-        else
-          format.html { render action: "new" }
-          format.json { render json: @clip.errors, status: :unprocessable_entity }
-        end
-      end
-      return
-    end
-    @clip = Clip.new(params[:clip])
-
-    respond_to do |format|
-      if @clip.load and @clip.save
-        @clip.tagging
-        format.html { redirect_to clips_url, notice: 'Clip was successfully created.' }
-        format.json { render json: @clip, status: :created, location: @clip }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @clip.errors, status: :unprocessable_entity }
-      end
-    end
+    do_create url
   end
 
   def create_by_bookmarklet
@@ -173,6 +148,7 @@ class ClipsController < ApplicationController
   end
 
   def do_create(url)
+    url = recover_url url
     @clip = Clip.find_by_user_id_and_url current_user.id,url
     unless @clip.nil?
       @clip.clip_count = @clip.clip_count + 1
@@ -198,6 +174,18 @@ class ClipsController < ApplicationController
         format.html { render action: "new" }
         format.json { render json: @clip.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def recover_url(url)
+    if url.nil?
+      return url
+    end
+    if url.start_with?('http:')
+      return 'http://' + url.scan(/http:\/\/?(.*)/)[0][0]
+    end
+    if url.start_with?('https:')
+      return 'https://' + url.scan(/https:\/\/?(.*)/)[0][0]
     end
   end
 end

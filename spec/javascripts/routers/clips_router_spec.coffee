@@ -4,12 +4,13 @@ describe 'ClipsRouter routes',->
   beforeEach ->
     @routeSpy = jasmine.createSpy('route')
     @collection = new Backbone.Collection()
+    @fetchStub = spyOn(@collection,'fetch').andReturn(new Backbone.Collection())
     @collection.url = '/clips'
     @collection.model = Clipin.Models.Clip
-    @clipViewStub = spyOn(Clipin.Views.Clips,'IndexView').andReturn(new Backbone.View())
+    @clipViewStub = spyOn(Clipin.Views.Clips,'ClipsListView').andReturn(new Backbone.View())
     @clipsCollectionStub = spyOn(Clipin.Collections,'ClipsCollection').andReturn(@collection)
     @router = new Clipin.Routers.ClipsRouter {}
-    if(not(Backbone.history.started))
+    if(not(Backbone.History.started))
       try
         Backbone.history.start
           silent:true
@@ -20,7 +21,7 @@ describe 'ClipsRouter routes',->
     @router.navigate 'elsewhere'
 
   afterEach ->
-    #Clipin.Views.Clips.IndexView.restore()
+    #Clipin.Views.Clips.ClipsListView.restore()
     #Clipin.Collections.ClipsCollection.restore()
 
   it 'fires the index hash with a blank hash',->
@@ -79,16 +80,25 @@ describe 'ClipsRouter routes',->
 
   describe 'index handler',->
 
-    describe 'when no clips exists',->
-
-      beforeEach ->
-        @router.index()
-
-      it 'creates a Clip list collection',->
-        expect(@clipsCollectionStub).toHaveBeenCalled()
-        expect(@clipViewStub).toHaveBeenCalledWith
-          clips: @collection
-          title: undefined
-
-    beforeEach ->
+    it 'creates a Clip list collection',->
       @router.index()
+      expect(@clipsCollectionStub).toHaveBeenCalled()
+      expect(@clipViewStub).toHaveBeenCalledWith
+        clips: @collection
+        title: 'All'
+
+    it 'creates a Clip list collection with tag',->
+      @router.index_by_tag('article')
+      expect(@clipsCollectionStub).toHaveBeenCalled()
+      expect(@clipViewStub).toHaveBeenCalledWith
+        clips: @collection
+        title: 'Tag: article'
+        tag: 'article'
+
+    it 'creates a Clip list collection with search query',->
+      @router.search('article')
+      expect(@clipsCollectionStub).toHaveBeenCalled()
+      expect(@clipViewStub).toHaveBeenCalledWith
+        clips: @collection
+        title: "Search : article"
+        query: 'article'

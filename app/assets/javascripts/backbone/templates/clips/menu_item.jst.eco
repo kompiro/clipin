@@ -1,1 +1,5 @@
+<% if @item.name is "All": %>
+<a href="#index"><%= @item.name %></a>
+<% else: %>
 <a href="#index/<%= @item.name %>"><%= @item.name %></a>
+<% end %>

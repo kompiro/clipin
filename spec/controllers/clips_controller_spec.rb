@@ -23,6 +23,10 @@ describe ClipsController do
     {url:'http://example.com/'}
   end
 
+  def valid_https_attributes
+    {url:'https://example.com/'}
+  end
+
   def recoverable_http_attributes
     {url:'http:/example.com/'}
   end
@@ -92,6 +96,82 @@ describe ClipsController do
     end
   end
 
+  describe "GET create_by_bookmarklet" do
+    shared_examples_for 'acceptable attributes for create_by_bookmarklet' do
+      it "creates a new Clip" do
+        expect {
+          get :create_by_bookmarklet, attributes, valid_session
+        }.to change(Clip, :count).by(1)
+      end
+
+      it "assigns a newly created clip as @clip" do
+        get :create_by_bookmarklet, attributes, valid_session
+        assigns(:clip).should be_a(Clip)
+        assigns(:clip).should be_persisted
+      end
+
+      it "redirects to the created clip" do
+        get :create_by_bookmarklet, attributes, valid_session
+        response.should redirect_to(clips_path)
+      end
+      describe "already created params" do
+        before do
+          @clip = Clip.create! init_attributes
+        end
+
+        it "doesn't create newer one" do
+          expect {
+            get :create_by_bookmarklet, attributes, valid_session
+          }.to change(Clip, :count).by(0)
+        end
+
+        it "updates clip_count" do
+          get :create_by_bookmarklet, attributes, valid_session
+          Clip.find(@clip.id).clip_count.should eq(2)
+        end
+
+        it "updates updated_by" do
+          get :create_by_bookmarklet, attributes, valid_session
+          Clip.find(@clip.id).updated_at.should_not eq(@clip.updated_at)
+        end
+      end
+    end
+    describe "with valid params" do
+      it_should_behave_like 'acceptable attributes for create_by_bookmarklet' do
+        let(:init_attributes){valid_attributes}
+        let(:attributes){valid_attributes}
+      end
+    end
+    describe "with recoverable http attributes" do
+      it_should_behave_like 'acceptable attributes for create_by_bookmarklet' do
+        let(:init_attributes){valid_attributes}
+        let(:attributes){recoverable_http_attributes}
+      end
+    end
+    describe "with recoverable https attributes" do
+      it_should_behave_like 'acceptable attributes for create_by_bookmarklet' do
+        let(:init_attributes){valid_https_attributes}
+        let(:attributes){recoverable_https_attributes}
+      end
+    end
+
+    describe "with invalid params" do
+      it "assigns a newly created but unsaved clip as @clip" do
+        # Trigger the behavior that occurs when invalid params are submitted
+        Clip.any_instance.stub(:save).and_return(false)
+        get :create_by_bookmarklet, {:url => ''}, valid_session
+        assigns(:clip).should be_a_new(Clip)
+      end
+
+      it "re-renders the 'new' template" do
+        # Trigger the behavior that occurs when invalid params are submitted
+        Clip.any_instance.stub(:save).and_return(false)
+        get :create_by_bookmarklet, {:url => ''}, valid_session
+        response.should render_template("new")
+      end
+    end
+  end
+
   describe "POST create" do
     shared_examples_for 'acceptable attributes' do
       it "creates a new Clip" do
@@ -112,7 +192,7 @@ describe ClipsController do
       end
       describe "already created params" do
         before do
-          @clip = Clip.create! attributes
+          @clip = Clip.create! init_attributes
         end
 
         it "doesn't create newer one" do
@@ -122,28 +202,31 @@ describe ClipsController do
         end
 
         it "updates clip_count" do
-            post :create, {:clip => attributes}, valid_session
-            Clip.find(@clip.id).clip_count.should eq(2)
+          post :create, {:clip => attributes}, valid_session
+          Clip.find(@clip.id).clip_count.should eq(2)
         end
 
         it "updates updated_by" do
-            post :create, {:clip => attributes}, valid_session
-            Clip.find(@clip.id).updated_at.should_not eq(@clip.updated_at)
+          post :create, {:clip => attributes}, valid_session
+          Clip.find(@clip.id).updated_at.should_not eq(@clip.updated_at)
         end
       end
     end
     describe "with valid params" do
       it_should_behave_like 'acceptable attributes' do
+        let(:init_attributes){valid_attributes}
         let(:attributes){valid_attributes}
       end
     end
     describe "with recoverable http attributes" do
       it_should_behave_like 'acceptable attributes' do
+        let(:init_attributes){valid_attributes}
         let(:attributes){recoverable_http_attributes}
       end
     end
     describe "with recoverable https attributes" do
       it_should_behave_like 'acceptable attributes' do
+        let(:init_attributes){valid_https_attributes}
         let(:attributes){recoverable_https_attributes}
       end
     end
@@ -169,10 +252,6 @@ describe ClipsController do
     describe "with valid params" do
       it "updates the requested clip" do
         clip = Clip.create! valid_attributes
-        # Assuming there are no other clips in the database, this
-        # specifies that the Clip created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
         Clip.any_instance.should_receive(:update_attributes).with({'these' => 'params','tags' => []})
         put :update, {:id => clip.to_param, :clip => {'these' => 'params'}}, valid_session
       end

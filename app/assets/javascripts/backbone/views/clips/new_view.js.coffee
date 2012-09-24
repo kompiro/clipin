@@ -2,7 +2,7 @@ Clipin.Views.Clips ||= {}
 
 class Clipin.Views.Clips.NewView extends Backbone.View
   template: JST["backbone/templates/clips/new"]
-  el:"#page"
+  id:"new_clip"
 
   events:
     "click #new-clip": "save"

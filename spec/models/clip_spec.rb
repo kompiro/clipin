@@ -30,11 +30,28 @@ describe Clip do
       @clip.user.should_not be_nil
     end
   end
+  context 'tagging' do
+    before do
+      User.current = create(:user)
+      @clip = Clip.new(:url => 'http://example.com/', :og_type => 'website')
+      @clip.save
+      @clip.tagging
+    end
+    after do
+      User.current = nil
+    end
+    context 'tag' do
+      subject{@clip.tags}
+      its(:length){should eq 1}
+      it {@clip.tags[0].user.should == User.current}
+    end
+  end
   context 'search condition' do
     before do
-      create_list(:clip,15)
-      create(:clip, pin: true)
-      create(:clip, trash: true)
+      user = create(:user)
+      create_list(:clip,15,user: user)
+      create(:clip, pin: true, user: user)
+      create(:clip, trash: true, user: user)
     end
     context 'pinned' do
       subject{Clip.pinned}
@@ -47,7 +64,8 @@ describe Clip do
   end
   context 'paging' do
     before do
-      create_list(:clip,15)
+      user = create(:user)
+      create_list(:clip,15,user: user)
     end
     describe 'first page' do
       subject{Clip.page}

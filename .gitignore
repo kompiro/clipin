@@ -19,3 +19,6 @@
 
 # Ignore all jasmine-webkit-headless tempfiles
 jhw.*.html
+
+# Ignore all coverage results
+/coverage

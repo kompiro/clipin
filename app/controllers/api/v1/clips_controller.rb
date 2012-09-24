@@ -28,7 +28,7 @@ class Api::V1::ClipsController < ApplicationController
   end
 
   def create
-    @clip = Clip.find_by_url params[:clip][:url]
+    @clip = Clip.find_by_user_id_and_url current_user.id,params[:clip][:url]
     unless @clip.nil?
       @clip.clip_count = @clip.clip_count + 1
       respond_to do |format|
