@@ -2,7 +2,7 @@ set :bundle_without,  [:development, :test, :osx]
 
 require "bundler/capistrano"
 set :host, "clipin.me"
-
+set :port, 5668
 server "#{host}", :web, :app, :db, primary: true
 
 set :application, "clipin"
