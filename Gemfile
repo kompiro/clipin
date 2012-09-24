@@ -53,10 +53,12 @@ group :development, :test do
   gem 'pry'
   gem 'pry-doc'
   gem 'fakeweb'
-
   gem 'sextant'
+  # ci
+  gem 'simplecov', :require => false
+  gem 'simplecov-rcov', :require => false
 
-# spork
+  # spork
   gem 'spork', '~> 0.9.0.rc'
 
   # guard
