@@ -20,7 +20,12 @@ class WebLoader
       return false
     end
     recover_url
-    doc = create_doc
+    begin
+      doc = create_doc
+    rescue OpenURI::HTTPError => e
+      @clip.errors.add :url, "access '#{@url}' error : #{e.message}"
+      return false
+    end
     @clip.title = doc.xpath('//title/text()').text
     begin
       @clip.title = @clip.title.strip

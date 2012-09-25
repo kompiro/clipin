@@ -193,4 +193,22 @@ describe WebLoader do
       end
     end
   end
+  context 'OpenURI::HTTPError is occurred' do
+    before do
+      @clip = Clip.new(:url => 'http://example.com/')
+      @loader = WebLoader.new(@clip)
+      @loader.stub!(:open).and_raise OpenURI::HTTPError.new message,nil
+      @result = @loader.load
+    end
+    describe '404 Not Found' do
+      let(:message)      {'404 Not Found'}
+      it                   {@result.should be_false}
+      it 'has one error' do
+        @clip.errors.size.should be 1
+      end
+      it 'has url error' do
+        @clip.errors[:url][0].should == "access 'http://example.com/' error : 404 Not Found"
+      end
+    end
+  end
 end
