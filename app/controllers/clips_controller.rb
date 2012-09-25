@@ -157,7 +157,7 @@ class ClipsController < ApplicationController
           format.html { redirect_to clips_url, notice: 'Clip was successfully updated. it is already created.' }
           format.json { render json: @clip, status: :no_content, location: @clip }
         else
-          format.html { render action: "new" }
+          format.html { redirect_to clips_url, :flash => {error: "Error #{@clip.errors.full_messages.join(' ')}"} }
           format.json { render json: @clip.errors, status: :unprocessable_entity }
         end
       end
@@ -171,7 +171,7 @@ class ClipsController < ApplicationController
         format.html { redirect_to clips_url, notice: 'Clip was successfully created.' }
         format.json { render json: @clip, status: :created, location: @clip }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to clips_url, :flash => {error: "Error #{@clip.errors.full_messages.join(' ')}"} }
         format.json { render json: @clip.errors, status: :unprocessable_entity }
       end
     end
