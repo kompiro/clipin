@@ -3,5 +3,8 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require File.expand_path('../config/application', __FILE__)
-require 'ci/reporter/rake/rspec'
+if ENV['RAILS_ENV'] != 'production'
+  puts 'load ci reporter'
+  require 'ci/reporter/rake/rspec'
+end
 Clipin::Application.load_tasks
