@@ -167,7 +167,7 @@ describe ClipsController do
         # Trigger the behavior that occurs when invalid params are submitted
         Clip.any_instance.stub(:save).and_return(false)
         get :create_by_bookmarklet, {:url => ''}, valid_session
-        response.should render_template("new")
+        response.should redirect_to(clips_path)
       end
     end
   end
@@ -243,7 +243,7 @@ describe ClipsController do
         # Trigger the behavior that occurs when invalid params are submitted
         Clip.any_instance.stub(:save).and_return(false)
         post :create, {:clip => {}}, valid_session
-        response.should render_template("new")
+        response.should redirect_to(clips_path)
       end
     end
   end

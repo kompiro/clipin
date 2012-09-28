@@ -1,10 +1,13 @@
 require 'spec_helper'
 require 'open-uri'
 
-describe ClipsController do
+describe Api::V1::ClipsController do
 
+  let(:token) { stub :accessible? => true ,:resource_owner_id => 1}
   before do
-    create(:user)
+    @user = create(:user)
+    User.current = @user
+    controller.stub(:doorkeeper_token) { token }
   end
 
   before :each do
@@ -48,21 +51,6 @@ describe ClipsController do
     end
   end
 
-  describe "GET new" do
-    it "assigns a new clip as @clip" do
-      get :new, {}, valid_session
-      assigns(:clip).should be_a_new(Clip)
-    end
-  end
-
-  describe "GET edit" do
-    it "assigns the requested clip as @clip" do
-      clip = Clip.create! valid_attributes
-      get :edit, {:id => clip.to_param}, valid_session
-      assigns(:clip).should eq(clip)
-    end
-  end
-
   describe "POST create" do
     describe "with valid params" do
       it "creates a new Clip" do
@@ -79,7 +67,7 @@ describe ClipsController do
 
       it "redirects to the created clip" do
         post :create, {:clip => valid_attributes}, valid_session
-        response.should redirect_to(clips_path)
+        response.code.should eq '201'
       end
       describe "already created params" do
         before do
@@ -116,67 +104,61 @@ describe ClipsController do
         # Trigger the behavior that occurs when invalid params are submitted
         Clip.any_instance.stub(:save).and_return(false)
         post :create, {:clip => {}}, valid_session
-        response.should render_template("new")
+        parsed = JSON.parse(response.body)
+        parsed['url'].length.should eq 1
+        parsed['url'][0].should eq "url can't be empty"
       end
     end
   end
 
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested clip" do
-        clip = Clip.create! valid_attributes
-        # Assuming there are no other clips in the database, this
-        # specifies that the Clip created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Clip.any_instance.should_receive(:update_attributes).with({'these' => 'params','tags' => []})
-        put :update, {:id => clip.to_param, :clip => {'these' => 'params'}}, valid_session
+    describe "PUT update" do
+      describe "with valid params" do
+        it "updates the requested clip" do
+          clip = Clip.create! valid_attributes
+          # Assuming there are no other clips in the database, this
+          # specifies that the Clip created on the previous line
+          # receives the :update_attributes message with whatever params are
+          # submitted in the request.
+          Clip.any_instance.should_receive(:update_attributes).with({'these' => 'params','tags' => []})
+          put :update, {:id => clip.to_param, :clip => {'these' => 'params'}}, valid_session
+        end
+
+        it "assigns the requested clip as @clip" do
+          clip = Clip.create! valid_attributes
+          put :update, {:id => clip.to_param, :clip => valid_attributes}, valid_session
+          assigns(:clip).should eq(clip)
+        end
+
+        it "returns 200" do
+          clip = Clip.create! valid_attributes
+          put :update, {:id => clip.to_param, :clip => valid_attributes}, valid_session
+          response.code.should eq '200'
+        end
       end
 
-      it "assigns the requested clip as @clip" do
-        clip = Clip.create! valid_attributes
-        put :update, {:id => clip.to_param, :clip => valid_attributes}, valid_session
-        assigns(:clip).should eq(clip)
-      end
-
-      it "redirects to the clip" do
-        clip = Clip.create! valid_attributes
-        put :update, {:id => clip.to_param, :clip => valid_attributes}, valid_session
-        response.should redirect_to(clip)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns the clip as @clip" do
-        clip = Clip.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Clip.any_instance.stub(:save).and_return(false)
-        put :update, {:id => clip.to_param, :clip => {}}, valid_session
-        assigns(:clip).should eq(clip)
-      end
-
-      it "re-renders the 'edit' template" do
-        clip = Clip.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Clip.any_instance.stub(:save).and_return(false)
-        put :update, {:id => clip.to_param, :clip => {}}, valid_session
-        response.should render_template("edit")
+      describe "with invalid params" do
+        it "assigns the clip as @clip" do
+          clip = Clip.create! valid_attributes
+          # Trigger the behavior that occurs when invalid params are submitted
+          Clip.any_instance.stub(:save).and_return(false)
+          put :update, {:id => clip.to_param, :clip => {}}, valid_session
+          assigns(:clip).should eq(clip)
+        end
       end
     end
-  end
 
-  describe "DELETE destroy" do
-    it "destroys the requested clip" do
-      clip = Clip.create! valid_attributes
-      expect {
+    describe "DELETE destroy" do
+      it "destroys the requested clip" do
+        clip = Clip.create! valid_attributes
+        expect {
+          delete :destroy, {:id => clip.to_param}, valid_session
+        }.to change(Clip, :count).by(-1)
+      end
+
+      it "returns 200" do
+        clip = Clip.create! valid_attributes
         delete :destroy, {:id => clip.to_param}, valid_session
-      }.to change(Clip, :count).by(-1)
-    end
-
-    it "redirects to the clips list" do
-      clip = Clip.create! valid_attributes
-      delete :destroy, {:id => clip.to_param}, valid_session
-      response.should redirect_to(clips_url)
+          response.code.should eq '200'
     end
   end
 

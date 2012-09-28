@@ -12,6 +12,7 @@
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
+/db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
@@ -20,5 +21,6 @@
 # Ignore all jasmine-webkit-headless tempfiles
 jhw.*.html
 
-# Ignore all coverage results
+# Ignore all report
 /coverage
+/spec/reports
