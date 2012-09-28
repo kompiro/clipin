@@ -57,6 +57,7 @@ group :development, :test do
   # ci
   gem 'simplecov', :require => false
   gem 'simplecov-rcov', :require => false
+  gem 'ci_reporter'
 
   # spork
   gem 'spork', '~> 0.9.0.rc'
