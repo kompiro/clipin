@@ -82,7 +82,14 @@ module Api
 
       def current_user
         if doorkeeper_token
-          @current_user ||= User.find(doorkeeper_token.resource_owner_id)
+           User.current||= User.find(doorkeeper_token.resource_owner_id)
+        end
+      end
+      def authenticate!
+        unless current_user.present?
+          respond_to do |format|
+            format.json { render :text => "Unauthorized", :status => :unauthorized }
+          end
         end
       end
     end
