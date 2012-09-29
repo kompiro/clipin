@@ -34,7 +34,12 @@ class Clipin.Views.Clips.NewView extends Backbone.View
         @router.navigate("index",{trigger:true})
 
       error: (clip, jqXHR) =>
-        @model.set({errors: $.parseJSON(jqXHR.responseText)})
+        if jqXHR.status == 500
+          @model.set
+            errors:
+              url:["Clipping \"#{clip.get('url')}\" : #{jqXHR.statusText}"]
+        else
+          @model.set({errors: $.parseJSON(jqXHR.responseText)})
 
       at:0
     )
