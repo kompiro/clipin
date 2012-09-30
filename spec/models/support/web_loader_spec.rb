@@ -2,7 +2,7 @@
 require 'spec_helper'
 require 'open-uri'
 
-describe WebLoader do
+describe Support::WebLoader do
   context 'load og content' do
     before do
       doc = open("#{Rails.root}/spec/support/ogp/#{file}")
@@ -12,7 +12,7 @@ describe WebLoader do
       read.stub(:charset).and_return(charset)
 
       @clip = Clip.new(:url => url)
-      @loader = WebLoader.new(@clip)
+      @loader = Support::WebLoader.new(@clip)
       @loader.stub!(:open).and_return(read)
 
       @result = @loader.load
@@ -175,6 +175,13 @@ describe WebLoader do
         it                 {@result.should be_true}
         its(:title)        {should == "TDDBCの前にTDDについて知っておいてもらいたい３つのこと"}
       end
+      describe 'load unexpected_encode_error content' do
+        let(:file)         {'unexpected_encode_error.html'}
+        let(:url)          {'http://www.soubunshu.com/?1348807544'}
+        let(:charset)      {'shift_jis'}
+        it                 {@result.should be_true}
+        its(:title)        {should == "宋文洲のメルマガの読者広場"}
+      end
     end
     context 'recoverable pattern' do
       describe 'http:/ pattern' do
@@ -196,7 +203,7 @@ describe WebLoader do
   context 'OpenURI::HTTPError is occurred' do
     before do
       @clip = Clip.new(:url => 'http://example.com/')
-      @loader = WebLoader.new(@clip)
+      @loader = Support::WebLoader.new(@clip)
       @loader.stub!(:open).and_raise OpenURI::HTTPError.new message,nil
       @result = @loader.load
     end
