@@ -28,7 +28,7 @@ class Clip < ActiveRecord::Base
   end
 
   def load
-    loader = WebLoader.new(self)
+    loader = Support::WebLoader.new(self)
     loader.load
   end
 
