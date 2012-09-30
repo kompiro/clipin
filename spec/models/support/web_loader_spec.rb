@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
 require 'open-uri'
+require 'uri'
 
 describe Support::WebLoader do
   context 'load og content' do
@@ -8,6 +9,7 @@ describe Support::WebLoader do
       doc = open("#{Rails.root}/spec/support/ogp/#{file}")
 
       read = mock('open')
+      read.stub(:meta).and_return({'content-type' => 'text/html;'})
       read.stub(:read).and_return(doc.read)
       read.stub(:charset).and_return(charset)
 
@@ -198,6 +200,133 @@ describe Support::WebLoader do
         it                 {@result.should be_true}
         its(:url)          {should == 'https://example.com/'}
       end
+    end
+  end
+  context 'load image content from url' do
+    before do
+      read = mock('open')
+      read.stub(:meta).and_return(meta)
+      read.stub(:base_uri).and_return(URI.parse(url))
+
+      @clip = Clip.new(:url => url)
+      @loader = Support::WebLoader.new(@clip)
+      @loader.stub!(:open).and_return(read)
+
+      @result = @loader.load
+    end
+    subject{@clip}
+    describe 'load gif image' do
+      let(:url)            {'http://www.st-hatena.com/users/ko/kompiro/profile.gif'}
+      let(:meta)           {{"date"=>"Sun, 30 Sep 2012 10:26:00 GMT",
+        "server"=>"Apache/2.2.3 (CentOS)",
+        "etag"=>"\"0059290913\"",
+        "cache-control"=>"public, max-age=86400, s-maxage=86400",
+        "content-type"=>"image/gif",
+        "content-length"=>"2773",
+        "age"=>"11046",
+        "x-cache"=>"HIT from squid.hatena.ne.jp",
+        "x-cache-lookup"=>"HIT from squid.hatena.ne.jp:80",
+        "via"=>"1.0 wwwsquid09.hatena.ne.jp:80 (squid/2.7.STABLE6)"}}
+      its(:url)            {should == 'http://www.st-hatena.com/users/ko/kompiro/profile.gif'}
+      its(:image)          {should == 'http://www.st-hatena.com/users/ko/kompiro/profile.gif'}
+      its(:title)          {should == 'profile.gif'}
+      its(:description)    {should == nil}
+    end
+    describe 'load png image' do
+      let(:url)            {'http://gigazine.jp/img/2007/10/19/iconica/iconica_preview_m.png'}
+      let(:meta)           {{"date"=>"Sun, 30 Sep 2012 10:59:34 GMT",
+        "server"=>"Apache/2.2.3 (CentOS)",
+        "last-modified"=>"Fri, 19 Oct 2007 02:43:07 GMT",
+        "etag"=>"\"372033e-b119-7e9da4c0\"",
+        "accept-ranges"=>"bytes",
+        "content-length"=>"45337",
+        "cache-control"=>"max-age=31536000",
+        "expires"=>"Mon, 30 Sep 2013 10:59:34 GMT",
+        "connection"=>"close",
+        "content-type"=>"image/png"}}
+      its(:url)            {should == 'http://gigazine.jp/img/2007/10/19/iconica/iconica_preview_m.png'}
+      its(:image)          {should == 'http://gigazine.jp/img/2007/10/19/iconica/iconica_preview_m.png'}
+      its(:title)          {should == 'iconica_preview_m.png'}
+      its(:description)    {should == nil}
+    end
+    describe 'load jpg image' do
+      let(:url)            {'http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/images/top/img_index_main.jpg'}
+      let(:meta)           {{"date"=>"Sun, 30 Sep 2012 11:04:25 GMT",
+        "server"=>"Apache",
+        "last-modified"=>"Fri, 03 Sep 2010 07:42:24 GMT",
+        "accept-ranges"=>"bytes",
+        "content-length"=>"31840",
+        "content-type"=>"image/jpeg",
+        "set-cookie"=> "citrix_ns_id=PVQd/zL1LeIXWyz7eyAVBCbKyHEA010; Domain=.toshiba-sol.co.jp; Path=/; HttpOnly"}}
+      its(:url)            {should == 'http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/images/top/img_index_main.jpg'}
+      its(:image)          {should == 'http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/images/top/img_index_main.jpg'}
+      its(:title)          {should == 'img_index_main.jpg'}
+      its(:description)    {should == nil}
+    end
+  end
+  context 'load image content from url and image' do
+    before do
+      read = mock('open')
+      read.stub(:meta).and_return(meta)
+      read.stub(:base_uri).and_return(URI.parse(url))
+
+      @clip = Clip.new(:url => url,:image => image)
+      @loader = Support::WebLoader.new(@clip)
+      @loader.stub!(:open).and_return(read)
+
+      @result = @loader.load
+    end
+    subject{@clip}
+    describe 'load gif image' do
+      let(:url)              {'http://d.hatena.ne.jp/kompiro'}
+      let(:image)            {'http://www.st-hatena.com/users/ko/kompiro/profile.gif'}
+      let(:meta)           {{"date"=>"Sun, 30 Sep 2012 10:26:00 GMT",
+        "server"=>"Apache/2.2.3 (CentOS)",
+        "etag"=>"\"0059290913\"",
+        "cache-control"=>"public, max-age=86400, s-maxage=86400",
+        "content-type"=>"image/gif",
+        "content-length"=>"2773",
+        "age"=>"11046",
+        "x-cache"=>"HIT from squid.hatena.ne.jp",
+        "x-cache-lookup"=>"HIT from squid.hatena.ne.jp:80",
+        "via"=>"1.0 wwwsquid09.hatena.ne.jp:80 (squid/2.7.STABLE6)"}}
+      its(:url)            {should == 'http://d.hatena.ne.jp/kompiro'}
+      its(:image)          {should == 'http://www.st-hatena.com/users/ko/kompiro/profile.gif'}
+      its(:title)          {should == 'profile.gif'}
+      its(:description)    {should == 'clip from http://d.hatena.ne.jp/kompiro'}
+    end
+    describe 'load png image' do
+      let(:url)            {'http://gigazine.jp/img/2007/10/19/iconica/'}
+      let(:image)            {'http://gigazine.jp/img/2007/10/19/iconica/iconica_preview_m.png'}
+      let(:meta)           {{"date"=>"Sun, 30 Sep 2012 10:59:34 GMT",
+        "server"=>"Apache/2.2.3 (CentOS)",
+        "last-modified"=>"Fri, 19 Oct 2007 02:43:07 GMT",
+        "etag"=>"\"372033e-b119-7e9da4c0\"",
+        "accept-ranges"=>"bytes",
+        "content-length"=>"45337",
+        "cache-control"=>"max-age=31536000",
+        "expires"=>"Mon, 30 Sep 2013 10:59:34 GMT",
+        "connection"=>"close",
+        "content-type"=>"image/png"}}
+      its(:url)            {should == 'http://gigazine.jp/img/2007/10/19/iconica/'}
+      its(:image)          {should == 'http://gigazine.jp/img/2007/10/19/iconica/iconica_preview_m.png'}
+      its(:title)          {should == 'iconica_preview_m.png'}
+      its(:description)    {should == 'clip from http://gigazine.jp/img/2007/10/19/iconica/'}
+    end
+    describe 'load jpg image' do
+      let(:url)            {'http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/'}
+      let(:image)          {'http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/images/top/img_index_main.jpg'}
+      let(:meta)           {{"date"=>"Sun, 30 Sep 2012 11:04:25 GMT",
+        "server"=>"Apache",
+        "last-modified"=>"Fri, 03 Sep 2010 07:42:24 GMT",
+        "accept-ranges"=>"bytes",
+        "content-length"=>"31840",
+        "content-type"=>"image/jpeg",
+        "set-cookie"=> "citrix_ns_id=PVQd/zL1LeIXWyz7eyAVBCbKyHEA010; Domain=.toshiba-sol.co.jp; Path=/; HttpOnly"}}
+      its(:url)            {should == 'http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/'}
+      its(:image)          {should == 'http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/images/top/img_index_main.jpg'}
+      its(:title)          {should == 'img_index_main.jpg'}
+      its(:description)    {should == 'clip from http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/'}
     end
   end
   context 'OpenURI::HTTPError is occurred' do
