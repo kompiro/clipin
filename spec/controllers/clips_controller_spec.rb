@@ -15,7 +15,7 @@ describe ClipsController do
     read.stub(:read).and_return(doc.read)
     read.stub(:charset).and_return('utf-8')
 
-    WebLoader.any_instance.stub(:open).and_return(read)
+    Support::WebLoader.any_instance.stub(:open).and_return(read)
 
   end
 
