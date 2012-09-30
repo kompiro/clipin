@@ -21,6 +21,11 @@ module Support
         return false
       end
       recover_url
+      until @clip.image.nil?
+        @clip.title = @clip.image.split('/').last
+        @clip.description = "clip from #{@clip.url}"
+        return true
+      end
       begin
         io = open(@url)
       rescue OpenURI::HTTPError => e
