@@ -15,6 +15,7 @@ describe Api::V1::ClipsController do
     doc = open("#{Rails.root}/spec/support/ogp/example_com.html")
 
     read = mock('open')
+    read.stub(:meta).and_return({'content-type'=>'text/html'})
     read.stub(:read).and_return(doc.read)
     read.stub(:charset).and_return('utf-8')
 

@@ -22,11 +22,23 @@ module Support
       end
       recover_url
       begin
-        doc = create_doc
+        io = open(@url)
       rescue OpenURI::HTTPError => e
         @clip.errors.add :url, "access '#{@url}' error : #{e.message}"
         return false
       end
+      if io.meta['content-type'].include? 'text/html'
+        load_html io
+      elsif io.meta['content-type'].include? 'image'
+        load_image io
+      end
+      return true
+    end
+
+    private
+
+    def load_html(io)
+      doc = create_doc io
       @clip.title = doc.xpath('//title/text()').text
       begin
         @clip.title = @clip.title.strip
@@ -37,10 +49,13 @@ module Support
       if @clip.description.nil?
         @clip.description = doc.xpath('//meta[@name="description"]/@content').text
       end
-      return true
     end
 
-    private
+    def load_image(io)
+      @clip.url = @url
+      @clip.image = @url
+      @clip.title = io.base_uri.path.split('/').last
+    end
 
     def recover_url
       if @url.start_with?('http:')
@@ -51,8 +66,7 @@ module Support
       end
     end
 
-    def create_doc
-      io = open(@url)
+    def create_doc(io)
       charset = io.charset
       if charset.downcase != 'utf-8'
         read = open(@url,"r:binary").read
