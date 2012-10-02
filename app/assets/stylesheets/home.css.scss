@@ -1,3 +1,26 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.marketing {
+  text-align: center;
+  color: #5A5A5A;
+  .marketing-byline{
+    margin-bottom: 40px;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 25px;
+    color: #999;
+  }
+}
+
+.footer {
+  padding: 70px 0;
+  margin-top: 70px;
+  border-top: 1px solid #E5E5E5;
+  background-color: whiteSmoke;
+  p {
+    margin-bottom: 0;
+    color: #777;
+}
+}
