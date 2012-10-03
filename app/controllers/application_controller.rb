@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :authenticate!
+  before_filter :app_last_updated_at,:authenticate!
 
   def current_user
     unless session[:user_id].nil?
@@ -19,5 +19,14 @@ class ApplicationController < ActionController::Base
 
   def authenticate!
     redirect_to root_url unless current_user.present?
+  end
+
+  def app_last_updated_at
+    if File.exist?(Rails.root + "REVISION")
+      timezone = "Tokyo"
+      @app_last_updated_at = File.atime(Rails.root + "REVISION").in_time_zone( timezone )
+    else
+      @app_last_updated_at = "dev"
+    end
   end
 end

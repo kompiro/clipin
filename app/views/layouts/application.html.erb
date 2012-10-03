@@ -86,6 +86,15 @@
     </p>
     <p>Designed and built with all the love in the world by <a href="http://twitter.com/kompiro">@kompiro</a>.</p>
     <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.<p>
+    <p>released:<%=
+    unless @app_last_updated_at.nil?
+      if @app_last_updated_at.is_a? Time
+        @app_last_updated_at.to_s(:long)
+      else
+        @app_last_updated_at
+      end
+    end
+    %></p>
 </div>
 </footer>
 <div id="fb-root"></div>
