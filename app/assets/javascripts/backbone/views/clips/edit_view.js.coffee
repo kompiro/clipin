@@ -28,4 +28,9 @@ class Clipin.Views.Clips.EditView extends Backbone.View
 
   render : ->
     $(@el).html(@template(@model.toJSON()))
+    $(@el).find('#oembed_content').oembed(@model.get('url'),
+      maxWidth:600
+      maxHeight:450
+      embedMethod: 'append'
+    )
     return this
