@@ -7,6 +7,8 @@
     <p><%= @description %></p>
     <h4>URL:</h4>
     <p><%= @url %></p>
+    <h4>Embed:</h4>
+    <div id="oembed_content"></div>
     <ul class='list-inline-block'>
       <li class='twitter'>
         <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= @url %>" data-text="<%= @title %>" data-count='vertical'>Tweet</a>

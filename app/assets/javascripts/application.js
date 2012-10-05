@@ -14,6 +14,7 @@
 //= require moment
 //= require jquery
 //= require jquery_ujs
+//= require jquery.oembed
 //= require twitter/bootstrap
 //= require underscore
 //= require backbone
