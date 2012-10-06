@@ -1,12 +1,6 @@
   <div data-role="content">
-    <h4>Title:</h4>
-    <p><%= @title %></p>
-    <h4>Image:</h4>
-    <p><img src='<%= if @image then @image else '/assets/not_found.png' %>' alt='summary_image' class="clip_image_detail" onerror="loadImgError(this)"/></p>
-    <h4>Description:</h4>
-    <p><%= @description %></p>
-    <h4>URL:</h4>
-    <p><%= @url %></p>
+    <div id="content">
+    </div>
     <div id="social_buttons">
       <ul class='list-inline-block'>
         <li class='twitter'>
@@ -20,8 +14,6 @@
         </li>
       </ul>
     </div>
-    <h4>Embed:</h4>
-    <div id="oembed_content"></div>
     <div class="btn-group">
       <a href="<%= @url %>" class="btn btn-large btn-primary">Open</a>
       <% unless @pin: %>

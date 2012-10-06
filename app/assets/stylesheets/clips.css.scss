@@ -27,7 +27,12 @@ img.clip_image {
   max-height: 80px;
   max-width: 80px;
 }
+$clip_image_detail_width: 600px;
+img.clip_image_detail {
+  max-width: $clip_image_detail_width;
+}
 @media screen and (max-width: 480px) {
+  $screen_max_width: 480px;
   img.clip_image {
     width:  32px;
     height: 32px;
@@ -37,6 +42,9 @@ img.clip_image {
     top: 0;
     max-height: 32px;
     max-width: 32px;
+  }
+  img.clip_omage_detail {
+    max-width: $screen_max_width;
   }
   .ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb {
     padding-left: 37px;
@@ -195,4 +203,19 @@ h3.title {
 }
 #menu {
   width: 237px;
+}
+#content {
+  background: #EEE;
+  background: -moz-linear-gradient(center top , #FAFAFA, #EFEFEF) repeat scroll 0 0 transparent;
+  background: -webkit-gradient(linear,left top,left bottom,from(#FAFAFA),to(#EFEFEF));
+  width: 600px;
+  height: 200px;
+  float: left;
+  margin: 0 20px 20px 0;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+#social_buttons {
+  clear: both;
 }
