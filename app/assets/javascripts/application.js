@@ -15,6 +15,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.oembed
+//= require spin
+//= require jquery.spin
 //= require twitter/bootstrap
 //= require underscore
 //= require backbone
