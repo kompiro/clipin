@@ -14,11 +14,20 @@ class SessionsController < ApplicationController
 
   def create
     auth = auth_hash
-    user = User.where(:provider => auth['provider'],
-        :uid => auth['uid']).first || User.create_with_omniauth(auth)
+    user = User.where(:provider => auth['provider'], :uid => auth['uid']).first
+    if user.present?
+      existed = true
+    else
+      user = User.create_with_omniauth(auth)
+    end
     User.current = user
     session[:user_id] = user.id
     cookies.signed[:user_id] = {:value => user.id,:expires => 1.year.from_now}
+    if existed
+      flash[:success] = 'Welcome Back!'
+    else
+      flash[:success] = 'Welcome!'
+    end
     redirect_to clips_path
   end
 
