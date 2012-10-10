@@ -20,6 +20,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     "index/:tag"    : "index_by_tag"
     "index"         : "index_fetch"
     "conf"          : "conf"
+    "extension"     : "extension"
     "_=_"           : "index"
     ":id/edit"      : "edit"
     ":id"           : "show"
@@ -71,6 +72,10 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
       success:(collection)=>
         @clips.reset(collection.models)
         @changePage(page)
+
+  extension: ->
+    page = new Clipin.Views.Clips.ExtensionView()
+    @changePage(page)
 
   conf: ->
     page = new Clipin.Views.Clips.ConfView()
