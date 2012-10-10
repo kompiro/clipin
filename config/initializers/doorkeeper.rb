@@ -2,10 +2,10 @@ Doorkeeper.configure do
   # This block will be called to check whether the
   # resource owner is authenticated or not
   resource_owner_authenticator do |routes|
-    User.find_by_id(session[:user_id]) || redirect_to(routes.login_url)
+    User.find_by_id(session[:user_id]) || redirect_to(routes.root_url,:notice => 'API call is failed. Please login and re-clip the URL.')
   end
   admin_authenticator do |routes|
-    session[:user_id] == 1 || redirect_to(routes.login_url(return_to: request.fullpath))
+    session[:user_id] == 1 || redirect_to(routes.root_url(return_to: request.fullpath))
   end
   # If you want to restrict the access to the web interface for
   # adding oauth authorized applications you need to declare the
