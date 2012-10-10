@@ -9,6 +9,26 @@
     </div>
   </div>
   <div class="container">
+  <% if flash[:success] %>
+    <div class="alert alert-success fade in">
+      <a href="#" class="close" data-dismiss="alert">×</a>
+      <%= flash[:success] %>
+    </div>
+  <% end %>
+  <% if flash[:notice] %>
+    <div class="alert alert-error fade in">
+      <a href="#" class="close" data-dismiss="alert">×</a>
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+  <% if flash[:error] %>
+    <div class="alert alert-error fade in">
+      <a href="#" class="close" data-dismiss="alert">×</a>
+      <%= flash[:error] %>
+    </div>
+  <% end %>
+</div>
+  <div class="container">
     <div class="marketing">
       <h1>Introducing Clipin</h1>
       <p class="marketing-byline">Clipinを使うと嬉しい３つの理由</p>
