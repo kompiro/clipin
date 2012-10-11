@@ -2,6 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+html,
+body {
+  height: 100%;
+}
+
+#wrap {
+  min-height: 100%;
+  height:auto !important;
+  height: 100%;
+  margin: 0 auto -201px;
+}
+
+#push,
+#footer {
+  height: 201px;
+}
+
 .marketing {
   text-align: center;
   color: #5A5A5A;
