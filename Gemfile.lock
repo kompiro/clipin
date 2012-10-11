@@ -291,6 +291,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   capistrano
   capistrano-ext
   capistrano_colors
