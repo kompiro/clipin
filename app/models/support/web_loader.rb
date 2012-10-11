@@ -1,5 +1,6 @@
 
 require 'open-uri'
+require 'addressable/uri'
 require 'nokogiri'
 require 'nkf'
 
@@ -49,7 +50,7 @@ module Support
         @clip.title = @clip.title.strip
       rescue ArgumentError
       end
-      @clip.url = @url
+      @clip.url = io.base_uri.to_s
       parse_prop doc
       if @clip.description.nil?
         @clip.description = doc.xpath('//meta[@name="description"]/@content').text
@@ -63,11 +64,17 @@ module Support
     end
 
     def recover_url
+      uri = Addressable::URI.parse(@url)
       if @url.start_with?('http:')
         @url = 'http://' + @url.scan(/http:\/\/?(.*)/)[0][0]
       end
       if @url.start_with?('https:')
         @url = 'https://' + @url.scan(/https:\/\/?(.*)/)[0][0]
+      end
+      if uri.host.present? and uri.host.include?('google')
+        if uri.query_values['url'].present?
+          @url = uri.query_values['url']
+        end
       end
     end
 

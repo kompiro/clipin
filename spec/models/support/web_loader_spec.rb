@@ -12,6 +12,7 @@ describe Support::WebLoader do
       read.stub(:meta).and_return({'content-type' => 'text/html;'})
       read.stub(:read).and_return(doc.read)
       read.stub(:charset).and_return(charset)
+      read.stub(:base_uri).and_return(URI.parse(base_uri))
 
       @clip = Clip.new(:url => url)
       @loader = Support::WebLoader.new(@clip)
@@ -24,8 +25,9 @@ describe Support::WebLoader do
     let(:charset){'utf-8'}
     context 'error cases' do
       describe 'url is nil case' do
-        let(:url)     {nil}
-        its(:title)   {should be_nil}
+        let(:url)       {nil}
+        let(:base_uri)  {'http://example.com'} #dummy
+        its(:title)     {should be_nil}
         context 'errors' do
           it 'has one error' do
             @clip.errors.size.should be 1
@@ -37,6 +39,7 @@ describe Support::WebLoader do
       end
       describe 'url is empty string case' do
         let(:url){''}
+        let(:base_uri)  {'http://example.com'} #dummy
         it {@result.should be_false}
         its(:title)   {should be_nil}
         context 'errors' do
@@ -51,6 +54,7 @@ describe Support::WebLoader do
       end
       context 'illegal url' do
         let(:url){'//example.com/empty.html'}
+        let(:base_uri){'//example.com/empty.html'}
         it {@result.should be_false}
         its(:title)  {should be_nil}
         context 'errors' do
@@ -65,6 +69,7 @@ describe Support::WebLoader do
       end
       describe 'load empty content' do
         let(:url){'http://example.com/empty.html'}
+        let(:base_uri){'http://example.com/empty.html'}
         it {@result.should be_true}
         its(:title)  {should == ''}
         context 'errors' do
@@ -79,6 +84,7 @@ describe Support::WebLoader do
       describe 'load ogp content' do
         let(:file)         {'error.html'}
         let(:url)          {'http://example.com/error.html'}
+        let(:base_uri)     {'http://example.com/error.html'}
         let(:charset)      {'utf-8'}
         it                 {@result.should be_true}
         its(:title)        {should == 'Backbone.js'}
@@ -89,6 +95,7 @@ describe Support::WebLoader do
       describe 'load ogp content' do
         let(:file)         {'mine.html'}
         let(:url)          {'http://d.hatena.ne.jp/kompiro/'}
+        let(:base_uri)     {'http://d.hatena.ne.jp/kompiro/'}
         let(:charset)      {'euc-jp'}
         it                 {@result.should be_true}
         its(:title)        {should == 'Fly me to the Juno!'}
@@ -107,6 +114,7 @@ describe Support::WebLoader do
       describe 'different url' do
         let(:file)         {'github.html'}
         let(:url)          {'https://github.com/plataformatec/devise/wiki/OmniAuth%3A-Overview'}
+        let(:base_uri)     {'https://github.com/plataformatec/devise/wiki/OmniAuth%3A-Overview'}
         let(:charset)      {'utf-8'}
         it                 {@result.should be_true}
         its(:title)        {should == 'OmniAuth: Overview · plataformatec/devise Wiki'}
@@ -124,6 +132,7 @@ describe Support::WebLoader do
       describe 'load not ogp content' do
         let(:file){'not_ogp.html'}
         let(:url){'http://example.com/not_ogp.html'}
+        let(:base_uri){'http://example.com/not_ogp.html'}
         let(:charset)      {'euc-jp'}
         it                 {@result.should be_true}
         its(:title)        {should == 'ゆるキャラ「まんべくん」哀れな末路 - ソーシャルメディア炎上事件簿：ITpro'}
@@ -141,6 +150,7 @@ describe Support::WebLoader do
       describe 'load toggeter content' do
         let(:file)         {'togetter.html'}
         let(:url)          {'http://togetter.com/li/284806'}
+        let(:base_uri)     {'http://togetter.com/li/284806'}
         let(:charset)      {'utf-8'}
         it                 {@result.should be_true}
         its(:title)        {should == '夏場の電力ピーク時の数時間、製造業は節電のために稼働を止められるのか？現場の人に聞いてみた。 - Togetter'}
@@ -152,6 +162,7 @@ describe Support::WebLoader do
       describe 'load youtube content' do
         let(:file)         {'youtube.html'}
         let(:url)          {'http://www.youtube.com/watch?v=I7nKNs6dUJ4'}
+        let(:base_uri)     {'http://www.youtube.com/watch?v=I7nKNs6dUJ4'}
         let(:charset)      {'utf-8'}
         it                 {@result.should be_true}
         its(:title)        {should == "TV初「モテキ」漫画家・久保ミツロウが大暴れ!!\n      - YouTube"}
@@ -159,6 +170,7 @@ describe Support::WebLoader do
       describe 'load tumblr content' do
         let(:file)         {'tumblr.html'}
         let(:url)          {'http://sinjow.tumblr.com/post/23523733772/mixi-sns-twitter-140'}
+        let(:base_uri)     {'http://sinjow.tumblr.com/post/23523733772/mixi-sns-twitter-140'}
         let(:charset)      {'utf-8'}
         it                 {@result.should be_true}
         its(:title)        {should == "散歩男爵Tumblaneur | mixiがコケた教訓って「SNSは余計なお世話をするな」ってことだな。Twitterは140字縛りを崩..."}
@@ -166,6 +178,7 @@ describe Support::WebLoader do
       describe 'load atmarkit content' do
         let(:file)         {'atmark.html'}
         let(:url)          {'http://www.atmarkit.co.jp/im/carc/serial/jobjmdl03/jobjmdl03_2.html'}
+        let(:base_uri)     {'http://www.atmarkit.co.jp/im/carc/serial/jobjmdl03/jobjmdl03_2.html'}
         let(:charset)      {'iso-8859-1'}
         it                 {@result.should be_true}
         its(:title)        {should == "＠IT：Javaオブジェクトモデリング 第3回"}
@@ -173,6 +186,7 @@ describe Support::WebLoader do
       describe 'load slideshare content' do
         let(:file)         {'slideshare.html'}
         let(:url)          {'http://www.slideshare.net/kkd/tddbctdd'}
+        let(:base_uri)     {'http://www.slideshare.net/kkd/tddbctdd'}
         let(:charset)      {'utf-8'}
         it                 {@result.should be_true}
         its(:title)        {should == "TDDBCの前にTDDについて知っておいてもらいたい３つのこと"}
@@ -180,6 +194,7 @@ describe Support::WebLoader do
       describe 'load unexpected_encode_error content' do
         let(:file)         {'unexpected_encode_error.html'}
         let(:url)          {'http://www.soubunshu.com/?1348807544'}
+        let(:base_uri)     {'http://www.soubunshu.com/?1348807544'}
         let(:charset)      {'shift_jis'}
         it                 {@result.should be_true}
         its(:title)        {should == "宋文洲のメルマガの読者広場"}
@@ -189,6 +204,7 @@ describe Support::WebLoader do
       describe 'http:/ pattern' do
         let(:file)         {'empty.html'}
         let(:url)          {'http:/example.com/'}
+        let(:base_uri)     {'http://example.com/'}
         let(:charset)      {'utf-8'}
         it                 {@result.should be_true}
         its(:url)          {should == 'http://example.com/'}
@@ -196,155 +212,172 @@ describe Support::WebLoader do
       describe 'https:/ pattern' do
         let(:file)         {'empty.html'}
         let(:url)          {'https:/example.com/'}
+        let(:base_uri)     {'https://example.com/'}
         let(:charset)      {'utf-8'}
         it                 {@result.should be_true}
         its(:url)          {should == 'https://example.com/'}
       end
-    end
-  end
-  context 'load image content from url' do
-    before do
-      read = mock('open')
-      read.stub(:meta).and_return(meta)
-      read.stub(:base_uri).and_return(URI.parse(url))
-
-      @clip = Clip.new(:url => url)
-      @loader = Support::WebLoader.new(@clip)
-      @loader.stub!(:open).and_return(read)
-
-      @result = @loader.load
-    end
-    subject{@clip}
-    describe 'load gif image' do
-      let(:url)            {'http://www.st-hatena.com/users/ko/kompiro/profile.gif'}
-      let(:meta)           {{"date"=>"Sun, 30 Sep 2012 10:26:00 GMT",
-        "server"=>"Apache/2.2.3 (CentOS)",
-        "etag"=>"\"0059290913\"",
-        "cache-control"=>"public, max-age=86400, s-maxage=86400",
-        "content-type"=>"image/gif",
-        "content-length"=>"2773",
-        "age"=>"11046",
-        "x-cache"=>"HIT from squid.hatena.ne.jp",
-        "x-cache-lookup"=>"HIT from squid.hatena.ne.jp:80",
-        "via"=>"1.0 wwwsquid09.hatena.ne.jp:80 (squid/2.7.STABLE6)"}}
-      its(:url)            {should == 'http://www.st-hatena.com/users/ko/kompiro/profile.gif'}
-      its(:image)          {should == 'http://www.st-hatena.com/users/ko/kompiro/profile.gif'}
-      its(:title)          {should == 'profile.gif'}
-      its(:description)    {should == nil}
-    end
-    describe 'load png image' do
-      let(:url)            {'http://gigazine.jp/img/2007/10/19/iconica/iconica_preview_m.png'}
-      let(:meta)           {{"date"=>"Sun, 30 Sep 2012 10:59:34 GMT",
-        "server"=>"Apache/2.2.3 (CentOS)",
-        "last-modified"=>"Fri, 19 Oct 2007 02:43:07 GMT",
-        "etag"=>"\"372033e-b119-7e9da4c0\"",
-        "accept-ranges"=>"bytes",
-        "content-length"=>"45337",
-        "cache-control"=>"max-age=31536000",
-        "expires"=>"Mon, 30 Sep 2013 10:59:34 GMT",
-        "connection"=>"close",
-        "content-type"=>"image/png"}}
-      its(:url)            {should == 'http://gigazine.jp/img/2007/10/19/iconica/iconica_preview_m.png'}
-      its(:image)          {should == 'http://gigazine.jp/img/2007/10/19/iconica/iconica_preview_m.png'}
-      its(:title)          {should == 'iconica_preview_m.png'}
-      its(:description)    {should == nil}
-    end
-    describe 'load jpg image' do
-      let(:url)            {'http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/images/top/img_index_main.jpg'}
-      let(:meta)           {{"date"=>"Sun, 30 Sep 2012 11:04:25 GMT",
-        "server"=>"Apache",
-        "last-modified"=>"Fri, 03 Sep 2010 07:42:24 GMT",
-        "accept-ranges"=>"bytes",
-        "content-length"=>"31840",
-        "content-type"=>"image/jpeg",
-        "set-cookie"=> "citrix_ns_id=PVQd/zL1LeIXWyz7eyAVBCbKyHEA010; Domain=.toshiba-sol.co.jp; Path=/; HttpOnly"}}
-      its(:url)            {should == 'http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/images/top/img_index_main.jpg'}
-      its(:image)          {should == 'http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/images/top/img_index_main.jpg'}
-      its(:title)          {should == 'img_index_main.jpg'}
-      its(:description)    {should == nil}
-    end
-  end
-  context 'load image content from url and image' do
-    before do
-      read = mock('open')
-      read.stub(:meta).and_return(meta)
-      read.stub(:base_uri).and_return(URI.parse(url))
-
-      @clip = Clip.new(:url => url,:image => image)
-      @loader = Support::WebLoader.new(@clip)
-      @loader.stub!(:open).and_return(read)
-
-      @result = @loader.load
-    end
-    subject{@clip}
-    describe 'load gif image' do
-      let(:url)              {'http://d.hatena.ne.jp/kompiro'}
-      let(:image)            {'http://www.st-hatena.com/users/ko/kompiro/profile.gif'}
-      let(:meta)           {{"date"=>"Sun, 30 Sep 2012 10:26:00 GMT",
-        "server"=>"Apache/2.2.3 (CentOS)",
-        "etag"=>"\"0059290913\"",
-        "cache-control"=>"public, max-age=86400, s-maxage=86400",
-        "content-type"=>"image/gif",
-        "content-length"=>"2773",
-        "age"=>"11046",
-        "x-cache"=>"HIT from squid.hatena.ne.jp",
-        "x-cache-lookup"=>"HIT from squid.hatena.ne.jp:80",
-        "via"=>"1.0 wwwsquid09.hatena.ne.jp:80 (squid/2.7.STABLE6)"}}
-      its(:url)            {should == 'http://d.hatena.ne.jp/kompiro'}
-      its(:image)          {should == 'http://www.st-hatena.com/users/ko/kompiro/profile.gif'}
-      its(:title)          {should == 'profile.gif'}
-      its(:description)    {should == 'clip from http://d.hatena.ne.jp/kompiro'}
-    end
-    describe 'load png image' do
-      let(:url)            {'http://gigazine.jp/img/2007/10/19/iconica/'}
-      let(:image)            {'http://gigazine.jp/img/2007/10/19/iconica/iconica_preview_m.png'}
-      let(:meta)           {{"date"=>"Sun, 30 Sep 2012 10:59:34 GMT",
-        "server"=>"Apache/2.2.3 (CentOS)",
-        "last-modified"=>"Fri, 19 Oct 2007 02:43:07 GMT",
-        "etag"=>"\"372033e-b119-7e9da4c0\"",
-        "accept-ranges"=>"bytes",
-        "content-length"=>"45337",
-        "cache-control"=>"max-age=31536000",
-        "expires"=>"Mon, 30 Sep 2013 10:59:34 GMT",
-        "connection"=>"close",
-        "content-type"=>"image/png"}}
-      its(:url)            {should == 'http://gigazine.jp/img/2007/10/19/iconica/'}
-      its(:image)          {should == 'http://gigazine.jp/img/2007/10/19/iconica/iconica_preview_m.png'}
-      its(:title)          {should == 'iconica_preview_m.png'}
-      its(:description)    {should == 'clip from http://gigazine.jp/img/2007/10/19/iconica/'}
-    end
-    describe 'load jpg image' do
-      let(:url)            {'http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/'}
-      let(:image)          {'http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/images/top/img_index_main.jpg'}
-      let(:meta)           {{"date"=>"Sun, 30 Sep 2012 11:04:25 GMT",
-        "server"=>"Apache",
-        "last-modified"=>"Fri, 03 Sep 2010 07:42:24 GMT",
-        "accept-ranges"=>"bytes",
-        "content-length"=>"31840",
-        "content-type"=>"image/jpeg",
-        "set-cookie"=> "citrix_ns_id=PVQd/zL1LeIXWyz7eyAVBCbKyHEA010; Domain=.toshiba-sol.co.jp; Path=/; HttpOnly"}}
-      its(:url)            {should == 'http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/'}
-      its(:image)          {should == 'http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/images/top/img_index_main.jpg'}
-      its(:title)          {should == 'img_index_main.jpg'}
-      its(:description)    {should == 'clip from http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/'}
-    end
-  end
-  context 'OpenURI::HTTPError is occurred' do
-    before do
-      @clip = Clip.new(:url => 'http://example.com/')
-      @loader = Support::WebLoader.new(@clip)
-      @loader.stub!(:open).and_raise OpenURI::HTTPError.new message,nil
-      @result = @loader.load
-    end
-    describe '404 Not Found' do
-      let(:message)      {'404 Not Found'}
-      it                   {@result.should be_false}
-      it 'has one error' do
-        @clip.errors.size.should be 1
+      describe 'google search result' do
+        let(:file)         {'empty.html'}
+        let(:url)          {'http://www.google.co.jp/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&ved=0CCUQFjAA&url=http%3A%2F%2Fd.hatena.ne.jp%2Fkompiro%2F&ei=ltB2UPeBMIvFmQWz94FY&usg=AFQjCNF-Q8pnBGBdwTQoBd_tdJ1m7cPwoQ&sig2=8iPE-WjJZZsHTVUSX3ryIQ'}
+          let(:base_uri)     {'http://d.hatena.ne.jp/kompiro/'} # not effectiveness spec because always uses this uri
+          let(:charset)      {'utf-8'}
+          it                 {@result.should be_true}
+          its(:url)          {should == 'http://d.hatena.ne.jp/kompiro/'}
+        end
       end
-      it 'has url error' do
-        @clip.errors[:url][0].should == "access 'http://example.com/' error : 404 Not Found"
+      context 'overwrite base_uri' do
+        describe 'load shorten url' do
+          let(:file)         {'empty.html'}
+          let(:url)              {'http://shorten.me/kompiro'}
+          let(:base_uri)         {'http://d.hatena.ne.jp/kompiro'}
+          its(:url)              {should == 'http://d.hatena.ne.jp/kompiro'}
+        end
       end
     end
-  end
+    context 'load image content from url' do
+      before do
+        read = mock('open')
+        read.stub(:meta).and_return(meta)
+        read.stub(:base_uri).and_return(URI.parse(url))
+
+        @clip = Clip.new(:url => url)
+        @loader = Support::WebLoader.new(@clip)
+        @loader.stub!(:open).and_return(read)
+
+        @result = @loader.load
+      end
+      subject{@clip}
+      describe 'load gif image' do
+        let(:url)            {'http://www.st-hatena.com/users/ko/kompiro/profile.gif'}
+        let(:meta)           {{"date"=>"Sun, 30 Sep 2012 10:26:00 GMT",
+          "server"=>"Apache/2.2.3 (CentOS)",
+          "etag"=>"\"0059290913\"",
+          "cache-control"=>"public, max-age=86400, s-maxage=86400",
+          "content-type"=>"image/gif",
+          "content-length"=>"2773",
+          "age"=>"11046",
+          "x-cache"=>"HIT from squid.hatena.ne.jp",
+          "x-cache-lookup"=>"HIT from squid.hatena.ne.jp:80",
+          "via"=>"1.0 wwwsquid09.hatena.ne.jp:80 (squid/2.7.STABLE6)"}}
+        its(:url)            {should == 'http://www.st-hatena.com/users/ko/kompiro/profile.gif'}
+        its(:image)          {should == 'http://www.st-hatena.com/users/ko/kompiro/profile.gif'}
+        its(:title)          {should == 'profile.gif'}
+        its(:description)    {should == nil}
+      end
+      describe 'load png image' do
+        let(:url)            {'http://gigazine.jp/img/2007/10/19/iconica/iconica_preview_m.png'}
+        let(:meta)           {{"date"=>"Sun, 30 Sep 2012 10:59:34 GMT",
+          "server"=>"Apache/2.2.3 (CentOS)",
+          "last-modified"=>"Fri, 19 Oct 2007 02:43:07 GMT",
+          "etag"=>"\"372033e-b119-7e9da4c0\"",
+          "accept-ranges"=>"bytes",
+          "content-length"=>"45337",
+          "cache-control"=>"max-age=31536000",
+          "expires"=>"Mon, 30 Sep 2013 10:59:34 GMT",
+          "connection"=>"close",
+          "content-type"=>"image/png"}}
+        its(:url)            {should == 'http://gigazine.jp/img/2007/10/19/iconica/iconica_preview_m.png'}
+        its(:image)          {should == 'http://gigazine.jp/img/2007/10/19/iconica/iconica_preview_m.png'}
+        its(:title)          {should == 'iconica_preview_m.png'}
+        its(:description)    {should == nil}
+      end
+      describe 'load jpg image' do
+        let(:url)            {'http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/images/top/img_index_main.jpg'}
+        let(:meta)           {{"date"=>"Sun, 30 Sep 2012 11:04:25 GMT",
+          "server"=>"Apache",
+          "last-modified"=>"Fri, 03 Sep 2010 07:42:24 GMT",
+          "accept-ranges"=>"bytes",
+          "content-length"=>"31840",
+          "content-type"=>"image/jpeg",
+          "set-cookie"=> "citrix_ns_id=PVQd/zL1LeIXWyz7eyAVBCbKyHEA010; Domain=.toshiba-sol.co.jp; Path=/; HttpOnly"}}
+        its(:url)            {should == 'http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/images/top/img_index_main.jpg'}
+        its(:image)          {should == 'http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/images/top/img_index_main.jpg'}
+        its(:title)          {should == 'img_index_main.jpg'}
+        its(:description)    {should == nil}
+      end
+    end
+    context 'load image content from url and image' do
+      before do
+        read = mock('open')
+        read.stub(:meta).and_return(meta)
+        read.stub(:base_uri).and_return(URI.parse(url))
+
+        @clip = Clip.new(:url => url,:image => image)
+        @loader = Support::WebLoader.new(@clip)
+        @loader.stub!(:open).and_return(read)
+
+        @result = @loader.load
+      end
+      subject{@clip}
+      describe 'load gif image' do
+        let(:url)              {'http://d.hatena.ne.jp/kompiro'}
+        let(:image)            {'http://www.st-hatena.com/users/ko/kompiro/profile.gif'}
+        let(:meta)           {{"date"=>"Sun, 30 Sep 2012 10:26:00 GMT",
+          "server"=>"Apache/2.2.3 (CentOS)",
+          "etag"=>"\"0059290913\"",
+          "cache-control"=>"public, max-age=86400, s-maxage=86400",
+          "content-type"=>"image/gif",
+          "content-length"=>"2773",
+          "age"=>"11046",
+          "x-cache"=>"HIT from squid.hatena.ne.jp",
+          "x-cache-lookup"=>"HIT from squid.hatena.ne.jp:80",
+          "via"=>"1.0 wwwsquid09.hatena.ne.jp:80 (squid/2.7.STABLE6)"}}
+        its(:url)            {should == 'http://d.hatena.ne.jp/kompiro'}
+        its(:image)          {should == 'http://www.st-hatena.com/users/ko/kompiro/profile.gif'}
+        its(:title)          {should == 'profile.gif'}
+        its(:description)    {should == 'clip from http://d.hatena.ne.jp/kompiro'}
+      end
+      describe 'load png image' do
+        let(:url)            {'http://gigazine.jp/img/2007/10/19/iconica/'}
+        let(:image)            {'http://gigazine.jp/img/2007/10/19/iconica/iconica_preview_m.png'}
+        let(:meta)           {{"date"=>"Sun, 30 Sep 2012 10:59:34 GMT",
+          "server"=>"Apache/2.2.3 (CentOS)",
+          "last-modified"=>"Fri, 19 Oct 2007 02:43:07 GMT",
+          "etag"=>"\"372033e-b119-7e9da4c0\"",
+          "accept-ranges"=>"bytes",
+          "content-length"=>"45337",
+          "cache-control"=>"max-age=31536000",
+          "expires"=>"Mon, 30 Sep 2013 10:59:34 GMT",
+          "connection"=>"close",
+          "content-type"=>"image/png"}}
+        its(:url)            {should == 'http://gigazine.jp/img/2007/10/19/iconica/'}
+        its(:image)          {should == 'http://gigazine.jp/img/2007/10/19/iconica/iconica_preview_m.png'}
+        its(:title)          {should == 'iconica_preview_m.png'}
+        its(:description)    {should == 'clip from http://gigazine.jp/img/2007/10/19/iconica/'}
+      end
+      describe 'load jpg image' do
+        let(:url)            {'http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/'}
+        let(:image)          {'http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/images/top/img_index_main.jpg'}
+        let(:meta)           {{"date"=>"Sun, 30 Sep 2012 11:04:25 GMT",
+          "server"=>"Apache",
+          "last-modified"=>"Fri, 03 Sep 2010 07:42:24 GMT",
+          "accept-ranges"=>"bytes",
+          "content-length"=>"31840",
+          "content-type"=>"image/jpeg",
+          "set-cookie"=> "citrix_ns_id=PVQd/zL1LeIXWyz7eyAVBCbKyHEA010; Domain=.toshiba-sol.co.jp; Path=/; HttpOnly"}}
+        its(:url)            {should == 'http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/'}
+        its(:image)          {should == 'http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/images/top/img_index_main.jpg'}
+        its(:title)          {should == 'img_index_main.jpg'}
+        its(:description)    {should == 'clip from http://www.toshiba-sol.co.jp/sol/gene/package/kyoiku/'}
+      end
+    end
+    context 'OpenURI::HTTPError is occurred' do
+      before do
+        @clip = Clip.new(:url => 'http://example.com/')
+        @loader = Support::WebLoader.new(@clip)
+        @loader.stub!(:open).and_raise OpenURI::HTTPError.new message,nil
+        @result = @loader.load
+      end
+      describe '404 Not Found' do
+        let(:message)      {'404 Not Found'}
+        it                   {@result.should be_false}
+        it 'has one error' do
+          @clip.errors.size.should be 1
+        end
+        it 'has url error' do
+          @clip.errors[:url][0].should == "access 'http://example.com/' error : 404 Not Found"
+        end
+      end
+    end
 end
