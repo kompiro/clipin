@@ -14,7 +14,7 @@ gem 'eco'
 gem 'doorkeeper'
 gem "twitter-bootstrap-rails",  "~> 2.1.3"
 gem 'spinjs-rails'
-
+gem 'addressable'
 # Use unicorn as the app server
 gem 'unicorn'
 # Gems used only for assets and not required
