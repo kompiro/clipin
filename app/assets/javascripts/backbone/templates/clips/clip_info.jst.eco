@@ -1,8 +1,9 @@
-    <h4>Title:</h4>
-    <p><a href="<%= @url %>"><%= @title %></a></p>
     <% if @image:  %>
-    <h4>Image:</h4>
     <p><img src='<%= @image %>' alt='summary_image' class="clip_image_detail" onerror="loadImgError(this)"/></p>
     <% end %>
-    <h4>Description:</h4>
+    <% if @title:  %>
+    <p><a href="<%= @url %>"><%= @title %></a></p>
+    <% else: %>
+    <p><a href="<%= @url %>"><%= @url %></a></p>
+    <% end %>
     <p><%= @description %></p>

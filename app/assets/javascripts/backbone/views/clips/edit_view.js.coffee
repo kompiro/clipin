@@ -39,7 +39,13 @@ class Clipin.Views.Clips.EditView extends Backbone.View
       maxWidth:600
       maxHeight:450
       embedMethod: 'replace'
-      afterEmbed: ->
+      beforeEmbed:(oembedData)=>
+        unless oembedData.code
+          info_view = new Clipin.Views.Clips.ClipInfoView(
+            model:@model
+          )
+          content.replaceWith(info_view.render().el)
+      afterEmbed: (oembedData)=>
         spinner.stop()
       onProviderNotFound: (container,resourceURL)=>
         info_view = new Clipin.Views.Clips.ClipInfoView(
