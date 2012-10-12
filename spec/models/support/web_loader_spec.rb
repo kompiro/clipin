@@ -14,7 +14,9 @@ describe Support::WebLoader do
       read.stub(:charset).and_return(charset)
       read.stub(:base_uri).and_return(URI.parse(base_uri))
 
+      User.current = create(:user)
       @clip = Clip.new(:url => url)
+      @clip.set_user
       @loader = Support::WebLoader.new(@clip)
       @loader.stub!(:open).and_return(read)
 
