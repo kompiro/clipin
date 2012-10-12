@@ -23,7 +23,7 @@ class Clip < ActiveRecord::Base
     if self.og_type.nil? or self.og_type.empty?
       return
     end
-    tag = Tag.find_or_create_by_name self.og_type
+    tag = Tag.find_or_create_by_name_and_user_id self.og_type,self.user.id
     Tagging.create({:clip => self, :tag => tag})
   end
 
