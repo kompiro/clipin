@@ -3,5 +3,6 @@
   <div class="clip_list">
   </div>
   <br/>
-  <a href='#' data-role='button' class="next_clips">next clips</a>
+  <a href='#' class="btn btn-large btn-block btn-primary next_clips">next clips</a>
+  <div id="loading"></div>
 </div>
