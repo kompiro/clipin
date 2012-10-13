@@ -13,8 +13,4 @@ class Tag < ActiveRecord::Base
     return clips.where(:user_id => User.current.id,:trash => false).offset(PAGE_CONTENT * ([page_num.to_i, 1].max - 1))
   end
 
-  def save
-    self.user = User.current
-    super
-  end
 end
