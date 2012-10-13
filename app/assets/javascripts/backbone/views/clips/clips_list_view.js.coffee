@@ -26,7 +26,7 @@ class Clipin.Views.Clips.ClipsListView extends Backbone.View
   scroll:()=>
     # timeout to permit multiposting
     setTimeout =>
-      if  $(window).scrollTop() > $(document).height() - $(window).height() - 100
+      if  $(window).scrollTop() > $(document).height() - $(window).height() - 300
         @lastPostFunc()
     , 100
 
@@ -82,11 +82,14 @@ class Clipin.Views.Clips.ClipsListView extends Backbone.View
   render: =>
     $(@el).html(@template(title:@options.title))
     @addAll()
-
     return this
 
   pageshow:->
     $(window).scroll(@scroll)
+    @loading_element = $(@el).find('#loading')
+    @loading_element.css(
+      color:'#333'
+    ).spin()
     @el_next_clip().css('display','')
 
   pagehide:->
