@@ -11,7 +11,7 @@
     <% end %>
     <% if @tags.length: %>
       <% for tag in @tags: %>
-      <span class='tag <%= tagColor(tag.id) %>'><%= tag.name %></span>
+      <span class='tag <%= tagColor(tag.color) %>'><%= tag.name %></span>
       <% end %>
     <% end %>
     <%= @title %>
