@@ -78,7 +78,9 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     @changePage(page)
 
   conf: ->
-    page = new Clipin.Views.Clips.ConfView()
+    page = new Clipin.Views.Clips.ConfView(
+      model : @tags
+    )
     @changePage(page)
 
   show: (id) ->
