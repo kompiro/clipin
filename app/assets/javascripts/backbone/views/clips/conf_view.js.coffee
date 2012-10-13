@@ -26,6 +26,6 @@ class Clipin.Views.Clips.TagConfView extends Backbone.View
   render:->
     $(@el).html(@template(@model.toJSON()))
     $(@el).find("select[name='tags[#{@model.id}][color]']").bind('change',(evt)=>
-      @model.set('color',evt.currentTarget.value)
+      @model.set('color',Number(evt.currentTarget.value))
     )
     return @

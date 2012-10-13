@@ -11,10 +11,10 @@ class Clipin.Views.Clips.ClipView extends Backbone.View
 
   destroy: () ->
     @model.destroy()
-    this.remove()
+    @remove()
 
     return false
 
   render: ->
-    $(@el).html(@template(@model.toJSON() ))
+    $(@el).html(@template(@model.toJSON()))
     return this
