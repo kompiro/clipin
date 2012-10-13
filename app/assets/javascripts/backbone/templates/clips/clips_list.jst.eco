@@ -2,7 +2,6 @@
   <h1><%= @title %></h1>
   <div class="clip_list">
   </div>
-  <br/>
   <a href='#' class="btn btn-large btn-block btn-primary next_clips">next clips</a>
   <div id="loading"></div>
 </div>
