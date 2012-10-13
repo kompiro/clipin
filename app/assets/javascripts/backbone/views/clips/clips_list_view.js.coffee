@@ -26,7 +26,7 @@ class Clipin.Views.Clips.ClipsListView extends Backbone.View
   scroll:()=>
     # timeout to permit multiposting
     setTimeout =>
-      if  $(window).scrollTop() > $(document).height() - $(window).height() - 100
+      if  $(window).scrollTop() > $(document).height() - $(window).height() - 300
         @lastPostFunc()
     , 100
 
@@ -75,6 +75,11 @@ class Clipin.Views.Clips.ClipsListView extends Backbone.View
     if index is 0 or not clips[index - 1].same_updated_date(clip)
       separator = new Clipin.Views.Clips.DateSeparatorView({model:clip.toJSON().created_at})
       @el_clip_list().append(separator.render().el)
+    tags = clip.get('tags')
+    if tags
+      for tag,index in tags
+        tag = @options.tags.get(tag.id)
+        tags[index] = tag
 
     view = new Clipin.Views.Clips.ClipView({model : clip})
     @el_clip_list().append(view.render().el)
@@ -82,11 +87,14 @@ class Clipin.Views.Clips.ClipsListView extends Backbone.View
   render: =>
     $(@el).html(@template(title:@options.title))
     @addAll()
-
     return this
 
   pageshow:->
     $(window).scroll(@scroll)
+    @loading_element = $(@el).find('#loading')
+    @loading_element.css(
+      color:'#333'
+    ).spin()
     @el_next_clip().css('display','')
 
   pagehide:->

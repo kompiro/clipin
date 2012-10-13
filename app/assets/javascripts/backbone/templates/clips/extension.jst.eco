@@ -1,9 +1,8 @@
 
-<div>
+<div class="content">
   <h1>Chrome Extensionについて</h1>
   <p class="well">Chrome Extensionは現在Chrome Web Storeからの配布しか、直接はインストールできなくなっています。
   下記のボタンから配布しているExtensionは、ダウンロード後、ツールの下にChrome拡張の管理画面があるので、そこにドラッグ&amp;ドロップしてください。</p>
-
-    <a href='/clipin.crx' class='btn btn-large'>Clipin Chrome Extension</a>
-  </div><!-- /content -->
+   <a href='/clipin.crx' class='btn btn-large'>Clipin Chrome Extension</a>
+</div><!-- /content -->
 

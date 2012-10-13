@@ -36,6 +36,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
   index_by_tag:(tag)->
     page = new Clipin.Views.Clips.ClipsListView(
       clips: @clips
+      tags: @tags
       title: "Tag: #{tag}"
       tag: tag
     )
@@ -55,6 +56,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
   index: ->
     page = new Clipin.Views.Clips.ClipsListView(
       clips: @clips
+      tags: @tags
       title: "All"
     )
     @changePage(page)
@@ -62,6 +64,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
   search:(query)->
     page = new Clipin.Views.Clips.ClipsListView(
       clips: @clips
+      tags: @tags
       title: "Search : #{query}"
       query: query
     )
@@ -78,7 +81,9 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     @changePage(page)
 
   conf: ->
-    page = new Clipin.Views.Clips.ConfView()
+    page = new Clipin.Views.Clips.ConfView(
+      model : @tags
+    )
     @changePage(page)
 
   show: (id) ->

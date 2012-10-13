@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120909085256) do
+ActiveRecord::Schema.define(:version => 20121013055734) do
 
   create_table "clips", :force => true do |t|
     t.text     "title"
@@ -77,9 +77,10 @@ ActiveRecord::Schema.define(:version => 20120909085256) do
 
   create_table "tags", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "user_id"
+    t.integer  "color",      :default => 0
   end
 
   create_table "users", :force => true do |t|

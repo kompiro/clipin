@@ -4,6 +4,9 @@ describe 'ClipsRouter routes',->
   beforeEach ->
     @routeSpy = jasmine.createSpy('route')
     @collection = new Backbone.Collection()
+    @tags = new Backbone.Collection()
+    @tags.url ='/tags'
+    @tags.model = Clipin.Models.Tag
     @fetchStub = spyOn(@collection,'fetch').andReturn(new Backbone.Collection())
     @collection.url = '/clips'
     @collection.model = Clipin.Models.Clip
@@ -85,6 +88,7 @@ describe 'ClipsRouter routes',->
       expect(@clipsCollectionStub).toHaveBeenCalled()
       expect(@clipViewStub).toHaveBeenCalledWith
         clips: @collection
+        tags: @tags
         title: 'All'
 
     it 'creates a Clip list collection with tag',->
@@ -92,6 +96,7 @@ describe 'ClipsRouter routes',->
       expect(@clipsCollectionStub).toHaveBeenCalled()
       expect(@clipViewStub).toHaveBeenCalledWith
         clips: @collection
+        tags: @tags
         title: 'Tag: article'
         tag: 'article'
 
@@ -100,5 +105,6 @@ describe 'ClipsRouter routes',->
       expect(@clipsCollectionStub).toHaveBeenCalled()
       expect(@clipViewStub).toHaveBeenCalledWith
         clips: @collection
+        tags: @tags
         title: "Search : article"
         query: 'article'

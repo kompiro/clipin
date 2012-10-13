@@ -5,9 +5,10 @@ class Clipin.Views.Clips.EditView extends Backbone.View
   id: "edit_clip"
 
   events :
-    "vclick .clip_pin"    : "pin"
-    "vclick .clip_unpin"  : "unpin"
-    "vclick .clip_trash"  : "trash"
+    "click .clip_pin"    : "pin"
+    "click .clip_unpin"  : "unpin"
+    "click .clip_trash"  : "trash"
+    "pageshow"           : "pageshow"
 
   pin : ->
     @model.save pin : true,
@@ -28,30 +29,28 @@ class Clipin.Views.Clips.EditView extends Backbone.View
   render : ->
     $(@el).html(@template(@model.toJSON()))
     content = $(@el).find('#content')
-    spinner = new Spinner().spin()
-    $(spinner.el).css(
-      left: '300px'
-      top: '100px'
-      color: '#333'
-    )
-    content.append(spinner.el)
     content.oembed(@model.get('url'),
       maxWidth:600
       maxHeight:450
       embedMethod: 'replace'
       beforeEmbed:(oembedData)=>
+        content.find('.spinner').stop()
         unless oembedData.code
           info_view = new Clipin.Views.Clips.ClipInfoView(
             model:@model
           )
           content.replaceWith(info_view.render().el)
       afterEmbed: (oembedData)=>
-        spinner.stop()
       onProviderNotFound: (container,resourceURL)=>
         info_view = new Clipin.Views.Clips.ClipInfoView(
           model:@model
         )
         content.replaceWith(info_view.render().el)
-        spinner.stop()
     )
     return this
+
+  pageshow : ->
+    content = $(@el).find('#content')
+    content.css(
+      color: '#333'
+    ).spin()
