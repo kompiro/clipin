@@ -48,7 +48,8 @@ describe Clip do
     context 'tag' do
       subject{@clip.tags}
       its(:length){should eq 1}
-      it {@clip.tags[0].user.should == User.current}
+      it {subject[0].user.should == User.current}
+      it {subject[0].name.should == 'website'}
     end
   end
   context 'search condition' do
