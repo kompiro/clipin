@@ -192,6 +192,7 @@ describe Support::WebLoader do
         let(:charset)      {'utf-8'}
         it                 {@result.should be_true}
         its(:title)        {should == "TDDBCの前にTDDについて知っておいてもらいたい３つのこと"}
+        its(:og_type)      {should == "slideshare:presentation"}
       end
       describe 'load unexpected_encode_error content' do
         let(:file)         {'unexpected_encode_error.html'}
