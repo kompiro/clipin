@@ -1,6 +1,8 @@
 # encoding: utf-8
 
 require_dependency 'support/web_loader'
+require_dependency 'support/slide_tag_filter'
+require_dependency 'support/og_type_tag_filter'
 
 class Clip < ActiveRecord::Base
 
@@ -22,11 +24,10 @@ class Clip < ActiveRecord::Base
   end
 
   def tagging
-    if self.og_type.nil? or self.og_type.empty?
-      return
-    end
-    tag = Tag.find_or_create_by_name_and_user_id self.og_type,self.user.id
-    Tagging.create({:clip => self, :tag => tag})
+    filter = Support::OgTypeTagFilter.new self
+    filter.filter
+    filter = Support::SlideTagFilter.new self
+    filter.filter
   end
 
   def load
