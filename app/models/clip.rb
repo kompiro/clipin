@@ -15,6 +15,7 @@ class Clip < ActiveRecord::Base
   scope :pinned,  lambda { where(:user_id => User.current).where(:pin => true,:trash => false).order('updated_at DESC').limit(PAGE_CONTENT)}
   scope :trashed, lambda { where(:user_id => User.current).where(:trash => true).order('updated_at DESC').limit(PAGE_CONTENT)}
 
+  # :todo When you use rails console, User.current is maybe nil.
   def set_user
     self.user = User.current
   end
