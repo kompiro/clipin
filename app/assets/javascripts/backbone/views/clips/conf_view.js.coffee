@@ -18,14 +18,19 @@ class Clipin.Views.Clips.ConfView extends Backbone.View
 
   save:->
     @model.each (tag)->
-      tag.save()
+      if tag.hasChanged 'color'
+        tag.change()
+        tag.save()
 
 class Clipin.Views.Clips.TagConfView extends Backbone.View
   template: JST["backbone/templates/clips/tag_conf"]
 
   render:->
     $(@el).html(@template(@model.toJSON()))
-    $(@el).find("select[name='tags[#{@model.id}][color]']").bind('change',(evt)=>
-      @model.set('color',Number(evt.currentTarget.value))
+    $(@el).find("select[name='tags[#{@model.id}][color]']").on('change',(evt)=>
+      @model.set(
+        'color',Number(evt.currentTarget.value),
+        silent:true
+      )
     )
     return @
