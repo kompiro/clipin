@@ -18,6 +18,7 @@
 //= require spin
 //= require jquery.spin
 //= require twitter/bootstrap
+//= require twitter/bootstrap/bootstrap-popover
 //= require underscore
 //= require backbone
 //= require backbone_rails_sync

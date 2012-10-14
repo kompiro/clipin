@@ -1,6 +1,8 @@
-<label for="tags[<%= @id %>][color]"><span class="tag <%= tagColor(@color) %>"><%= @name %></span></label>
-<select name="tags[<%= @id %>][color]">
-<% for label,i in window.TAG_COLOR : %>
-<option value="<%= i %>" <% if i is @color :%>selected<% end %>><%= label %></option>
-<% end %>
-</select>
+  <td id="tags[<%= @id %>][color]"></td>
+  <td>
+    <select name="tags[<%= @id %>][color]">
+    <% for label,i in window.TAG_COLOR : %>
+    <option value="<%= i %>" <% if i is @color :%>selected<% end %>><%= label %></option>
+    <% end %>
+    </select>
+  </td>
