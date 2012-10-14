@@ -29,6 +29,11 @@ describe Clip do
     it 'should have user after saved' do
       @clip.user.should_not be_nil
     end
+    it 'should not overwrite user when User.current is nil' do
+      User.current = nil
+      @clip.save
+      @clip.user.should_not be_nil
+    end
   end
   context 'tagging' do
     before do

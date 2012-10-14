@@ -16,7 +16,7 @@ describe Support::WebLoader do
 
       User.current = create(:user)
       @clip = Clip.new(:url => url)
-      @clip.set_user
+      @clip.set_user_before_save
       @loader = Support::WebLoader.new(@clip)
       @loader.stub!(:open).and_return(read)
 

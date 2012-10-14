@@ -7,7 +7,7 @@ class Clip < ActiveRecord::Base
   has_many :taggings
   has_many :tags, :through => :taggings
   belongs_to :user
-  before_save :set_user
+  before_save :set_user_before_save
   PAGE_CONTENT = 8
 
   scope :page,    lambda {|page_num = 1| includes(:tags).where(:user_id => User.current).where(:trash => false).order('updated_at DESC').limit(PAGE_CONTENT).offset(PAGE_CONTENT * ([page_num.to_i, 1].max - 1))}
@@ -15,9 +15,10 @@ class Clip < ActiveRecord::Base
   scope :pinned,  lambda { where(:user_id => User.current).where(:pin => true,:trash => false).order('updated_at DESC').limit(PAGE_CONTENT)}
   scope :trashed, lambda { where(:user_id => User.current).where(:trash => true).order('updated_at DESC').limit(PAGE_CONTENT)}
 
-  # :todo When you use rails console, User.current is maybe nil.
-  def set_user
-    self.user = User.current
+  def set_user_before_save
+    if User.current.present?
+      self.user = User.current
+    end
   end
 
   def tagging
