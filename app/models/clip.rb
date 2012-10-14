@@ -1,13 +1,15 @@
 # encoding: utf-8
 
 require_dependency 'support/web_loader'
+require_dependency 'support/slide_tag_filter'
+require_dependency 'support/og_type_tag_filter'
 
 class Clip < ActiveRecord::Base
 
   has_many :taggings
   has_many :tags, :through => :taggings
   belongs_to :user
-  before_save :set_user
+  before_save :set_user_before_save
   PAGE_CONTENT = 8
 
   scope :page,    lambda {|page_num = 1| includes(:tags).where(:user_id => User.current).where(:trash => false).order('updated_at DESC').limit(PAGE_CONTENT).offset(PAGE_CONTENT * ([page_num.to_i, 1].max - 1))}
@@ -15,16 +17,17 @@ class Clip < ActiveRecord::Base
   scope :pinned,  lambda { where(:user_id => User.current).where(:pin => true,:trash => false).order('updated_at DESC').limit(PAGE_CONTENT)}
   scope :trashed, lambda { where(:user_id => User.current).where(:trash => true).order('updated_at DESC').limit(PAGE_CONTENT)}
 
-  def set_user
-    self.user = User.current
+  def set_user_before_save
+    if User.current.present?
+      self.user = User.current
+    end
   end
 
   def tagging
-    if self.og_type.nil? or self.og_type.empty?
-      return
-    end
-    tag = Tag.find_or_create_by_name_and_user_id self.og_type,self.user.id
-    Tagging.create({:clip => self, :tag => tag})
+    filter = Support::OgTypeTagFilter.new self
+    filter.filter
+    filter = Support::SlideTagFilter.new self
+    filter.filter
   end
 
   def load

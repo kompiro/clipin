@@ -10,8 +10,6 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     @menuView.render()
     @bind 'route:index_by_tag',(args)=>
       @menuView.active(args)
-    @bind 'route:index_fetch',=>
-      @menuView.active('All')
     @headerView = new Clipin.Views.Clips.HeaderView()
 
   routes:
@@ -24,7 +22,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     "_=_"           : "index"
     ":id/edit"      : "edit"
     ":id"           : "show"
-    ""            : "index"
+    ""              : "index"
 
   new: ->
     page = new Clipin.Views.Clips.NewView(
@@ -59,6 +57,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
       tags: @tags
       title: "All"
     )
+    @menuView.active('All')
     @changePage(page)
 
   search:(query)->
@@ -68,6 +67,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
       title: "Search : #{query}"
       query: query
     )
+    @menuView.active('')
     @clips.fetch
       url:'/clips/search'
       data:

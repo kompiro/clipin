@@ -1,12 +1,28 @@
 <div class="content">
   <h1>Configuration</h1>
-  <h2>Tag</h2>
-  <form>
-    <div id="tag_list">
+  <ul class="nav nav-tabs" id="conftabs">
+    <li class="active"><a href="#tagconf">Tag</a></li>
+    <li><a href="#filterconf">Filter</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tagconf">
+      <table class="table table-striped">
+        <thead>
+          <th>Tag Name</th>
+          <th>Color</th>
+        </thead>
+        <tbody></tbody>
+      </table>
+        <div class="btn-group">
+          <a href="#" class="btn btn-large btn-primary save_tags_color">Save</a>
+          <a href="javascript:history.back()" class="btn btn-large">Back</a>
+        </div>
+      </div>
+      <div class="tab-pane" id="filterconf">
+        <div class="btn-group">
+          <a href="#" class="btn btn-large btn-primary save_filter">Save</a>
+          <a href="javascript:history.back()" class="btn btn-large">Back</a>
+        </div>
+      </div>
     </div>
-    <div class="btn-group">
-      <a href="#" class="btn btn-large btn-primary save_tags_color">Save</a>
-      <a href="javascript:history.back()" class="btn btn-large">Back</a>
-    </div>
-  </form
 </div>
