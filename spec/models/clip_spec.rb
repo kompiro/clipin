@@ -29,21 +29,38 @@ describe Clip do
     it 'should have user after saved' do
       @clip.user.should_not be_nil
     end
+    it 'should not overwrite user when User.current is nil' do
+      User.current = nil
+      @clip.save
+      @clip.user.should_not be_nil
+    end
   end
   context 'tagging' do
     before do
       User.current = create(:user)
-      @clip = Clip.new(:url => 'http://example.com/', :og_type => 'website')
+      @clip = clip
       @clip.save
       @clip.tagging
+      @clip
     end
     after do
       User.current = nil
     end
-    context 'tag' do
+    context 'og_type tag' do
+      let(:clip) {Clip.new(:url => 'http://example.com/', :og_type => 'website')}
       subject{@clip.tags}
       its(:length){should eq 1}
-      it {@clip.tags[0].user.should == User.current}
+      it {subject[0].user.should == User.current}
+      it {subject[0].name.should == 'website'}
+    end
+    context 'slide tag' do
+      let(:clip) {Clip.new(:url => 'http://example.com/', :og_type => 'slideshare:presentation')}
+      subject{@clip.tags}
+      its(:length){should eq 2}
+      it {subject[0].user.should == User.current}
+      it {subject[0].name.should == 'slideshare:presentation'}
+      it {subject[1].user.should == User.current}
+      it {subject[1].name.should == 'slide'}
     end
   end
   context 'search condition' do
