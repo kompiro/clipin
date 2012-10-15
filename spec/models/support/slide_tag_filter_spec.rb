@@ -16,6 +16,15 @@ describe Support::SlideTagFilter do
         its("name")   {should eq 'slide'}
       end
     end
+    context 'the clip is speakerdeck type' do
+      let(:clip){create(:speakerdeck)}
+      subject{clip.tags}
+      its(:length)    {should eq 1}
+      describe 'the tag name is slide' do
+        subject{clip.tags[0]}
+        its("name")   {should eq 'slide'}
+      end
+    end
     context 'the clip is not slideshare type' do
       let(:clip){create(:clip)}
       subject{clip.tags}
