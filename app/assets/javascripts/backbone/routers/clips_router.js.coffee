@@ -116,4 +116,5 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
       @current_page.remove()
     $("#page").append(page.render().el)
     page.$el.trigger('pageshow')
+    window.scrollTo(0)
     @current_page = page
