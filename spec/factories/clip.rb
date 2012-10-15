@@ -24,6 +24,17 @@ FactoryGirl.define do
       User.current = clip.user
     end
   end
+  factory :speakerdeck, class: Clip do
+    title {Forgery(:name).title}
+    image {"https://speakerd.s3.amazonaws.com/presentations/4ff713abb5c1770021049c4b/thumb_slide_0.jpg"}
+    url {"https://speakerdeck.com/u/#{Forgery(:name).title}/p/#{Forgery(:name).title}"}
+    user
+    created_at Time.now
+    updated_at Time.now
+    before(:create) do |clip|
+      User.current = clip.user
+    end
+  end
   FactoryGirl.define do
     sequence :test_title do |n|
       "test #{n}"
