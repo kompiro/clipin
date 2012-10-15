@@ -4,16 +4,17 @@
 .ui-header .ui-title, .ui-footer .ui-title{
   margin: .6em .8em
 }
-.ui-li-aside{
-  width:60px;
-  font-size: 12px;
-  font-weight: normal;
+.clip-footer{
   display: block;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  float: right;
-  text-align: right;
+}
+.updated_at {
+  font-size: 10px;
+  font-weight: normal;
+  color: gray;
+  vertical-align: baseline;
 }
 .ui-li-has-alt .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-alt {
   padding-right: 55px;
@@ -88,7 +89,7 @@ img.clip_image_detail {
 }
 .tag {
   padding: 1px 4px 2px;
-  font-size: 10.998px;
+  font-size: 10px;
   font-weight: bold;
   line-height: 13px;
   color: #ffffff;
@@ -99,6 +100,12 @@ img.clip_image_detail {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+  a {
+    color:white;
+    &hover {
+      text-decoration:none;
+    }
+  }
 }
 .tag-red {
   background-color: #ed1c24;
@@ -134,11 +141,11 @@ img.clip_image_detail {
   zoom: 1;
 }
 
-h3.title {
-  font-size: 16px;
+span.title {
+  font-size: 14px;
   font-weight: bold;
   display: block;
-  margin: .6em 0;
+  margin: .3em 0;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -150,31 +157,26 @@ h3.title {
   position: relative;
   overflow: visible;
   text-align: left;
-  border-width: 0;
-  border-top-width: 1px;
-  border-right-width: 1px;
+  border-width: 1px 1px 0px 1px;
   border-style: solid;
   border-color: #E9E9E9;
-  a {
-    min-height: 60px;
-    padding: .7em 30px .7em 100px;
-    display: block;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    &:hover{
-       text-decoration: none;
+  div.item {
+    min-height: 72px;
+    padding: .3em 10px .3em 90px;
+  }
+  a:hover{
+     text-decoration: none;
   }
 }
-}
+
 .description {
   font-size: 12px;
   font-weight: normal;
   display: block;
-  margin: -0.5em 0 0.6em;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+  color: #888;
+  /* margin: -0.5em 0 0.6em; */
+  white-space: normal;
+  line-height: 18px;
 }
 .date-separator{
   border: 1px solid #F2F2F2/*{a-bar-border}*/;
@@ -229,4 +231,7 @@ div#loading {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
+}
+.clip p {
+  margin: 0px;
 }
