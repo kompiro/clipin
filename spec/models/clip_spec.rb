@@ -5,11 +5,6 @@ require 'open-uri'
 describe Clip do
   context 'attributes' do
     subject{Clip.new}
-    its(:title)       {should be_nil}
-    its(:og_type)     {should be_nil}
-    its(:image)       {should be_nil}
-    its(:description) {should be_nil}
-    its(:url)         {should be_nil}
     its(:user)        {should be_nil}
     its(:pin)         {should be_false}
     its(:trash)       {should be_false}

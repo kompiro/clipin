@@ -69,7 +69,7 @@ describe Support::WebLoader do
           end
         end
       end
-      describe 'load empty content' do
+      describe 'load empty content' ,:filter => true do
         let(:url){'http://example.com/empty.html'}
         let(:base_uri){'http://example.com/empty.html'}
         it {@result.should be_true}
@@ -77,7 +77,7 @@ describe Support::WebLoader do
         context 'errors' do
           subject{@clip.errors}
           it 'has no errors' do
-            subject.size.should be 0
+            subject.size.should eq 0
           end
         end
       end
