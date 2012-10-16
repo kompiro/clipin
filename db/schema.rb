@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121016151047) do
+ActiveRecord::Schema.define(:version => 20121015103837) do
 
   create_table "clips", :force => true do |t|
     t.text     "title"
@@ -85,13 +85,13 @@ ActiveRecord::Schema.define(:version => 20121016151047) do
   end
 
   create_table "url_infos", :force => true do |t|
-    t.text     "title",       :limit => 255
-    t.text     "url",         :limit => 255
+    t.text     "title"
+    t.text     "url"
     t.string   "og_type"
-    t.text     "description", :limit => 255
-    t.text     "image",       :limit => 255
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.text     "description"
+    t.text     "image"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|
