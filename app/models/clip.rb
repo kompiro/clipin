@@ -11,7 +11,7 @@ class Clip < ActiveRecord::Base
   belongs_to :user
   belongs_to :url_info
   before_save :set_user_before_save
-  delegate :title, :title=, :url, :url=, :description, :description=, :image, :image=, :og_type, :og_type=, :to => :url_info
+  #delegate :title, :title=, :url, :url=, :description, :description=, :image, :image=, :og_type, :og_type=, :to => :url_info
   PAGE_CONTENT = 8
 
   scope :page,    lambda {|page_num = 1| includes(:tags).where(:user_id => User.current).where(:trash => false).order('updated_at DESC').limit(PAGE_CONTENT).offset(PAGE_CONTENT * ([page_num.to_i, 1].max - 1))}
