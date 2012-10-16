@@ -30,17 +30,20 @@ module Api
       end
 
       def create
-        @clip = Clip.find_by_user_id_and_url current_user.id,params[:clip][:url]
-        unless @clip.nil?
-          @clip.clip_count = @clip.clip_count + 1
-          respond_to do |format|
-            if @clip.save
-              format.json { render json: @clip, status: :ok, location: @clip }
-            else
-              format.json { render json: @clip.errors, status: :unprocessable_entity }
+        url_info = UrlInfo.find_by_url params[:clip][:url]
+        unless url_info.nil?
+          @clip = Clip.find_by_url_info_id_and_user_id url_info.id,current_user.id
+          unless @clip.nil?
+            @clip.clip_count = @clip.clip_count + 1
+            respond_to do |format|
+              if @clip.save
+                format.json { render json: @clip, status: :ok, location: @clip }
+              else
+                format.json { render json: @clip.errors, status: :unprocessable_entity }
+              end
             end
+            return
           end
-          return
         end
         @clip = Clip.new(params[:clip])
 

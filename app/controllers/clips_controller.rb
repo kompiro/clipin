@@ -149,19 +149,20 @@ class ClipsController < ApplicationController
 
   def do_create(url)
     url = recover_url url
-    @clip = Clip.find_by_user_id_and_url current_user.id,url
-    unless @clip.nil?
-      @clip.clip_count = @clip.clip_count + 1
-      respond_to do |format|
-        if @clip.save
-          format.html { redirect_to clips_url, notice: 'Clip was successfully updated. it is already created.' }
-          format.json { render json: @clip, status: :no_content, location: @clip }
-        else
-          format.html { redirect_to clips_url, :flash => {error: "Error #{@clip.errors.full_messages.join(' ')}"} }
-          format.json { render json: @clip.errors, status: :unprocessable_entity }
+    url_info = UrlInfo.find_by_url url
+    unless url_info.nil?
+      @clip = Clip.find_by_url_info_id_and_user_id url_info.id,current_user.id
+      unless @clip.nil?
+        @clip.clip_count = @clip.clip_count + 1
+        respond_to do |format|
+          if @clip.save
+            format.json { render json: @clip, status: :ok, location: @clip }
+          else
+            format.json { render json: @clip.errors, status: :unprocessable_entity }
+          end
         end
+        return
       end
-      return
     end
     @clip = Clip.new({:url => url})
 
