@@ -14,8 +14,6 @@ class SessionsController < ApplicationController
 
   def create
     auth = auth_hash
-    binding.pry
-    user = User.where(:provider => auth['provider'], :uid => auth['uid']).first
     if user.present?
       existed = true
     else
