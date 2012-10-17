@@ -7,6 +7,7 @@ gem 'rails', '3.2.6'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 gem 'nokogiri'
 gem 'rails-boilerplate'
 gem "rails-backbone"
