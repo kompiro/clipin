@@ -72,7 +72,7 @@ module Support
         @url = 'https://' + @url.scan(/https:\/\/?(.*)/)[0][0]
       end
       if uri.host.present? and uri.host.include?('google')
-        if uri.query_values['url'].present?
+        if uri.query_values.present? and uri.query_values['url'].present?
           @url = uri.query_values['url']
         end
       end
