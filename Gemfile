@@ -38,6 +38,10 @@ group :production do
   gem 'pg' , '~> 0.14.1'
 end
 
+group :development do
+  gem 'thin'
+end
+
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec'

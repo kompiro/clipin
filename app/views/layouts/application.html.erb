@@ -39,8 +39,6 @@
           <ul class="nav">
             <li><a class="brand" href="#">Clipin</a></li>
             <li><a href="#new" class='lsf-icon' title='clip'>New</a><li>
-            <li><a href="#extension" class="lsf-icon" title="chrome">Chrome Extension</a></li>
-            <li><a href="https://trello.com/board/clipin/5078da585054717b4423e7de" class="lsf-icon" title="wink">Feedback</a>
           </ul>
           <ul class="nav pull-right">
             <li><a href='#conf' class='lsf-icon-big' title="setting"></a></li>
@@ -61,10 +59,10 @@
     <%= yield(:content) %>
   <% else %>
   <%= yield %>
-    <div class="container-fluid">
+    <div class="container">
       <div class="row-fluid">
         <div class="span3">
-          <ul class="nav nav-list affix well well-small" id="menu">
+          <ul class="nav nav-list well well-small" data-spy="affix" id="menu">
           </ul>
         </div>
         <div class="span6">
@@ -87,6 +85,21 @@
             </div>
           <% end %>
           <div id="page"></div>
+        </div>
+        <div class="span3 visible-desktop">
+          <div>
+            <ul class="nav nav-list well well-small" style="margin-bottom:20px;">
+              <li class="nav-header"><i class="icon-question-sign"></i>Help
+              <li>ヘッダーのNewからURLをクリップできます。より簡単にクリップするには下記のChrome Extensionを入れると便利です。
+            </ul>
+          </div>
+          <div>
+          <ul class="nav nav-list well well-small">
+            <li class="nav-header"><i class="icon-info-sign"></i>Info
+            <li><a href="#extension" class="lsf-icon" title="chrome">Chrome Extension</a>
+            <li><a href="https://trello.com/board/clipin/5078da585054717b4423e7de" class="lsf-icon" title="newtab">Feedback</a>
+        </ul>
+      </div>
         </div>
       </div>
     </div>
