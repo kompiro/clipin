@@ -115,6 +115,7 @@ img.clip_image_detail {
 }
 .tag-yellow {
   background-color: #fcee21;
+  color: #333;
 }
 .tag-light-green {
   background-color: #8cc63f;
@@ -209,9 +210,6 @@ span.title {
   height: 26px;
   cursor: pointer;
 }
-#menu {
-  width: 237px;
-}
 #content {
   background: #EEE;
   background: -moz-linear-gradient(center top , #FAFAFA, #EFEFEF) repeat scroll 0 0 transparent;
@@ -224,6 +222,15 @@ span.title {
   -moz-border-radius: 10px;
   border-radius: 10px;
 }
+
+@media screen and (max-width: 767px) {
+  #menu.affix {
+    position: static;
+    width: auto;
+    top: 0;
+  }
+}
+
 #social_buttons {
   clear: both;
 }
