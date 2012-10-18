@@ -13,6 +13,7 @@
     </a>
   <% if @updated_at: %>
   <p class='clip-footer'>
+  <a href="<%= @url %>" class="btn btn-mini btn-primary">Open</a>
     <span class="updated_at"><%= moment(@updated_at).format('HH:mm A') %></span>
     <% if @tags.length: %>
       <% for tag in @tags: %>
