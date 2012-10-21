@@ -6,11 +6,11 @@ class Tag < ActiveRecord::Base
 
   belongs_to :user
 
-  def my_clips(page_num = 1)
-    if User.current.nil?
+  def my_clips(user,page_num = 1)
+    if user.nil?
       return
     end
-    return clips.where(:user_id => User.current.id,:trash => false).offset(PAGE_CONTENT * ([page_num.to_i, 1].max - 1))
+    return clips.where(:user_id => user,:trash => false).offset(PAGE_CONTENT * ([page_num.to_i, 1].max - 1))
   end
 
 end

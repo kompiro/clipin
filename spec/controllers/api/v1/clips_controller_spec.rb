@@ -6,7 +6,6 @@ describe Api::V1::ClipsController do
   let(:token) { stub :accessible? => true ,:resource_owner_id => 1}
   before do
     @user = create(:user)
-    User.current = @user
     controller.stub(:doorkeeper_token) { token }
   end
 
@@ -25,7 +24,7 @@ describe Api::V1::ClipsController do
   end
 
   def valid_attributes
-    {url:'http://example.com/'}
+    {url:'http://example.com/', user_id:1}
   end
 
   def valid_session
@@ -33,23 +32,30 @@ describe Api::V1::ClipsController do
   end
 
   describe "GET index" do
-    it "assigns first clips as @clips" do
+    before do
       clip = Clip.create! valid_attributes
+      clip.user = @user
+      clip.save
+    end
+    it "assigns first clips as @clips" do
       get :index, {}, valid_session
-      assigns(:clips).should eq(Clip.page)
+      assigns(:clips).should eq(Clip.page @user)
     end
     it "assigns second clips as @clips" do
-      clip = Clip.create! valid_attributes
       get :index, {:page => 2}, valid_session
-      assigns(:clips).should eq(Clip.page(2))
+      assigns(:clips).should eq(Clip.page(@user,2))
     end
   end
 
   describe "GET show" do
+    before do
+      @clip = Clip.create! valid_attributes
+      @clip.user = @user
+      @clip.save
+    end
     it "assigns the requested clip as @clip" do
-      clip = Clip.create! valid_attributes
-      get :show, {:id => clip.id}, valid_session
-      assigns(:clip).should eq(clip)
+      get :show, {:id => @clip.id}, valid_session
+      assigns(:clip).should eq(@clip)
     end
   end
 
@@ -74,9 +80,10 @@ describe Api::V1::ClipsController do
       describe "already created params" do
         before do
           @clip = Clip.create! valid_attributes
+          @clip.user = @user
+          @clip.save
         end
-
-        it "doesn't create newer one" do
+        it "doesn't create newer one",:filter =>true do
           expect {
             post :create, {:clip => valid_attributes}, valid_session
           }.to change(Clip, :count).by(0)
@@ -114,54 +121,57 @@ describe Api::V1::ClipsController do
   end
 
     describe "PUT update" do
+      before do
+        @clip = Clip.create! valid_attributes
+        @clip.user = @user
+        @clip.save
+      end
       describe "with valid params" do
         it "updates the requested clip" do
-          clip = Clip.create! valid_attributes
           # Assuming there are no other clips in the database, this
           # specifies that the Clip created on the previous line
           # receives the :update_attributes message with whatever params are
           # submitted in the request.
           Clip.any_instance.should_receive(:update_attributes).with({'these' => 'params','tags' => []})
-          put :update, {:id => clip.to_param, :clip => {'these' => 'params'}}, valid_session
+          put :update, {:id => @clip.to_param, :clip => {'these' => 'params'}}, valid_session
         end
 
         it "assigns the requested clip as @clip" do
-          clip = Clip.create! valid_attributes
-          put :update, {:id => clip.to_param, :clip => valid_attributes}, valid_session
-          assigns(:clip).should eq(clip)
+          put :update, {:id => @clip.to_param, :clip => valid_attributes}, valid_session
+          assigns(:clip).should eq(@clip)
         end
 
         it "returns 200" do
-          clip = Clip.create! valid_attributes
-          put :update, {:id => clip.to_param, :clip => valid_attributes}, valid_session
+          put :update, {:id => @clip.to_param, :clip => valid_attributes}, valid_session
           response.code.should eq '200'
         end
       end
 
       describe "with invalid params" do
         it "assigns the clip as @clip" do
-          clip = Clip.create! valid_attributes
           # Trigger the behavior that occurs when invalid params are submitted
           Clip.any_instance.stub(:save).and_return(false)
-          put :update, {:id => clip.to_param, :clip => {}}, valid_session
-          assigns(:clip).should eq(clip)
+          put :update, {:id => @clip.to_param, :clip => {}}, valid_session
+          assigns(:clip).should eq(@clip)
         end
       end
     end
 
     describe "DELETE destroy" do
+      before do
+        @clip = Clip.create! valid_attributes
+        @clip.user = @user
+        @clip.save
+      end
       it "destroys the requested clip" do
-        clip = Clip.create! valid_attributes
         expect {
-          delete :destroy, {:id => clip.to_param}, valid_session
+          delete :destroy, {:id => @clip.to_param}, valid_session
         }.to change(Clip, :count).by(-1)
       end
 
       it "returns 200" do
-        clip = Clip.create! valid_attributes
-        delete :destroy, {:id => clip.to_param}, valid_session
+        delete :destroy, {:id => @clip.to_param}, valid_session
           response.code.should eq '200'
     end
   end
-
 end

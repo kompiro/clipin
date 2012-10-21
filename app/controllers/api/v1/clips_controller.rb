@@ -15,9 +15,9 @@ module Api
           @title = 'All'
           page_num = params[:page]
           if page_num.present?
-            @clips = Clip.page page_num
+            @clips = Clip.page @current_user,page_num
           else
-            @clips = Clip.page
+            @clips = Clip.page @current_user
           end
         end
         render json: @clips
@@ -32,7 +32,7 @@ module Api
       def create
         url_info = UrlInfo.find_by_url params[:clip][:url]
         unless url_info.nil?
-          @clip = Clip.find_by_url_info_id_and_user_id url_info.id,current_user.id
+          @clip = Clip.find_by_url_info_id_and_user_id url_info.id, @current_user.id
           unless @clip.nil?
             @clip.clip_count = @clip.clip_count + 1
             respond_to do |format|
@@ -46,6 +46,7 @@ module Api
           end
         end
         @clip = Clip.new(params[:clip])
+        @clip.user = @current_user
 
         if @clip.load and @clip.save
           @clip.tagging
@@ -85,7 +86,7 @@ module Api
 
       def current_user
         if doorkeeper_token
-           User.current||= User.find(doorkeeper_token.resource_owner_id)
+          @current_user ||= User.find(doorkeeper_token.resource_owner_id)
         end
       end
       def authenticate!
