@@ -4,7 +4,7 @@ require 'open-uri'
 describe ClipsController do
 
   before do
-    create(:user)
+    @user = create(:user)
   end
 
   before :each do
@@ -42,44 +42,51 @@ describe ClipsController do
   end
 
   describe "GET index" do
+    before do
+      @clip = Clip.create! valid_attributes
+      @clip.user = @user
+      @clip.save
+    end
     it "assigns first clips as @clips" do
-      clip = Clip.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:clips).should eq(Clip.page)
+      assigns(:clips).should eq(Clip.page @user)
       assigns(:tags).should eq(Tag.all)
       flash[:notice].should be_nil
     end
     it "assigns second clips as @clips" do
-      clip = Clip.create! valid_attributes
       get :index, {:page => 2}, valid_session
-      assigns(:clips).should eq(Clip.page(2))
+      assigns(:clips).should eq(Clip.page(@user,2))
       flash[:notice].should be_nil
     end
   end
 
   describe "GET search" do
     before do
-      create_list(:clip,20)
-      create_list(:search_clip,20)
+      create_list(:clip,20,user: @user)
+      create_list(:search_clip,20,user: @user)
     end
     it "assigns specified query to search clips" do
       get :search, {q: 'test'}, valid_session
-      assigns(:clips).should eq(Clip.search 'test')
+      assigns(:clips).should eq(Clip.search @user,'test')
       assigns(:tags).should eq(Tag.all)
       flash[:notice].should be_nil
     end
     it "assigns specified query and page to search clips" do
       get :search, {q: 'test', page: 2}, valid_session
-      assigns(:clips).should eq(Clip.search 'test',2)
+      assigns(:clips).should eq(Clip.search @user,'test',2)
       assigns(:tags).should eq(Tag.all)
     end
   end
 
   describe "GET show" do
+    before do
+      @clip = Clip.create! valid_attributes
+      @clip.user = @user
+      @clip.save
+    end
     it "assigns the requested clip as @clip" do
-      clip = Clip.create! valid_attributes
-      get :show, {:id => clip.id}, valid_session
-      assigns(:clip).should eq(clip)
+      get :show, {:id => @clip.id}, valid_session
+      assigns(:clip).should eq(@clip)
     end
   end
 
@@ -91,10 +98,14 @@ describe ClipsController do
   end
 
   describe "GET edit" do
+    before do
+      @clip = Clip.create! valid_attributes
+      @clip.user = @user
+      @clip.save
+    end
     it "assigns the requested clip as @clip" do
-      clip = Clip.create! valid_attributes
-      get :edit, {:id => clip.to_param}, valid_session
-      assigns(:clip).should eq(clip)
+      get :edit, {:id => @clip.to_param}, valid_session
+      assigns(:clip).should eq(@clip)
     end
   end
 
@@ -119,8 +130,9 @@ describe ClipsController do
       describe "already created params" do
         before do
           @clip = Clip.create! init_attributes
+          @clip.user = @user
+          @clip.save
         end
-
         it "doesn't create newer one" do
           expect {
             get :create_by_bookmarklet, attributes, valid_session
@@ -131,7 +143,6 @@ describe ClipsController do
           get :create_by_bookmarklet, attributes, valid_session
           Clip.find(@clip.id).clip_count.should eq(2)
         end
-
         it "updates updated_by" do
           get :create_by_bookmarklet, attributes, valid_session
           Clip.find(@clip.id).updated_at.should_not eq(@clip.updated_at)
@@ -144,13 +155,13 @@ describe ClipsController do
         let(:attributes){valid_attributes}
       end
     end
-    describe "with recoverable http attributes" do
+    describe "with recoverable http attributes" => true do
       it_should_behave_like 'acceptable attributes for create_by_bookmarklet' do
         let(:init_attributes){valid_attributes}
         let(:attributes){recoverable_http_attributes}
       end
     end
-    describe "with recoverable https attributes" do
+    describe "with recoverable https attributes",:filter => true do
       it_should_behave_like 'acceptable attributes for create_by_bookmarklet' do
         let(:init_attributes){valid_https_attributes}
         let(:attributes){recoverable_https_attributes}
@@ -195,8 +206,9 @@ describe ClipsController do
       describe "already created params" do
         before do
           @clip = Clip.create! init_attributes
+          @clip.user = @user
+          @clip.save
         end
-
         it "doesn't create newer one" do
           expect {
             post :create, {:clip => attributes}, valid_session
@@ -251,58 +263,60 @@ describe ClipsController do
   end
 
   describe "PUT update" do
+    before do
+      @clip = Clip.create! valid_attributes
+      @clip.user = @user
+      @clip.save
+    end
     describe "with valid params" do
       it "updates the requested clip" do
-        clip = Clip.create! valid_attributes
         Clip.any_instance.should_receive(:update_attributes).with({'these' => 'params','tags' => []})
-        put :update, {:id => clip.to_param, :clip => {'these' => 'params'}}, valid_session
+        put :update, {:id => @clip.to_param, :clip => {'these' => 'params'}}, valid_session
       end
 
       it "assigns the requested clip as @clip" do
-        clip = Clip.create! valid_attributes
-        put :update, {:id => clip.to_param, :clip => valid_attributes}, valid_session
-        assigns(:clip).should eq(clip)
+        put :update, {:id => @clip.to_param, :clip => valid_attributes}, valid_session
+        assigns(:clip).should eq(@clip)
       end
 
       it "redirects to the clip" do
-        clip = Clip.create! valid_attributes
-        put :update, {:id => clip.to_param, :clip => valid_attributes}, valid_session
-        response.should redirect_to(clip)
+        put :update, {:id => @clip.to_param, :clip => valid_attributes}, valid_session
+        response.should redirect_to(@clip)
       end
     end
 
     describe "with invalid params" do
       it "assigns the clip as @clip" do
-        clip = Clip.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Clip.any_instance.stub(:save).and_return(false)
-        put :update, {:id => clip.to_param, :clip => {}}, valid_session
-        assigns(:clip).should eq(clip)
+        put :update, {:id => @clip.to_param, :clip => {}}, valid_session
+        assigns(:clip).should eq(@clip)
       end
 
       it "re-renders the 'edit' template" do
-        clip = Clip.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Clip.any_instance.stub(:save).and_return(false)
-        put :update, {:id => clip.to_param, :clip => {}}, valid_session
+        put :update, {:id => @clip.to_param, :clip => {}}, valid_session
         response.should render_template("edit")
       end
     end
   end
 
   describe "DELETE destroy" do
+    before do
+      @clip = Clip.create! valid_attributes
+      @clip.user = @user
+      @clip.save
+    end
     it "destroys the requested clip" do
-      clip = Clip.create! valid_attributes
       expect {
-        delete :destroy, {:id => clip.to_param}, valid_session
+        delete :destroy, {:id => @clip.to_param}, valid_session
       }.to change(Clip, :count).by(-1)
     end
 
     it "redirects to the clips list" do
-      clip = Clip.create! valid_attributes
-      delete :destroy, {:id => clip.to_param}, valid_session
+      delete :destroy, {:id => @clip.to_param}, valid_session
       response.should redirect_to(clips_url)
     end
   end
-
 end

@@ -3,17 +3,12 @@ class ApplicationController < ActionController::Base
   before_filter :app_last_updated_at,:authenticate!
 
   def current_user
-    unless session[:user_id].nil?
-      user = User.find session[:user_id]
-      User.current = user
-      return user
-    end
     unless cookies.signed[:user_id].nil?
       user_id = cookies.signed[:user_id]
       session[:user_id] = user_id
-      user = User.find user_id
-      User.current = user
-      return user
+    end
+    unless session[:user_id].nil?
+      @current_user = User.find session[:user_id]
     end
   end
 

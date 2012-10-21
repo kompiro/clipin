@@ -7,19 +7,19 @@ class ClipsController < ApplicationController
     if tag.present?
       @tag = Tag.find_by_name(tag)
       if page_num.present?
-        @clips = @tag.my_clips page_num
+        @clips = @tag.my_clips current_user,page_num
       else
-        @clips = @tag.my_clips
+        @clips = @tag.my_clips current_user
       end
     else
       if page_num.present?
-        @clips = Clip.page page_num
+        @clips = Clip.page current_user,page_num
       else
-        @clips = Clip.page
+        @clips = Clip.page current_user
       end
     end
 
-    @tags = User.current.tags
+    @tags = current_user.tags
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :text => @clips.to_json(:include => {:tags => { :except => [:created_at, :updated_at]}})}
@@ -33,12 +33,12 @@ class ClipsController < ApplicationController
 
     @title = 'Search'
     if page_num.present?
-      @clips = Clip.search query ,page_num
+      @clips = Clip.search current_user, query ,page_num
     else
-      @clips = Clip.search query
+      @clips = Clip.search current_user, query
     end
 
-    @tags = User.current.tags
+    @tags = current_user.tags
     respond_to do |format|
       format.html { render 'index' }
       format.json { render :text => @clips.to_json(:include => {:tags => { :except => [:created_at, :updated_at]}})}
@@ -47,7 +47,7 @@ class ClipsController < ApplicationController
 
   # GET /clips/pinned.json
   def pinned
-    @clips = Clip.pinned
+    @clips = Clip.pinned current_user
     @title = 'Pinned'
 
     respond_to do |format|
@@ -58,7 +58,7 @@ class ClipsController < ApplicationController
 
   # GET /clips/trashed.json
   def trashed
-    @clips = Clip.trashed
+    @clips = Clip.trashed current_user
     @title = 'Trashed'
 
     respond_to do |format|
@@ -165,6 +165,7 @@ class ClipsController < ApplicationController
       end
     end
     @clip = Clip.new({:url => url})
+    @clip.user = current_user
 
     respond_to do |format|
       if @clip.load and @clip.save
