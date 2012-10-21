@@ -14,3 +14,8 @@ window.TAG_COLOR =
 window.tagColor = (tag_id)->
   color = window.TAG_COLOR[tag_id % TAG_COLOR.length]
   "tag-#{color}"
+
+$.ajaxSetup
+  beforeSend: (xhr) ->
+    xhr.setRequestHeader "Accept", "application/json"
+          cache: false
