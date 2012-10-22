@@ -236,6 +236,15 @@ describe Support::WebLoader do
         it                 {@result.should be_true}
         its(:url)          {should == 'http://code.google.com/p/jo-bridge/'}
       end
+      describe 'google api explorer result',:filter => true do
+        let(:file)         {'google_api_explorer.html'}
+        let(:url)          {'https://developers.google.com/apis-explorer/#p/'}
+        let(:base_uri)     {'https://developers.google.com/apis-explorer/#p/'} # not effectiveness spec because always uses this uri
+        let(:charset)      {nil}
+        it                 {@result.should be_true}
+        its(:url)          {should == 'https://developers.google.com/apis-explorer/#p/'}
+        its(:title)          {should == 'Google APIs Explorer'}
+      end
     end
     context 'overwrite base_uri' do
       describe 'load shorten url' do
