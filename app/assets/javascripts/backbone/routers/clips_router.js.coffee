@@ -41,8 +41,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     @clips.fetch
       data:
         tag:tag
-      success:(collection)=>
-        @clips.reset(collection.models)
+      success:=>
         @changePage(page)
 
   index_fetch:->
@@ -72,8 +71,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
       url:'/clips/search'
       data:
         q:query
-      success:(collection)=>
-        @clips.reset(collection.models)
+      success:=>
         @changePage(page)
 
   extension: ->
