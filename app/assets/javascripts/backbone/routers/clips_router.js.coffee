@@ -2,34 +2,17 @@ class Clipin.Routers.ClipsState
 
   constructor:(args)->
     @clips = args.clips
-    @tag = args.tag
-    @query = args.query
     @page = 1
     @loading = false
 
   title:->
-    if @tag isnt null
-      return "Tag: #{@tag}"
-    if @query isnt null
-      return "Search: '#{@query}'"
     return 'All'
 
   fetch_args:()->
-    data = null
     add = @page > 1
     url = '/clips'
-    if @tag
-      data =
-        tag: @tag
-        page : @page if @page isnt 1
-    else if @query
-      url = '/clips/search'
-      data =
-        q:@query
-        page : @page if @page isnt 1
-    else
-      data =
-        page : @page if @page isnt 1
+    data =
+      page : @page if @page isnt 1
     @page = @page + 1
     result =
       url  : url
@@ -50,6 +33,50 @@ class Clipin.Routers.ClipsState
       data    : args.data
       add     : args.add
       success : success
+
+class Clipin.Routers.TagState extends Clipin.Routers.ClipsState
+
+  constructor:(args)->
+    @tag = args.tag
+    super(args)
+
+  title:->
+    return "Tag: #{@tag}"
+
+  fetch_args:()->
+    add = @page > 1
+    url = '/clips'
+    data =
+      tag: @tag
+      page : @page if @page isnt 1
+    @page = @page + 1
+    result =
+      url  : url
+      data : data
+      add  : add
+    return result
+
+class Clipin.Routers.SearchState extends Clipin.Routers.ClipsState
+
+  constructor:(args)->
+    @query = args.query
+    super(args)
+
+  title:->
+    return "Search: '#{@query}'"
+
+  fetch_args:()->
+    add = @page > 1
+    url = '/clips/search'
+    data =
+      q:@query
+      page : @page if @page isnt 1
+    @page = @page + 1
+    result =
+      url  : url
+      data : data
+      add  : add
+    return result
 
 class Clipin.Routers.ClipsRouter extends Backbone.Router
 
@@ -105,7 +132,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
 
   by_tag:(tag)->
     @menuView.active(tag)
-    @listView.setState new Clipin.Routers.ClipsState(
+    @listView.setState new Clipin.Routers.TagState(
       clips : @clips
       tag : tag
     )
@@ -115,7 +142,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
 
   search:(query)->
     @menuView.active('')
-    @listView.setState new Clipin.Routers.ClipsState(
+    @listView.setState new Clipin.Routers.SearchState(
       clips : @clips
       query : query
     )

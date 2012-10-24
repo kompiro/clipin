@@ -45,6 +45,7 @@ class Clipin.Views.Clips.ClipsListView extends Backbone.View
     @loading_element.hide()
     if finished
       @el_next_clip().hide()
+      @state.loading = true
       return
     @el_next_clip().show()
 
