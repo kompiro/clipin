@@ -12,11 +12,6 @@ class Clipin.Views.Clips.ClipsListView extends Backbone.View
   initialize: () ->
     @options.clips.bind('reset', @addAll)
     @options.clips.bind('add', @add)
-    @tag = @options.tag
-    @query = @options.query
-    @page_num = 2
-    @last_length = @options.clips.length
-    @loading = false
 
   loadNext:(e)=>
     e.preventDefault()
@@ -30,46 +25,32 @@ class Clipin.Views.Clips.ClipsListView extends Backbone.View
         @lastPostFunc()
     , 100
 
+  setState : (state,callback)=>
+    @state = state
+    @fetch callback
+
+  fetch :(callback)->
+    @state.fetch callback
 
   lastPostFunc : ()->
-    unless @loading
-      @loading = true
+    unless @state.loading
       @loading_element.show()
       @el_next_clip().hide()
-      data = null
-      url = '/clips'
-      if @tag
-        data =
-          page:@page_num
-          tag: @tag
-      else if @query
-        data =
-          page:@page_num
-          q:@query
-        url = '/clips/search'
-      else
-        data =
-          page:@page_num
-      @options.clips.fetch(
-        url:url
-        add:true
-        data:data
-        success:(clips)=>
-          @updateLoadingInformation(clips)
+      @state.fetch((clips)=>
+          finished = clips.length < 8
+          @updateLoadingInformation(clips,finished)
       )
 
-  updateLoadingInformation : (clips)->
+  updateLoadingInformation : (clips,finished)->
     @loading_element.hide()
-    if clips.length is @last_length
-      @loading = true
+    if finished
       @el_next_clip().hide()
+      @state.loading = true
       return
     @el_next_clip().show()
-    @last_length = clips.length
-    @loading = false
-    @page_num = @page_num + 1
 
   addAll: () =>
+    @el_clip_list().empty()
     @options.clips.each(@addOne)
 
   add:(clip,clips,options)=>

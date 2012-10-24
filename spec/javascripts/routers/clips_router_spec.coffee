@@ -10,7 +10,10 @@ describe 'ClipsRouter routes',->
     @fetchStub = spyOn(@collection,'fetch').andReturn(new Backbone.Collection())
     @collection.url = '/clips'
     @collection.model = Clipin.Models.Clip
-    @clipViewStub = spyOn(Clipin.Views.Clips,'ClipsListView').andReturn(new Backbone.View())
+    dummyView = new Backbone.View()
+    dummyView.setState = ->
+    dummyView.fetch = ->
+    @clipViewStub = spyOn(Clipin.Views.Clips,'ClipsListView').andReturn(dummyView)
     @clipsCollectionStub = spyOn(Clipin.Collections,'ClipsCollection').andReturn(@collection)
     @router = new Clipin.Routers.ClipsRouter {}
     if(not(Backbone.History.started))
@@ -21,9 +24,8 @@ describe 'ClipsRouter routes',->
       catch e
         console.log e
 
-    @router.navigate 'elsewhere'
-
   afterEach ->
+    @router.navigate 'jasmine'
     #Clipin.Views.Clips.ClipsListView.restore()
     #Clipin.Collections.ClipsCollection.restore()
 
@@ -58,13 +60,13 @@ describe 'ClipsRouter routes',->
     expect(@routeSpy).toHaveBeenCalledWith()
 
   it 'fires the index and fetch route',->
-    @router.bind 'route:index_fetch',@routeSpy
+    @router.bind 'route:all',@routeSpy
     @router.navigate 'index',true
     expect(@routeSpy).toHaveBeenCalled()
     expect(@routeSpy).toHaveBeenCalledWith()
 
   it 'fires the index by tag route',->
-    @router.bind 'route:index_by_tag',@routeSpy
+    @router.bind 'route:by_tag',@routeSpy
     @router.navigate 'index/articles',true
     expect(@routeSpy).toHaveBeenCalled()
     expect(@routeSpy).toHaveBeenCalledWith('articles')
@@ -89,16 +91,13 @@ describe 'ClipsRouter routes',->
       expect(@clipViewStub).toHaveBeenCalledWith
         clips: @collection
         tags: @tags
-        title: 'All'
 
     it 'creates a Clip list collection with tag',->
-      @router.index_by_tag('article')
+      @router.by_tag('article')
       expect(@clipsCollectionStub).toHaveBeenCalled()
       expect(@clipViewStub).toHaveBeenCalledWith
         clips: @collection
         tags: @tags
-        title: 'Tag: article'
-        tag: 'article'
 
     it 'creates a Clip list collection with search query',->
       @router.search('article')
@@ -106,5 +105,3 @@ describe 'ClipsRouter routes',->
       expect(@clipViewStub).toHaveBeenCalledWith
         clips: @collection
         tags: @tags
-        title: "Search : article"
-        query: 'article'
