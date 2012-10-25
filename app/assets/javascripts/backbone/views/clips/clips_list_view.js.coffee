@@ -10,8 +10,6 @@ class Clipin.Views.Clips.ClipsListView extends Backbone.View
     "click .next_clips" : "loadNext"
 
   initialize: () ->
-    @options.clips.bind('reset', @addAll)
-    @options.clips.bind('add', @add)
 
   loadNext:(e)=>
     e.preventDefault()
@@ -37,7 +35,8 @@ class Clipin.Views.Clips.ClipsListView extends Backbone.View
       @loading_element.show()
       @el_next_clip().hide()
       @state.fetch((clips)=>
-          finished = clips.length < 8
+          finished = @last_clips_length is clips.length
+          @last_clips_length = clips.length
           @updateLoadingInformation(clips,finished)
       )
 
@@ -82,6 +81,8 @@ class Clipin.Views.Clips.ClipsListView extends Backbone.View
     ).spin()
     @loading_element.hide()
     @el_next_clip().css('display','')
+    @options.clips.bind('reset', @addAll)
+    @options.clips.bind('add', @add)
 
   pagehide:->
     $(window).unbind('scroll',@scroll)
