@@ -27,7 +27,7 @@ class Clipin.Routers.ClipsState
       @loading = false
       @callback clips if @callback?
 
-    args = @fetch_args(page)
+    args = @fetch_args()
     @clips.fetch
       url     : args.url
       data    : args.data
