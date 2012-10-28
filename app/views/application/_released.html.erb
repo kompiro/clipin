@@ -1,0 +1,9 @@
+released:<%=
+  unless @app_last_updated_at.nil?
+    if @app_last_updated_at.is_a? Time
+      @app_last_updated_at.to_s(:long)
+    else
+      @app_last_updated_at
+    end
+  end
+%>

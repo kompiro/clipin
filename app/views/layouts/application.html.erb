@@ -66,63 +66,37 @@
           </ul>
         </div>
         <div class="span6">
-          <% if flash[:success] %>
-            <div class="alert alert-success fade in">
-              <a href="#" class="close" data-dismiss="alert">×</a>
-              <%= flash[:success] %>
-            </div>
-          <% end %>
-          <% if flash[:notice] %>
-            <div class="alert alert-error fade in">
-              <a href="#" class="close" data-dismiss="alert">×</a>
-              <%= flash[:notice] %>
-            </div>
-          <% end %>
-          <% if flash[:error] %>
-            <div class="alert alert-error fade in">
-              <a href="#" class="close" data-dismiss="alert">×</a>
-              <%= flash[:error] %>
-            </div>
-          <% end %>
+          <%= render "alert" %>
           <div id="page"></div>
         </div>
         <div class="span3 visible-desktop">
-          <div>
-            <ul class="nav nav-list well well-small" style="margin-bottom:20px;">
-              <li class="nav-header"><i class="icon-question-sign"></i>Help
-              <li>ヘッダーのNewからURLをクリップできます。より簡単にクリップするには下記のChrome Extensionを入れると便利です。
+          <div class="well well-small">
+            <h4>Help</h4>
+            <p>HeaderのNewからURLをクリップできます。より簡単にクリップするには下記のChrome Extensionを入れると便利です。
+          </div>
+          <div class="well well-small">
+            <h4>Information</h4>
+            <ul class="nav nav-list">
+              <li><a href="#extension" class="lsf-icon" title="chrome">Chrome Extension</a>
+              <li><a href="https://trello.com/board/clipin/5078da585054717b4423e7de" class="lsf-icon" title="newtab">Feedback</a>
             </ul>
           </div>
-          <div>
-          <ul class="nav nav-list well well-small">
-            <li class="nav-header"><i class="icon-info-sign"></i>Info
-            <li><a href="#extension" class="lsf-icon" title="chrome">Chrome Extension</a>
-            <li><a href="https://trello.com/board/clipin/5078da585054717b4423e7de" class="lsf-icon" title="newtab">Feedback</a>
-        </ul>
-      </div>
+          <div class="well well-small">
+            <p>
+              <small>Designed and built with all the love in the world by <a href="http://twitter.com/kompiro">@kompiro</a>.
+                Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</small>
+            </p>
+            <p class="muted">
+              <small>
+                <%= render 'released' %>
+              </small>
+            </p>
+          </div>
         </div>
       </div>
     </div>
     <div id="push"></div>
-<% end %>
-<footer class="footer">
-<div class="container">
-  <p class="pull-right">
-    <a href="#">上に戻る</a>
-    </p>
-    <p>Designed and built with all the love in the world by <a href="http://twitter.com/kompiro">@kompiro</a>.</p>
-    <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.<p>
-    <p>released:<%=
-    unless @app_last_updated_at.nil?
-      if @app_last_updated_at.is_a? Time
-        @app_last_updated_at.to_s(:long)
-      else
-        @app_last_updated_at
-      end
-    end
-    %></p>
-</div>
-</footer>
+  <% end %>
 </div>
 <div id="fb-root"></div>
 <script>
