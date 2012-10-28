@@ -1,6 +1,8 @@
 <div class="item">
-<a href="#<%= @id %>/edit">
-  <img src='<%= if @image then @image else '/assets/not_found.png' %>' alt='summary_image' class="clip_image" onerror="loadImgError(this)"/>
+  <a href="#<%= @id %>/edit">
+  <% if @image : %>
+    <img src='<%= @image %>' alt='summary_image' class="clip_image" onerror="loadImgError(this)"/>
+  <% end %>
   <span class="title">
     <% if @pin: %>
     <img src='/assets/pin-icon.png' alt='pin' class="pin"/>
