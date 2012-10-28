@@ -116,6 +116,10 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
 
   index: ->
     @menuView.active('All')
+    @listView = new Clipin.Views.Clips.ClipsListView(
+      clips: @clips
+      tags: @tags
+    )
     @listView.setState new Clipin.Routers.ClipsState(
       clips : @clips
     )
@@ -123,6 +127,10 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
 
   all:->
     @menuView.active('All')
+    @listView = new Clipin.Views.Clips.ClipsListView(
+      clips: @clips
+      tags: @tags
+    )
     @listView.setState new Clipin.Routers.ClipsState(
       clips : @clips
     )
@@ -132,6 +140,10 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
 
   by_tag:(tag)->
     @menuView.active(tag)
+    @listView = new Clipin.Views.Clips.ClipsListView(
+      clips: @clips
+      tags: @tags
+    )
     @listView.setState new Clipin.Routers.TagState(
       clips : @clips
       tag : tag
@@ -142,6 +154,10 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
 
   search:(query)->
     @menuView.active('')
+    @listView = new Clipin.Views.Clips.ClipsListView(
+      clips: @clips
+      tags: @tags
+    )
     @listView.setState new Clipin.Routers.SearchState(
       clips : @clips
       query : query
