@@ -4,8 +4,7 @@
 
 
 window.loadImgError = (source)->
-  source.src = '/assets/not_found.png'
-  source.onerror = ''
+  $(source).remove()
   true
 
 window.TAG_COLOR =

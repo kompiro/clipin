@@ -19,14 +19,15 @@
 .ui-li-has-alt .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-alt {
   padding-right: 55px;
 }
+$clip_image_width: 320px;
+$clip_image_height: 240px;
 img.clip_image {
-  width:  79px;
-  height: 79px;
-  position: absolute;
-  left: 1px;
-  top: 0;
-  max-height: 80px;
-  max-width: 80px;
+  max-width: $clip_image_width;
+  max-height: $clip_image_height;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
 }
 $clip_image_detail_width: 600px;
 img.clip_image_detail {
@@ -34,16 +35,6 @@ img.clip_image_detail {
 }
 @media screen and (max-width: 480px) {
   $screen_max_width: 480px;
-  img.clip_image {
-    width:  32px;
-    height: 32px;
-    top:    8px;
-    position: absolute;
-    left: 1px;
-    top: 0;
-    max-height: 32px;
-    max-width: 32px;
-  }
   img.clip_omage_detail {
     max-width: $screen_max_width;
   }
@@ -163,7 +154,7 @@ span.title {
   border-color: #E9E9E9;
   div.item {
     min-height: 72px;
-    padding: .3em 10px .3em 90px;
+    padding: .3em 10px .3em 0px;
   }
   a:hover{
      text-decoration: none;
@@ -175,6 +166,7 @@ span.title {
   font-weight: normal;
   display: block;
   color: #888;
+  visibility: hidden;
   /* margin: -0.5em 0 0.6em; */
   line-height: 18px;
   white-space: pre;           /* CSS 2.0 */
