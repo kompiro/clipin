@@ -1,28 +1,111 @@
+class Clipin.Routers.ClipsState
+
+  constructor:(args)->
+    @clips = args.clips
+    @page = 1
+    @loading = false
+
+  title:->
+    return 'All'
+
+  fetch_args:()->
+    add = @page > 1
+    url = '/clips'
+    data =
+      page : @page if @page isnt 1
+    @page = @page + 1
+    result =
+      url  : url
+      data : data
+      add  : add
+    return result
+
+  fetch:(@callback)->
+    return if @loading
+    @loading = true
+    success = (clips)=>
+      @loading = false
+      @callback clips if @callback?
+
+    args = @fetch_args()
+    @clips.fetch
+      url     : args.url
+      data    : args.data
+      add     : args.add
+      success : success
+
+class Clipin.Routers.TagState extends Clipin.Routers.ClipsState
+
+  constructor:(args)->
+    @tag = args.tag
+    super(args)
+
+  title:->
+    return "Tag: #{@tag}"
+
+  fetch_args:()->
+    add = @page > 1
+    url = '/clips'
+    data =
+      tag: @tag
+      page : @page if @page isnt 1
+    @page = @page + 1
+    result =
+      url  : url
+      data : data
+      add  : add
+    return result
+
+class Clipin.Routers.SearchState extends Clipin.Routers.ClipsState
+
+  constructor:(args)->
+    @query = args.query
+    super(args)
+
+  title:->
+    return "Search: '#{@query}'"
+
+  fetch_args:()->
+    add = @page > 1
+    url = '/clips/search'
+    data =
+      q:@query
+      page : @page if @page isnt 1
+    @page = @page + 1
+    result =
+      url  : url
+      data : data
+      add  : add
+    return result
+
 class Clipin.Routers.ClipsRouter extends Backbone.Router
+
   initialize: (options) ->
-    @clips = new Clipin.Collections.ClipsCollection()
+
+    @clips = new Clipin.Collections.ClipsCollection(options.clips)
     @tags = new Clipin.Collections.TagsCollection(options.tags)
-    @clips.reset options.clips
     @current_page = null
     @menuView = new Clipin.Views.Clips.MenuView(model:
       tags:@tags
     )
     @menuView.render()
-    @bind 'route:index_by_tag',(args)=>
-      @menuView.active(args)
     @headerView = new Clipin.Views.Clips.HeaderView()
+    @listView = new Clipin.Views.Clips.ClipsListView(
+      clips: @clips
+      tags: @tags
+    )
 
   routes:
     "new"           : "new"
+    ""              : "index"
+    "_=_"           : "index"
+    "index"         : "all"
+    "index/:tag"    : "by_tag"
     "search/:query" : "search"
-    "index/:tag"    : "index_by_tag"
-    "index"         : "index_fetch"
     "conf"          : "conf"
     "extension"     : "extension"
-    "_=_"           : "index"
     ":id/edit"      : "edit"
     ":id"           : "show"
-    ""              : "index"
 
   new: ->
     page = new Clipin.Views.Clips.NewView(
@@ -31,50 +114,41 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     )
     @changePage(page)
 
-  index_by_tag:(tag)->
-    page = new Clipin.Views.Clips.ClipsListView(
-      clips: @clips
-      tags: @tags
-      title: "Tag: #{tag}"
-      tag: tag
-    )
-    @clips.fetch
-      data:
-        tag:tag
-      success:(collection)=>
-        @clips.reset(collection.models)
-        @changePage(page)
-
-  index_fetch:->
-    @clips.fetch
-      success:(collection)=>
-        @clips.reset(collection.models)
-        @index()
-
   index: ->
-    page = new Clipin.Views.Clips.ClipsListView(
-      clips: @clips
-      tags: @tags
-      title: "All"
-    )
     @menuView.active('All')
-    @changePage(page)
+    @listView.setState new Clipin.Routers.ClipsState(
+      clips : @clips
+    )
+    @showListView()
+
+  all:->
+    @menuView.active('All')
+    @listView.setState new Clipin.Routers.ClipsState(
+      clips : @clips
+    )
+    @listView.fetch(=>
+      @showListView()
+    )
+
+  by_tag:(tag)->
+    @menuView.active(tag)
+    @listView.setState new Clipin.Routers.TagState(
+      clips : @clips
+      tag : tag
+    )
+    @listView.fetch(=>
+      @showListView()
+    )
 
   search:(query)->
-    page = new Clipin.Views.Clips.ClipsListView(
-      clips: @clips
-      tags: @tags
-      title: "Search : #{query}"
-      query: query
-    )
     @menuView.active('')
-    @clips.fetch
-      url:'/clips/search'
-      data:
-        q:query
-      success:(collection)=>
-        @clips.reset(collection.models)
-        @changePage(page)
+    @listView.setState new Clipin.Routers.SearchState(
+      clips : @clips
+      query : query
+    )
+    @listView.fetch(=>
+      @showListView()
+    )
 
   extension: ->
     page = new Clipin.Views.Clips.ExtensionView()
@@ -110,7 +184,13 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
       FB.XFBML.parse()
     catch error
 
+  showListView:->
+    @changePage(@listView)
+
   changePage:(page)->
+    if @current_page and page is @current_page
+      window.scrollTo(0)
+      return
     if @current_page
       @current_page.$el.trigger('pagehide')
       @current_page.remove()

@@ -80,7 +80,7 @@ module Support
 
     def create_doc(io)
       charset = io.charset
-      if charset.downcase != 'utf-8'
+      if charset.present? and charset.downcase != 'utf-8'
         read = open(@url,"r:binary").read
         read = NKF.nkf('-w', read)
       else

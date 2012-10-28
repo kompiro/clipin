@@ -14,7 +14,10 @@ class Clip < ActiveRecord::Base
   PAGE_CONTENT = 8
 
   scope :page,    lambda {|user,page_num = 1| includes(:tags).includes(:url_info).where(:user_id => user).where(:trash => false).order('updated_at DESC').limit(PAGE_CONTENT).offset(PAGE_CONTENT * ([page_num.to_i, 1].max - 1))}
-  scope :search,  lambda {|user,query='',page_num = 1| joins(:url_info).where(:user_id => user).where(:trash => false).where('url_infos.title like ?',"%#{query}%").order('updated_at DESC').limit(PAGE_CONTENT).offset(PAGE_CONTENT * ([page_num.to_i, 1].max - 1))}
+  scope :search,  lambda {|user,query='',page_num = 1|
+    url_infos_table = UrlInfo.arel_table
+    return joins(:url_info).where(:user_id => user).where(:trash => false).where(url_infos_table[:title].matches("%#{query}%")).order('updated_at DESC').limit(PAGE_CONTENT).offset(PAGE_CONTENT * ([page_num.to_i, 1].max - 1))
+  }
   scope :pinned,  lambda {|user| where(:user_id => user).where(:pin => true,:trash => false).order('updated_at DESC').limit(PAGE_CONTENT)}
   scope :trashed, lambda {|user| where(:user_id => user).where(:trash => true).order('updated_at DESC').limit(PAGE_CONTENT)}
 

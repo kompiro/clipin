@@ -11,16 +11,16 @@
     <span class="description"><%= @description %></span>
     </p>
     </a>
-  <% if @updated_at: %>
   <p class='clip-footer'>
-  <a href="<%= @url %>" class="btn btn-mini btn-primary">Open</a>
-    <span class="updated_at"><%= moment(@updated_at).format('HH:mm A') %></span>
-    <% if @tags.length: %>
+    <% if @updated_at: %>
+      <span class="updated_at"><%= moment(@updated_at).format('HH:mm A') %></span>
+    <% end %>
+    <% if @tags? and @tags.length: %>
       <% for tag in @tags: %>
       <span class='tag <%= tagColor(tag.get('color')) %>'><a href="#index/<%= tag.get('name')%>"><%= tag.get('name') %></a></span>
       <% end %>
     <% end %>
+    <a href="<%= @url %>" class="btn btn-mini btn-primary pull-right">Open</a>
   </p>
-  <% end %>
 </div>
 
