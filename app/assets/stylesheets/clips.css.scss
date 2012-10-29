@@ -1,9 +1,6 @@
 // Place all the styles related to the clips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.ui-header .ui-title, .ui-footer .ui-title{
-  margin: .6em .8em
-}
 .clip-footer{
   display: block;
   text-overflow: ellipsis;
@@ -16,9 +13,6 @@
   color: gray;
   vertical-align: baseline;
 }
-.ui-li-has-alt .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-alt {
-  padding-right: 55px;
-}
 $clip_image_width: 320px;
 $clip_image_height: 240px;
 img.clip_image {
@@ -29,23 +23,27 @@ img.clip_image {
   margin-right:auto;
   text-align:center;
 }
-$clip_image_detail_width: 600px;
+$clip_image_detail_width: 420px;
 img.clip_image_detail {
   max-width: $clip_image_detail_width;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
 }
 @media screen and (max-width: 480px) {
-  $screen_max_width: 480px;
   img.clip_omage_detail {
-    max-width: $screen_max_width;
+    max-width: $clip_image_width;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
   }
-  .ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb {
-    padding-left: 37px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    min-height: 40px;
-  }
-  .ui-li-heading{
-    margin: .4em 0;
+  .clip{
+    div.item {
+      min-height: 72px;
+      padding: .3em 0px .3em 0px;
+    }
   }
 }
 .ui-icon-pin {

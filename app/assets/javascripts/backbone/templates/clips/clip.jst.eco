@@ -19,7 +19,7 @@
     <% end %>
     <% if @tags? and @tags.length: %>
       <% for tag in @tags: %>
-      <span class='tag <%= tagColor(tag.get('color')) %>'><a href="#index/<%= tag.get('name')%>"><%= tag.get('name') %></a></span>
+      <span class='tag <%= tagColor(tag.color) %>'><a href="#index/<%= tag.name%>"><%= tag.name %></a></span>
       <% end %>
     <% end %>
     <a href="<%= @url %>" class="btn btn-mini btn-primary pull-right">Open</a>

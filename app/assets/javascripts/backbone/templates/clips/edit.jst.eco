@@ -1,5 +1,15 @@
-  <div data-role="content">
+  <div>
     <div id="content">
+    </div>
+    <div id="content-footer">
+    <% if @updated_at: %>
+      <span class="updated_at"><%= moment(@updated_at).format('HH:mm A') %></span>
+    <% end %>
+    <% if @tags? and @tags.length: %>
+      <% for tag in @tags: %>
+      <span class='tag <%= tagColor(tag.color) %>'><a href="#index/<%= tag.name%>"><%= tag.name %></a></span>
+      <% end %>
+    <% end %>
     </div>
     <div id="social_buttons">
       <ul class='list-inline-block'>
@@ -14,14 +24,14 @@
         </li>
       </ul>
     </div>
-    <div class="btn-group">
-      <a href="<%= @url %>" class="btn btn-large btn-primary">Open</a>
+    <div>
+      <a href="<%= @url %>" class="btn btn-block btn-large btn-primary lsf-icon" title="external">Open</a>
+      <button class='btn btn-block btn-large btn-inverse lsf-icon clip_trash' title='trash'>Trash</button>
       <% unless @pin: %>
-      <button class="btn btn-large btn-warning clip_pin"  data-theme='e' data-icon='pin'>Pin</button>
+      <button class="btn btn-block btn-large btn-warning lsf-icon clip_pin" title="pin">Pin</button>
       <% else: %>
-      <button class="btn btn-large btn-warning clip_unpin" data-theme='e' data-icon='pin'>Unpin</button>
+      <button class="btn btn-block btn-large btn-warning lsf-icon clip_unpin" title='pin'>Unpin</button>
       <% end %>
-      <button class='btn btn-large btn-inverse clip_trash'>Trash</button>
-      <a href="#index" class="btn btn-large">Back</a>
+      <button class="btn btn-block btn-large lsf-icon btn_back" title="undo">Back</button>
     </div>
   </div><!-- /content -->
