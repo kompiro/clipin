@@ -8,7 +8,7 @@ class Clipin.Views.Clips.EditView extends Backbone.View
     "click .clip_pin"    : "pin"
     "click .clip_unpin"  : "unpin"
     "click .clip_trash"  : "trash"
-    "click .back_btn"    : "back"
+    "click .btn_back"    : "back"
     "pageshow"           : "pageshow"
 
   pin : ->
