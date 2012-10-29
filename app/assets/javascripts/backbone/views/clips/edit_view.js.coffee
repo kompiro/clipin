@@ -8,6 +8,7 @@ class Clipin.Views.Clips.EditView extends Backbone.View
     "click .clip_pin"    : "pin"
     "click .clip_unpin"  : "unpin"
     "click .clip_trash"  : "trash"
+    "click .back_btn"    : "back"
     "pageshow"           : "pageshow"
 
   pin : ->
@@ -26,12 +27,15 @@ class Clipin.Views.Clips.EditView extends Backbone.View
         model.collection.remove model
         @router.navigate("index",{trigger:true})
 
+  back : ->
+    history.back()
+
   render : ->
     $(@el).html(@template(@model.toJSON()))
     content = $(@el).find('#content')
     content.oembed(@model.get('url'),
-      maxWidth:600
-      maxHeight:450
+      maxWidth:320
+      maxHeight:240
       embedMethod: 'replace'
       beforeEmbed:(oembedData)=>
         content.find('.spinner').stop()
