@@ -16,6 +16,7 @@ describe ClipsController do
     read.stub(:meta).and_return({'content-type' => 'text/html'})
     read.stub(:charset).and_return('utf-8')
     read.stub(:base_uri).and_return(URI.parse("http://example.com/"))
+    read.stub(:content_encoding).and_return([])
 
     Support::WebLoader.any_instance.stub(:open).and_return(read)
 
