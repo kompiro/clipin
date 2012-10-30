@@ -15,6 +15,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.oembed
+//= require jquery.postpaste
 //= require spin
 //= require jquery.spin
 //= require twitter/bootstrap
