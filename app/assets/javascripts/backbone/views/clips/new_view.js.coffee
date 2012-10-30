@@ -6,6 +6,7 @@ class Clipin.Views.Clips.NewView extends Backbone.View
 
   events:
     "click #new-clip": "save"
+    'keypress input[type=text]': 'saveOnEnter'
 
   constructor: (options) ->
     super(options)
@@ -44,9 +45,17 @@ class Clipin.Views.Clips.NewView extends Backbone.View
       at:0
     )
 
+  saveOnEnter:(e)->
+    return if(e.keyCode isnt 13)
+    @save(e)
+
   render: ->
     $(@el).html(@template(@model.toJSON()))
 
-    this.$("form").backboneLink(@model)
+    @.$("form").backboneLink(@model)
+    el = @.$("#url")
+    el.on('postpaste',=>
+      @model.set('url',el.val())).pasteEvents()
+
 
     return this
