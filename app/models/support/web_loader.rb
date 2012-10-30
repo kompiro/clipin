@@ -1,4 +1,4 @@
-
+require 'zlib'
 require 'open-uri'
 require 'addressable/uri'
 require 'nokogiri'
@@ -28,7 +28,7 @@ module Support
         return true
       end
       begin
-        io = open(@url)
+        io = open(@url,'r:binary')
       rescue OpenURI::HTTPError => e
         @clip.errors.add :url, "access '#{@url}' error : #{e.message}"
         return false
@@ -84,7 +84,12 @@ module Support
         read = open(@url,"r:binary").read
         read = NKF.nkf('-w', read)
       else
-        read = io.read.encode("UTF-8", "UTF-8", :invalid => :replace, :undef => :replace)
+        unless io.content_encoding.empty?
+          read = Zlib::GzipReader.new(io).read
+        else
+          read = io.read
+        end
+        read = read.encode("UTF-8", "UTF-8", :invalid => :replace, :undef => :replace)
       end
       doc = Nokogiri.HTML(read)
     end

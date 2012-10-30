@@ -7,12 +7,22 @@ describe Support::WebLoader do
   context 'load og content' do
     before do
       doc = open("#{Rails.root}/spec/support/ogp/#{file}")
+      binary = open("#{Rails.root}/spec/support/ogp/#{file}",'rb')
 
       read = mock('open')
       read.stub(:meta).and_return({'content-type' => 'text/html;'})
-      read.stub(:read).and_return(doc.read)
+      content = doc.read
+      read.stub(:read).and_return(content)
       read.stub(:charset).and_return(charset)
       read.stub(:base_uri).and_return(URI.parse(base_uri))
+      read.stub(:readpartial).and_return{|length|
+        binary.readpartial(length)
+      }
+      if (defined? content_encoding).nil? or content_encoding.nil?
+        read.stub(:content_encoding).and_return([])
+      else
+        read.stub(:content_encoding).and_return(content_encoding)
+      end
 
       user = create(:user)
       @clip = Clip.new(:url => url)
@@ -201,6 +211,15 @@ describe Support::WebLoader do
         let(:charset)      {'shift_jis'}
         it                 {@result.should be_true}
         its(:title)        {should == "宋文洲のメルマガの読者広場"}
+      end
+      describe 'load gzipped content',:gzip => true do
+        let(:file)         {'gzipped_gihyo.html'}
+        let(:url)          {'http://gihyo.jp/admin/serial/01/ubuntu-recipe/0239'}
+        let(:base_uri)     {'http://gihyo.jp/admin/serial/01/ubuntu-recipe/0239'}
+        let(:charset)      {'utf-8'}
+        let(:content_encoding) {['gzip']}
+        it                 {@result.should be_true}
+        its(:title)        {should == "第239回　夏休み特別企画・編集者に夏休みなどない！ Ubuntu誌編集者の七つ道具 ：Ubuntu Weekly Recipe｜gihyo.jp … 技術評論社"}
       end
     end
     context 'recoverable pattern' do
