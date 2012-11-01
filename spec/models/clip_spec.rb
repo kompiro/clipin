@@ -51,13 +51,34 @@ describe Clip do
       create_list(:clip,15,user: @user)
       create(:clip, pin: true, user: @user)
       create(:clip, trash: true, user: @user)
+      @tagged_clip = create(:clip, user: @user)
+      @tag = create(:tag,user: @user)
+      tagging = create(:tagging,tag: @tag,clip: @tagged_clip)
     end
     context 'pinned' do
-      subject{Clip.pinned @user}
+      subject{Clip.pinned}
       its(:length){should eq 1}
+      it 'should be pinned' do
+        subject[0].pin.should be_true
+      end
     end
     context 'trashed' do
-      subject{Clip.trashed @user}
+      subject{Clip.trashed}
+      its(:length){should eq 1}
+      it 'should be trashed' do
+        subject[0].trash.should be_true
+      end
+    end
+    context 'user',:user => true do
+      subject{Clip.user @user}
+      its(:length){should eq 18}
+    end
+    context 'page' do
+      subject{Clip.page 2}
+      its(:length){should eq 8}
+    end
+    context 'tag',:tag => true do
+      subject{Clip.tag @tag}
       its(:length){should eq 1}
     end
   end
@@ -67,15 +88,15 @@ describe Clip do
       create_list(:clip,15,user: @user)
     end
     describe 'first page' do
-      subject{Clip.page @user}
+      subject{Clip.user(@user).page}
       its(:length){should eq 8}
     end
     describe 'second page' do
-      subject{Clip.page(@user,2)}
+      subject{Clip.user(@user).page(2)}
       its(:length){should eq 7}
     end
     describe 'third page' do
-      subject{Clip.page(@user,3)}
+      subject{Clip.user(@user).page(3)}
       its(:length){should eq 0}
     end
   end
@@ -84,7 +105,7 @@ describe Clip do
       @user = create(:user)
       clip = create(:search_clip,user: @user)
     end
-    subject {Clip.search @user,'test'}
+    subject {Clip.user(@user).search('test').page}
     its(:length){should eq 1}
   end
 end
