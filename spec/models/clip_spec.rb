@@ -53,6 +53,8 @@ describe Clip do
       create(:clip, trash: true, user: @user)
       @tagged_clip = create(:clip, user: @user)
       @tag = create(:tag,user: @user)
+      @date = Time.parse('2012/11/02')
+      create(:clip, updated_at: @date, user: @user)
       tagging = create(:tagging,tag: @tag,clip: @tagged_clip)
     end
     context 'pinned' do
@@ -71,7 +73,7 @@ describe Clip do
     end
     context 'user',:user => true do
       subject{Clip.user @user}
-      its(:length){should eq 18}
+      its(:length){should eq 19}
     end
     context 'page' do
       subject{Clip.page 2}
@@ -79,6 +81,10 @@ describe Clip do
     end
     context 'tag',:tag => true do
       subject{Clip.tag @tag}
+      its(:length){should eq 1}
+    end
+    context 'updated_at',:updated_at => true do
+      subject{Clip.updated_at @date}
       its(:length){should eq 1}
     end
   end

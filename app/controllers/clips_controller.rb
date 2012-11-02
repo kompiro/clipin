@@ -6,6 +6,8 @@ class ClipsController < ApplicationController
     trashed = params[:trashed]
     pinned = params[:pinned]
     page_num = params[:page]
+    updated_at = params[:date]
+
     @clips = current_user.clips
     if tag.present?
       @tag = Tag.find_by_name(tag)
@@ -16,6 +18,10 @@ class ClipsController < ApplicationController
     end
     if pinned
       @clips = @clips.pinned
+    end
+    if updated_at
+      updated_at = Time.parse updated_at
+      @clips = @clips.updated_at updated_at
     end
     if page_num
       @clips = @clips.page page_num

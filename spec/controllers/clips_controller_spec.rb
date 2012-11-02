@@ -98,6 +98,17 @@ describe ClipsController do
         flash[:notice].should be_nil
       end
     end
+    context 'index by updated_at',:date => true do
+      before do
+        @date = Time.parse('2012/11/2')
+        create_list(:clip,20,user: @user,created_at: @date, updated_at: @date)
+      end
+      it 'assigns updated_at clips as @clips' do
+        get :index, {:date => @date}, valid_session
+        assigns(:clips).should eq(Clip.user(@user).updated_at(@date).page)
+        flash[:notice].should be_nil
+      end
+    end
   end
 
   describe "GET search" do
