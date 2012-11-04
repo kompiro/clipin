@@ -1,6 +1,7 @@
 #=require plugins
 #=require jquery
 #=require jquery_ujs
+#= require jquery.postpaste
 #=require underscore
 #=require backbone
 #=require moment
