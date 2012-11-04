@@ -13,13 +13,23 @@ class Clip < ActiveRecord::Base
   delegate :title, :title=, :url, :url=, :description, :description=, :image, :image=, :og_type, :og_type=, :to => :url_info
   PAGE_CONTENT = 8
 
-  scope :page,    lambda {|user,page_num = 1| includes(:tags).includes(:url_info).where(:user_id => user).where(:trash => false).order('updated_at DESC').limit(PAGE_CONTENT).offset(PAGE_CONTENT * ([page_num.to_i, 1].max - 1))}
-  scope :search,  lambda {|user,query='',page_num = 1|
+  scope :page,    ->(page_num=1) {
+    order(arel_table[:updated_at].desc).includes(:tags).includes(:url_info).limit(PAGE_CONTENT).offset(PAGE_CONTENT * ([page_num.to_i, 1].max - 1))}
+  scope :user,    ->(user) {where(:user_id => user)}
+  scope :tag,     ->(tag) {
+    taggings_table = Tagging.arel_table
+    joins(:taggings).where(taggings_table[:tag_id].eq(tag.id))}
+  scope :search,  ->(query='') {
     url_infos_table = UrlInfo.arel_table
-    return joins(:url_info).where(:user_id => user).where(:trash => false).where(url_infos_table[:title].matches("%#{query}%")).order('updated_at DESC').limit(PAGE_CONTENT).offset(PAGE_CONTENT * ([page_num.to_i, 1].max - 1))
+    where(:trash => false).where(url_infos_table[:title].matches("%#{query}%"))
   }
-  scope :pinned,  lambda {|user| where(:user_id => user).where(:pin => true,:trash => false).order('updated_at DESC').limit(PAGE_CONTENT)}
-  scope :trashed, lambda {|user| where(:user_id => user).where(:trash => true).order('updated_at DESC').limit(PAGE_CONTENT)}
+  scope :updated_at,  ->(time) {
+    begin_date = time.beginning_of_day
+    end_date = time.tomorrow.beginning_of_day
+    where(:updated_at => begin_date..end_date)
+  }
+  scope :pinned,  -> {where(:pin => true)}
+  scope :trashed, -> {where(:trash => true)}
 
   def initialize(*args)
     super()

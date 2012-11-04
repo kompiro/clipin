@@ -43,21 +43,71 @@ describe ClipsController do
   end
 
   describe "GET index" do
-    before do
-      @clip = Clip.create! valid_attributes
-      @clip.user = @user
-      @clip.save
+    context 'only user' do
+      before do
+        create(:clip)
+      end
+      it "assigns first clips as @clips" do
+        get :index, {}, valid_session
+        assigns(:clips).should eq(Clip.user(@user).page)
+        assigns(:tags).should eq(Tag.all)
+        flash[:notice].should be_nil
+      end
+      it "assigns second clips as @clips" do
+        get :index, {:page => 2}, valid_session
+        assigns(:clips).should eq(Clip.user(@user).page(2))
+        flash[:notice].should be_nil
+      end
     end
-    it "assigns first clips as @clips" do
-      get :index, {}, valid_session
-      assigns(:clips).should eq(Clip.page @user)
-      assigns(:tags).should eq(Tag.all)
-      flash[:notice].should be_nil
+    context 'index by trash',:trash => true do
+      before do
+        create_list(:trashed_clip,20,user: @user)
+      end
+      it "assigns trashed clips as @clips" do
+        get :index, {:trashed => true}, valid_session
+        assigns(:clips).should eq(Clip.user(@user).trashed.page)
+        flash[:notice].should be_nil
+      end
+      it "assigns trashed clips at page 2as @clips" do
+        get :index, {:trashed => true,:page => 2}, valid_session
+        assigns(:clips).should eq(Clip.user(@user).trashed.page(2))
+        flash[:notice].should be_nil
+      end
     end
-    it "assigns second clips as @clips" do
-      get :index, {:page => 2}, valid_session
-      assigns(:clips).should eq(Clip.page(@user,2))
-      flash[:notice].should be_nil
+    context 'index by pin' do
+      before do
+        create_list(:pinned_clip,20,user: @user)
+      end
+      it "assigns pinned clips as @clips" do
+        get :index, {:pinned => true}, valid_session
+        assigns(:clips).should eq(Clip.user(@user).pinned.page)
+        flash[:notice].should be_nil
+      end
+    end
+    context 'index by tag',:tag => true do
+      before do
+        clips = create_list(:pinned_clip,20,user: @user)
+        @tag = create(:tag)
+        clips.each do |clip|
+          create(:tagging,tag: @tag,clip: clip)
+        end
+      end
+      it "assigns tagged clips as @clips" do
+        get :index, {:tag => @tag.name}, valid_session
+        assigns(:clips).should eq(Clip.user(@user).tag(@tag).page)
+        flash[:notice].should be_nil
+      end
+    end
+    context 'index by updated_at',:date => true do
+      before do
+        @date = Time.parse('2012/11/2')
+        create_list(:clip,20,user: @user,created_at: @date, updated_at: @date)
+      end
+      it 'assigns updated_at clips as @clips' do
+        get :index, {:date => @date}, valid_session
+        assigns(:clips).should eq(Clip.user(@user).updated_at(@date).page)
+        flash[:notice].should be_nil
+      end
     end
   end
 
@@ -68,13 +118,13 @@ describe ClipsController do
     end
     it "assigns specified query to search clips" do
       get :search, {q: 'test'}, valid_session
-      assigns(:clips).should eq(Clip.search @user,'test')
+      assigns(:clips).should eq(Clip.user(@user).search('test').page)
       assigns(:tags).should eq(Tag.all)
       flash[:notice].should be_nil
     end
     it "assigns specified query and page to search clips" do
       get :search, {q: 'test', page: 2}, valid_session
-      assigns(:clips).should eq(Clip.search @user,'test',2)
+      assigns(:clips).should eq(Clip.user(@user).search('test').page(2))
       assigns(:tags).should eq(Tag.all)
     end
   end

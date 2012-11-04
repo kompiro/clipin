@@ -29,6 +29,7 @@ class Clipin.Routers.ClipsState
 
     args = @fetch_args()
     @clips.fetch
+      cache   : false
       url     : args.url
       data    : args.data
       add     : args.add
@@ -48,6 +49,28 @@ class Clipin.Routers.TagState extends Clipin.Routers.ClipsState
     url = '/clips'
     data =
       tag: @tag
+      page : @page if @page isnt 1
+    @page = @page + 1
+    result =
+      url  : url
+      data : data
+      add  : add
+    return result
+
+class Clipin.Routers.DateState extends Clipin.Routers.ClipsState
+
+  constructor:(args)->
+    @date = moment(args.date,'YYYY/MM/DD')
+    super(args)
+
+  title:->
+    return "Date: #{moment(@date).format('YYYY-MM-DD')}"
+
+  fetch_args:()->
+    add = @page > 1
+    url = '/clips'
+    data =
+      date: @date.format('YYYY/MM/DD')
       page : @page if @page isnt 1
     @page = @page + 1
     result =
@@ -85,8 +108,10 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     @clips = new Clipin.Collections.ClipsCollection(options.clips)
     @tags = new Clipin.Collections.TagsCollection(options.tags)
     @current_page = null
-    @menuView = new Clipin.Views.Clips.MenuView(model:
-      tags:@tags
+    @menuView = new Clipin.Views.Clips.MenuView(
+      model:
+        tags:@tags
+      router:@
     )
     @menuView.render()
     @headerView = new Clipin.Views.Clips.HeaderView()
@@ -101,6 +126,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     "_=_"           : "index"
     "index"         : "all"
     "index/:tag"    : "by_tag"
+    "date/*date"    : "by_date"
     "search/:query" : "search"
     "conf"          : "conf"
     "extension"     : "extension"
@@ -147,6 +173,20 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     @listView.setState new Clipin.Routers.TagState(
       clips : @clips
       tag : tag
+    )
+    @listView.fetch(=>
+      @showListView()
+    )
+
+  by_date:(date)->
+    @menuView.date(date)
+    @listView = new Clipin.Views.Clips.ClipsListView(
+      clips: @clips
+      tags: @tags
+    )
+    @listView.setState new Clipin.Routers.DateState(
+      clips : @clips
+      date : date
     )
     @listView.fetch(=>
       @showListView()
