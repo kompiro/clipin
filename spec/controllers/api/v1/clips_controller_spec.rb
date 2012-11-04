@@ -40,11 +40,11 @@ describe Api::V1::ClipsController do
     end
     it "assigns first clips as @clips" do
       get :index, {}, valid_session
-      assigns(:clips).should eq(Clip.page @user)
+      assigns(:clips).should eq(Clip.user(@user).page)
     end
     it "assigns second clips as @clips" do
       get :index, {:page => 2}, valid_session
-      assigns(:clips).should eq(Clip.page(@user,2))
+      assigns(:clips).should eq(Clip.user(@user).page(2))
     end
   end
 
