@@ -1,9 +1,11 @@
 #=require plugins
 #=require jquery
 #=require jquery_ujs
+#= require jquery.postpaste
 #=require underscore
 #=require backbone
 #=require moment
+#=require bootstrap-datepickr
 #=require backbone/clipin.js.coffee
 #=require backbone_rails_sync
 #=require backbone_datalink

@@ -3,20 +3,30 @@ class ClipsController < ApplicationController
   # GET /clips.json
   def index
     tag = params[:tag]
+    trashed = params[:trashed]
+    pinned = params[:pinned]
     page_num = params[:page]
+    updated_at = params[:date]
+
+    @clips = current_user.clips
     if tag.present?
       @tag = Tag.find_by_name(tag)
-      if page_num.present?
-        @clips = @tag.my_clips current_user,page_num
-      else
-        @clips = @tag.my_clips current_user
-      end
+      @clips = @clips.tag(@tag)
+    end
+    if trashed
+      @clips = @clips.trashed
+    end
+    if pinned
+      @clips = @clips.pinned
+    end
+    if updated_at
+      updated_at = Time.parse updated_at
+      @clips = @clips.updated_at updated_at
+    end
+    if page_num
+      @clips = @clips.page page_num
     else
-      if page_num.present?
-        @clips = Clip.page current_user,page_num
-      else
-        @clips = Clip.page current_user
-      end
+      @clips = @clips.page
     end
 
     @tags = current_user.tags
@@ -33,9 +43,9 @@ class ClipsController < ApplicationController
 
     @title = 'Search'
     if page_num.present?
-      @clips = Clip.search current_user, query ,page_num
+      @clips = current_user.clips.search(query).page(page_num)
     else
-      @clips = Clip.search current_user, query
+      @clips = current_user.clips.search(query).page
     end
 
     @tags = current_user.tags
