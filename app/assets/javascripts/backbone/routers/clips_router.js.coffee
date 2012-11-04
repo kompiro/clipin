@@ -29,6 +29,7 @@ class Clipin.Routers.ClipsState
 
     args = @fetch_args()
     @clips.fetch
+      cache   : false
       url     : args.url
       data    : args.data
       add     : args.add
