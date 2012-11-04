@@ -15,9 +15,9 @@ module Api
           @title = 'All'
           page_num = params[:page]
           if page_num.present?
-            @clips = Clip.page @current_user,page_num
+            @clips = @current_user.clips.page(page_num)
           else
-            @clips = Clip.page @current_user
+            @clips = @current_user.clips.page
           end
         end
         render json: @clips
