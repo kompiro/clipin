@@ -20,6 +20,7 @@
 //= require jquery.spin
 //= require twitter/bootstrap
 //= require twitter/bootstrap/bootstrap-popover
+//= require bootstrap-datepicker
 //= require underscore
 //= require backbone
 //= require backbone_rails_sync
