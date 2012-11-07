@@ -114,7 +114,11 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
       router:@
     )
     @menuView.render()
-    @headerView = new Clipin.Views.Clips.HeaderView()
+    @headerView = new Clipin.Views.Clips.HeaderView(
+      router:@
+      menuView:@menuView
+    )
+    @headerView.render()
     @listView = new Clipin.Views.Clips.ClipsListView(
       clips: @clips
       tags: @tags
@@ -122,6 +126,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
 
   routes:
     "new"           : "new"
+    "menu"          : "nothing"
     ""              : "index"
     "_=_"           : "index"
     "index"         : "all"
@@ -132,6 +137,8 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     "extension"     : "extension"
     ":id/edit"      : "edit"
     ":id"           : "show"
+
+  nothing: ->
 
   new: ->
     page = new Clipin.Views.Clips.NewView(
@@ -179,7 +186,6 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     )
 
   by_date:(date)->
-    @menuView.date(date)
     @listView = new Clipin.Views.Clips.ClipsListView(
       clips: @clips
       tags: @tags

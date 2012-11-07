@@ -42,9 +42,9 @@
             <li><a href="#new" class='lsf-icon' title='clip'>New</a><li>
           </ul>
           <ul class="nav pull-right">
-            <li><a href='#menu' class='lsf-icon-big open hidden-desktop' title="menu"></a></li>
-            <li><a href='#conf' class='lsf-icon-big visible-desktop' title="setting"></a></li>
-            <li><a href='/logout' class='lsf-icon-big visible-desktop' title="logout"></a></li>
+            <li><a href='#menu' class='lsf-icon-big open visible-phone' title="menu"></a></li>
+            <li><a href='#conf' class='lsf-icon-big hidden-phone' title="setting"></a></li>
+            <li><a href='/logout' class='lsf-icon-big hidden-phone' title="logout"></a></li>
           </ul>
           <form class="navbar-search pull-right">
             <input type="text" class="search-query" placeholder="Search" />
@@ -62,16 +62,16 @@
   <% else %>
   <%= yield %>
     <div class="container">
-      <div class="row-fluid">
-        <div class="span3">
-          <ul class="nav nav-list well well-small menu affix" id="menu">
+      <div class="row">
+        <div class="span3 hidden-phone">
+          <ul class="nav nav-list well well-small menu" id="menu">
           </ul>
         </div>
         <div class="span6">
           <%= render "alert" %>
           <div id="page"></div>
         </div>
-        <div class="span3 visible-desktop">
+        <div class="span3 hidden-phone">
           <div class="well well-small">
             <h4>Help</h4>
             <p>HeaderのNewからURLをクリップできます。より簡単にクリップするには下記のChrome Extensionを入れると便利です。
