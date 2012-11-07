@@ -12,5 +12,6 @@
  *= require_tree .
  * require reset
  *= require jquery.oembed
+ *= require jquery.pageslide
  *= require datepicker
 */
