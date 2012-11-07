@@ -1,3 +1,4 @@
-<li class="nav-header menu-date"><i class="icon-calendar"></i>Date</li>
-<li><div class="input-append menu-date-input" data-date-format="yyyy-mm-dd"><input size="16" class="input-small" type="text" name="date"/><span class="add-on"><i class="icon-calendar"></i></span></div></li>
+<li class="nav-header visible-phone"><i class="icon-star"></i>Menu</li>
+<li class="visible-phone"><a href='#conf' class='lsf-icon' title="setting">Setting</a></li>
+<li class="visible-phone"><a href='/logout' class='lsf-icon' title="logout">Logout</a></li>
 <li class="nav-header menu-tags"><i class="icon-tag"></i>Tags</li>

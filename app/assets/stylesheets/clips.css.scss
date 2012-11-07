@@ -213,13 +213,22 @@ span.title {
   border-radius: 10px;
 }
 
+#menu {
+  min-height: 1px;
+}
+
 @media screen and (max-width: 767px) {
+  #menu {
+    display:none;
+  }
   #menu.affix {
     position: static;
     width: auto;
     top: 0;
   }
 }
+
+#pageslide { width: 200px; }
 
 #social_buttons {
   clear: both;
