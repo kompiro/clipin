@@ -1,8 +1,8 @@
 Clipin.Views.Clips ||= {}
 
 class Clipin.Views.Clips.NewView extends Backbone.View
-  template: JST["backbone/templates/clips/new"]
   id:"new_clip"
+  template: JST["backbone/templates/clips/new"]
 
   events:
     "click #new-clip": "save"
@@ -10,7 +10,6 @@ class Clipin.Views.Clips.NewView extends Backbone.View
 
   constructor: (options) ->
     super(options)
-    @router = options.router
     @model = new @collection.model()
 
     @model.bind("change:errors", (model,errors) =>
@@ -28,11 +27,13 @@ class Clipin.Views.Clips.NewView extends Backbone.View
     e.stopPropagation()
 
     @model.unset("errors")
+    @model.save(null,
 
-    @collection.create(@model.toJSON(),
       success: (clip) =>
-        @model = clip
-        @router.navigate("index",{trigger:true})
+        @collection.add(clip.clone(),
+          at:0
+        )
+        @model.clear()
 
       error: (clip, jqXHR) =>
         if jqXHR.status == 500
@@ -41,8 +42,6 @@ class Clipin.Views.Clips.NewView extends Backbone.View
               url:["Clipping \"#{clip.get('url')}\" : #{jqXHR.statusText}"]
         else
           @model.set({errors: $.parseJSON(jqXHR.responseText)})
-
-      at:0
     )
 
   saveOnEnter:(e)->

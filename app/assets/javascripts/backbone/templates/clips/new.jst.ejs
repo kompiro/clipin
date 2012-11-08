@@ -1,16 +1,10 @@
-<div data-role="content">
-  <h1>Create Clip</h1>
-    <form name="clip">
+    <form name="clip" class="form-inline">
       <ul class="error_explanation">
       </ul>
-      <div data-role="fieldcontain">
-        <label for="url">URL:</label>
-        <input type="text" value="<%= url %>" id="url" name="url"/>
-      </div>
-      <div class="btn-group">
-        <button id="new-clip" class="btn btn-large btn-primary">Create</button>
-        <a href="#/index" class="btn btn-large" >Back</a>
+      <div class="input-append">
+        <input type="text" value="<%= url %>" id="url" name="url" placeholder="http://example.com" class="span5"/>
+        <button id="new-clip" class="btn btn-primary">Clip!</button>
       </div>
     </form>
-  </div><!-- /content -->
-
+    </div>
+    <hr>

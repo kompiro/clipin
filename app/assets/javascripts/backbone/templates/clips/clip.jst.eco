@@ -21,8 +21,11 @@
       <% for tag in @tags: %>
       <span class='tag <%= tagColor(tag.color) %>'><a href="#index/<%= tag.name%>"><%= tag.name %></a></span>
       <% end %>
-    <% end %>
-    <a href="<%= @url %>" class="btn btn-mini btn-primary pull-right">Open</a>
+      <% end %>
+    <span class="btn-group  pull-right">
+      <a href="#<%= @id %>/edit" class="btn btn-mini btn-info lsf-icon" title="edit">Edit</a>
+      <a href="<%= @url %>" class="btn btn-mini btn-primary lsf-icon" title="external">Open</a>
+    </span>
   </p>
 </div>
 
