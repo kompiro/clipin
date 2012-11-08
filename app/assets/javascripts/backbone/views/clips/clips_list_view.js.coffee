@@ -9,7 +9,7 @@ class Clipin.Views.Clips.ClipsListView extends Backbone.View
     "pageshow" : "pageshow"
     "click .next_clips" : "loadNext"
 
-  initialize: () ->
+  initialize:()->
 
   loadNext:(e)=>
     e.preventDefault()
@@ -53,19 +53,23 @@ class Clipin.Views.Clips.ClipsListView extends Backbone.View
     @options.clips.each(@addOne)
 
   add:(clip,clips,options)=>
-    @addOne(clip,options.index,clips.models)
+    @addOne(clip,options.index,clips.models,false)
 
-  addOne: (clip,index,clips) =>
-    if index is 0 or not clips[index - 1].same_updated_date(clip)
+  addOne: (clip,index,clips,all=true) =>
+    if all and (index is 0 or not clips[index - 1].same_updated_date(clip))
       separator = new Clipin.Views.Clips.DateSeparatorView({model:clip.toJSON().created_at})
       @el_clip_list().append(separator.render().el)
-
     view = new Clipin.Views.Clips.ClipView({model : clip})
-    @el_clip_list().append(view.render().el)
+    if index isnt 0 or all
+      @el_clip_list().append(view.render().el)
+    else
+      @el_clip_list().prepend(view.render().el)
 
   render: =>
-    $(@el).html(@template(title:@options.title))
+    $(@el).html(@template())
     @addAll()
+    newView = new Clipin.Views.Clips.NewView(collection:@options.clips)
+    $(@el).find('#new_clip').replaceWith(newView.render().el)
     return this
 
   pageshow:->
@@ -88,7 +92,7 @@ class Clipin.Views.Clips.ClipsListView extends Backbone.View
     $(@el).find('.next_clips')
 
   el_clip_list : ->
-    $(@el).find('.clip_list')
+    $(@el).find('#clip_list')
 
 class Clipin.Views.Clips.DateSeparatorView extends Backbone.View
   tagName: "div"

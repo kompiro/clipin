@@ -1,6 +1,7 @@
 <div class="content">
-  <h1><%= @title %></h1>
-  <div class="clip_list">
+  <div id="new_clip">
+  </div>
+  <div id="clip_list">
   </div>
   <a href='#' class="btn btn-large btn-block btn-primary next_clips">next clips</a>
   <div id="loading"></div>
