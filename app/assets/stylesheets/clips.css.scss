@@ -215,20 +215,33 @@ span.title {
 
 #menu {
   min-height: 1px;
+  .nav-list {
+    margin-bottom: 20px;
+  }
+}
+
+#url{
+  width:470px
 }
 
 @media screen and (max-width: 767px) {
   #menu {
     display:none;
   }
-  #menu.affix {
-    position: static;
-    width: auto;
-    top: 0;
+  #url{
+    width:287px;
   }
 }
 
-#pageslide { width: 200px; }
+#pageslide {
+  width: 200px;
+  overflow-y: auto;
+  overflow-x: none;
+  -webkit-overflow-scrolling: touch;
+  .well {
+    color: #333;
+  }
+}
 
 #social_buttons {
   clear: both;
