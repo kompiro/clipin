@@ -235,6 +235,9 @@ span.title {
 
 #pageslide {
   width: 200px;
+  overflow-y: auto;
+  overflow-x: none;
+  -webkit-overflow-scrolling: touch;
   .well {
     color: #333;
   }
