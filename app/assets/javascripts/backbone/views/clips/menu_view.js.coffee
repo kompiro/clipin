@@ -3,7 +3,7 @@ Clipin.Views.Clips ||= {}
 class Clipin.Views.Clips.MenuView extends Backbone.View
   template: JST["backbone/templates/clips/menu"]
 
-  el:"#menu"
+  el:"#menu-list"
 
   initialize:(opt)->
     @router = opt.router
