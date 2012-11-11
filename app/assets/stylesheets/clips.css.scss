@@ -228,14 +228,17 @@ span.title {
   #menu {
     display:none;
   }
-  #menu.affix {
-    position: static;
-    width: auto;
-    top: 0;
+  #url{
+    width:287px;
   }
 }
 
-#pageslide { width: 200px; }
+#pageslide {
+  width: 200px;
+  .well {
+    color: #333;
+  }
+}
 
 #social_buttons {
   clear: both;
