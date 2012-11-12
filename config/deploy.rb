@@ -1,18 +1,18 @@
+require "capistrano/ext/multistage"
+
 set :bundle_without,  [:development, :test, :osx]
 
 require "bundler/capistrano"
-set :host, "clipin.me"
-server "#{host}", :web, :app, :db, primary: true
+set :user, "deployer"
 
 set :application, "clipin"
-set :user, "deployer"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
 set :bundle_cmd, "/home/#{user}/.rbenv/shims/bundle"
 
 set :scm, "git"
-set :repository, "ssh://deployer@#{host}:5668/opt/repos/clipin"
+set :repository, "ssh://deployer@clipin.me:5668/opt/repos/clipin"
 set :branch, "master"
 
 default_run_options[:pty] = true
