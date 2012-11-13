@@ -13,7 +13,10 @@ gem 'rails-boilerplate'
 gem "rails-backbone"
 gem 'eco'
 gem 'doorkeeper'
-gem "twitter-bootstrap-rails",  "~> 2.1.3"
+
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails",  "2.1.6"
 gem 'spinjs-rails'
 gem 'addressable'
 # Use unicorn as the app server

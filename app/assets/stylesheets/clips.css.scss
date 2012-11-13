@@ -199,6 +199,7 @@ span.title {
   width: 26px;
   height: 26px;
   cursor: pointer;
+  color: #555;
 }
 #content {
   background: #EEE;
@@ -218,6 +219,10 @@ span.title {
   .nav-list {
     margin-bottom: 20px;
   }
+}
+
+a.calendar {
+  cursor: pointer;
 }
 
 #url{
