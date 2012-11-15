@@ -25,6 +25,7 @@ class Clipin.Views.Clips.NewView extends Backbone.View
   save: (e) ->
     e.preventDefault()
     e.stopPropagation()
+    @saving_element.show()
 
     @model.unset("errors")
     @model.save(null,
@@ -34,6 +35,7 @@ class Clipin.Views.Clips.NewView extends Backbone.View
           at:0
         )
         @model.clear()
+        @saving_element.hide()
 
       error: (clip, jqXHR) =>
         if jqXHR.status == 500
@@ -55,6 +57,12 @@ class Clipin.Views.Clips.NewView extends Backbone.View
     el = @.$("#url")
     el.on('postpaste',=>
       @model.set('url',el.val())).pasteEvents()
+    @
 
-
-    return this
+  pageshow:->
+    @saving_element = $(@el).find('#saving')
+    @saving_element.css(
+      color:'#333'
+    )
+    @saving_element.spin()
+    @saving_element.hide()
