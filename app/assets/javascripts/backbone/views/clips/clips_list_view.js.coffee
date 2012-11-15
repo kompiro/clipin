@@ -72,8 +72,10 @@ class Clipin.Views.Clips.ClipsListView extends Backbone.View
   render: =>
     $(@el).html(@template())
     @addAll()
-    newView = new Clipin.Views.Clips.NewView(collection:@options.clips)
-    $(@el).find('#new_clip').replaceWith(newView.render().el)
+    @newView = new Clipin.Views.Clips.NewView(
+      collection:@options.clips
+    )
+    $(@el).find('#new_clip').replaceWith(@newView.render().el)
     return this
 
   pageshow:->
@@ -86,6 +88,7 @@ class Clipin.Views.Clips.ClipsListView extends Backbone.View
     @el_next_clip().css('display','')
     @options.clips.bind('reset', @addAll)
     @options.clips.bind('add', @add)
+    @newView.pageshow()
 
   pagehide:->
     $(window).unbind('scroll',@scroll)
