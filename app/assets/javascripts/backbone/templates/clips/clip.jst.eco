@@ -1,18 +1,16 @@
 <div class="item">
-  <a href="#<%= @id %>/edit">
-  <span class="title">
+  <a class="title" href="<%= @url %>">
     <% if @pin: %>
     <img src='/assets/pin-icon.png' alt='pin' class="pin"/>
     <% end %>
     <%= @title %>
-  </span>
+  </a>
   <% if @image : %>
     <img src='<%= @image %>' alt='summary_image' class="clip_image" onerror="loadImgError(this)"/>
   <% end %>
   <p>
     <span class="description"><%= @description %></span>
-    </p>
-    </a>
+  </p>
   <p class='clip-footer'>
     <% if @updated_at: %>
       <span class="updated_at"><%= moment(@updated_at).format('HH:mm A') %></span>
