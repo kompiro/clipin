@@ -34,6 +34,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # for Heroku environment
 group :production do
