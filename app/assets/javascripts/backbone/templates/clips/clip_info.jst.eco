@@ -1,9 +1,9 @@
-    <% if @image:  %>
-    <p><img src='<%= @image %>' alt='summary_image' class="clip_image_detail" onerror="loadImgError(this)"/></p>
-    <% end %>
     <% if @title:  %>
     <p><a href="<%= @url %>"><%= @title %></a></p>
     <% else: %>
     <p><a href="<%= @url %>"><%= @url %></a></p>
+    <% end %>
+    <% if @image:  %>
+    <p><img src='<%= @image %>' alt='summary_image' class="clip_image_detail" onerror="loadImgError(this)"/></p>
     <% end %>
     <p><%= @description %></p>
