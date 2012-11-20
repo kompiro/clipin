@@ -5,21 +5,14 @@ class Clipin.Views.Clips.EditView extends Backbone.View
   id: "edit_clip"
 
   events :
-    "click .clip_pin"    : "pin"
-    "click .clip_unpin"  : "unpin"
+    "click .clip_save"   : "save"
     "click .clip_trash"  : "trash"
     "click .btn_back"    : "back"
     "pageshow"           : "pageshow"
 
-  pin : ->
-    @model.save pin : true,
-      success:->
-        @router.navigate("index",{trigger:true})
-
-  unpin : ->
-    @model.save pin : false,
-      success:->
-        @router.navigate("index",{trigger:true})
+  initialize : (options)->
+    @tags = options.tags
+    @router = options.router
 
   trash : ->
     @model.save trash : true,
@@ -27,33 +20,32 @@ class Clipin.Views.Clips.EditView extends Backbone.View
         model.collection.remove model
         @router.navigate("index",{trigger:true})
 
+  save:(e)->
+    e.preventDefault()
+    e.stopPropagation()
+    tags = $('#clip_tags').tagit('assignedTags')
+    @model.save tags : tags,
+      success:->
+        @router.navigate("index",{trigger:true})
+
   back : ->
     history.back()
 
   render : ->
     $(@el).html(@template(@model.toJSON()))
-    content = $(@el).find('#content')
-    content.oembed(@model.get('url'),
-      maxWidth:320
-      maxHeight:240
-      embedMethod: 'replace'
-      beforeEmbed:(oembedData)=>
-        content.find('.spinner').stop()
-        unless oembedData.code
-          info_view = new Clipin.Views.Clips.ClipInfoView(
-            model:@model
-          )
-          content.replaceWith(info_view.render().el)
-      afterEmbed: (oembedData)=>
-      onProviderNotFound: (container,resourceURL)=>
-        info_view = new Clipin.Views.Clips.ClipInfoView(
-          model:@model
-        )
-        content.replaceWith(info_view.render().el)
+    info_view = new Clipin.Views.Clips.ClipInfoView(
+      model:@model
     )
+    $(@el).find('#clip-info').replaceWith(info_view.render().el)
     return this
 
   pageshow : ->
+    availableTags = @tags.map((tag)->
+      tag.toJSON().name
+    )
+    $('#clip_tags').tagit(
+      availableTags: availableTags
+    )
     content = $(@el).find('#content')
     content.css(
       color: '#333'

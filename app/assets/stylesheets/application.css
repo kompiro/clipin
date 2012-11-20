@@ -14,5 +14,9 @@
  *= require jquery.oembed
  *= require jquery.pageslide
  *= require datepicker
+ *= require jquery.ui.core
+ *= require jquery.ui.theme
+ *= require jquery.ui.autocomplete
+ *= require jquery.tagit
  *= bootstrap_and_overrides
 */

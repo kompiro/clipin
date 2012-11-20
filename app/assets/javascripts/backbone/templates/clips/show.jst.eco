@@ -1,0 +1,37 @@
+  <div>
+    <div id="content" class='hidden-phone'>
+    </div>
+    <div id="content-footer">
+    <% if @updated_at: %>
+      <span class="updated_at"><%= moment(@updated_at).format('HH:mm A') %></span>
+    <% end %>
+    <% if @tags? and @tags.length: %>
+      <% for tag in @tags: %>
+        <span class='tag <%= tagColor(tag.color) %>'><a href="#index/<%= tag.name%>"><%= tag.name %></a></span>
+      <% end %>
+    <% end %>
+    </div>
+    <div id="social_buttons">
+      <ul class='list-inline-block'>
+        <li class='twitter'>
+          <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= @url %>" data-text="<%= @title %>" data-count='vertical'>Tweet</a>
+        </li>
+        <li class='facebook'>
+          <fb:like href="<%= @url %>" send="false" width="50" layout="box_count"></fb:like>
+        </li>
+        <li class='hatena'>
+        <a href="http://b.hatena.ne.jp/entry/<%= @url %>" class="hatena-bookmark-button" data-hatena-bookmark-layout="vertical" title="<%= @title %>"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="hatena" width="20" height="20" style="border: none;" /></a>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <a href="<%= @url %>" class="btn btn-block btn-large btn-primary lsf-icon" title="external">Open</a>
+      <button class='btn btn-block btn-large btn-inverse lsf-icon clip_trash' title='trash'>Trash</button>
+      <% unless @pin: %>
+      <button class="btn btn-block btn-large btn-warning lsf-icon clip_pin" title="pin">Pin</button>
+      <% else: %>
+      <button class="btn btn-block btn-large btn-warning lsf-icon clip_unpin" title='pin'>Unpin</button>
+      <% end %>
+      <button class="btn btn-block btn-large lsf-icon btn_back" title="undo">Back</button>
+    </div>
+  </div><!-- /content -->

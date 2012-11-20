@@ -265,3 +265,16 @@ div#loading ,div#saving {
 .clip p {
   margin: 0px;
 }
+
+ul.tagit > li.tagit-new {
+  input {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+  }
+  input:focus {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+  }
+}
