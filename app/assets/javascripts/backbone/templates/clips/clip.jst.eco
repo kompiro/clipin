@@ -1,18 +1,20 @@
 <div class="item">
-  <a href="#<%= @id %>/edit">
-  <span class="title">
+  <a class="title" href="<%= @url %>">
     <% if @pin: %>
     <img src='/assets/pin-icon.png' alt='pin' class="pin"/>
     <% end %>
-    <%= @title %>
-  </span>
+    <% if @title:  %>
+    <p><%= @title %></p>
+    <% else: %>
+    <p><%= @url %></p>
+    <% end %>
+  </a>
   <% if @image : %>
     <img src='<%= @image %>' alt='summary_image' class="clip_image" onerror="loadImgError(this)"/>
   <% end %>
   <p>
     <span class="description"><%= @description %></span>
-    </p>
-    </a>
+  </p>
   <p class='clip-footer'>
     <% if @updated_at: %>
       <span class="updated_at"><%= moment(@updated_at).format('HH:mm A') %></span>
@@ -23,6 +25,7 @@
       <% end %>
       <% end %>
     <span class="btn-group  pull-right">
+      <a href="#<%= @id %>" class="btn btn-mini lsf-icon hidden-phone" title="info">Show</a>
       <a href="#<%= @id %>/edit" class="btn btn-mini btn-info lsf-icon" title="edit">Edit</a>
       <a href="<%= @url %>" class="btn btn-mini btn-primary lsf-icon" title="external">Open</a>
     </span>

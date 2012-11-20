@@ -223,7 +223,26 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     @changePage(page)
 
   show: (id) ->
-    @edit id
+    clip = @clips.get(id)
+    if clip?
+      @show_view clip
+      return
+    clip = new Clipin.Models.Clip(id:id)
+    clip.fetch
+      success:(clip)=>
+        @show_view clip
+
+  show_view: (clip)->
+    page = new Clipin.Views.Clips.ShowView(
+      model: clip
+      tags: @tags
+      router : @
+    )
+    @changePage(page)
+    try
+      twttr.widgets.load()
+      FB.XFBML.parse()
+    catch error
 
   edit: (id) ->
     clip = @clips.get(id)
@@ -238,6 +257,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
   show_edit_view: (clip)->
     page = new Clipin.Views.Clips.EditView(
       model: clip
+      tags: @tags
       router : @
     )
     @changePage(page)

@@ -152,7 +152,8 @@ class ClipsController < ApplicationController
     loaded_tags = []
     return loaded_tags if params[:clip][:tags].nil?
     params[:clip][:tags].each do |tag|
-      loaded_tags << Tag.find(tag[:id])
+      t =  Tag.find_or_create_by_name_and_user_id(tag,current_user.id)
+      loaded_tags << t
     end
     loaded_tags
   end

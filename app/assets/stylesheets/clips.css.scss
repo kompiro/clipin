@@ -131,16 +131,6 @@ img.clip_image_detail {
   zoom: 1;
 }
 
-span.title {
-  font-size: 14px;
-  font-weight: bold;
-  display: block;
-  margin: .3em 0;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  line-height:16px;
-}
 .clip {
   display: block;
   margin: 0;
@@ -156,6 +146,16 @@ span.title {
   }
   a:hover{
      text-decoration: none;
+  }
+  .title {
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+    margin: .3em 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height:16px;
   }
   .description {
     font-size: 12px;
@@ -264,4 +264,17 @@ div#loading ,div#saving {
 }
 .clip p {
   margin: 0px;
+}
+
+ul.tagit > li.tagit-new {
+  input {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+  }
+  input:focus {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+  }
 }

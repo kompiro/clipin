@@ -14,6 +14,11 @@
 //= require moment
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.core
+//= require jquery.ui.widget
+//= require jquery.ui.autocomplete
+//= require jquery.effects.core
+//= require jquery.effects.blind
 //= require jquery.oembed
 //= require jquery.postpaste
 //= require spin
@@ -25,4 +30,5 @@
 //= require backbone
 //= require backbone_rails_sync
 //= require backbone_datalink
+//= require tag-it
 //= require_tree .
