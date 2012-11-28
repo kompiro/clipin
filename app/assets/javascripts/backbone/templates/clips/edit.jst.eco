@@ -17,7 +17,7 @@
   <% end %>
   </div>
   <div>
-    <button class="btn-primary btn-block btn-large lsf-icon clip_save" title="save">Save</button>
-    <button class="btn btn-block btn-large lsf-icon btn_back" title="undo">Back</button>
+    <button class="btn-primary btn-block btn-large clip_save">Save</button>
+    <button class="btn btn-block btn-large btn_back">Back</button>
   </div>
 </div><!-- /content -->
