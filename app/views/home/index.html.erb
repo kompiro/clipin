@@ -1,45 +1,50 @@
+<div id="eyecatch">
   <div class="container">
-    <div class="hero-unit">
-      <h1>Clipin</h1>
-      <h2>シンプルだけど十分なブックマークサービス</h2>
-      <a class="btn btn-primary btn-large" href="/auth/facebook">
-        facebookでログイン
-      </a>
-      <a class="btn btn-info btn-large" href="/auth/google_oauth2">
-        Googleでログイン
-      </a>
-      </p>
+    <div class="row">
+      <div class="span5">
+        <h1><i class="icon-paper-clip"></i>Clipin</h1>
+      </div>
+      <div class="span7">
+        <h3>シンプルだけど十分なブックマークサービス</h3>
+        <a class="btn btn-primary btn-large icon-facebook" href="/auth/facebook">
+          facebookでログイン
+        </a>
+        <a class="btn btn-info btn-large icon-google-plus" href="/auth/google_oauth2">
+          Googleでログイン
+        </a>
+      </div>
     </div>
   </div>
+</div>
   <div class="container">
   <%= render "alert" %>
 </div>
-  <div class="container">
+  <div class="container" id="why">
     <div class="row">
       <div class="span4">
-        <h3><img src="/images/glyphicons_193_circle_ok.png" alt="ok" />ワンクリック</h3>
+        <h3><i class="icon-hand-up icon-large"></i>ワンクリック</h3>
         <p>後で見たい情報をクリップ。クリップした順に並びます。昔クリップしたサイトでも近々見るのであればもう一度クリップ！</p>
       </div>
       <div class="span4">
-      <h3><img src="/images/glyphicons_066_tags.png" alt="tags" />タグ & <img src="/images/glyphicons_320_filter.png" alt="filter" /> フィルタ</h3>
-        <p>フィルタを設定することで、自動でタグづけします。</p>
+        <h3><i class="icon-tag icon-large"></i>タグ & <i class="icon-search icon-large"></i>検索</h3>
+        <p>自動でタグづけを行い、日付などで検索できます。</p>
       </div>
       <div class="span4">
-        <h3><img src="/images/glyphicons_402_youtube.png" alt="youtube" />埋め込み</h3>
+        <h3><i class="icon-play-circle icon-large"></i>埋め込み</h3>
         <p>Youtubeなど、埋め込みに対応したサイトであればクリップしたコンテンツを埋め込みます。</p>
       </div>
     </div>
     <div class="row">
       <div class="span4">
-        <h3><img src="/images/glyphicons_027_search.png" alt="search" />検索</h3>
-        <p>タイトルでの検索だけでなく、日付やタグでの検索にも対応しました。</p>
+        <h3><i class="icon-thumbs-up icon-large"></i>スマホ & タブレット</h3>
+        <p>スマホでもタブレットでも見やすいように調整しています。</p>
       </div>
       <div class="span4">
-      <h3><img src="/images/glyphicons_203_lock.png" alt="privacy" />プライバシー</h3>
+      <h3><i class="icon-key icon-large"></i>プライバシー</h3>
         <p>保存するデータはURLとサイトの要約のみ。アカウント情報もユーザー識別のための情報のみ保存し、名前やメールアドレス保存しません。</p>
       </div>
       <div class="span4">
-        <h3><img src="/images/glyphicons_410_facebook.png" alt="facebook" />ソーシャルボタン</h3>
+        <h3><i class="icon-facebook-sign icon-large"></i>ソーシャルボタン</h3>
         <p>facebook等のソーシャルボタンにも対応し、気に入ったらその場でソーシャルストリームに流せます。</p>
       </div>
     </div>
