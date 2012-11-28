@@ -6,6 +6,15 @@ html,
 body {
   height: 100%;
 }
+body {
+  background-image: url(/images/cream_dust.png);
+}
+
+#eyecatch {
+  background: #eeeeee;
+  padding: 70px 0;
+  margin: -40px 0 20px;
+}
 
 #wrap {
   min-height: 100%;
