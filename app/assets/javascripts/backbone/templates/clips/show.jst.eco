@@ -25,13 +25,13 @@
       </ul>
     </div>
     <div>
-      <a href="<%= @url %>" class="btn btn-block btn-large btn-primary lsf-icon" title="external">Open</a>
-      <button class='btn btn-block btn-large btn-inverse lsf-icon clip_trash' title='trash'>Trash</button>
+      <a href="<%= @url %>" class="btn btn-block btn-large btn-primary">Open</a>
+      <button class='btn btn-block btn-large btn-inverse clip_trash'>Trash</button>
       <% unless @pin: %>
-      <button class="btn btn-block btn-large btn-warning lsf-icon clip_pin" title="pin">Pin</button>
+      <button class="btn btn-block btn-large btn-warning clip_pin">Pin</button>
       <% else: %>
-      <button class="btn btn-block btn-large btn-warning lsf-icon clip_unpin" title='pin'>Unpin</button>
+      <button class="btn btn-block btn-large btn-warning clip_unpin">Unpin</button>
       <% end %>
-      <button class="btn btn-block btn-large lsf-icon btn_back" title="undo">Back</button>
+      <button class="btn btn-block btn-large btn_back">Back</button>
     </div>
   </div><!-- /content -->

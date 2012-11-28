@@ -25,9 +25,9 @@
       <% end %>
       <% end %>
     <span class="btn-group  pull-right">
-      <a href="#<%= @id %>" class="btn btn-mini lsf-icon hidden-phone" title="info">Show</a>
-      <a href="#<%= @id %>/edit" class="btn btn-mini btn-info lsf-icon" title="edit">Edit</a>
-      <a href="<%= @url %>" class="btn btn-mini btn-primary lsf-icon" title="external">Open</a>
+      <a href="#<%= @id %>/edit" class="btn btn-mini btn-info "><i class="icon-edit"></i>Edit</a>
+      <a href="#<%= @id %>" class="btn btn-mini hidden-phone"><i class="icon-info-sign"></i>Show</a>
+      <a href="<%= @url %>" class="btn btn-mini btn-primary"><i class="icon-external-link"></i>Open</a>
     </span>
   </p>
 </div>
