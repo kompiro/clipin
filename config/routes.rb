@@ -15,6 +15,7 @@ Clipin::Application.routes.draw do
   get '/g/:url' => 'clips#create_by_bookmarklet',:constraints => { :url => /.*/ }
 
   root :to => "home#index"
+  match '/howto', to: 'home#howto'
   match '/logout', to: 'sessions#delete'
   match '/auth/:provider/callback', to: 'sessions#create'
 

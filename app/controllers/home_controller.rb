@@ -4,4 +4,6 @@ class HomeController < ApplicationController
   def index
     redirect_to clips_url if current_user.present?
   end
+  def howto
+  end
 end
