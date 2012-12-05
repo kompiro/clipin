@@ -13,8 +13,8 @@
   color: gray;
   vertical-align: baseline;
 }
-$clip_image_width: 320px;
-$clip_image_height: 240px;
+$clip_image_width: 300px;
+$clip_image_height: 225px;
 img.clip_image {
   max-width: $clip_image_width;
   max-height: $clip_image_height;
