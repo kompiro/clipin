@@ -4,13 +4,13 @@
     <img src='/assets/pin-icon.png' alt='pin' class="pin"/>
     <% end %>
     <% if @title:  %>
-    <p><%= @title %></p>
+    <%= @title %>
     <% else: %>
-    <p><%= @url %></p>
+    <%= @url %>
     <% end %>
   </a>
   <% if @image : %>
-    <img src='<%= @image %>' alt='summary_image' class="clip_image" onerror="loadImgError(this)"/>
+    <img src='<%= @image %>' alt='summary_image' class="clip_image thumbnail" onerror="loadImgError(this)"/>
   <% end %>
   <p>
     <span class="description"><%= @description %></span>
