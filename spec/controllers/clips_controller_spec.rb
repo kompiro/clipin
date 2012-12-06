@@ -47,15 +47,15 @@ describe ClipsController do
       before do
         create(:clip)
       end
-      it "assigns first clips as @clips" do
+      it "assigns first clips as @clips",:not_trashed => true do
         get :index, {}, valid_session
-        assigns(:clips).should eq(Clip.user(@user).page)
+        assigns(:clips).should eq(Clip.user(@user).not_trashed.page)
         assigns(:tags).should eq(Tag.all)
         flash[:notice].should be_nil
       end
       it "assigns second clips as @clips" do
         get :index, {:page => 2}, valid_session
-        assigns(:clips).should eq(Clip.user(@user).page(2))
+        assigns(:clips).should eq(Clip.user(@user).not_trashed.page(2))
         flash[:notice].should be_nil
       end
     end
@@ -80,7 +80,7 @@ describe ClipsController do
       end
       it "assigns pinned clips as @clips" do
         get :index, {:pinned => true}, valid_session
-        assigns(:clips).should eq(Clip.user(@user).pinned.page)
+        assigns(:clips).should eq(Clip.user(@user).not_trashed.pinned.page)
         flash[:notice].should be_nil
       end
     end
@@ -94,7 +94,7 @@ describe ClipsController do
       end
       it "assigns tagged clips as @clips" do
         get :index, {:tag => @tag.name}, valid_session
-        assigns(:clips).should eq(Clip.user(@user).tag(@tag).page)
+        assigns(:clips).should eq(Clip.user(@user).not_trashed.tag(@tag).page)
         flash[:notice].should be_nil
       end
     end
@@ -105,7 +105,7 @@ describe ClipsController do
       end
       it 'assigns updated_at clips as @clips' do
         get :index, {:date => @date}, valid_session
-        assigns(:clips).should eq(Clip.user(@user).updated_at(@date).page)
+        assigns(:clips).should eq(Clip.user(@user).not_trashed.updated_at(@date).page)
         flash[:notice].should be_nil
       end
     end

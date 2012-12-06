@@ -30,6 +30,7 @@ class Clip < ActiveRecord::Base
   }
   scope :pinned,  -> {where(:pin => true)}
   scope :trashed, -> {where(:trash => true)}
+  scope :not_trashed, -> {where(:trash => false)}
 
   def initialize(*args)
     super()
