@@ -9,12 +9,14 @@ class ClipsController < ApplicationController
     updated_at = params[:date]
 
     @clips = current_user.clips
+    if trashed
+      @clips = @clips.trashed
+    else
+      @clips = @clips.not_trashed
+    end
     if tag.present?
       @tag = Tag.find_by_name(tag)
       @clips = @clips.tag(@tag)
-    end
-    if trashed
-      @clips = @clips.trashed
     end
     if pinned
       @clips = @clips.pinned

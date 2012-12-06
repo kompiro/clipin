@@ -71,6 +71,13 @@ describe Clip do
         subject[0].trash.should be_true
       end
     end
+    context 'not_trashed',:not_trashed => true do
+      subject{Clip.not_trashed}
+      its(:length){should eq 18}
+      it 'should be not trashed' do
+        subject[0].trash.should be_false
+      end
+    end
     context 'user',:user => true do
       subject{Clip.user @user}
       its(:length){should eq 19}
