@@ -1,4 +1,7 @@
 class ClipsController < ApplicationController
+
+  @@mutex = Mutex.new
+
   # GET /clips
   # GET /clips.json
   def index
@@ -179,10 +182,14 @@ class ClipsController < ApplicationController
     end
     @clip = Clip.new({:url => url})
     @clip.user = current_user
+    loaded = false
 
     respond_to do |format|
-      if @clip.load and @clip.save
-        @clip.tagging
+      @@mutex.synchronize do
+        loaded = @clip.load and @clip.save
+        @clip.tagging if loaded
+      end
+      if loaded
         format.html { redirect_to clips_url, notice: 'Clip was successfully created.' }
         format.json { render json: @clip, status: :created, location: @clip }
       else
