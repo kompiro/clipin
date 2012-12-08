@@ -20,7 +20,10 @@ gem "twitter-bootstrap-rails",  "2.1.6"
 gem 'spinjs-rails'
 gem 'addressable'
 # Use unicorn as the app server
-gem 'unicorn'
+#gem 'unicorn'
+
+# Use puma as the app server
+gem 'puma'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -39,10 +42,6 @@ gem 'jquery-ui-rails'
 # for Heroku environment
 group :production do
   gem 'pg' , '~> 0.14.1'
-end
-
-group :development do
-  gem 'thin'
 end
 
 group :development, :test do
