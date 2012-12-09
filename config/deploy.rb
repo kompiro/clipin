@@ -30,7 +30,7 @@ namespace :deploy do
   %w[start stop restart].each do |command|
     desc "#{command} puma server"
     task command, roles: :app, except: {no_release: true} do
-      run "/etc/init.d/puma_#{application} #{command}"
+      run "/etc/init.d/puma #{command}"
     end
   end
 
