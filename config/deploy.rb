@@ -36,7 +36,7 @@ namespace :deploy do
 
   task :setup_config, roles: :app do
     sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
-    sudo "ln -nfs #{current_path}/config/puma_init.sh /etc/init.d/puma_#{application}"
+    sudo "ln -nfs #{current_path}/config/puma_init.sh /etc/init.d/puma"
     sudo "ln -nfs #{current_path}/config/puma.conf /etc/puma.conf"
     sudo "ln -nfs #{current_path}/config/run-puma /usr/local/bin/run-puma"
     run "mkdir -p #{shared_path}/config"
@@ -47,7 +47,7 @@ namespace :deploy do
 
   task :setup_puma_config, roles: :app do
     sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
-    sudo "ln -nfs #{current_path}/config/puma_init.sh /etc/init.d/puma_#{application}"
+    sudo "ln -nfs #{current_path}/config/puma_init.sh /etc/init.d/puma"
     sudo "ln -nfs #{current_path}/config/puma.conf /etc/puma.conf"
     sudo "ln -nfs #{current_path}/config/run-puma /usr/local/bin/run-puma"
     run "mkdir -p #{shared_path}/config"
