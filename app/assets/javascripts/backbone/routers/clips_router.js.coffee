@@ -4,20 +4,13 @@ class Clipin.Routers.ClipsState
     @clips = args.clips
     @page = 1
     @loading = false
-
-  title:->
-    return 'All'
+    @title = 'All'
+    @url = '/clips'
 
   fetch_args:()->
-    add = @page > 1
-    url = '/clips'
-    data =
-      page : @page if @page isnt 1
-    @page = @page + 1
     result =
-      url  : url
-      data : data
-      add  : add
+      data :
+        page : @page if @page isnt 1
     return result
 
   fetch:(@callback)->
@@ -27,12 +20,14 @@ class Clipin.Routers.ClipsState
       @loading = false
       @callback clips if @callback?
 
+    add = @page > 1
     args = @fetch_args()
+    @page = @page + 1
     @clips.fetch
       cache   : false
-      url     : args.url
+      url     : @url
       data    : args.data
-      add     : args.add
+      add     : add
       success : success
 
 class Clipin.Routers.TagState extends Clipin.Routers.ClipsState
@@ -40,21 +35,13 @@ class Clipin.Routers.TagState extends Clipin.Routers.ClipsState
   constructor:(args)->
     @tag = args.tag
     super(args)
-
-  title:->
-    return "Tag: #{@tag}"
+    @title = "Tag: #{@tag}"
 
   fetch_args:()->
-    add = @page > 1
-    url = '/clips'
-    data =
-      tag: @tag
-      page : @page if @page isnt 1
-    @page = @page + 1
     result =
-      url  : url
-      data : data
-      add  : add
+      data :
+        tag: @tag
+        page : @page if @page isnt 1
     return result
 
 class Clipin.Routers.DateState extends Clipin.Routers.ClipsState
@@ -62,57 +49,40 @@ class Clipin.Routers.DateState extends Clipin.Routers.ClipsState
   constructor:(args)->
     @date = moment(args.date,'YYYY/MM/DD')
     super(args)
-
-  title:->
-    return "Date: #{moment(@date).format('YYYY-MM-DD')}"
+    @title = "Date: #{moment(@date).format('YYYY-MM-DD')}"
 
   fetch_args:()->
-    add = @page > 1
-    url = '/clips'
-    data =
-      date: @date.format('YYYY/MM/DD')
-      page : @page if @page isnt 1
-    @page = @page + 1
     result =
-      url  : url
-      data : data
-      add  : add
+      data :
+        date : @date.format('YYYY/MM/DD')
+        page : @page if @page isnt 1
     return result
 
 class Clipin.Routers.TrashState extends Clipin.Routers.ClipsState
 
-  title:->
-    return "Trashed"
+  constructor:(args)->
+    super(args)
+    @title = "Trashed"
 
   fetch_args:()->
-    add = @page > 1
-    url = '/clips'
     data =
       trashed : true
       page : @page if @page isnt 1
-    @page = @page + 1
     result =
-      url  : url
       data : data
-      add  : add
     return result
 
 class Clipin.Routers.PinState extends Clipin.Routers.ClipsState
 
-  title:->
-    return "Pinned"
+  constructor:(args)->
+    super(args)
+    @title = "Pinned"
 
   fetch_args:()->
-    add = @page > 1
-    url = '/clips'
-    data =
-      pinned : true
-      page : @page if @page isnt 1
-    @page = @page + 1
     result =
-      url  : url
-      data : data
-      add  : add
+      data :
+        pinned : true
+        page : @page if @page isnt 1
     return result
 
 class Clipin.Routers.SearchState extends Clipin.Routers.ClipsState
@@ -120,21 +90,14 @@ class Clipin.Routers.SearchState extends Clipin.Routers.ClipsState
   constructor:(args)->
     @query = args.query
     super(args)
-
-  title:->
-    return "Search: '#{@query}'"
+    @title = "Search: '#{@query}'"
+    @url = '/clips/search'
 
   fetch_args:()->
-    add = @page > 1
-    url = '/clips/search'
-    data =
-      q:@query
-      page : @page if @page isnt 1
-    @page = @page + 1
     result =
-      url  : url
-      data : data
-      add  : add
+      data :
+        q:@query
+        page : @page if @page isnt 1
     return result
 
 class Clipin.Routers.ClipsRouter extends Backbone.Router

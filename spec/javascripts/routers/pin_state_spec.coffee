@@ -13,17 +13,15 @@ describe 'PinState',->
     expect(@state.loading).toBe(false)
   it 'has page attribute', ->
     expect(@state.page).toBe(1)
-  it 'returns specific date when call title',->
-    expect(@state.title()).toBe('Pinned')
+  it 'returns specific late when call title',->
+    expect(@state.title).toBe('Pinned')
+  it 'returns url',->
+    expect(@state.url).toBe('/clips')
 
   describe 'fetch_args',->
     describe 'page is 1',->
       beforeEach ->
         @args = @state.fetch_args()
-      it 'returns url',->
-        expect(@args.url).toBe('/clips')
-      it 'returns add is false',->
-        expect(@args.add).toBe(false)
       it 'returns not null data',->
         expect(@args.data).not.toEqual(null)
       describe 'data',->
@@ -37,10 +35,6 @@ describe 'PinState',->
       beforeEach ->
         @state.page = 2
         @args = @state.fetch_args()
-      it 'returns url',->
-        expect(@args.url).toBe('/clips')
-      it 'returns add is false',->
-        expect(@args.add).toBe(true)
       it 'does not return null data',->
         expect(@args.data).not.toEqual(null)
       describe 'data',->
