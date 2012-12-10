@@ -83,6 +83,12 @@ describe 'ClipsRouter routes',->
     expect(@routeSpy).toHaveBeenCalled()
     expect(@routeSpy).toHaveBeenCalledWith('articles')
 
+  it 'fires the trashed route',->
+    @router.bind 'route:trashed',@routeSpy
+    @router.navigate 'trashed',true
+    expect(@routeSpy).toHaveBeenCalled()
+    expect(@routeSpy).toHaveBeenCalledWith()
+
   describe 'index handler',->
 
     it 'creates a Clip list collection',->
