@@ -1,21 +1,20 @@
 #= require backbone/routers/clips_router
 
-describe 'DateState',->
+describe 'TrashState',->
   beforeEach ->
     @collection = new Backbone.Collection()
     @collection.url = '/clips'
     @collection.model = Clipin.Models.Clip
 
-    @state = new Clipin.Routers.DateState
+    @state = new Clipin.Routers.TrashState
       clips:@collection
-      date:"2012/11/4"
 
   it 'has loading attribute',->
     expect(@state.loading).toBe(false)
   it 'has page attribute', ->
     expect(@state.page).toBe(1)
   it 'returns specific date when call title',->
-    expect(@state.title).toBe('Date: 2012-11-04')
+    expect(@state.title).toBe('Trashed')
   it 'returns url',->
     expect(@state.url).toBe('/clips')
 
@@ -28,8 +27,8 @@ describe 'DateState',->
       describe 'data',->
         beforeEach ->
           @data = @args.data
-        it 'has date',->
-          expect(@data.date).toEqual("2012/11/04")
+        it 'has trash',->
+          expect(@data.trashed).toBe(true)
         it 'has not page',->
           expect(@data.page).toBe(undefined)
     describe 'page is 2',->
@@ -41,8 +40,8 @@ describe 'DateState',->
       describe 'data',->
         beforeEach ->
           @data = @args.data
-        it 'has date',->
-          expect(@data.date).toEqual("2012/11/04")
+        it 'has trash',->
+          expect(@data.trashed).toBe(true)
         it 'has page',->
           expect(@data.page).toBe(2)
 
@@ -59,14 +58,3 @@ describe 'DateState',->
         callback = ->
         @state.fetch(callback)
         expect(@collection.fetch).toHaveBeenCalled()
-  describe 'date format',->
-    describe 'YYYY-MM-DD',->
-      beforeEach ->
-        @state = new Clipin.Routers.DateState
-          clips:@collection
-          date:"2012-11-4"
-        @args = @state.fetch_args()
-        @data = @args.data
-      it 'has date',->
-        expect(@data.date).toEqual("2012/11/04")
-

@@ -15,16 +15,14 @@ describe 'SearchState',->
   it 'has page attribute', ->
     expect(@state.page).toBe(1)
   it 'returns All when call title',->
-    expect(@state.title()).toBe("Search: 'test'")
+    expect(@state.title).toBe("Search: 'test'")
+  it 'returns url',->
+    expect(@state.url).toBe('/clips/search')
 
   describe 'fetch_args',->
     describe 'page is 1',->
       beforeEach ->
         @args = @state.fetch_args()
-      it 'returns url',->
-        expect(@args.url).toBe('/clips/search')
-      it 'returns add is false',->
-        expect(@args.add).toBe(false)
       it 'does not return null data',->
         expect(@args.data).not.toEqual(null)
       describe 'data',->
@@ -38,10 +36,6 @@ describe 'SearchState',->
       beforeEach ->
         @state.page = 2
         @args = @state.fetch_args()
-      it 'returns url',->
-        expect(@args.url).toBe('/clips/search')
-      it 'returns add is false',->
-        expect(@args.add).toBe(true)
       it 'does not return null data',->
         expect(@args.data).not.toEqual(null)
       describe 'data',->

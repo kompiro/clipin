@@ -1,7 +1,7 @@
 <div class="item">
   <a class="title" href="<%= @url %>">
     <% if @pin: %>
-    <img src='/assets/pin-icon.png' alt='pin' class="pin"/>
+    <i class="icon-pushpin"></i>
     <% end %>
     <% if @title:  %>
     <%= @title %>

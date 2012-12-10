@@ -13,26 +13,20 @@ describe 'ClipsState',->
   it 'has page attribute', ->
     expect(@state.page).toBe(1)
   it 'returns All when call title',->
-    expect(@state.title()).toBe('All')
+    expect(@state.title).toBe('All')
+  it 'returns url',->
+    expect(@state.url).toBe('/clips')
 
   describe 'fetch_args',->
     describe 'page is 1',->
       beforeEach ->
         @args = @state.fetch_args()
-      it 'returns url',->
-        expect(@args.url).toBe('/clips')
-      it 'returns add is false',->
-        expect(@args.add).toBe(false)
       it 'returns null data',->
         expect(@args.data).toEqual(null)
     describe 'page is 2',->
       beforeEach ->
         @state.page = 2
         @args = @state.fetch_args()
-      it 'returns url',->
-        expect(@args.url).toBe('/clips')
-      it 'returns add is false',->
-        expect(@args.add).toBe(true)
       it 'does not return null data',->
         expect(@args.data).not.toEqual(null)
       describe 'data',->
