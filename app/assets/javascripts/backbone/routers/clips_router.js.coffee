@@ -97,6 +97,24 @@ class Clipin.Routers.TrashState extends Clipin.Routers.ClipsState
       add  : add
     return result
 
+class Clipin.Routers.PinState extends Clipin.Routers.ClipsState
+
+  title:->
+    return "Pinned"
+
+  fetch_args:()->
+    add = @page > 1
+    url = '/clips'
+    data =
+      pinned : true
+      page : @page if @page isnt 1
+    @page = @page + 1
+    result =
+      url  : url
+      data : data
+      add  : add
+    return result
+
 class Clipin.Routers.SearchState extends Clipin.Routers.ClipsState
 
   constructor:(args)->
@@ -154,6 +172,7 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     "conf"          : "conf"
     "extension"     : "extension"
     "trashed"       : "trashed"
+    "pinned"        : "pinned"
     ":id/edit"      : "edit"
     ":id"           : "show"
 
@@ -232,12 +251,25 @@ class Clipin.Routers.ClipsRouter extends Backbone.Router
     )
 
   trashed: ->
-    @menuView.active('trash')
+    @menuView.active('trashed')
     @listView = new Clipin.Views.Clips.ClipsListView(
       clips: @clips
       tags: @tags
     )
     @listView.setState new Clipin.Routers.TrashState(
+      clips : @clips
+    )
+    @listView.fetch(=>
+      @showListView()
+    )
+
+  pinned: ->
+    @menuView.active('pinned')
+    @listView = new Clipin.Views.Clips.ClipsListView(
+      clips: @clips
+      tags: @tags
+    )
+    @listView.setState new Clipin.Routers.PinState(
       clips : @clips
     )
     @listView.fetch(=>

@@ -2,4 +2,5 @@
 <li class="visible-phone"><a href='#conf'><i class="icon-cog"></i>Setting</a></li>
 <li class="visible-phone"><a href='/logout'><i class="icon-minus-sign"></i>Logout</a></li>
 <li><a href='#trashed'><i class="icon-trash"></i>Trashed</a></li>
+<li><a href='#pinned'><i class="icon-pushpin"></i>Pinned</a></li>
 <li class="nav-header menu-tags"><i class="icon-tag"></i>Tags</li>
