@@ -119,7 +119,12 @@ class ClipsController < ApplicationController
 
   def create_by_bookmarklet
     url =  params[:url]
-    do_create(url)
+    do_create(url,true)
+    respond_to do |format|
+      format.js { render action: "bookmarklet",layout: false }
+      format.html { render text: "nop"}
+    end
+    return
   end
 
   # PUT /clips/1
@@ -163,13 +168,14 @@ class ClipsController < ApplicationController
     loaded_tags
   end
 
-  def do_create(url)
+  def do_create(url,jump_render=false)
     url = recover_url url
     url_info = UrlInfo.find_by_url url
     unless url_info.nil?
       @clip = Clip.find_by_url_info_id_and_user_id url_info.id,current_user.id
       unless @clip.nil?
         @clip.clip_count = @clip.clip_count + 1
+        return if jump_render
         respond_to do |format|
           if @clip.save
             format.json { render json: @clip, status: :ok, location: @clip }
@@ -184,11 +190,12 @@ class ClipsController < ApplicationController
     @clip.user = current_user
     loaded = false
 
+    @@mutex.synchronize do
+      loaded = @clip.load and @clip.save
+      @clip.tagging if loaded
+    end
+     return if jump_render
     respond_to do |format|
-      @@mutex.synchronize do
-        loaded = @clip.load and @clip.save
-        @clip.tagging if loaded
-      end
       if loaded
         format.html { redirect_to clips_url, notice: 'Clip was successfully created.' }
         format.json { render json: @clip, status: :created, location: @clip }
