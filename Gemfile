@@ -67,17 +67,6 @@ group :development, :test do
   gem 'simplecov-rcov', :require => false
   gem 'ci_reporter'
 
-  # spork
-  gem 'spork', '~> 0.9.0.rc'
-
-  # guard
-  gem 'rb-fsevent'
-  gem 'guard-spork'
-  gem 'guard-rspec'
-  gem 'guard-cucumber'
-
-  # notification
-  gem 'growl', :require => false if RUBY_PLATFORM =~ /darwin/i
   # Deploy with Capistrano
   gem 'capistrano'
   gem 'capistrano-ext'
