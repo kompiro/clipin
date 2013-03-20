@@ -160,7 +160,7 @@ describe ClipsController do
     end
   end
 
-  describe "GET create_by_bookmarklet" do
+  describe "GET create_by_bookmarklet",:bookmarklet => true do
     shared_examples_for 'acceptable attributes for create_by_bookmarklet' do
       it "creates a new Clip" do
         expect {
@@ -176,7 +176,7 @@ describe ClipsController do
 
       it "redirects to the created clip" do
         get :create_by_bookmarklet, attributes, valid_session
-        response.should redirect_to(clips_path)
+        response.should be_success
       end
       describe "already created params" do
         before do
@@ -190,7 +190,7 @@ describe ClipsController do
           }.to change(Clip, :count).by(0)
         end
 
-        it "updates clip_count" do
+        it "updates clip_count",:target => true do
           get :create_by_bookmarklet, attributes, valid_session
           Clip.find(@clip.id).clip_count.should eq(2)
         end
@@ -206,13 +206,13 @@ describe ClipsController do
         let(:attributes){valid_attributes}
       end
     end
-    describe "with recoverable http attributes" => true do
+    describe "with recoverable http attributes" do
       it_should_behave_like 'acceptable attributes for create_by_bookmarklet' do
         let(:init_attributes){valid_attributes}
         let(:attributes){recoverable_http_attributes}
       end
     end
-    describe "with recoverable https attributes",:filter => true do
+    describe "with recoverable https attributes" do
       it_should_behave_like 'acceptable attributes for create_by_bookmarklet' do
         let(:init_attributes){valid_https_attributes}
         let(:attributes){recoverable_https_attributes}
@@ -231,7 +231,7 @@ describe ClipsController do
         # Trigger the behavior that occurs when invalid params are submitted
         Clip.any_instance.stub(:save).and_return(false)
         get :create_by_bookmarklet, {:url => ''}, valid_session
-        response.should redirect_to(clips_path)
+        response.should be_success
       end
     end
   end

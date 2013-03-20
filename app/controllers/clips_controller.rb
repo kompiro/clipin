@@ -175,7 +175,10 @@ class ClipsController < ApplicationController
       @clip = Clip.find_by_url_info_id_and_user_id url_info.id,current_user.id
       unless @clip.nil?
         @clip.clip_count = @clip.clip_count + 1
-        return if jump_render
+        if jump_render
+          @clip.save
+          return
+        end
         respond_to do |format|
           if @clip.save
             format.json { render json: @clip, status: :ok, location: @clip }
