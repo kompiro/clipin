@@ -10,7 +10,9 @@ class Clipin.Views.Clips.ConfView extends Backbone.View
     'pageshow' : 'pageshow'
 
   render: ->
-    $(@el).html(@template())
+    $(@el).html(@template(
+      bookmark_link : "javascript:var d=document;var js=d.createElement(%27script%27);js.src=%27//#{window.location.host}/g/%27+encodeURIComponent(window.location);js.type=\"text/javascript\";js.id='clipinjs';d.body.appendChild(js);"
+    ))
     @model.each (tag)=>
       view = new Clipin.Views.Clips.TagConfView
         model: tag
