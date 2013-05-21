@@ -1,4 +1,4 @@
-root = "/home/deployer/apps/clipin/current"
+root = "#{File.expand_path(File.dirname(__FILE__))}/.."
 
 bind 'unix:///tmp/puma.sock'
 pidfile "#{root}/tmp/pid"
