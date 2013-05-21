@@ -44,8 +44,10 @@ group :production do
   gem 'pg' , '~> 0.14.1'
 end
 
+# use sqlite3 for generationg assets
+gem 'sqlite3'
+
 group :development, :test do
-  gem 'sqlite3'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'cucumber'
@@ -68,7 +70,7 @@ group :development, :test do
   gem 'ci_reporter'
 
   # Deploy with Capistrano
-  gem 'capistrano'
+  gem 'capistrano','~>2.15.4'
   gem 'capistrano-ext'
   gem 'capistrano_colors'
 
