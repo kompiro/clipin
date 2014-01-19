@@ -1,7 +1,6 @@
 Clipin::Application.routes.draw do
   get "welcome/index"
-
-  mount Doorkeeper::Engine => '/oauth'
+  use_doorkeeper
 
   resources :tags do
     resources :clips, :only => 'index'
