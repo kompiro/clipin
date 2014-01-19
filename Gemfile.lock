@@ -30,8 +30,8 @@ GEM
       multi_json (~> 1.0)
     addressable (2.2.8)
     arel (3.0.2)
-    builder (3.0.4)
-    capistrano (2.12.0)
+    builder (3.0.0)
+    capistrano (2.15.4)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
@@ -104,8 +104,8 @@ GEM
       thor
     haml (3.1.6)
     hashie (1.2.0)
-    highline (1.6.13)
-    hike (1.2.2)
+    highline (1.6.19)
+    hike (1.2.1)
     httpauth (0.1)
     i18n (0.6.1)
     jasminerice (0.0.9)
@@ -140,14 +140,14 @@ GEM
     mime-types (1.23)
     multi_json (1.7.4)
     multipart-post (1.1.5)
-    net-scp (1.0.4)
-      net-ssh (>= 1.99.1)
-    net-sftp (2.0.5)
-      net-ssh (>= 2.0.9)
-    net-ssh (2.5.2)
-    net-ssh-gateway (1.1.0)
-      net-ssh (>= 1.99.1)
-    nokogiri (1.5.9)
+    net-scp (1.1.1)
+      net-ssh (>= 2.6.5)
+    net-sftp (2.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.6.7)
+    net-ssh-gateway (1.2.0)
+      net-ssh (>= 2.6.5)
+    nokogiri (1.5.5)
     oauth2 (0.8.0)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -283,7 +283,7 @@ PLATFORMS
 
 DEPENDENCIES
   addressable
-  capistrano
+  capistrano (~> 2.15.4)
   capistrano-ext
   capistrano_colors
   ci_reporter
