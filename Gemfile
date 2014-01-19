@@ -12,7 +12,7 @@ gem 'nokogiri'
 gem 'rails-boilerplate'
 gem "rails-backbone"
 gem 'eco'
-gem 'doorkeeper'
+gem 'doorkeeper', '~> 1.0.0'
 
 gem "therubyracer"
 gem "less-rails"
