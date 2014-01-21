@@ -55,10 +55,9 @@ group :development, :test do
   gem 'webrat'
   gem 'database_cleaner'
 # gem "jasminerice"
-  gem "guard-jasmine"
   gem 'sinon-rails'
   gem 'factory_girl'
-  gem "factory_girl_rails", "~> 3.0"
+  gem "factory_girl_rails", "~> 4.3.0"
   gem 'forgery', '0.5.0'
   gem 'pry'
   gem 'pry-doc'
