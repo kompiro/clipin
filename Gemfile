@@ -52,7 +52,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'cucumber'
   gem "cucumber-rails", require: false
-  gem 'webrat'
+  gem 'capybara'
+  gem 'capybara-webkit'
   gem 'database_cleaner'
 # gem "jasminerice"
   gem 'sinon-rails'
