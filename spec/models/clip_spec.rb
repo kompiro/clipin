@@ -13,7 +13,7 @@ describe Clip do
     before do
       @user = create(:user)
     end
-    it 'should have user after saved',:filter => true do
+    it 'should have user after saved' do
       @clip = Clip.new(:url => 'http://example.com/')
       @clip.user = @user
       @clip.save
@@ -113,12 +113,12 @@ describe Clip do
       its(:length){should eq 0}
     end
   end
-  context 'search' do
+  context 'search',search: true do
     before do
       @user = create(:user)
-      clip = create(:search_clip,user: @user)
+      create(:search_clip,user: @user)
     end
-    subject {Clip.user(@user).search('test').page}
+    subject {Clip.user(@user).search('test').page.to_a}
     its(:length){should eq 1}
   end
 end

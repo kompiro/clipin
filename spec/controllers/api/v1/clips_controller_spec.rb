@@ -3,7 +3,7 @@ require 'open-uri'
 
 describe Api::V1::ClipsController do
 
-  let(:token) { stub :accessible? => true ,:resource_owner_id => 1}
+  let(:token) { double :accessible? => true ,:resource_owner_id => 1}
   before do
     @user = create(:user)
     controller.stub(:doorkeeper_token) { token }
@@ -13,7 +13,7 @@ describe Api::V1::ClipsController do
 
     doc = open("#{Rails.root}/spec/support/ogp/example_com.html")
 
-    read = mock('open')
+    read = double('open')
     read.stub(:meta).and_return({'content-type'=>'text/html'})
     read.stub(:read).and_return(doc.read)
     read.stub(:charset).and_return('utf-8')
@@ -38,13 +38,13 @@ describe Api::V1::ClipsController do
       clip.user = @user
       clip.save
     end
-    it "assigns first clips as @clips" do
+    it "assigns first clips as @clips",focus: true do
       get :index, {}, valid_session
-      assigns(:clips).should eq(Clip.user(@user).page)
+      expect(assigns(:clips).to_a).to eq(Clip.user(@user).page.to_a)
     end
     it "assigns second clips as @clips" do
       get :index, {:page => 2}, valid_session
-      assigns(:clips).should eq(Clip.user(@user).page(2))
+      expect(assigns(:clips).to_a).to eq(Clip.user(@user).page(2).to_a)
     end
   end
 
@@ -131,20 +131,20 @@ describe Api::V1::ClipsController do
         it "updates the requested clip" do
           # Assuming there are no other clips in the database, this
           # specifies that the Clip created on the previous line
-          # receives the :update_attributes message with whatever params are
+          # receives the :update message with whatever params are
           # submitted in the request.
-          Clip.any_instance.should_receive(:update_attributes).with({'these' => 'params','tags' => []})
+          Clip.any_instance.should_receive(:update).with({})
           put :update, {:id => @clip.to_param, :clip => {'these' => 'params'}}, valid_session
         end
 
         it "assigns the requested clip as @clip" do
           put :update, {:id => @clip.to_param, :clip => valid_attributes}, valid_session
-          assigns(:clip).should eq(@clip)
+          expect(assigns(:clip)).to eq(@clip)
         end
 
         it "returns 200" do
           put :update, {:id => @clip.to_param, :clip => valid_attributes}, valid_session
-          response.code.should eq '200'
+          expect(response.code).to eq '200'
         end
       end
 

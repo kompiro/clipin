@@ -134,7 +134,7 @@ class ClipsController < ApplicationController
     params[:clip][:tags] = load_tags(params)
 
     respond_to do |format|
-      if @clip.update_attributes(params[:clip])
+      if @clip.update(params.require(:clip).permit(:url,:user_id))
         format.html { redirect_to @clip, notice: 'Clip was successfully updated.' }
         format.json { head :no_content }
       else
@@ -179,12 +179,10 @@ class ClipsController < ApplicationController
           @clip.save
           return
         end
-        respond_to do |format|
-          if @clip.save
-            format.json { render json: @clip, status: :ok, location: @clip }
-          else
-            format.json { render json: @clip.errors, status: :unprocessable_entity }
-          end
+        if @clip.save
+          render json: @clip, status: :ok, location: @clip
+        else
+          render json: @clip.errors, status: :unprocessable_entity
         end
         return
       end

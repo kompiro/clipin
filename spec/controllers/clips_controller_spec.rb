@@ -11,7 +11,7 @@ describe ClipsController do
 
     doc = open("#{Rails.root}/spec/support/ogp/example_com.html")
 
-    read = mock('open')
+    read = double('open')
     read.stub(:read).and_return(doc.read)
     read.stub(:meta).and_return({'content-type' => 'text/html'})
     read.stub(:charset).and_return('utf-8')
@@ -49,14 +49,14 @@ describe ClipsController do
       end
       it "assigns first clips as @clips",:not_trashed => true do
         get :index, {}, valid_session
-        assigns(:clips).should eq(Clip.user(@user).not_trashed.page)
-        assigns(:tags).should eq(Tag.all)
-        flash[:notice].should be_nil
+        expect(assigns(:clips).to_a).to eq(Clip.user(@user).not_trashed.page.to_a)
+        expect(assigns(:tags).to_a).to eq(Tag.all.to_a)
+        expect(flash[:notice]).to be_nil
       end
       it "assigns second clips as @clips" do
         get :index, {:page => 2}, valid_session
-        assigns(:clips).should eq(Clip.user(@user).not_trashed.page(2))
-        flash[:notice].should be_nil
+        expect(assigns(:clips).to_a).to eq(Clip.user(@user).not_trashed.page(2).to_a)
+        expect(flash[:notice]).to be_nil
       end
     end
     context 'index by trash',:trash => true do
@@ -65,12 +65,12 @@ describe ClipsController do
       end
       it "assigns trashed clips as @clips" do
         get :index, {:trashed => true}, valid_session
-        assigns(:clips).should eq(Clip.user(@user).trashed.page)
-        flash[:notice].should be_nil
+        expect(assigns(:clips).to_a).to eq(Clip.user(@user).trashed.page.to_a)
+        expect(flash[:notice]).to be_nil
       end
       it "assigns trashed clips at page 2as @clips" do
         get :index, {:trashed => true,:page => 2}, valid_session
-        assigns(:clips).should eq(Clip.user(@user).trashed.page(2))
+        assigns(:clips).to_a.should eq(Clip.user(@user).trashed.page(2).to_a)
         flash[:notice].should be_nil
       end
     end
@@ -80,7 +80,7 @@ describe ClipsController do
       end
       it "assigns pinned clips as @clips" do
         get :index, {:pinned => true}, valid_session
-        assigns(:clips).should eq(Clip.user(@user).not_trashed.pinned.page)
+        assigns(:clips).to_a.should eq(Clip.user(@user).not_trashed.pinned.page.to_a)
         flash[:notice].should be_nil
       end
     end
@@ -94,7 +94,7 @@ describe ClipsController do
       end
       it "assigns tagged clips as @clips" do
         get :index, {:tag => @tag.name}, valid_session
-        assigns(:clips).should eq(Clip.user(@user).not_trashed.tag(@tag).page)
+        assigns(:clips).to_a.should eq(Clip.user(@user).not_trashed.tag(@tag).page.to_a)
         flash[:notice].should be_nil
       end
     end
@@ -105,7 +105,7 @@ describe ClipsController do
       end
       it 'assigns updated_at clips as @clips' do
         get :index, {:date => @date}, valid_session
-        assigns(:clips).should eq(Clip.user(@user).not_trashed.updated_at(@date).page)
+        assigns(:clips).to_a.should eq(Clip.user(@user).not_trashed.updated_at(@date).page.to_a)
         flash[:notice].should be_nil
       end
     end
@@ -118,14 +118,14 @@ describe ClipsController do
     end
     it "assigns specified query to search clips" do
       get :search, {q: 'test'}, valid_session
-      assigns(:clips).should eq(Clip.user(@user).search('test').page)
-      assigns(:tags).should eq(Tag.all)
+      assigns(:clips).to_a.should eq(Clip.user(@user).search('test').page.to_a)
+      assigns(:tags).to_a.should eq(Tag.all.to_a)
       flash[:notice].should be_nil
     end
     it "assigns specified query and page to search clips" do
       get :search, {q: 'test', page: 2}, valid_session
-      assigns(:clips).should eq(Clip.user(@user).search('test').page(2))
-      assigns(:tags).should eq(Tag.all)
+      assigns(:clips).to_a.should eq(Clip.user(@user).search('test').page(2).to_a)
+      assigns(:tags).to_a.should eq(Tag.all.to_a)
     end
   end
 
@@ -321,7 +321,7 @@ describe ClipsController do
     end
     describe "with valid params" do
       it "updates the requested clip" do
-        Clip.any_instance.should_receive(:update_attributes).with({'these' => 'params','tags' => []})
+        Clip.any_instance.should_receive(:update).with({})
         put :update, {:id => @clip.to_param, :clip => {'these' => 'params'}}, valid_session
       end
 

@@ -14,14 +14,14 @@ class Clip < ActiveRecord::Base
   PAGE_CONTENT = 8
 
   scope :page,    ->(page_num=1) {
-    order(arel_table[:updated_at].desc).includes(:tags).includes(:url_info).limit(PAGE_CONTENT).offset(PAGE_CONTENT * ([page_num.to_i, 1].max - 1))}
+    order(arel_table[:updated_at].desc).includes(:tags).includes(:url_info).limit(PAGE_CONTENT).offset(PAGE_CONTENT * ([page_num.to_i, 1].max - 1)).references(:url_info)}
   scope :user,    ->(user) {where(:user_id => user)}
   scope :tag,     ->(tag) {
     taggings_table = Tagging.arel_table
     joins(:taggings).where(taggings_table[:tag_id].eq(tag.id))}
   scope :search,  ->(query='') {
     url_infos_table = UrlInfo.arel_table
-    where(:trash => false).where(url_infos_table[:title].matches("%#{query}%"))
+    where(arel_table[:trash].eq(false).and(url_infos_table[:title].matches("%#{query}%")))
   }
   scope :updated_at,  ->(time) {
     begin_date = time.beginning_of_day

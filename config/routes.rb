@@ -17,6 +17,7 @@ Clipin::Application.routes.draw do
   match '/howto', to: 'home#howto', via: [:get,:post]
   match '/logout', to: 'sessions#delete', via: [:get,:post]
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get,:post]
+  match '/auth/failure', to: 'home#index', via: [:get,:post]
 
   namespace :api do
     namespace :v1 do
