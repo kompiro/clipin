@@ -70,7 +70,7 @@ group :development, :test do
   gem 'ci_reporter'
 
   # Deploy with Capistrano
-  gem 'capistrano','~>2.15.4'
+  gem 'capistrano','~> 3.1.0'
   gem 'capistrano-ext'
   gem 'capistrano_colors'
 
