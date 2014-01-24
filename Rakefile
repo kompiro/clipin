@@ -5,7 +5,5 @@
 require File.expand_path('../config/application', __FILE__)
 if ENV['RAILS_ENV'] != 'production'
   require 'ci/reporter/rake/rspec'
-  require 'guard/jasmine/task'
-  Guard::JasmineTask.new
 end
 Clipin::Application.load_tasks

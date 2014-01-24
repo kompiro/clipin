@@ -13,7 +13,9 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate!
-    redirect_to root_url unless current_user.present?
+    unless current_user.present?
+      redirect_to root_path
+    end
   end
 
   def app_last_updated_at

@@ -17,8 +17,7 @@
 //= require jquery.ui.core
 //= require jquery.ui.widget
 //= require jquery.ui.autocomplete
-//= require jquery.effects.core
-//= require jquery.effects.blind
+//= require jquery.ui.effect
 //= require jquery.oembed
 //= require jquery.postpaste
 //= require spin

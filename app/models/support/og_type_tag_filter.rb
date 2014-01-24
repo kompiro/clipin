@@ -10,7 +10,7 @@ module Support
       if @clip.og_type.nil? or @clip.og_type.empty?
         return
       end
-      tag = Tag.find_or_create_by_name_and_user_id @clip.og_type, @clip.user.id
+      tag = Tag.find_or_create_by(name: @clip.og_type, user_id: @clip.user.id)
       Tagging.create({:clip => @clip, :tag => tag})
     end
   end

@@ -1,7 +1,7 @@
 class Tag < ActiveRecord::Base
   attr_accessor :page_num
   has_many :taggings
-  has_many :clips, :through => :taggings,:order => "clips.updated_at DESC",:limit => 8
+  has_many :clips, -> {order('clips.updated_at DESC').limit(8)}, :through => :taggings
   PAGE_CONTENT = 8
 
   belongs_to :user
