@@ -9,7 +9,7 @@ describe Support::WebLoader do
       doc = open("#{Rails.root}/spec/support/ogp/#{file}")
       binary = open("#{Rails.root}/spec/support/ogp/#{file}",'rb')
 
-      read = mock('open')
+      read = double('open')
       read.stub(:meta).and_return({'content-type' => 'text/html;'})
       content = doc.read
       read.stub(:read).and_return(content)
@@ -28,7 +28,7 @@ describe Support::WebLoader do
       @clip = Clip.new(:url => url)
       @clip.user = user
       @loader = Support::WebLoader.new(@clip)
-      @loader.stub!(:open).and_return(read)
+      @loader.stub(:open).and_return(read)
 
       @result = @loader.load
     end
@@ -276,13 +276,13 @@ describe Support::WebLoader do
   end
   context 'load image content from url' do
     before do
-      read = mock('open')
+      read = double('open')
       read.stub(:meta).and_return(meta)
       read.stub(:base_uri).and_return(URI.parse(url))
 
       @clip = Clip.new(:url => url)
       @loader = Support::WebLoader.new(@clip)
-      @loader.stub!(:open).and_return(read)
+      @loader.stub(:open).and_return(read)
 
       @result = @loader.load
     end
@@ -338,13 +338,13 @@ describe Support::WebLoader do
   end
   context 'load image content from url and image' do
     before do
-      read = mock('open')
+      read = double('open')
       read.stub(:meta).and_return(meta)
       read.stub(:base_uri).and_return(URI.parse(url))
 
       @clip = Clip.new(:url => url,:image => image)
       @loader = Support::WebLoader.new(@clip)
-      @loader.stub!(:open).and_return(read)
+      @loader.stub(:open).and_return(read)
 
       @result = @loader.load
     end
@@ -405,7 +405,7 @@ describe Support::WebLoader do
     before do
       @clip = Clip.new(:url => 'http://example.com/')
       @loader = Support::WebLoader.new(@clip)
-      @loader.stub!(:open).and_raise OpenURI::HTTPError.new message,nil
+      @loader.stub(:open).and_raise OpenURI::HTTPError.new message,nil
       @result = @loader.load
     end
     describe '404 Not Found' do

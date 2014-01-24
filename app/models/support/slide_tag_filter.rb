@@ -22,7 +22,7 @@ module Support
     private
 
     def create_tag
-      tag = Tag.find_or_create_by_name_and_user_id 'slide',@clip.user.id
+      tag = Tag.find_or_create_by(name: 'slide', user: @clip.user)
       Tagging.create({:clip => @clip, :tag => tag})
     end
   end

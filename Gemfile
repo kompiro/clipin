@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '4.0.2'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -15,7 +15,7 @@ gem 'eco'
 gem 'doorkeeper', '~> 1.0.0'
 
 gem "therubyracer"
-gem "less-rails"
+gem "less-rails", '2.3.3'
 gem "twitter-bootstrap-rails",  "2.1.6"
 gem 'spinjs-rails'
 gem 'addressable'
@@ -27,14 +27,14 @@ gem 'puma'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails',   '~> 4.0.0'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
 
 end
 
-gem 'coffee-rails', '~> 3.2.1'
+gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -52,13 +52,13 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'cucumber'
   gem "cucumber-rails", require: false
-  gem 'webrat'
+  gem 'capybara'
+  gem 'capybara-webkit'
   gem 'database_cleaner'
-  gem "jasminerice"
-  gem "guard-jasmine"
+# gem "jasminerice"
   gem 'sinon-rails'
   gem 'factory_girl'
-  gem "factory_girl_rails", "~> 3.0"
+  gem "factory_girl_rails", "~> 4.3.0"
   gem 'forgery', '0.5.0'
   gem 'pry'
   gem 'pry-doc'

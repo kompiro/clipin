@@ -4,7 +4,7 @@ require File.expand_path('../boot', __FILE__)
 require "active_record/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
-require "active_resource/railtie"
+#require "active_resource/railtie"
 require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
@@ -19,7 +19,7 @@ module Clipin
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     ### Part of a Spork hack. See http://bit.ly/arY19y
-    if Rails.env.test? && defined?(Spork) && Spork.using_spork?
+    if Rails.env.test?
       initializer :after => :initialize_dependency_mechanism do
         # Work around initializer in railties/lib/rails/application/bootstrap.rb
         ActiveSupport::Dependencies.mechanism = :load
@@ -68,6 +68,8 @@ module Clipin
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    I18n.enforce_available_locales = false
 
   end
 end
