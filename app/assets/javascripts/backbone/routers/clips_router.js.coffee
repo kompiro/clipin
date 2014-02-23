@@ -3,7 +3,7 @@ class Clipin.Routers.ClipsState
   constructor:(args)->
     @clips = args.clips
     @page = 1
-    @loading = false
+    window.loading = false
     @title = 'All'
     @url = '/clips'
 
@@ -14,20 +14,20 @@ class Clipin.Routers.ClipsState
     return result
 
   fetch:(@callback)->
-    return if @loading
-    @loading = true
+    return if window.loading
+    window.loading = true
     success = (clips)=>
-      @loading = false
+      window.loading = false
       @callback clips if @callback?
 
-    add = @page > 1
+    update = @page > 1
     args = @fetch_args()
     @page = @page + 1
     @clips.fetch
       cache   : false
       url     : @url
       data    : args.data
-      add     : add
+      update  : update
       success : success
 
 class Clipin.Routers.TagState extends Clipin.Routers.ClipsState

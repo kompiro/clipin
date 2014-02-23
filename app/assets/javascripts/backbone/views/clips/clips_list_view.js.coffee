@@ -10,6 +10,7 @@ class Clipin.Views.Clips.ClipsListView extends Backbone.View
     "click .next_clips" : "loadNext"
 
   initialize:()->
+    @last_clips_length = 8
 
   loadNext:(e)=>
     e.preventDefault()
@@ -31,7 +32,7 @@ class Clipin.Views.Clips.ClipsListView extends Backbone.View
     @state.fetch callback
 
   lastPostFunc : ()->
-    unless @state.loading
+    unless window.loading
       @loading_element.show()
       @el_next_clip().hide()
       @state.fetch((clips)=>
