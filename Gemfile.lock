@@ -283,7 +283,7 @@ DEPENDENCIES
   pg (~> 0.14.1)
   pry
   pry-doc
-  puma (= 2.5.0)
+  puma
   rails (= 4.0.2)
   rails-backbone
   rails-boilerplate

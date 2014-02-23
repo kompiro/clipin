@@ -23,7 +23,7 @@ gem 'addressable'
 #gem 'unicorn'
 
 # Use puma as the app server
-gem 'puma', '2.5.0'
+gem 'puma'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
