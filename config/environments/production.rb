@@ -65,4 +65,5 @@ Clipin::Application.configure do
   # Store db timezone is UTC.
   # But Loading one is the below.
   config.time_zone = 'Tokyo'
+  config.eager_load = 'true'
 end
