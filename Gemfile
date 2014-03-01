@@ -71,8 +71,10 @@ group :development, :test do
 
   # Deploy with Capistrano
   gem 'capistrano','~> 3.1.0'
-  gem 'capistrano-ext'
-  gem 'capistrano_colors'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+
 
 end
 
