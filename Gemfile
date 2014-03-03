@@ -16,7 +16,7 @@ gem 'doorkeeper', '~> 1.0.0'
 
 gem "therubyracer"
 gem "less-rails", '2.3.3'
-gem "twitter-bootstrap-rails",  "2.1.6"
+gem "twitter-bootstrap-rails",  "2.2.7"
 gem 'spinjs-rails'
 gem 'addressable'
 # Use unicorn as the app server
@@ -24,8 +24,6 @@ gem 'addressable'
 
 # Use puma as the app server
 gem 'puma'
-
-gem 'font-awesome-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
