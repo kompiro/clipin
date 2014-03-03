@@ -16,7 +16,11 @@ role :db,  %w{vagrant@clipin-dev.me}
 # extended properties on the server.
 server 'clipin-dev.me', user: 'vagrant', roles: %w{web app}, my_property: :my_value
 
+set :stage, :staging
 set :rails_env, 'production'
+
+# Default deploy_to directory is /var/www/my_app
+set :deploy_to, "/home/vagrant/apps/clipin"
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
