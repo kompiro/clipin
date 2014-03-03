@@ -24,6 +24,9 @@ gem 'addressable'
 
 # Use puma as the app server
 gem 'puma'
+
+gem 'font-awesome-rails'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
