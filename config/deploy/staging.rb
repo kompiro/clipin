@@ -4,21 +4,23 @@
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
 # Don't declare `role :all`, it's a meta role
-role :app, %w{deployer@clipin.me}
-role :web, %w{deployer@clipin.me}
-role :db,  %w{deployer@clipin.me}
+role :app, %w{vagrant@clipin-dev.me}
+role :web, %w{vagrant@clipin-dev.me}
+role :db,  %w{vagrant@clipin-dev.me}
 
-set :user, "deployer"
-
-# Default deploy_to directory is /var/www/my_app
-set :deploy_to, "/home/deployer/apps/clipin"
 # Extended Server Syntax
 # ======================
 # This can be used to drop a more detailed server
 # definition into the server list. The second argument
 # something that quacks like a hash can be used to set
 # extended properties on the server.
-#server 'clipin.me', user: 'deployer', roles: %w{web app}, my_property: :my_value
+server 'clipin-dev.me', user: 'vagrant', roles: %w{web app}, my_property: :my_value
+
+set :stage, :staging
+set :rails_env, 'production'
+
+# Default deploy_to directory is /var/www/my_app
+set :deploy_to, "/home/vagrant/apps/clipin"
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
@@ -30,7 +32,7 @@ set :deploy_to, "/home/deployer/apps/clipin"
 #    auth_methods: %w(password)
 #  }
 # and/or per server
-# server 'clipin.me',
+# server 'example.com',
 #   user: 'user_name',
 #   roles: %w{web app},
 #   ssh_options: {

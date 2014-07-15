@@ -16,7 +16,7 @@ gem 'doorkeeper', '~> 1.0.0'
 
 gem "therubyracer"
 gem "less-rails", '2.3.3'
-gem "twitter-bootstrap-rails",  "2.1.6"
+gem "twitter-bootstrap-rails",  "2.2.7"
 gem 'spinjs-rails'
 gem 'addressable'
 # Use unicorn as the app server
@@ -24,6 +24,7 @@ gem 'addressable'
 
 # Use puma as the app server
 gem 'puma'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -71,8 +72,10 @@ group :development, :test do
 
   # Deploy with Capistrano
   gem 'capistrano','~> 3.1.0'
-  gem 'capistrano-ext'
-  gem 'capistrano_colors'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-puma', require: false
 
 end
 
