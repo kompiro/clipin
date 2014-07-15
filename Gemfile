@@ -71,9 +71,11 @@ group :development, :test do
   gem 'ci_reporter'
 
   # Deploy with Capistrano
-  gem 'capistrano','~>2.15.4'
-  gem 'capistrano-ext'
-  gem 'capistrano_colors'
+  gem 'capistrano','~> 3.1.0'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-puma', require: false
 
 end
 
